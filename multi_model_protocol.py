@@ -574,15 +574,26 @@ class SymphonyOrchestrator:
         加载可用模型
         
         优先级规则（防止限流）：
-        - 优先调用同公司（相同provider）的模型
-        - cherry-doubao 是当前编排器所在公司，优先级最高
+        - 优先调用不同公司（不同provider）的模型
+        - 这样可以分散API调用，避免同一API被限流
         - 同一provider内按信任级别排序
         """
         # 当前编排器所在公司（我当前使用的模型所在的公司）
         CURRENT_PROVIDER = "cherry-doubao"
         
         models = [
-            # ====== cherry-doubao（同公司，优先级最高）======
+            # ====== cherry-minimax（不同公司，优先级最高）======
+            {
+                "model_id": "MiniMax-M2.5",
+                "provider": "cherry-minimax",
+                "alias": "MiniMax",
+                "capabilities": ["analysis", "multimodal"],
+                "trust_level": 0.8,
+                "tools_allowed": ["read", "write"],
+                "priority": 1,  # 不同公司，优先使用
+                "rate_limit_safe": True
+            },
+            # ====== cherry-doubao（同公司，优先级降低）======
             {
                 "model_id": "ark-code-latest",
                 "provider": "cherry-doubao",
@@ -590,8 +601,8 @@ class SymphonyOrchestrator:
                 "capabilities": ["analysis", "architecture", "code"],
                 "trust_level": 0.9,
                 "tools_allowed": ["read", "write", "web_search", "web_fetch"],
-                "priority": 1,  # 同公司最高信任
-                "rate_limit_safe": True
+                "priority": 11,  # 同公司，优先级降低
+                "rate_limit_safe": False
             },
             {
                 "model_id": "deepseek-v3.2",
@@ -600,8 +611,8 @@ class SymphonyOrchestrator:
                 "capabilities": ["research", "analysis", "writing"],
                 "trust_level": 0.85,
                 "tools_allowed": ["read", "web_search"],
-                "priority": 2,  # 同公司
-                "rate_limit_safe": True
+                "priority": 12,  # 同公司
+                "rate_limit_safe": False
             },
             {
                 "model_id": "doubao-seed-2.0-code",
@@ -610,8 +621,8 @@ class SymphonyOrchestrator:
                 "capabilities": ["code", "debug", "optimization"],
                 "trust_level": 0.8,
                 "tools_allowed": ["read", "write", "exec"],
-                "priority": 3,  # 同公司
-                "rate_limit_safe": True
+                "priority": 13,  # 同公司
+                "rate_limit_safe": False
             },
             {
                 "model_id": "glm-4.7",
@@ -620,8 +631,8 @@ class SymphonyOrchestrator:
                 "capabilities": ["analysis", "reasoning", "writing"],
                 "trust_level": 0.8,
                 "tools_allowed": ["read", "web_search"],
-                "priority": 4,  # 同公司
-                "rate_limit_safe": True
+                "priority": 14,  # 同公司
+                "rate_limit_safe": False
             },
             {
                 "model_id": "kimi-k2.5",
@@ -630,18 +641,7 @@ class SymphonyOrchestrator:
                 "capabilities": ["analysis", "long_context", "reading"],
                 "trust_level": 0.85,
                 "tools_allowed": ["read", "web_fetch"],
-                "priority": 5,  # 同公司
-                "rate_limit_safe": True
-            },
-            # ====== cherry-minimax（不同公司，优先级较低）======
-            {
-                "model_id": "MiniMax-M2.5",
-                "provider": "cherry-minimax",
-                "alias": "MiniMax",
-                "capabilities": ["analysis", "multimodal"],
-                "trust_level": 0.8,
-                "tools_allowed": ["read", "write"],
-                "priority": 11,  # 不同公司，优先级降低
+                "priority": 15,  # 同公司
                 "rate_limit_safe": False
             }
         ]
