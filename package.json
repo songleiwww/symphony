@@ -1,0 +1,35 @@
+{
+  "name": "symphony",
+  "version": "0.4.6",
+  "description": "Symphony - A complete multi-model collaboration platform",
+  "description_cn": "交响 - 一个完整的多模型协作平台",
+  "author": {
+    "name": "步花间",
+    "name_en": "Huajian Bu",
+    "email": "songlei_www@hotmail.com",
+    "location": "Beijing, China",
+    "location_cn": "中国，北京"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/songleiwww/symphony.git"
+  },
+  "homepage": "https://github.com/songleiwww/symphony",
+  "bugs": {
+    "url": "https://github.com/songleiwww/symphony/issues"
+  },
+  "license": "MIT",
+  "keywords": [
+    "multi-agent",
+    "collaboration",
+    "ai",
+    "llm",
+    "symphony",
+    "多模型",
+    "协作"
+  ],
+  "brand": {
+    "slogan": "智韵交响，共创华章",
+    "slogan_en": "Harmony of Minds, Creation of Excellence"
+  }
+}
