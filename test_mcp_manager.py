@@ -6,9 +6,15 @@ MCP工具管理器 - 测试文件
 """
 
 import unittest
+import io
 import time
 import sys
 import os
+
+# 修复Windows编码问题
+if sys.platform == 'win32':
+    sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf-8')
+    sys.stderr = io.TextIOWrapper(sys.stderr.buffer, encoding='utf-8')
 
 # 确保可以导入模块
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))

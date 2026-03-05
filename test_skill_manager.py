@@ -6,10 +6,16 @@
 """
 
 import sys
+import io
 import os
 import time
 import logging
 from pathlib import Path
+
+# 修复Windows编码问题
+if sys.platform == 'win32':
+    sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf-8')
+    sys.stderr = io.TextIOWrapper(sys.stderr.buffer, encoding='utf-8')
 
 # 添加项目路径
 sys.path.insert(0, str(Path(__file__).parent))
