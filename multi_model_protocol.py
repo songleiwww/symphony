@@ -347,67 +347,82 @@ class ToolCollaborationFramework:
         task: str,
         available_models: List[Dict]
     ) -> Dict[str, Any]:
-        """计划协作"""
+        """
+        计划协作
+        
+        优先级策略（防止限流）：
+        - 优先选择同公司（相同provider）的模型
+        - 同一provider内按优先级排序
+        - 不同公司的模型仅在同公司模型不可用时使用
+        """
         plan = {
             "task": task,
             "phases": [],
             "estimated_time": 0,
-            "models_needed": []
+            "models_needed": [],
+            "provider_strategy": "same_provider_first"
         }
         
+        # 按优先级排序（已经排好序了）
         # 分析任务复杂度
         complexity = self._analyze_complexity(task)
         
         if complexity == "simple":
-            # 简单任务：单个模型
+            # 简单任务：单个模型（优先选同公司）
             plan["phases"].append({
                 "phase": 1,
                 "action": "direct_execution",
-                "model": available_models[0]["name"],
+                "model": available_models[0]["model_id"],
+                "provider": available_models[0]["provider"],
                 "tools": []
             })
-            plan["models_needed"].append(available_models[0]["name"])
+            plan["models_needed"].append(available_models[0]["model_id"])
         
         elif complexity == "medium":
-            # 中等任务：2个模型协作
+            # 中等任务：2个模型协作（优先选同公司）
             plan["phases"].append({
                 "phase": 1,
                 "action": "analysis",
-                "model": available_models[0]["name"],
+                "model": available_models[0]["model_id"],
+                "provider": available_models[0]["provider"],
                 "tools": ["web_search"]
             })
             plan["phases"].append({
                 "phase": 2,
                 "action": "execution",
-                "model": available_models[1]["name"],
+                "model": available_models[1]["model_id"],
+                "provider": available_models[1]["provider"],
                 "tools": ["read", "write"]
             })
-            plan["models_needed"].append(available_models[0]["name"])
-            plan["models_needed"].append(available_models[1]["name"])
+            plan["models_needed"].append(available_models[0]["model_id"])
+            plan["models_needed"].append(available_models[1]["model_id"])
         
         else:
-            # 复杂任务：3个以上模型协作
+            # 复杂任务：3个以上模型协作（优先选同公司）
             plan["phases"].append({
                 "phase": 1,
                 "action": "research",
-                "model": available_models[0]["name"],
+                "model": available_models[0]["model_id"],
+                "provider": available_models[0]["provider"],
                 "tools": ["web_search", "web_fetch"]
             })
             plan["phases"].append({
                 "phase": 2,
                 "action": "analysis",
-                "model": available_models[1]["name"],
+                "model": available_models[1]["model_id"],
+                "provider": available_models[1]["provider"],
                 "tools": ["read"]
             })
             plan["phases"].append({
                 "phase": 3,
                 "action": "execution",
-                "model": available_models[2]["name"],
+                "model": available_models[2]["model_id"],
+                "provider": available_models[2]["provider"],
                 "tools": ["write", "exec"]
             })
-            plan["models_needed"].append(available_models[0]["name"])
-            plan["models_needed"].append(available_models[1]["name"])
-            plan["models_needed"].append(available_models[2]["name"])
+            plan["models_needed"].append(available_models[0]["model_id"])
+            plan["models_needed"].append(available_models[1]["model_id"])
+            plan["models_needed"].append(available_models[2]["model_id"])
         
         return plan
     
@@ -555,15 +570,28 @@ class SymphonyOrchestrator:
         self.available_models = self._load_available_models()
     
     def _load_available_models(self) -> List[Dict]:
-        """加载可用模型"""
-        return [
+        """
+        加载可用模型
+        
+        优先级规则（防止限流）：
+        - 优先调用同公司（相同provider）的模型
+        - cherry-doubao 是当前编排器所在公司，优先级最高
+        - 同一provider内按信任级别排序
+        """
+        # 当前编排器所在公司（我当前使用的模型所在的公司）
+        CURRENT_PROVIDER = "cherry-doubao"
+        
+        models = [
+            # ====== cherry-doubao（同公司，优先级最高）======
             {
                 "model_id": "ark-code-latest",
                 "provider": "cherry-doubao",
                 "alias": "Doubao Ark",
                 "capabilities": ["analysis", "architecture", "code"],
                 "trust_level": 0.9,
-                "tools_allowed": ["read", "write", "web_search", "web_fetch"]
+                "tools_allowed": ["read", "write", "web_search", "web_fetch"],
+                "priority": 1,  # 同公司最高信任
+                "rate_limit_safe": True
             },
             {
                 "model_id": "deepseek-v3.2",
@@ -571,7 +599,9 @@ class SymphonyOrchestrator:
                 "alias": "DeepSeek",
                 "capabilities": ["research", "analysis", "writing"],
                 "trust_level": 0.85,
-                "tools_allowed": ["read", "web_search"]
+                "tools_allowed": ["read", "web_search"],
+                "priority": 2,  # 同公司
+                "rate_limit_safe": True
             },
             {
                 "model_id": "doubao-seed-2.0-code",
@@ -579,7 +609,9 @@ class SymphonyOrchestrator:
                 "alias": "Doubao Seed",
                 "capabilities": ["code", "debug", "optimization"],
                 "trust_level": 0.8,
-                "tools_allowed": ["read", "write", "exec"]
+                "tools_allowed": ["read", "write", "exec"],
+                "priority": 3,  # 同公司
+                "rate_limit_safe": True
             },
             {
                 "model_id": "glm-4.7",
@@ -587,7 +619,9 @@ class SymphonyOrchestrator:
                 "alias": "GLM 4.7",
                 "capabilities": ["analysis", "reasoning", "writing"],
                 "trust_level": 0.8,
-                "tools_allowed": ["read", "web_search"]
+                "tools_allowed": ["read", "web_search"],
+                "priority": 4,  # 同公司
+                "rate_limit_safe": True
             },
             {
                 "model_id": "kimi-k2.5",
@@ -595,17 +629,25 @@ class SymphonyOrchestrator:
                 "alias": "Kimi K2.5",
                 "capabilities": ["analysis", "long_context", "reading"],
                 "trust_level": 0.85,
-                "tools_allowed": ["read", "web_fetch"]
+                "tools_allowed": ["read", "web_fetch"],
+                "priority": 5,  # 同公司
+                "rate_limit_safe": True
             },
+            # ====== cherry-minimax（不同公司，优先级较低）======
             {
                 "model_id": "MiniMax-M2.5",
                 "provider": "cherry-minimax",
                 "alias": "MiniMax",
                 "capabilities": ["analysis", "multimodal"],
                 "trust_level": 0.8,
-                "tools_allowed": ["read", "write"]
+                "tools_allowed": ["read", "write"],
+                "priority": 11,  # 不同公司，优先级降低
+                "rate_limit_safe": False
             }
         ]
+        
+        # 按优先级排序
+        return sorted(models, key=lambda x: x["priority"])
     
     def process_user_request(self, user_request: str) -> Dict[str, Any]:
         """处理用户请求"""
