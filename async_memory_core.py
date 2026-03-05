@@ -74,33 +74,16 @@ class RateLimiter:
         self.max_concurrent = max_concurrent  # 最大并发数
         self.time_window = time_window  # 时间窗口（秒）
         self.active: Dict[str, int] = {}  # 每个键的活跃数
-        self.history: Dict[str, List[float]] = {}  # 每个键的历史时间
         self._lock = threading.Lock()
     
     def acquire(self, key: str) -> bool:
         """Acquire a slot - 获取一个槽位"""
         with self._lock:
-            now = time.time()
-            
-            # Clean old history
-            if key in self.history:
-                self.history[key] = [t for t in self.history[key] if now - t < self.time_window]
-            
-            # Check concurrent
             current_active = self.active.get(key, 0)
             if current_active >= self.max_concurrent:
                 return False
-            
-            # Check rate
-            recent_calls = len(self.history.get(key, []))
-            if recent_calls >= self.max_concurrent:
-                return False
-            
             # Acquire
             self.active[key] = current_active + 1
-            if key not in self.history:
-                self.history[key] = []
-            self.history[key].append(now)
             return True
     
     def release(self, key: str):
@@ -225,6 +208,28 @@ class ImprovedSymphonyCore:
                 self._save_memory()
                 return mem
         return None
+    
+    def search_memories(self, query: str = "", tags: List[str] = None, 
+                        min_importance: float = 0.0) -> List[ImprovedMemoryItem]:
+        """Search memories - 搜索记忆"""
+        with self._execution_lock:
+            results = []
+            for mem in self.memories.values():
+                # Filter by importance
+                if mem.importance < min_importance:
+                    continue
+                # Filter by tags
+                if tags:
+                    if not any(tag in mem.tags for tag in tags):
+                        continue
+                # Filter by query
+                if query:
+                    if query.lower() not in mem.content.lower():
+                        continue
+                results.append(mem)
+            # Sort by importance (descending)
+            results.sort(key=lambda x: x.importance, reverse=True)
+            return results
     
     def set_preference(self, key: str, value: Any):
         """Set a preference (thread-safe) - 设置偏好（线程安全）"""
