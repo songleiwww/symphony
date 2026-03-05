@@ -1,283 +1,67 @@
-# 🚀 Symphony 发布检查清单
+# Symphony Release Checklist - 交响发布检查清单
 
-本清单用于确保每次发布都是高质量、完整和一致的。
+## Before Every Release - 每次发布前
 
----
+### Quality Checks - 质量检查
 
-## 📋 目录
+- [ ] **All tests pass** - 所有测试通过
+  - Run: `python simple_test.py`
+  - Run: `python symphony_self_test.py`
+  - Run: `python test_phase1.py`
 
-- [发布前检查](#发布前检查)
-- [代码质量检查](#代码质量检查)
-- [文档检查](#文档检查)
-- [测试检查](#测试检查)
-- [构建和打包](#构建和打包)
-- [发布流程](#发布流程)
-- [发布后检查](#发布后检查)
-- [紧急回滚](#紧急回滚)
+- [ ] **No sensitive data in commits** - 提交中没有敏感数据
+  - Check: config.py has placeholder keys
+  - Check: No API keys, passwords, tokens in any file
+  - Check: OpenClaw config not committed
 
----
+- [ ] **Documentation updated** - 文档已更新
+  - Check: README.md is current
+  - Check: QUICKSTART.md is current
+  - Check: examples/README.md is current
 
-## 🚨 发布前检查
+- [ ] **Model reporting works** - 模型报告正常工作
+  - Check: All examples show model usage
+  - Check: Detailed model reports are included
 
-### 发布决策
-- [ ] 确认这是正确的发布时机
-- [ ] 确认所有计划的功能都已完成
-- [ ] 确认没有阻塞性的 Bug
-- [ ] 确认团队成员都同意发布
-- [ ] 确认有明确的版本号
+- [ ] **Memory system functions** - 记忆系统正常工作
+  - Check: memory_system.py loads
+  - Check: Long-term memory is created/loaded
 
-### 仓库状态
-- [ ] `main` 分支是最新的
-- [ ] 没有未提交的更改
-- [ ] 没有打开的紧急 PR
-- [ ] CI/CD 流水线在 `main` 分支上通过
-- [ ] 所有依赖都是安全的
+### Automation Checks - 自动化检查
 
----
+- [ ] **Run self-tests on every change** - 每次更改运行自测试
+  - Run: `python symphony_self_test.py`
 
-## ✅ 代码质量检查
+- [ ] **Check for sensitive data pre-commit** - 提交前检查敏感数据
+  - Verify: No real keys in config.py
+  - Verify: No personal data in files
 
-### 代码规范
-- [ ] 运行 `black --check .` 通过
-- [ ] 运行 `flake8 .` 通过
-- [ ] 没有调试代码（print 语句、console.log 等）
-- [ ] 没有 TODO/FIXME 注释（除非有 Issue 跟踪）
-- [ ] 所有导入都是必需的
-- [ ] 代码复杂度在可接受范围内
+- [ ] **Validate model configuration** - 验证模型配置
+  - Check: 17 models loaded
+  - Check: Priority order correct
 
-### 代码审查
-- [ ] 所有更改都经过代码审查
-- [ ] 审查意见都已解决
-- [ ] 至少有一个维护者批准
-- [ ] 没有争议性的更改
-
-### 依赖管理
-- [ ] `requirements.txt` 是最新的
-- [ ] 所有依赖都有版本锁定
-- [ ] 没有已知的安全漏洞（运行 `safety check`）
-- [ ] 没有过时的依赖（运行 `pip list --outdated`）
+- [ ] **Verify memory system integrity** - 验证记忆系统完整性
+  - Check: Memory files are valid JSON
+  - Check: No corruption
 
 ---
 
-## 📚 文档检查
+## Quality Standards - 质量标准
 
-### 用户文档
-- [ ] README.md 是最新的
-- [ ] 安装说明是正确的
-- [ ] 使用示例是可运行的
-- [ ] API 文档是最新的
-- [ ] 变更日志（CHANGELOG.md）已更新
-- [ ] 已知问题列表是最新的
-
-### 开发者文档
-- [ ] CONTRIBUTING.md 是最新的
-- [ ] 架构文档是最新的
-- [ ] 开发环境设置说明是正确的
-- [ ] 测试说明是完整的
-
-### 翻译和本地化
-- [ ] 英文文档是最新的
-- [ ] 中文文档是最新的
-- [ ] 所有翻译都是准确的
+1. **100% test pass rate target** - 目标 100% 测试通过率
+2. **Zero sensitive data leakage** - 零敏感数据泄露
+3. **Clear documentation for all features** - 所有功能都有清晰文档
+4. **Graceful error handling** - 优雅的错误处理
 
 ---
 
-## 🧪 测试检查
+## How to Use - 如何使用
 
-### 单元测试
-- [ ] 所有单元测试都通过
-- [ ] 测试覆盖率达到目标（≥ 80%）
-- [ ] 新功能有对应的测试
-- [ ] 修复的 Bug 有回归测试
-- [ ] 边缘情况都有测试覆盖
-
-### 集成测试
-- [ ] 所有集成测试都通过
-- [ ] 端到端测试都通过
-- [ ] API 测试都通过
-- [ ] 第三方集成测试都通过
-
-### 手动测试
-- [ ] 在 Windows 上测试通过
-- [ ] 在 macOS 上测试通过
-- [ ] 在 Linux 上测试通过
-- [ ] 在不同 Python 版本上测试通过
-- [ ] 用户流程测试通过
-
-### 性能测试
-- [ ] 响应时间在可接受范围内
-- [ ] 内存使用在可接受范围内
-- [ ] 没有明显的性能回归
-- [ ] 并发测试通过
+1. Copy this checklist before release
+2. Check each item as you complete it
+3. Only release when ALL boxes are checked
+4. Keep a record of checked checklists
 
 ---
 
-## 📦 构建和打包
-
-### 构建检查
-- [ ] 可以成功构建
-- [ ] 构建产物是可运行的
-- [ ] 构建大小在合理范围内
-- [ ] 没有包含不必要的文件
-
-### 打包检查
-- [ ] `setup.py` 或 `pyproject.toml` 是最新的
-- [ ] 版本号已更新
-- [ ] 包元数据是正确的
-- [ ] 许可证信息是正确的
-- [ ] 分类标签是最新的
-
-### 签名和验证
-- [ ] 构建产物已签名
-- [ ] 签名可以验证
-- [ ] 校验和已生成
-- [ ] 校验和可以验证
-
----
-
-## 🚀 发布流程
-
-### 版本管理
-- [ ] 确定版本号（遵循语义化版本）
-- [ ] 更新版本号在所有相关文件中
-- [ ] 创建 Git tag
-- [ ] Push tag 到远程仓库
-
-### Git 操作
-- [ ] 切换到 `main` 分支
-- [ ] Pull 最新更改
-- [ ] 创建发布分支（可选）
-- [ ] 合并发布分支到 `main`
-- [ ] Push 到远程仓库
-
-### GitHub Release
-- [ ] 创建 GitHub Release
-- [ ] 填写发布说明
-- [ ] 上传构建产物
-- [ ] 标记为预发布（如果适用）
-- [ ] 发布 Release
-
-### 发布到包管理器
-- [ ] 发布到 PyPI
-- [ ] 发布到 npm（如果适用）
-- [ ] 发布到其他包管理器
-- [ ] 验证发布成功
-
----
-
-## 🎉 发布后检查
-
-### 验证发布
-- [ ] 可以从 PyPI 安装
-- [ ] 安装的版本可以正常运行
-- [ ] 文档可以正常访问
-- [ ] GitHub Release 页面正确显示
-- [ ] 所有链接都正常工作
-
-### 沟通
-- [ ] 在项目博客宣布发布
-- [ ] 在社交媒体宣布发布
-- [ ] 在邮件列表宣布发布
-- [ ] 更新项目网站
-- [ ] 通知相关 Issue 的提交者
-
-### 监控
-- [ ] 监控下载量
-- [ ] 监控错误报告
-- [ ] 监控用户反馈
-- [ ] 监控性能指标
-- [ ] 设置警报
-
-### 清理
-- [ ] 删除临时发布分支
-- [ ] 清理临时文件
-- [ ] 更新项目看板
-- [ ] 关闭已完成的 Milestone
-- [ ] 规划下一个版本
-
----
-
-## 🔄 紧急回滚
-
-### 回滚触发条件
-- [ ] 严重的 Bug 影响核心功能
-- [ ] 安全漏洞
-- [ ] 性能严重下降
-- [ ] 数据丢失风险
-- [ ] 大量用户报告问题
-
-### 回滚流程
-- [ ] 确认需要回滚
-- [ ] 通知团队
-- [ ] 准备回滚计划
-- [ ] 执行回滚
-- [ ] 验证回滚成功
-- [ ] 通知用户
-- [ ] 分析根本原因
-- [ ] 防止再次发生
-
----
-
-## 📝 发布记录模板
-
-### 版本信息
-- **版本号**: vX.Y.Z
-- **发布日期**: YYYY-MM-DD
-- **发布人**: @username
-- **审核人**: @username
-
-### 发布类型
-- [ ] 主要版本（Major）
-- [ ] 次要版本（Minor）
-- [ ] 补丁版本（Patch）
-- [ ] 预发布（Pre-release）
-
-### 主要变更
-- 新功能 1
-- 新功能 2
-- Bug 修复 1
-- Bug 修复 2
-
-### 检查清单完成情况
-- 发布前检查: [x/x]
-- 代码质量检查: [x/x]
-- 文档检查: [x/x]
-- 测试检查: [x/x]
-- 构建和打包: [x/x]
-- 发布流程: [x/x]
-- 发布后检查: [x/x]
-
-### 备注
-（可选的额外信息）
-
----
-
-## 🎯 发布频率建议
-
-| 发布类型 | 频率 | 说明 |
-|---------|------|------|
-| 补丁版本 | 按需 | Bug 修复，安全更新 |
-| 次要版本 | 每 2-4 周 | 新功能，改进 |
-| 主要版本 | 每 3-6 个月 | 重大变更，不兼容更新 |
-
----
-
-## 📚 相关资源
-
-- [语义化版本 2.0.0](https://semver.org/lang/zh-CN/)
-- [Keep a Changelog](https://keepachangelog.com/zh-CN/)
-- [Conventional Commits](https://www.conventionalcommits.org/zh-hans/)
-- [GitHub Releases 文档](https://docs.github.com/en/repositories/releasing-projects-on-github)
-
----
-
-**最后更新**: 2026-03-05
-**版本**: v1.0
-
----
-
-<div align="center">
-
-**祝你发布顺利！** 🎉
-
-</div>
+*智韵交响，共创华章*
