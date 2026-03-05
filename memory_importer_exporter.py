@@ -183,3 +183,8 @@ if __name__ == "__main__":
     
     print("\n✅ All tests passed!")
     print("=" * 60)
+
+
+def create_memory_importer_exporter() -> MemoryImporterExporter:
+    """Create memory importer/exporter - 创建记忆导入导出器"""
+    return MemoryImporterExporter()
