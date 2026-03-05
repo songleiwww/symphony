@@ -10,6 +10,7 @@ Standardized Multi-Model Collaboration Protocol
 - 统一的输入/输出格式
 - 没有不同的处理逻辑
 - 标准化协议，单一逻辑
+- 节省tokens标识语法！模型给我标记我就能理解！
 """
 
 import json
@@ -25,9 +26,167 @@ from dataclasses import dataclass, field
 # 协议常量
 # =============================================================================
 
-PROTOCOL_VERSION = "1.0.0"
+PROTOCOL_VERSION = "1.1.0"
 PROTOCOL_NAME = "Standardized Symphony Protocol"
 OUTPUT_FORMAT = "JSON"  # 单一格式，没有不同处理逻辑
+
+# =============================================================================
+# 节省tokens标识语法 - 模型标记我就能理解！
+# =============================================================================
+
+# 单字符标记（最省tokens！）
+MARKER_SUCCESS = "✅"          # 成功
+MARKER_WARNING = "⚠️"          # 警告
+MARKER_ERROR = "❌"            # 错误
+MARKER_INFO = "ℹ️"             # 信息
+MARKER_TOOL_CALL = "🔧"        # 工具调用
+MARKER_RESULT = "📝"            # 结果
+MARKER_CONCLUSION = "🎯"        # 结论
+
+# 简短标记语法（节省tokens！）
+SHORT_MARKERS = {
+    "S": "success",            # 成功
+    "W": "warning",            # 警告
+    "E": "error",              # 错误
+    "I": "info",               # 信息
+    "T": "tool_call",          # 工具调用
+    "R": "result",             # 结果
+    "C": "conclusion"          # 结论
+}
+
+# 压缩标记（更省tokens！）
+COMPACT_MARKERS = {
+    "✅": "S",
+    "⚠️": "W", 
+    "❌": "E",
+    "ℹ️": "I",
+    "🔧": "T",
+    "📝": "R",
+    "🎯": "C"
+}
+
+# 标记分隔符（最小化tokens！）
+MARKER_SEP = "|"
+MARKER_END = "\n"
+
+
+# =============================================================================
+# 标记解析器 - 模型给我标记我就能理解！
+# =============================================================================
+
+class MarkerParser:
+    """
+    标记解析器 - 节省tokens！
+    
+    功能：
+    1. 模型用简单标记，我就能理解
+    2. 多种标记格式（单字符/表情/压缩）
+    3. 最小化tokens消耗
+    """
+    
+    @staticmethod
+    def parse_markers(marker_string: str) -> Dict[str, Any]:
+        """
+        解析标记字符串 - 模型给我标记我就能理解！
+        
+        支持的格式：
+        - "S|R|C" - 简短标记
+        - "✅|📝|🎯" - 表情标记
+        - "success|result|conclusion" - 完整标记
+        """
+        markers = []
+        parts = marker_string.split(MARKER_SEP)
+        
+        for part in parts:
+            part = part.strip()
+            if not part:
+                continue
+            
+            # 1. 检查压缩标记
+            if part in COMPACT_MARKERS:
+                markers.append(SHORT_MARKERS[COMPACT_MARKERS[part]])
+            # 2. 检查简短标记
+            elif part in SHORT_MARKERS:
+                markers.append(SHORT_MARKERS[part])
+            # 3. 检查完整标记
+            elif part in SHORT_MARKERS.values():
+                markers.append(part)
+            # 4. 检查表情标记（反向查找）
+            else:
+                for emoji, short in COMPACT_MARKERS.items():
+                    if part == emoji:
+                        markers.append(SHORT_MARKERS[short])
+                        break
+        
+        return {
+            "markers": markers,
+            "has_success": "success" in markers,
+            "has_warning": "warning" in markers,
+            "has_error": "error" in markers,
+            "has_tool_call": "tool_call" in markers,
+            "has_result": "result" in markers,
+            "has_conclusion": "conclusion" in markers
+        }
+    
+    @staticmethod
+    def create_markers(status: str, has_tool: bool = False) -> str:
+        """
+        创建标记字符串 - 节省tokens！
+        
+        返回最短的可能标记！
+        """
+        markers = []
+        
+        # 状态标记（用最短的！）
+        if status == "success":
+            markers.append("S")  # 比"✅"更省tokens！
+        elif status == "warning":
+            markers.append("W")
+        elif status == "error":
+            markers.append("E")
+        else:
+            markers.append("I")
+        
+        # 工具调用标记
+        if has_tool:
+            markers.append("T")
+        
+        # 结果标记
+        markers.append("R")
+        
+        return MARKER_SEP.join(markers)
+    
+    @staticmethod
+    def get_marker_guide() -> str:
+        """获取标记指南（给模型看的！）"""
+        return """
+标记指南（节省tokens！）
+----------------------
+简短标记（推荐！最省tokens！）:
+  S = success（成功）
+  W = warning（警告）
+  E = error（错误）
+  I = info（信息）
+  T = tool_call（工具调用）
+  R = result（结果）
+  C = conclusion（结论）
+
+表情标记（可选，更直观）:
+  ✅ = S = success
+  ⚠️ = W = warning
+  ❌ = E = error
+  ℹ️ = I = info
+  🔧 = T = tool_call
+  📝 = R = result
+  🎯 = C = conclusion
+
+分隔符: | (竖线)
+
+示例:
+  "S|R" - 成功 + 结果
+  "W|T|R" - 警告 + 工具调用 + 结果
+  "E" - 错误
+"""
 
 
 # =============================================================================
@@ -95,6 +254,7 @@ class StandardizedOutput:
     task_id: str
     model_id: str
     status: str  # "success" | "partial" | "failed"
+    markers: str  # 节省tokens标记！模型给我标记我就能理解！
     result: Dict[str, Any]  # 统一结果格式
     tool_calls: List[Dict[str, Any]] = field(default_factory=list)
     issues: List[str] = field(default_factory=list)
@@ -102,12 +262,21 @@ class StandardizedOutput:
     execution_time: float = 0.0
     token_usage: Dict[str, int] = field(default_factory=dict)
     
+    def __post_init__(self):
+        """自动生成标记（如果还没有的话！）"""
+        if not self.markers:
+            self.markers = MarkerParser.create_markers(
+                self.status,
+                len(self.tool_calls) > 0
+            )
+    
     def to_dict(self) -> Dict:
         return {
             "protocol_version": PROTOCOL_VERSION,
             "task_id": self.task_id,
             "model_id": self.model_id,
             "status": self.status,
+            "markers": self.markers,  # 节省tokens标记！
             "result": self.result,
             "tool_calls": self.tool_calls,
             "issues": self.issues,
@@ -123,6 +292,7 @@ class StandardizedOutput:
             task_id=data["task_id"],
             model_id=data["model_id"],
             status=data["status"],
+            markers=data.get("markers", ""),  # 解析标记！
             result=data["result"],
             tool_calls=data.get("tool_calls", []),
             issues=data.get("issues", []),
@@ -130,6 +300,10 @@ class StandardizedOutput:
             execution_time=data.get("execution_time", 0.0),
             token_usage=data.get("token_usage", {})
         )
+    
+    def get_parsed_markers(self) -> Dict[str, Any]:
+        """解析标记 - 我就能理解！"""
+        return MarkerParser.parse_markers(self.markers)
 
 
 # =============================================================================
@@ -209,6 +383,7 @@ class StandardizedProtocol:
     3. 统一的输入/输出格式
     4. 单一处理逻辑（JSON）
     5. 没有不同的处理方式
+    6. 节省tokens标记语法！模型给我标记我就能理解！
     """
     
     def __init__(self):
@@ -398,7 +573,7 @@ class StandardizedProtocol:
         单一逻辑：
         1. 读取JSON文件（只有一种格式！）
         2. 解析标准化输出
-        3. 分析结果
+        3. 分析结果（包括标记！模型给我标记我就能理解！）
         4. 返回分析
         """
         # 1. 读取JSON（单一格式！）
@@ -422,14 +597,16 @@ class StandardizedProtocol:
                 "analysis": "Output format is not standardized"
             }
         
-        # 3. 分析结果（单一逻辑！）
+        # 3. 分析结果（单一逻辑！包括标记！）
         analysis = self._analyze_standardized_output(output, task_input)
         
         # 4. 返回（单一格式！）
         return {
-            "success": output.status == "success",
+            "success": output.status == "success" or output.get_parsed_markers()["has_success"],
             "model": output.model_id,
             "status": output.status,
+            "markers": output.markers,
+            "parsed_markers": output.get_parsed_markers(),
             "result_summary": output.result.get("summary", ""),
             "tool_calls": len(output.tool_calls),
             "execution_time": output.execution_time,
@@ -446,31 +623,45 @@ class StandardizedProtocol:
         """分析标准化输出 - 单一逻辑！"""
         parts = []
         
-        # 状态分析
-        if output.status == "success":
-            parts.append("✅ 任务成功完成")
-        elif output.status == "partial":
-            parts.append("⚠️ 任务部分完成")
-        else:
-            parts.append("❌ 任务失败")
+        # 1. 标记分析（模型给我标记我就能理解！）
+        parsed_markers = output.get_parsed_markers()
+        if parsed_markers["markers"]:
+            marker_summary = "标记: " + ", ".join(parsed_markers["markers"])
+            parts.append(f"🏷️  {marker_summary}")
         
-        # 结果分析
+        # 2. 状态分析（也可以用标记！）
+        if parsed_markers["has_success"]:
+            parts.append("✅ 任务成功完成")
+        elif parsed_markers["has_warning"]:
+            parts.append("⚠️ 任务部分完成")
+        elif parsed_markers["has_error"]:
+            parts.append("❌ 任务失败")
+        else:
+            # 备用：用status字段
+            if output.status == "success":
+                parts.append("✅ 任务成功完成")
+            elif output.status == "partial":
+                parts.append("⚠️ 任务部分完成")
+            else:
+                parts.append("❌ 任务失败")
+        
+        # 3. 结果分析
         if "summary" in output.result:
             parts.append(f"📝 结果摘要: {output.result['summary'][:100]}...")
         
-        # 工具使用分析
-        if output.tool_calls:
+        # 4. 工具使用分析（也可以用标记！）
+        if parsed_markers["has_tool_call"] or output.tool_calls:
             parts.append(f"🔧 使用了 {len(output.tool_calls)} 个工具")
             for call in output.tool_calls[:3]:
                 parts.append(f"   - {call.get('tool_name', 'unknown')}")
         
-        # 问题分析
+        # 5. 问题分析
         if output.issues:
             parts.append("⚠️ 发现问题:")
             for issue in output.issues[:3]:
                 parts.append(f"   - {issue}")
         
-        # 性能分析
+        # 6. 性能分析
         parts.append(f"⏱️ 执行时间: {output.execution_time:.2f}秒")
         
         return "\n".join(parts)
@@ -496,11 +687,13 @@ class StandardizedProtocol:
                 "我只负责：调度模型 + 分析结果",
                 "模型自己负责：使用工具",
                 "统一的输入/输出格式（只有JSON！）",
-                "单一处理逻辑，没有不同方式"
+                "单一处理逻辑，没有不同方式",
+                "节省tokens标记语法！模型给我标记我就能理解！"
             ],
             "registered_models": len(self.models),
             "task_types": [t.value for t in TaskType],
-            "task_history_count": len(self.task_history)
+            "task_history_count": len(self.task_history),
+            "marker_syntax": "支持"
         }
 
 
@@ -511,7 +704,7 @@ class StandardizedProtocol:
 def main():
     """主程序 - 演示标准化协议"""
     print("=" * 80)
-    print("Standardized Symphony Protocol v1.0.0")
+    print("Standardized Symphony Protocol v1.1.0")
     print("=" * 80)
     
     # 创建协议
@@ -520,6 +713,7 @@ def main():
     print(f"   - 版本: {protocol.get_summary()['protocol_version']}")
     print(f"   - 模型数: {protocol.get_summary()['registered_models']}")
     print(f"   - 输出格式: {protocol.get_summary()['output_format']}（单一格式！）")
+    print(f"   - 标记语法: ✅ 支持")
     
     # 1. 创建标准化输入
     print("\n[步骤1] 创建标准化输入")
@@ -553,15 +747,20 @@ def main():
     print("\n[步骤4] 模型自己执行并使用工具...")
     print("   (这部分由模型自己完成)")
     
+    # 显示标记指南
+    print("\n[标记指南 - 节省tokens！]")
+    print(MarkerParser.get_marker_guide())
+    
     # 5. 我分析结果（只有JSON！）
     print("\n[步骤5] 我分析结果")
     output_path = protocol.get_output_path(task_input, test_dir)
     
-    # 模拟：创建一个示例输出
+    # 模拟：创建一个示例输出（带标记！节省tokens！）
     sample_output = StandardizedOutput(
         task_id=task_input.task_id,
         model_id=selected_model.model_id if selected_model else "unknown",
         status="success",
+        markers="S|T|R",  # 节省tokens标记！模型给我标记我就能理解！
         result={
             "summary": "研究完成，发现了3个最佳实践",
             "details": {
@@ -582,6 +781,7 @@ def main():
     analysis = protocol.analyze_result(output_path, task_input)
     print(f"   成功: {analysis['success']}")
     print(f"   模型: {analysis['model']}")
+    print(f"   标记: {analysis['markers']}")
     print(f"   工具调用: {analysis['tool_calls']}")
     print(f"   分析:")
     for line in analysis['analysis'].split('\n'):

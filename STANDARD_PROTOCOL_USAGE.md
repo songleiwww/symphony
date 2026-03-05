@@ -1,7 +1,7 @@
 # 标准化多模型协作协议
 # Standardized Multi-Model Collaboration Protocol
 
-**版本**: 1.0.0  
+**版本**: 1.1.0  
 **开发时间**: 2026-03-05
 
 ---
@@ -16,11 +16,13 @@
 1. **使用工具** - 模型自己决定什么时候用工具
 2. **执行任务** - 模型自己完成任务
 3. **输出JSON** - 统一的JSON格式
+4. **添加标记** - 节省tokens标记！我就能理解！
 
 ### 统一格式（没有不同处理逻辑！）
 - ✅ **只有JSON** - 没有其他格式
 - ✅ **单一结构** - 所有输出结构相同
 - ✅ **单一逻辑** - 我只有一套分析代码
+- ✅ **标记语法** - 节省tokens！模型给我标记我就能理解！
 
 ---
 
@@ -29,10 +31,56 @@
 1. [快速开始](#快速开始)
 2. [标准化输入](#标准化输入)
 3. [标准化输出](#标准化输出)
-4. [工具使用](#工具使用)
-5. [模型调度](#模型调度)
-6. [结果分析](#结果分析)
-7. [完整示例](#完整示例)
+4. [节省tokens标记语法](#节省tokens标记语法)
+5. [工具使用](#工具使用)
+6. [模型调度](#模型调度)
+7. [结果分析](#结果分析)
+8. [完整示例](#完整示例)
+
+---
+
+## 🏷️ 节省tokens标记语法（最重要！）
+
+### 标记解析器
+- **模型给我标记，我就能理解！**
+- **多种格式支持**：单字符、表情、完整词
+- **最小化tokens消耗**
+
+### 简短标记（推荐！最省tokens！）
+
+| 标记 | 含义 | 说明 |
+|------|------|------|
+| S | success | 成功 |
+| W | warning | 警告 |
+| E | error | 错误 |
+| I | info | 信息 |
+| T | tool_call | 工具调用 |
+| R | result | 结果 |
+| C | conclusion | 结论 |
+
+### 表情标记（可选，更直观）
+
+| 标记 | 含义 | 说明 |
+|------|------|------|
+| ✅ | S | success（成功） |
+| ⚠️ | W | warning（警告） |
+| ❌ | E | error（错误） |
+| ℹ️ | I | info（信息） |
+| 🔧 | T | tool_call（工具调用） |
+| 📝 | R | result（结果） |
+| 🎯 | C | conclusion（结论） |
+
+### 分隔符
+- **分隔符**: `|` (竖线)
+
+### 示例
+
+```
+"S|R" - 成功 + 结果
+"W|T|R" - 警告 + 工具调用 + 结果
+"E" - 错误
+"S|T|C" - 成功 + 工具调用 + 结论
+```
 
 ---
 
@@ -65,7 +113,7 @@ analysis = protocol.analyze_result(output_file, task_input)
 
 ```json
 {
-  "protocol_version": "1.0.0",
+  "protocol_version": "1.1.0",
   "task_id": "task_1234567890",
   "task_type": "research",
   "task_description": "研究AI多模型协作的最佳实践",
@@ -106,10 +154,11 @@ analysis = protocol.analyze_result(output_file, task_input)
 
 ```json
 {
-  "protocol_version": "1.0.0",
+  "protocol_version": "1.1.0",
   "task_id": "task_1234567890",
   "model_id": "ark-code-latest",
   "status": "success",
+  "markers": "S|T|R",
   "result": {
     "summary": "研究完成，发现了3个最佳实践",
     "details": {
@@ -142,6 +191,11 @@ analysis = protocol.analyze_result(output_file, task_input)
 | success | ✅ 成功 |
 | partial | ⚠️ 部分完成 |
 | failed | ❌ 失败 |
+
+### markers字段（节省tokens！）
+- **模型给我标记，我就能理解！**
+- **支持格式**: 简短标记 / 表情标记 / 完整标记
+- **自动生成**: 如果没有markers，会自动生成
 
 ---
 
@@ -228,14 +282,29 @@ analysis = protocol.analyze_result(
     "success": True,
     "model": "ark-code-latest",
     "status": "success",
+    "markers": "S|T|R",
+    "parsed_markers": {
+        "markers": ["success", "tool_call", "result"],
+        "has_success": True,
+        "has_warning": False,
+        "has_error": False,
+        "has_tool_call": True,
+        "has_result": True,
+        "has_conclusion": False
+    },
     "result_summary": "研究完成...",
     "tool_calls": 2,
     "execution_time": 45.5,
     "token_usage": {"total": 1500},
-    "analysis": "✅ 任务成功完成\n📝 结果摘要...\n🔧 使用了2个工具...",
+    "analysis": "🏷️  标记: success, tool_call, result\n✅ 任务成功完成\n📝 结果摘要...\n🔧 使用了2个工具...",
     "raw_output": {...}  # 原始JSON
 }
 ```
+
+### 标记解析（模型给我标记我就能理解！）
+- **自动解析**: markers字段
+- **多种格式支持**: 简短/表情/完整
+- **单一逻辑**: 只有一套解析代码
 
 ---
 
@@ -285,15 +354,22 @@ print(f"分析: {analysis['analysis']}")
 1. ✅ 调度模型
 2. ✅ 分析结果
 
-### 模型自己做这三件事！
+### 模型自己做这四件事！
 1. ✅ 使用工具
 2. ✅ 执行任务
 3. ✅ 输出JSON
+4. ✅ 添加标记（节省tokens！）
 
 ### 只有一种格式！
 1. ✅ 只有JSON
 2. ✅ 只有一种结构
 3. ✅ 只有一套处理逻辑
+4. ✅ 节省tokens标记语法！
+
+### 标记语法！
+- ✅ 模型给我标记，我就能理解！
+- ✅ 支持多种格式：简短/表情/完整
+- ✅ 最小化tokens消耗
 
 ---
 
