@@ -107,3 +107,61 @@ LOGGING_CONFIG = {
     # 日志文件路径（可选）
     "log_file": None
 }
+
+
+# =============================================================================
+# Symphony 统一调度器配置
+# =============================================================================
+
+SYMPHONY_CONFIG = {
+    # 工作线程数量
+    "num_workers": 4,
+
+    # 任务队列配置
+    "task_queue": {
+        "max_size": 1000,
+        "default_priority": 0,
+        "default_max_retries": 3
+    },
+
+    # 技能配置
+    "skills": {
+        "auto_register_builtins": True,
+        "custom_skills_path": "./skills",
+        "enabled_skills": ["greet", "calculate"]
+    },
+
+    # MCP配置
+    "mcp": {
+        "enabled": True,
+        "servers": {
+            "filesystem": {
+                "command": "npx",
+                "args": ["-y", "@modelcontextprotocol/server-filesystem", "/"]
+            },
+            "brave_search": {
+                "command": "npx",
+                "args": ["-y", "@modelcontextprotocol/server-brave-search"]
+            }
+        },
+        "auto_connect": False
+    },
+
+    # 指标配置
+    "metrics": {
+        "enabled": True,
+        "export_interval": 60,  # 秒
+        "export_path": "./metrics",
+        "retention_days": 7
+    },
+
+    # 健康检查配置
+    "health_check": {
+        "enabled": True,
+        "interval": 30,  # 秒
+        "check_skills": True,
+        "check_models": True,
+        "check_workers": True
+    }
+}
+
