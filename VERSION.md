@@ -1,6 +1,27 @@
 # Symphony Version History - 交响版本历史
 
-## v0.4.0 - Async Memory Core v2.0 & Safe Parallel Execution (2026-03-05)
+## v0.3.2 - Bug Fixes & Deep Testing (2026-03-05)
+### Bug Fixes
+- 🔧 **Fixed RateLimiter logic** - simplified to just active count, no history
+- 🔧 **Added missing search_memories() method** - memory search by tags/query/importance
+- 🔧 **Fixed encoding issues** - removed emoji for Windows compatibility
+
+### New Features
+- 🧪 **Deep Testing** (`deep_test_async.py`) - 6 comprehensive tests
+  - Basic functionality
+  - Thread safety (concurrent adds)
+  - Rate limiter logic
+  - Task safety analysis
+  - Preferences
+  - Memory retrieval
+
+### Test Results
+- All 6 deep tests: 100% passing
+- No bugs found after fixes
+
+---
+
+## v0.3.1 - Async Memory Core v2.0 & Safe Parallel Execution (2026-03-05)
 ### New Features
 - 🚀 **Async Memory Core v2.0** (`async_memory_core.py`)
   - Thread-safe memory operations (线程安全记忆操作)
