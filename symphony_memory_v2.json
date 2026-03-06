@@ -1,0 +1,53 @@
+{
+  "version": "2.0",
+  "saved_at": "2026-03-05T14:43:44.123658",
+  "preferences": {},
+  "memories": [
+    {
+      "id": "mem_v2_1_1772692987",
+      "content": "Improved Symphony session started at 2026-03-05T14:43:07.670890",
+      "memory_type": "short_term",
+      "importance": 0.5,
+      "tags": [
+        "session",
+        "startup",
+        "v2"
+      ],
+      "category": "system",
+      "created_at": "2026-03-05T14:43:44.123071",
+      "access_count": 0,
+      "last_accessed": null,
+      "version": 1
+    },
+    {
+      "id": "mem_v2_2_1772693024",
+      "content": "Improved Symphony session started at 2026-03-05T14:43:44.122638",
+      "memory_type": "short_term",
+      "importance": 0.5,
+      "tags": [
+        "session",
+        "startup",
+        "v2"
+      ],
+      "category": "system",
+      "created_at": "2026-03-05T14:43:44.123084",
+      "access_count": 0,
+      "last_accessed": null,
+      "version": 1
+    },
+    {
+      "id": "mem_v2_3_1772693024",
+      "content": "Debug test content",
+      "memory_type": "short_term",
+      "importance": 0.8,
+      "tags": [
+        "debug"
+      ],
+      "category": "debugger",
+      "created_at": "2026-03-05T14:43:44.123654",
+      "access_count": 0,
+      "last_accessed": null,
+      "version": 1
+    }
+  ]
+}

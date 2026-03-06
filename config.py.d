@@ -1,356 +1,334 @@
-# 配置文件（无敏感信息版本）
-# 多模型协作系统配置
-# 后缀 .d 表示 "distribution"（发布版）
-
-# 天气查询工具配置
-# WeatherAPI.com API Key
-# 请访问 https://www.weatherapi.com/ 注册获取免费API Key
-API_KEY = "YOUR_API_KEY_HERE"
-
-# API基础URL
-BASE_URL = "https://api.weatherapi.com/v1"
-
-# 请求超时时间（秒）
-REQUEST_TIMEOUT = 10
-
-# 重试次数
-MAX_RETRIES = 2
-
-# 语言设置（zh: 中文, en: 英文）
-LANGUAGE = "zh"
-
-
 # =============================================================================
-# 多模型协作系统配置
+# Symphony 配置文件模板
+# =============================================================================
+# 
+# 使用说明：
+# 1. 复制此文件为 config.py
+# 2. 替换下方的 YOUR_API_KEY_HERE 为您的真实API Key
+# 3. 智谱API Key: https://open.bigmodel.cn/
+# 4. ModelScope API Key: https://modelscope.cn/
+#
+# 安全提示：请勿将包含真实API Key的config.py上传到公开仓库！
 # =============================================================================
 
-# 模型降级链配置（按优先级排序）
-# 基于用户OpenClaw配置的18个模型
+# 模型降级链配置
+# 优先级：智谱GLM > ModelScope推理模型
 MODEL_CHAIN = [
-    # ==================== 提供商1: cherry-doubao (5个模型) ====================
+    # ==================== 智谱 GLM-4-Flash ====================
     {
-        "name": "doubao_ark_code",
-        "provider": "cherry-doubao",
-        "model_id": "ark-code-latest",
-        "alias": "Doubao Ark Code",
-        "base_url": "https://ark.cn-beijing.volces.com/api/coding/v3",
-        "api_key": "YOUR_CHERRY_DOUBAO_API_KEY",  # 用户需填入真实Key
+        "name": "zhipu_glm4_flash",
+        "provider": "zhipu",
+        "model_id": "glm-4-flash",
+        "alias": "智谱GLM-4-Flash",
+        "base_url": "https://open.bigmodel.cn/api/paas/v4",
+        "api_key": "YOUR_ZHIPU_API_KEY_HERE",
         "api_type": "openai-completions",
         "context_window": 128000,
-        "timeout": 30,
+        "timeout": 60,
         "max_retries": 3,
         "enabled": True,
         "priority": 1
     },
+    # ==================== 智谱 GLM-Z1-Flash (推理模型) ====================
     {
-        "name": "doubao_deepseek_v32",
-        "provider": "cherry-doubao",
-        "model_id": "deepseek-v3.2",
-        "alias": "DeepSeek V3.2",
-        "base_url": "https://ark.cn-beijing.volces.com/api/coding/v3",
-        "api_key": "YOUR_CHERRY_DOUBAO_API_KEY",
+        "name": "zhipu_glm_z1_flash",
+        "provider": "zhipu",
+        "model_id": "glm-z1-flash",
+        "alias": "智谱GLM-Z1-Flash (推理模型)",
+        "base_url": "https://open.bigmodel.cn/api/paas/v4",
+        "api_key": "YOUR_ZHIPU_API_KEY_HERE",
         "api_type": "openai-completions",
         "context_window": 128000,
-        "timeout": 30,
+        "timeout": 90,
         "max_retries": 3,
         "enabled": True,
-        "priority": 2
+        "priority": 2,
+        "is_reasoning": True
     },
+    # ==================== 智谱 GLM-4.1V-Thinking-Flash (视觉推理) ====================
     {
-        "name": "doubao_seed_code",
-        "provider": "cherry-doubao",
-        "model_id": "doubao-seed-2.0-code",
-        "alias": "Doubao Seed Code",
-        "base_url": "https://ark.cn-beijing.volces.com/api/coding/v3",
-        "api_key": "YOUR_CHERRY_DOUBAO_API_KEY",
+        "name": "zhipu_glm_4v_thinking_flash",
+        "provider": "zhipu",
+        "model_id": "glm-4.1v-thinking-flash",
+        "alias": "智谱GLM-4.1V-Thinking-Flash (视觉推理)",
+        "base_url": "https://open.bigmodel.cn/api/paas/v4",
+        "api_key": "YOUR_ZHIPU_API_KEY_HERE",
         "api_type": "openai-completions",
-        "context_window": 128000,
-        "timeout": 30,
+        "context_window": 64000,
+        "timeout": 90,
         "max_retries": 3,
         "enabled": True,
-        "priority": 3
+        "priority": 3,
+        "is_vision": True
     },
+    # ==================== 智谱 GLM-4V-Flash (图像理解) ====================
     {
-        "name": "doubao_glm_47",
-        "provider": "cherry-doubao",
-        "model_id": "glm-4.7",
-        "alias": "GLM 4.7",
-        "base_url": "https://ark.cn-beijing.volces.com/api/coding/v3",
-        "api_key": "YOUR_CHERRY_DOUBAO_API_KEY",
+        "name": "zhipu_glm_4v_flash",
+        "provider": "zhipu",
+        "model_id": "glm-4v-flash",
+        "alias": "智谱GLM-4V-Flash (图像理解)",
+        "base_url": "https://open.bigmodel.cn/api/paas/v4",
+        "api_key": "YOUR_ZHIPU_API_KEY_HERE",
         "api_type": "openai-completions",
-        "context_window": 128000,
-        "timeout": 30,
-        "max_retries": 3,
-        "enabled": True,
-        "priority": 4
-    },
-    {
-        "name": "doubao_kimi_k25",
-        "provider": "cherry-doubao",
-        "model_id": "kimi-k2.5",
-        "alias": "Kimi K2.5",
-        "base_url": "https://ark.cn-beijing.volces.com/api/coding/v3",
-        "api_key": "YOUR_CHERRY_DOUBAO_API_KEY",
-        "api_type": "openai-completions",
-        "context_window": 128000,
-        "timeout": 30,
-        "max_retries": 3,
-        "enabled": True,
-        "priority": 5
-    },
-
-    # ==================== 提供商2: cherry-minimax (1个模型) ====================
-    {
-        "name": "minimax_m25",
-        "provider": "cherry-minimax",
-        "model_id": "MiniMax-M2.5",
-        "alias": "MiniMax M2.5",
-        "base_url": "https://api.minimax.chat/v1",
-        "api_key": "YOUR_CHERRY_MINIMAX_API_KEY",
-        "api_type": "anthropic-messages",
-        "context_window": 128000,
-        "timeout": 30,
-        "max_retries": 3,
-        "enabled": True,
-        "priority": 6
-    },
-
-    # ==================== 提供商3: cherry-nvidia (10个模型) ====================
-    {
-        "name": "nvidia_llama_31_405b",
-        "provider": "cherry-nvidia",
-        "model_id": "meta/llama-3.1-405b-instruct",
-        "alias": "Llama 3.1 405B",
-        "base_url": "https://integrate.api.nvidia.com/v1",
-        "api_key": "YOUR_CHERRY_NVIDIA_API_KEY",
-        "api_type": "openai-completions",
-        "context_window": 128000,
+        "context_window": 4000,
         "timeout": 60,
         "max_retries": 3,
         "enabled": True,
-        "priority": 7
+        "priority": 4,
+        "is_vision": True
     },
+    # ==================== 智谱 CogView-3-Flash (图像生成) ====================
     {
-        "name": "nvidia_deepseek_v32",
-        "provider": "cherry-nvidia",
-        "model_id": "deepseek-ai/deepseek-v3.2",
-        "alias": "DeepSeek V3.2 NVIDIA",
-        "base_url": "https://integrate.api.nvidia.com/v1",
-        "api_key": "YOUR_CHERRY_NVIDIA_API_KEY",
+        "name": "zhipu_cogview_3_flash",
+        "provider": "zhipu",
+        "model_id": "cogview-3-flash",
+        "alias": "智谱CogView-3-Flash (图像生成)",
+        "base_url": "https://open.bigmodel.cn/api/paas/v4",
+        "api_key": "YOUR_ZHIPU_API_KEY_HERE",
         "api_type": "openai-completions",
-        "context_window": 128000,
-        "timeout": 60,
+        "context_window": 4000,
+        "timeout": 90,
         "max_retries": 3,
         "enabled": True,
-        "priority": 8
+        "priority": 5,
+        "is_image_gen": True
     },
+    # ==================== 智谱 CogVideoX-Flash (视频生成) ====================
     {
-        "name": "nvidia_kimi_k25",
-        "provider": "cherry-nvidia",
-        "model_id": "moonshotai/kimi-k2.5",
-        "alias": "Kimi K2.5 NVIDIA",
-        "base_url": "https://integrate.api.nvidia.com/v1",
-        "api_key": "YOUR_CHERRY_NVIDIA_API_KEY",
+        "name": "zhipu_cogvideox_flash",
+        "provider": "zhipu",
+        "model_id": "cogvideox-flash",
+        "alias": "智谱CogVideoX-Flash (视频生成)",
+        "base_url": "https://open.bigmodel.cn/api/paas/v4",
+        "api_key": "YOUR_ZHIPU_API_KEY_HERE",
         "api_type": "openai-completions",
-        "context_window": 128000,
-        "timeout": 60,
+        "context_window": 4000,
+        "timeout": 120,
         "max_retries": 3,
         "enabled": True,
-        "priority": 9
+        "priority": 6,
+        "is_video_gen": True
     },
+    # ==================== ModelScope GLM-4.7-Flash ====================
     {
-        "name": "nvidia_glm_47",
-        "provider": "cherry-nvidia",
-        "model_id": "z-ai/glm4.7",
-        "alias": "GLM 4.7 NVIDIA",
-        "base_url": "https://integrate.api.nvidia.com/v1",
-        "api_key": "YOUR_CHERRY_NVIDIA_API_KEY",
-        "api_type": "openai-completions",
-        "context_window": 128000,
-        "timeout": 60,
-        "max_retries": 3,
-        "enabled": True,
-        "priority": 10
-    },
-    {
-        "name": "nvidia_qwen3_coder_480b",
-        "provider": "cherry-nvidia",
-        "model_id": "qwen/qwen3-coder-480b-a35b-instruct",
-        "alias": "Qwen3 Coder 480B",
-        "base_url": "https://integrate.api.nvidia.com/v1",
-        "api_key": "YOUR_CHERRY_NVIDIA_API_KEY",
-        "api_type": "openai-completions",
-        "context_window": 128000,
-        "timeout": 60,
-        "max_retries": 3,
-        "enabled": True,
-        "priority": 11
-    },
-    {
-        "name": "nvidia_qwen35_397b",
-        "provider": "cherry-nvidia",
-        "model_id": "qwen/qwen3.5-397b-a17b",
-        "alias": "Qwen3.5 397B",
-        "base_url": "https://integrate.api.nvidia.com/v1",
-        "api_key": "YOUR_CHERRY_NVIDIA_API_KEY",
-        "api_type": "openai-completions",
-        "context_window": 128000,
-        "timeout": 60,
-        "max_retries": 3,
-        "enabled": True,
-        "priority": 12
-    },
-    {
-        "name": "nvidia_minimax_m25",
-        "provider": "cherry-nvidia",
-        "model_id": "minimaxai/minimax-m2.5",
-        "alias": "MiniMax M2.5 NVIDIA",
-        "base_url": "https://integrate.api.nvidia.com/v1",
-        "api_key": "YOUR_CHERRY_NVIDIA_API_KEY",
-        "api_type": "openai-completions",
-        "context_window": 128000,
-        "timeout": 60,
-        "max_retries": 3,
-        "enabled": True,
-        "priority": 13
-    },
-    {
-        "name": "nvidia_glm_5",
-        "provider": "cherry-nvidia",
-        "model_id": "z-ai/glm5",
-        "alias": "GLM 5 NVIDIA",
-        "base_url": "https://integrate.api.nvidia.com/v1",
-        "api_key": "YOUR_CHERRY_NVIDIA_API_KEY",
-        "api_type": "openai-completions",
-        "context_window": 128000,
-        "timeout": 60,
-        "max_retries": 3,
-        "enabled": True,
-        "priority": 14
-    },
-    {
-        "name": "nvidia_gpt_oss_20b",
-        "provider": "cherry-nvidia",
-        "model_id": "openai/gpt-oss-20b",
-        "alias": "GPT OSS 20B",
-        "base_url": "https://integrate.api.nvidia.com/v1",
-        "api_key": "YOUR_CHERRY_NVIDIA_API_KEY",
-        "api_type": "openai-completions",
-        "context_window": 128000,
-        "timeout": 60,
-        "max_retries": 3,
-        "enabled": True,
-        "priority": 15
-    },
-
-    # ==================== 提供商4: cherry-modelscope (2个模型) ====================
-    {
-        "name": "modelscope_deepseek_r1",
-        "provider": "cherry-modelscope",
-        "model_id": "deepseek-ai/DeepSeek-R1-0528",
-        "alias": "DeepSeek R1",
+        "name": "modelscope_glm_4_7_flash",
+        "provider": "modelscope",
+        "model_id": "ZhipuAI/GLM-4.7-Flash",
+        "alias": "ModelScope GLM-4.7-Flash",
         "base_url": "https://api-inference.modelscope.cn/v1",
-        "api_key": "YOUR_CHERRY_MODELSCOPE_API_KEY",
+        "api_key": "YOUR_MODELSCOPE_API_KEY_HERE",
         "api_type": "openai-completions",
         "context_window": 128000,
-        "timeout": 60,
+        "timeout": 90,
         "max_retries": 3,
         "enabled": True,
-        "priority": 16
+        "priority": 6,
+        "supports_stream": True
     },
+    # ==================== ModelScope Z-Image-Turbo (图像生成) ====================
+    {
+        "name": "modelscope_z_image_turbo",
+        "provider": "modelscope",
+        "model_id": "Tongyi-MAI/Z-Image-Turbo",
+        "alias": "ModelScope Z-Image-Turbo (图像生成)",
+        "base_url": "https://api-inference.modelscope.cn",
+        "api_key": "YOUR_MODELSCOPE_API_KEY_HERE",
+        "api_type": "modelscope-async",
+        "context_window": 4000,
+        "timeout": 120,
+        "max_retries": 3,
+        "enabled": True,
+        "priority": 7,
+        "is_image_gen": True,
+        "async_mode": True
+    },
+    # ==================== ModelScope DeepSeek-V3.2 ====================
+    {
+        "name": "modelscope_deepseek_v3_2",
+        "provider": "modelscope",
+        "model_id": "deepseek-ai/DeepSeek-V3.2",
+        "alias": "ModelScope DeepSeek-V3.2",
+        "base_url": "https://api-inference.modelscope.cn/v1",
+        "api_key": "YOUR_MODELSCOPE_API_KEY_HERE",
+        "api_type": "openai-completions",
+        "context_window": 128000,
+        "timeout": 90,
+        "max_retries": 3,
+        "enabled": True,
+        "priority": 8,
+        "supports_thinking": True
+    },
+    # ==================== ModelScope Qwen3-Coder-480B ====================
+    {
+        "name": "modelscope_qwen3_coder",
+        "provider": "modelscope",
+        "model_id": "Qwen/Qwen3-Coder-480B-A35B-Instruct",
+        "alias": "ModelScope Qwen3-Coder-480B",
+        "base_url": "https://api-inference.modelscope.cn/v1",
+        "api_key": "YOUR_MODELSCOPE_API_KEY_HERE",
+        "api_type": "openai-completions",
+        "context_window": 128000,
+        "timeout": 90,
+        "max_retries": 3,
+        "enabled": True,
+        "priority": 9,
+        "supports_stream": True
+    },
+    # ==================== ModelScope Qwen3-235B ====================
     {
         "name": "modelscope_qwen3_235b",
-        "provider": "cherry-modelscope",
+        "provider": "modelscope",
         "model_id": "Qwen/Qwen3-235B-A22B-Instruct-2507",
-        "alias": "Qwen3 235B",
+        "alias": "ModelScope Qwen3-235B",
         "base_url": "https://api-inference.modelscope.cn/v1",
-        "api_key": "YOUR_CHERRY_MODELSCOPE_API_KEY",
+        "api_key": "YOUR_MODELSCOPE_API_KEY_HERE",
         "api_type": "openai-completions",
         "context_window": 128000,
+        "timeout": 90,
+        "max_retries": 3,
+        "enabled": True,
+        "priority": 10,
+        "supports_stream": True
+    },
+    # ==================== ModelScope Qwen3-Embedding (向量模型) ====================
+    {
+        "name": "modelscope_qwen3_embedding",
+        "provider": "modelscope",
+        "model_id": "Qwen/Qwen3-Embedding-8B",
+        "alias": "ModelScope Qwen3-Embedding-8B (向量)",
+        "base_url": "https://api-inference.modelscope.cn/v1",
+        "api_key": "YOUR_MODELSCOPE_API_KEY_HERE",
+        "api_type": "openai-embeddings",
+        "context_window": 8192,
         "timeout": 60,
         "max_retries": 3,
         "enabled": True,
-        "priority": 17
+        "priority": 11,
+        "is_embedding": True,
+        "embedding_dim": 4096
+    },
+    # ==================== ModelScope MiniMax-M2.5 ====================
+    {
+        "name": "modelscope_minimax_m2_5",
+        "provider": "modelscope",
+        "model_id": "MiniMax/MiniMax-M2.5",
+        "alias": "ModelScope MiniMax-M2.5",
+        "base_url": "https://api-inference.modelscope.cn/v1",
+        "api_key": "YOUR_MODELSCOPE_API_KEY_HERE",
+        "api_type": "openai-completions",
+        "context_window": 128000,
+        "timeout": 90,
+        "max_retries": 3,
+        "enabled": True,
+        "priority": 12,
+        "supports_stream": True
+    },
+    # ==================== ModelScope Kimi-K2.5 (视觉模型) ====================
+    {
+        "name": "modelscope_kimi_k2_5",
+        "provider": "modelscope",
+        "model_id": "moonshotai/Kimi-K2.5",
+        "alias": "ModelScope Kimi-K2.5 (视觉)",
+        "base_url": "https://api-inference.modelscope.cn/v1",
+        "api_key": "YOUR_MODELSCOPE_API_KEY_HERE",
+        "api_type": "openai-completions",
+        "context_window": 128000,
+        "timeout": 90,
+        "max_retries": 3,
+        "enabled": True,
+        "priority": 5,
+        "is_vision": True
+    },
+    # ==================== ModelScope ZhipuAI/GLM-5 ====================
+    {
+        "name": "modelscope_glm5",
+        "provider": "modelscope",
+        "model_id": "ZhipuAI/GLM-5",
+        "alias": "ModelScope GLM-5",
+        "base_url": "https://api-inference.modelscope.cn/v1",
+        "api_key": "YOUR_MODELSCOPE_API_KEY_HERE",
+        "api_type": "openai-completions",
+        "context_window": 128000,
+        "timeout": 90,
+        "max_retries": 3,
+        "enabled": True,
+        "priority": 4,
+        "supports_stream": True
+    },
+    # ==================== ModelScope 推理模型 ====================
+    {
+        "name": "modelscope_deepseek_r1",
+        "provider": "modelscope",
+        "model_id": "deepseek-ai/DeepSeek-R1-0528",
+        "alias": "DeepSeek R1 (推理模型)",
+        "base_url": "https://api-inference.modelscope.cn/v1",
+        "api_key": "YOUR_MODELSCOPE_API_KEY_HERE",
+        "api_type": "openai-completions",
+        "context_window": 128000,
+        "timeout": 90,
+        "max_retries": 3,
+        "enabled": True,
+        "priority": 5,
+        "is_reasoning": True
     }
 ]
 
-# =============================================================================
-# 熔断器配置
-# =============================================================================
-CIRCUIT_BREAKER_CONFIG = {
-    "failure_threshold": 5,           # 失败阈值
-    "failure_window": 60,             # 失败窗口（秒）
-    "recovery_timeout": 30,           # 恢复超时（秒）
-    "half_open_max_calls": 2,         # 半开状态最大调用数
-    "half_open_success_threshold": 0.5 # 半开状态成功阈值
+# 模型统计
+MODEL_STATS = {
+    "total_models": 16,
+    "providers": [
+        {"name": "zhipu", "count": 6, "alias": "智谱"},
+        {"name": "modelscope", "count": 10, "alias": "ModelScope"}
+    ],
+    "last_updated": "2026-03-06"
 }
 
-# =============================================================================
-# 重试策略配置
-# =============================================================================
-RETRY_CONFIG = {
-    "max_retries": 3,                 # 最大重试次数
-    "initial_delay": 1.0,              # 初始延迟（秒）
-    "backoff_factor": 2.0,             # 退避因子
-    "max_delay": 30.0,                 # 最大延迟（秒）
-    "jitter_factor": 0.1               # 抖动因子
+# 故障恢复配置
+FAULT_RECOVERY_CONFIG = {
+    "auto_retry": True,
+    "max_retries": 3,
+    "retry_delay": 2.0,
+    "exponential_backoff": True,
+    "jitter_factor": 0.1
 }
 
-# =============================================================================
-# 健康检查配置
-# =============================================================================
-HEALTH_CHECK_CONFIG = {
-    "check_interval": 30,              # 检查间隔（秒）
-    "failure_threshold": 3,             # 失败阈值
-    "success_threshold": 2,             # 成功阈值
-    "health_check_prompt": "你好，请回复OK",  # 健康检查提示词
-    "health_check_timeout": 10           # 健康检查超时（秒）
-}
-
-# =============================================================================
 # 日志配置
-# =============================================================================
 LOGGING_CONFIG = {
-    "level": "INFO",                   # 日志级别
-    "format": "%(asctime)s - %(name)s - %(levelname)s - %(message)s",  # 日志格式
-    "file": "symphony.log",            # 日志文件
-    "max_bytes": 10 * 1024 * 1024,     # 单个日志文件最大字节（10MB）
-    "backup_count": 5                   # 保留的日志文件数量
+    "level": "INFO",
+    "format": "%(asctime)s - %(name)s - %(levelname)s - %(message)s",
+    "date_format": "%Y-%m-%d %H:%M:%S",
+    "console_output": True,
+    "log_file": None
 }
 
-# =============================================================================
-# 记忆系统配置
-# =============================================================================
-MEMORY_CONFIG = {
-    "storage_path": "symphony_memory",  # 记忆存储路径
-    "short_term_max": 100,              # 短期记忆最大数量
-    "long_term_threshold": 0.7,          # 长期记忆阈值（重要性）
-    "auto_manage_interval": 3600,        # 自动管理间隔（秒）
-    "auto_promote_threshold": 0.7,       # 自动晋升阈值
-    "auto_promote_access_count": 3       # 自动晋升访问次数
+# Symphony统一调度器配置
+SYMPHONY_CONFIG = {
+    "num_workers": 4,
+    "task_queue": {
+        "max_size": 1000,
+        "default_priority": 0,
+        "default_max_retries": 3
+    },
+    "skills": {
+        "auto_register_builtins": True,
+        "custom_skills_path": "./skills",
+        "enabled_skills": ["greet", "calculate"]
+    },
+    "mcp": {
+        "enabled": True,
+        "auto_connect": False
+    },
+    "metrics": {
+        "enabled": True,
+        "export_interval": 60,
+        "export_path": "./metrics",
+        "retention_days": 7
+    },
+    "health_check": {
+        "enabled": True,
+        "interval": 30,
+        "check_skills": True,
+        "check_models": True,
+        "check_workers": True
+    }
 }
-
-# =============================================================================
-# 配置说明
-# =============================================================================
-"""
-配置使用说明：
-
-1. 模型配置：
-   - 将 "YOUR_XXX_API_KEY" 替换为您的真实API Key
-   - 可以禁用不需要的模型（enabled: False）
-   - 可以调整模型优先级（priority: 数字越小优先级越高）
-
-2. 安全说明：
-   - 此文件（config.py.d）是发布版，不含敏感信息
-   - 本地使用时请复制为 config.py 并填入真实Key
-   - 不要将包含真实Key的 config.py 上传到GitHub
-
-3. .gitignore已配置：
-   - config.py（本地配置，含真实Key）
-   - config.py.d（发布配置，不含敏感信息）会上传
-
-4. 模型统计：
-   - 总模型数：18个
-   - 提供商数：4个（cherry-doubao, cherry-minimax, cherry-nvidia, cherry-modelscope）
-"""

@@ -1,0 +1,207 @@
+[
+  {
+    "id": "mem_1772680018592",
+    "content": "Test memory content",
+    "timestamp": "2026-03-05T11:06:58.592620",
+    "importance": 0.8,
+    "tags": [
+      "test",
+      "memory"
+    ],
+    "source": "system",
+    "access_count": 1,
+    "last_access": "2026-03-05T11:06:58.593568"
+  },
+  {
+    "id": "mem_1772693169733",
+    "content": "\nSymphony v0.4.0 \"Foundations - 奠基\" 完整发布！\n\n完成的功能（8个核心模块）：\n1. 记忆导入导出（JSON/Markdown/CSV）\n2. 情境感知记忆（时间/会话/用户/任务）\n3. 流式输出（文本/进度/状态/错误）\n4. 异步任务队列（优先级/重试/asyncio）\n5. 并发监控（指标/历史/ASCII仪表盘）\n6. 死锁检测和超时（等待图/DFS检测）\n7. 用户体验改进（进度条/友好错误/确认）\n\n测试结果：\n- 20个测试全部通过\n- 成功率：100.0%\n- 已上传GitHub：songleiwww/symphony\n",
+    "timestamp": "2026-03-05T14:46:09.733385",
+    "importance": 0.95,
+    "tags": [
+      "v0.4.0",
+      "release",
+      "foundations",
+      "github"
+    ],
+    "source": "deep_debug",
+    "access_count": 0,
+    "last_access": null
+  },
+  {
+    "id": "mem_1772693169734",
+    "content": "\nSymphony v0.4.1 \"Debug\" 深度Debug完成！\n\n深度Debug测试覆盖（9个核心模块）：\n1. Memory System Core - 记忆系统核心\n2. Async Memory Core v2.0 - 异步记忆核心v2.0\n3. Memory Importer/Exporter - 记忆导入导出\n4. Context-aware Memory - 情境感知记忆\n5. Streaming Output - 流式输出\n6. Async Task Queue - 异步任务队列\n7. Concurrency Monitor - 并发监控\n8. Deadlock Detector & Timeout - 死锁检测和超时\n9. UX Improvements - 用户体验改进\n\n测试结果：\n- 第一轮：8/9通过（88.9%）\n- 第二轮：9/9通过（100.0%）\n- 发现问题：1个（测试脚本API不匹配）\n- 修复：修改测试脚本适配真实API\n- 结论：无生产代码Bug，质量优秀！\n\n已上传GitHub：songleiwww/symphony\n版本：v0.4.1 \"Debug\"\n",
+    "timestamp": "2026-03-05T14:46:09.734627",
+    "importance": 0.9,
+    "tags": [
+      "v0.4.1",
+      "debug",
+      "testing",
+      "quality"
+    ],
+    "source": "deep_debug",
+    "access_count": 0,
+    "last_access": null
+  },
+  {
+    "id": "mem_1772693228926",
+    "content": "\nSymphony v0.4.0 \"Foundations - 奠基\" 完整发布！\n\n完成的功能（8个核心模块）：\n1. 记忆导入导出（JSON/Markdown/CSV）\n2. 情境感知记忆（时间/会话/用户/任务）\n3. 流式输出（文本/进度/状态/错误）\n4. 异步任务队列（优先级/重试/asyncio）\n5. 并发监控（指标/历史/ASCII仪表盘）\n6. 死锁检测和超时（等待图/DFS检测）\n7. 用户体验改进（进度条/友好错误/确认）\n\n测试结果：\n- 20个测试全部通过\n- 成功率：100.0%\n- 已上传GitHub：songleiwww/symphony\n",
+    "timestamp": "2026-03-05T14:47:08.926791",
+    "importance": 0.95,
+    "tags": [
+      "v0.4.0",
+      "release",
+      "foundations",
+      "github"
+    ],
+    "source": "deep_debug",
+    "access_count": 0,
+    "last_access": null
+  },
+  {
+    "id": "mem_1772693228927",
+    "content": "\nSymphony v0.4.1 \"Debug\" 深度Debug完成！\n\n深度Debug测试覆盖（9个核心模块）：\n1. Memory System Core - 记忆系统核心\n2. Async Memory Core v2.0 - 异步记忆核心v2.0\n3. Memory Importer/Exporter - 记忆导入导出\n4. Context-aware Memory - 情境感知记忆\n5. Streaming Output - 流式输出\n6. Async Task Queue - 异步任务队列\n7. Concurrency Monitor - 并发监控\n8. Deadlock Detector & Timeout - 死锁检测和超时\n9. UX Improvements - 用户体验改进\n\n测试结果：\n- 第一轮：8/9通过（88.9%）\n- 第二轮：9/9通过（100.0%）\n- 发现问题：1个（测试脚本API不匹配）\n- 修复：修改测试脚本适配真实API\n- 结论：无生产代码Bug，质量优秀！\n\n已上传GitHub：songleiwww/symphony\n版本：v0.4.1 \"Debug\"\n",
+    "timestamp": "2026-03-05T14:47:08.927496",
+    "importance": 0.9,
+    "tags": [
+      "v0.4.1",
+      "debug",
+      "testing",
+      "quality"
+    ],
+    "source": "deep_debug",
+    "access_count": 0,
+    "last_access": null
+  },
+  {
+    "id": "mem_1772693228928",
+    "content": "Improvement: 深度Debug测试发现测试脚本API不匹配问题，但生产代码无Bug，质量优秀 - v0.4.0未深度测试 -> v0.4.1深度测试完成，9/9模块100%通过",
+    "timestamp": "2026-03-05T14:47:08.928063",
+    "importance": 0.9,
+    "tags": [
+      "improvement"
+    ],
+    "source": "improvement",
+    "access_count": 0,
+    "last_access": null
+  },
+  {
+    "id": "mem_1772693228928",
+    "content": "Preference: debug_mode = deep",
+    "timestamp": "2026-03-05T14:47:08.928632",
+    "importance": 0.8,
+    "tags": [
+      "preference",
+      "debug_mode"
+    ],
+    "source": "preference",
+    "access_count": 0,
+    "last_access": null
+  },
+  {
+    "id": "mem_1772693228929",
+    "content": "Preference: test_coverage = all_modules",
+    "timestamp": "2026-03-05T14:47:08.929163",
+    "importance": 0.8,
+    "tags": [
+      "preference",
+      "test_coverage"
+    ],
+    "source": "preference",
+    "access_count": 0,
+    "last_access": null
+  },
+  {
+    "id": "mem_1772693228929",
+    "content": "Preference: quality_threshold = 100_percent",
+    "timestamp": "2026-03-05T14:47:08.929726",
+    "importance": 0.8,
+    "tags": [
+      "preference",
+      "quality_threshold"
+    ],
+    "source": "preference",
+    "access_count": 0,
+    "last_access": null
+  },
+  {
+    "id": "mem_1772693273162",
+    "content": "\nSymphony v0.4.0 \"Foundations - 奠基\" 完整发布！\n\n完成的功能（8个核心模块）：\n1. 记忆导入导出（JSON/Markdown/CSV）\n2. 情境感知记忆（时间/会话/用户/任务）\n3. 流式输出（文本/进度/状态/错误）\n4. 异步任务队列（优先级/重试/asyncio）\n5. 并发监控（指标/历史/ASCII仪表盘）\n6. 死锁检测和超时（等待图/DFS检测）\n7. 用户体验改进（进度条/友好错误/确认）\n\n测试结果：\n- 20个测试全部通过\n- 成功率：100.0%\n- 已上传GitHub：songleiwww/symphony\n",
+    "timestamp": "2026-03-05T14:47:53.162745",
+    "importance": 0.95,
+    "tags": [
+      "v0.4.0",
+      "release",
+      "foundations",
+      "github"
+    ],
+    "source": "deep_debug",
+    "access_count": 0,
+    "last_access": null
+  },
+  {
+    "id": "mem_1772693273163",
+    "content": "\nSymphony v0.4.1 \"Debug\" 深度Debug完成！\n\n深度Debug测试覆盖（9个核心模块）：\n1. Memory System Core - 记忆系统核心\n2. Async Memory Core v2.0 - 异步记忆核心v2.0\n3. Memory Importer/Exporter - 记忆导入导出\n4. Context-aware Memory - 情境感知记忆\n5. Streaming Output - 流式输出\n6. Async Task Queue - 异步任务队列\n7. Concurrency Monitor - 并发监控\n8. Deadlock Detector & Timeout - 死锁检测和超时\n9. UX Improvements - 用户体验改进\n\n测试结果：\n- 第一轮：8/9通过（88.9%）\n- 第二轮：9/9通过（100.0%）\n- 发现问题：1个（测试脚本API不匹配）\n- 修复：修改测试脚本适配真实API\n- 结论：无生产代码Bug，质量优秀！\n\n已上传GitHub：songleiwww/symphony\n版本：v0.4.1 \"Debug\"\n",
+    "timestamp": "2026-03-05T14:47:53.163593",
+    "importance": 0.9,
+    "tags": [
+      "v0.4.1",
+      "debug",
+      "testing",
+      "quality"
+    ],
+    "source": "deep_debug",
+    "access_count": 0,
+    "last_access": null
+  },
+  {
+    "id": "mem_1772693273164",
+    "content": "Improvement: 深度Debug测试发现测试脚本API不匹配问题，但生产代码无Bug，质量优秀 - v0.4.0未深度测试 -> v0.4.1深度测试完成，9/9模块100%通过",
+    "timestamp": "2026-03-05T14:47:53.164508",
+    "importance": 0.9,
+    "tags": [
+      "improvement"
+    ],
+    "source": "improvement",
+    "access_count": 0,
+    "last_access": null
+  },
+  {
+    "id": "mem_1772693273165",
+    "content": "Preference: debug_mode = deep",
+    "timestamp": "2026-03-05T14:47:53.165340",
+    "importance": 0.8,
+    "tags": [
+      "preference",
+      "debug_mode"
+    ],
+    "source": "preference",
+    "access_count": 0,
+    "last_access": null
+  },
+  {
+    "id": "mem_1772693273166",
+    "content": "Preference: test_coverage = all_modules",
+    "timestamp": "2026-03-05T14:47:53.166286",
+    "importance": 0.8,
+    "tags": [
+      "preference",
+      "test_coverage"
+    ],
+    "source": "preference",
+    "access_count": 0,
+    "last_access": null
+  },
+  {
+    "id": "mem_1772693273166",
+    "content": "Preference: quality_threshold = 100_percent",
+    "timestamp": "2026-03-05T14:47:53.166982",
+    "importance": 0.8,
+    "tags": [
+      "preference",
+      "quality_threshold"
+    ],
+    "source": "preference",
+    "access_count": 0,
+    "last_access": null
+  }
+]

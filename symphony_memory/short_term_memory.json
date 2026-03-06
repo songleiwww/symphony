@@ -1,0 +1,80 @@
+[
+  {
+    "id": "mem_1772692915463",
+    "content": "Debug test content 1",
+    "timestamp": "2026-03-05T14:41:55.463607",
+    "importance": 0.8,
+    "tags": [
+      "debug",
+      "test"
+    ],
+    "source": "debugger",
+    "access_count": 0,
+    "last_access": null
+  },
+  {
+    "id": "mem_1772692915464",
+    "content": "Debug test content 2",
+    "timestamp": "2026-03-05T14:41:55.464176",
+    "importance": 0.9,
+    "tags": [
+      "debug",
+      "important"
+    ],
+    "source": "debugger",
+    "access_count": 0,
+    "last_access": null
+  },
+  {
+    "id": "mem_1772692987667",
+    "content": "Debug test content 1",
+    "timestamp": "2026-03-05T14:43:07.667703",
+    "importance": 0.8,
+    "tags": [
+      "debug",
+      "test"
+    ],
+    "source": "debugger",
+    "access_count": 0,
+    "last_access": null
+  },
+  {
+    "id": "mem_1772692987668",
+    "content": "Debug test content 2",
+    "timestamp": "2026-03-05T14:43:07.668424",
+    "importance": 0.9,
+    "tags": [
+      "debug",
+      "important"
+    ],
+    "source": "debugger",
+    "access_count": 0,
+    "last_access": null
+  },
+  {
+    "id": "mem_1772693024119",
+    "content": "Debug test content 1",
+    "timestamp": "2026-03-05T14:43:44.119659",
+    "importance": 0.8,
+    "tags": [
+      "debug",
+      "test"
+    ],
+    "source": "debugger",
+    "access_count": 0,
+    "last_access": null
+  },
+  {
+    "id": "mem_1772693024120",
+    "content": "Debug test content 2",
+    "timestamp": "2026-03-05T14:43:44.120295",
+    "importance": 0.9,
+    "tags": [
+      "debug",
+      "important"
+    ],
+    "source": "debugger",
+    "access_count": 0,
+    "last_access": null
+  }
+]

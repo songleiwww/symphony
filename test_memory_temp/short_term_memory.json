@@ -1,0 +1,66 @@
+[
+  {
+    "id": "mem_1772680586490",
+    "content": "User likes Python programming",
+    "timestamp": "2026-03-05T11:16:26.490836",
+    "importance": 0.7,
+    "tags": [
+      "user",
+      "python",
+      "preference"
+    ],
+    "source": "user",
+    "access_count": 3,
+    "last_access": "2026-03-05T11:16:26.492696"
+  },
+  {
+    "id": "mem_1772680586491",
+    "content": "User prefers detailed explanations",
+    "timestamp": "2026-03-05T11:16:26.491802",
+    "importance": 0.8,
+    "tags": [
+      "user",
+      "preference",
+      "explanation"
+    ],
+    "source": "user",
+    "access_count": 2,
+    "last_access": "2026-03-05T11:16:26.492682"
+  },
+  {
+    "id": "mem_1772680586495",
+    "content": "Auto-test memory 2",
+    "timestamp": "2026-03-05T11:16:26.495876",
+    "importance": 0.2,
+    "tags": [
+      "auto-test"
+    ],
+    "source": "test",
+    "access_count": 0,
+    "last_access": null
+  },
+  {
+    "id": "mem_1772680586496",
+    "content": "Auto-test memory 3",
+    "timestamp": "2026-03-05T11:16:26.496801",
+    "importance": 0.2,
+    "tags": [
+      "auto-test"
+    ],
+    "source": "test",
+    "access_count": 0,
+    "last_access": null
+  },
+  {
+    "id": "mem_1772680586497",
+    "content": "Auto-test memory 4",
+    "timestamp": "2026-03-05T11:16:26.497528",
+    "importance": 0.2,
+    "tags": [
+      "auto-test"
+    ],
+    "source": "test",
+    "access_count": 0,
+    "last_access": null
+  }
+]
