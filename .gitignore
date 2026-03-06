@@ -54,7 +54,6 @@ Thumbs.db
 *.bak
 
 # Local config files with keys (do NOT commit)
-*.py.d
 *.json
 symphony_memory/
 *.key
@@ -88,3 +87,6 @@ update_symphony_memory.py
 EVOLUTION_ANALYSIS_REPORT.md
 TEST_RESULTS.md
 TOKEN_STATS_LIMITATION.md
+
+# NOTE: config.py.d is allowed (distribution version, no sensitive info)
+# !config.py.d
