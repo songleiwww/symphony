@@ -165,6 +165,22 @@ MODEL_CHAIN = [
         "priority": 9,
         "supports_stream": True
     },
+    # ==================== ModelScope Qwen3-235B ====================
+    {
+        "name": "modelscope_qwen3_235b",
+        "provider": "modelscope",
+        "model_id": "Qwen/Qwen3-235B-A22B-Instruct-2507",
+        "alias": "ModelScope Qwen3-235B",
+        "base_url": "https://api-inference.modelscope.cn/v1",
+        "api_key": "ms-eac6f154-3502-4721-a168-ce7caeaf1033",
+        "api_type": "openai-completions",
+        "context_window": 128000,
+        "timeout": 90,
+        "max_retries": 3,
+        "enabled": True,
+        "priority": 10,
+        "supports_stream": True
+    },
     # ==================== ModelScope Kimi-K2.5 (视觉模型) ====================
     {
         "name": "modelscope_kimi_k2_5",
@@ -217,12 +233,12 @@ MODEL_CHAIN = [
 
 # 模型统计
 MODEL_STATS = {
-    "total_models": 13,
+    "total_models": 14,
     "providers": [
         {"name": "zhipu", "count": 6, "alias": "智谱"},
-        {"name": "modelscope", "count": 7, "alias": "ModelScope"}
+        {"name": "modelscope", "count": 8, "alias": "ModelScope"}
     ],
-    "last_updated": "2026-03-06 16:35"
+    "last_updated": "2026-03-06 16:37"
 }
 
 # 故障恢复配置
