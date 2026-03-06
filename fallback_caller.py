@@ -45,33 +45,36 @@ class FallbackModelCaller:
     # 配额用完的错误码（不可重试，需要等待或充值）
     QUOTA_EXCEEDED_CODES = {"AccountQuotaExceeded", "insufficient_quota", "monthly_limit"}
     
-    def __init__(self, config_path: str = None):
-        """初始化"""
-        if config_path is None:
-            config_path = r"C:\Users\Administrator\.openclaw\openclaw.cherry.json"
+    def __init__(self):
+        """初始化 - 直接使用config.py"""
+        # 直接从config.py加载MODEL_CHAIN
+        from config import MODEL_CHAIN
+        self.models = MODEL_CHAIN
         
-        self.config_path = Path(config_path)
-        self.config = self._load_config()
-        
-        # 模型优先级列表（按顺序尝试）
-        self.model_priority = [
-            {"provider": "cherry-doubao", "model": "deepseek-v3.2"},
-            {"provider": "cherry-doubao", "model": "kimi-k2.5"},
-            {"provider": "cherry-doubao", "model": "glm-4.7"},
-            {"provider": "cherry-doubao", "model": "doubao-seed-2.0-code"},
-            {"provider": "cherry-minimax", "model": "MiniMax-M2.5"},
-            {"provider": "cherry-nvidia", "model": "deepseek-ai/deepseek-v3.2"},
-            {"provider": "cherry-nvidia", "model": "moonshotai/kimi-k2.5"},
-            {"provider": "cherry-modelscope", "model": "deepseek-ai/DeepSeek-R1-0528"},
-        ]
+        # 模型优先级列表（按顺序尝试）- 从MODEL_CHAIN构建
+        self.model_priority = self._build_priority_from_config()
         
         # 当前使用的模型索引
         self.current_index = 0
         
         # 重试配置
-        self.max_retries = 3
-        self.base_delay = 2.0  # 基础延迟（秒）
-        self.max_delay = 30.0  # 最大延迟（秒）
+        self.max_retries = 2
+        self.base_delay = 1.5
+        self.max_delay = 15.0
+    
+    def _build_priority_from_config(self):
+        """从MODEL_CHAIN构建优先级列表"""
+        priority_list = []
+        for m in self.models:
+            if m.get("enabled", True):
+                priority_list.append({
+                    "provider": m.get("provider", ""),
+                    "model": m.get("model_id", m.get("model", "")),
+                    "base_url": m.get("base_url", ""),
+                    "api_key": m.get("api_key", ""),
+                    "api_type": m.get("api_type", "openai-completions")
+                })
+        return priority_list
     
     def _load_config(self) -> Dict:
         """加载配置"""

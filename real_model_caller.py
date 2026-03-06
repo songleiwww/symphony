@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 """
 真实模型调用器 - Real Model Caller
-从OpenClaw配置加载真实模型和API Key，进行真实的模型调用
+直接使用config.py中的MODEL_CHAIN配置，不依赖openclaw.cherry.json
 """
 
 import sys
@@ -25,7 +25,8 @@ from typing import Dict, List, Any, Optional
 from dataclasses import dataclass
 from datetime import datetime
 
-from openclaw_config_loader import OpenClawConfigLoader
+# 直接使用config.py中的MODEL_CHAIN
+from config import MODEL_CHAIN
 
 
 @dataclass
@@ -46,17 +47,16 @@ class ModelCallResult:
 
 
 class RealModelCaller:
-    """真实模型调用器"""
+    """真实模型调用器 - 直接使用config.py"""
     
     def __init__(self, config_path: Optional[str] = None):
         """
         初始化真实模型调用器
         
-        Args:
-            config_path: OpenClaw配置文件路径
+        直接从config.py的MODEL_CHAIN加载配置
         """
-        self.loader = OpenClawConfigLoader(config_path)
-        self.models = self.loader.get_models()
+        # 直接使用config.py中的MODEL_CHAIN
+        self.models = MODEL_CHAIN
         self.call_history: List[ModelCallResult] = []
         
         print("=" * 80)
