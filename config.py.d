@@ -270,17 +270,85 @@ MODEL_CHAIN = [
         "enabled": True,
         "priority": 5,
         "is_reasoning": True
+    },
+    # ==================== 火山引擎 (Volcengine) ====================
+    # 核心主模型 (自动调度入口)
+    {
+        "name": "volcengine_ark_code_latest",
+        "provider": "volcengine",
+        "model_id": "ark-code-latest",
+        "alias": "火山引擎 ark-code-latest",
+        "base_url": "https://ark.cn-beijing.volces.com/api/coding/v3",
+        "api_key": "YOUR_VOLCENGINE_API_KEY_HERE",
+        "api_type": "openai-completions",
+        "context_window": 128000,
+        "timeout": 90,
+        "max_retries": 3,
+        "enabled": True,
+        "priority": 1,
+        "supports_stream": True,
+        "rate_limit": "1200次/5小时, 9000次/周"
+    },
+    # 子模型 (未启用)
+    {
+        "name": "volcengine_doubao_seed_2_0_code",
+        "provider": "volcengine",
+        "model_id": "Doubao-Seed-2.0-Code",
+        "alias": "火山引擎 Doubao-Seed-2.0-Code",
+        "base_url": "https://ark.cn-beijing.volces.com/api/coding/v3",
+        "api_key": "YOUR_VOLCENGINE_API_KEY_HERE",
+        "api_type": "openai-completions",
+        "context_window": 128000,
+        "timeout": 90,
+        "max_retries": 3,
+        "enabled": False,
+        "priority": 10,
+        "supports_stream": True
+    },
+    {
+        "name": "volcengine_doubao_seed_2_0_pro",
+        "provider": "volcengine",
+        "model_id": "Doubao-Seed-2.0-pro",
+        "alias": "火山引擎 Doubao-Seed-2.0-pro",
+        "base_url": "https://ark.cn-beijing.volces.com/api/coding/v3",
+        "api_key": "YOUR_VOLCENGINE_API_KEY_HERE",
+        "api_type": "openai-completions",
+        "context_window": 128000,
+        "timeout": 90,
+        "max_retries": 3,
+        "enabled": False,
+        "priority": 11,
+        "supports_stream": True
+    },
+    {
+        "name": "volcengine_doubao_seed_2_0_lite",
+        "provider": "volcengine",
+        "model_id": "Doubao-Seed-2.0-lite",
+        "alias": "火山引擎 Doubao-Seed-2.0-lite",
+        "base_url": "https://ark.cn-beijing.volces.com/api/coding/v3",
+        "api_key": "YOUR_VOLCENGINE_API_KEY_HERE",
+        "api_type": "openai-completions",
+        "context_window": 128000,
+        "timeout": 90,
+        "max_retries": 3,
+        "enabled": False,
+        "priority": 12,
+        "supports_stream": True
     }
 ]
 
 # 模型统计
 MODEL_STATS = {
-    "total_models": 16,
+    "total_models": 21,
     "providers": [
         {"name": "zhipu", "count": 6, "alias": "智谱"},
-        {"name": "modelscope", "count": 10, "alias": "ModelScope"}
+        {"name": "modelscope", "count": 10, "alias": "ModelScope"},
+        {"name": "volcengine", "count": 5, "alias": "火山引擎"}
     ],
-    "last_updated": "2026-03-06"
+    "last_updated": "2026-03-06",
+    "rate_limits": {
+        "volcengine": "1200次/5小时, 9000次/周, 18000次/月"
+    }
 }
 
 # 故障恢复配置

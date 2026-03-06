@@ -53,6 +53,10 @@ config.py
 - 注册: https://modelscope.cn/
 - API控制台: https://modelscope.cn/my/token
 
+### 火山引擎 (Volcengine)
+- 注册: https://www.volcengine.com/
+- API控制台: https://console.volcengine.com/ark/
+
 ---
 
 **安全第一，请勿泄露您的API密钥！**
