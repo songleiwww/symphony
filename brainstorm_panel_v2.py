@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-BrainstormPanel v2.4.0 - 真实模型调用 + 视觉/图像/视频支持
+BrainstormPanel v2.5.0 - 真实模型调用 + 视觉/图像/视频生成 + 智谱SDK支持
 直接使用config.py配置
 """
 
@@ -13,6 +13,13 @@ from typing import Dict, List, Any, Union, Optional
 from dataclasses import dataclass
 from datetime import datetime
 from pathlib import Path
+
+# 尝试导入智谱SDK
+try:
+    from zhipuai import ZhipuAI
+    ZHIPU_SDK_AVAILABLE = True
+except ImportError:
+    ZHIPU_SDK_AVAILABLE = False
 
 # 直接从config.py加载配置
 from config import MODEL_CHAIN
@@ -49,21 +56,35 @@ class GenerationResult:
     latency: float = 0.0
     is_async: bool = False
     task_id: str = ""
+    video_duration: int = 0
+
+
+@dataclass
+class TaskStatusResult:
+    """任务状态结果"""
+    task_id: str
+    status: str  # pending, processing, success, failed
+    progress: int = 0
+    url: str = ""  # 成功时的URL
+    error: str = ""
 
 
 class BrainstormPanel:
     """
-    多模型协作工具 v2.4.0
+    多模型协作工具 v2.5.0
     直接使用config.py配置
-    支持：文本、视觉、图像生成、视频生成
+    支持：文本、视觉、图像生成、视频生成（智谱SDK）
     """
     
     def __init__(self):
         self.name = "brainstorm_panel"
-        self.version = "2.4.0"
+        self.version = "2.5.0"
         
         # 直接从config.py加载MODEL_CHAIN
         self.models = MODEL_CHAIN
+        
+        # 初始化智谱SDK客户端
+        self._init_zhipu_client()
         
         # 角色配置
         self.roles_config = {
@@ -86,6 +107,28 @@ class BrainstormPanel:
         
         # 异步任务结果存储
         self._async_tasks: Dict[str, GenerationResult] = {}
+    
+    def _init_zhipu_client(self):
+        """初始化智谱AI客户端"""
+        self.zhipu_client = None
+        
+        # 从配置中获取智谱API Key
+        for m in self.models:
+            if m.get("provider") == "zhipu":
+                api_key = m.get("api_key")
+                if api_key:
+                    if ZHIPU_SDK_AVAILABLE:
+                        try:
+                            self.zhipu_client = ZhipuAI(api_key=api_key)
+                            print(f"[智谱SDK] 初始化成功")
+                        except Exception as e:
+                            print(f"[智谱SDK] 初始化失败: {e}")
+                    else:
+                        print(f"[智谱SDK] SDK未安装")
+                    break
+        
+        if not self.zhipu_client:
+            print(f"[智谱SDK] 未找到有效的API Key")
     
     def _get_model_config(self, model_id: str) -> Dict:
         """从MODEL_CHAIN获取模型配置"""
@@ -219,10 +262,6 @@ class BrainstormPanel:
     ) -> GenerationResult:
         """
         调用图像生成模型
-        
-        Args:
-            prompt: 图像描述
-            model_id: 图像生成模型ID
         """
         if model_id is None:
             for m in self.models:
@@ -248,7 +287,26 @@ class BrainstormPanel:
         try:
             start_time = time.time()
             
-            # 使用chat completions接口生成图像
+            # 方式1: 尝试使用智谱SDK
+            if self.zhipu_client and "cogview" in model_id:
+                try:
+                    response = self.zhipu_client.images.generations(
+                        model=model_id,
+                        prompt=prompt
+                    )
+                    latency = time.time() - start_time
+                    
+                    if response.url:
+                        return GenerationResult(
+                            success=True,
+                            model_name=model_id,
+                            url=response.url,
+                            latency=latency
+                        )
+                except Exception as e:
+                    print(f"[图像生成] SDK调用失败: {e}")
+            
+            # 方式2: 使用HTTP API
             url = f"{base_url}/chat/completions"
             headers = {"Authorization": f"Bearer {api_key}", "Content-Type": "application/json"}
             data = {
@@ -296,11 +354,7 @@ class BrainstormPanel:
     ) -> GenerationResult:
         """
         调用视频生成模型（异步）
-        
-        Args:
-            prompt: 视频描述
-            model_id: 视频生成模型ID
-            callback: 完成后回调函数
+        使用智谱SDK进行异步任务提交
         """
         if model_id is None:
             for m in self.models:
@@ -319,22 +373,43 @@ class BrainstormPanel:
         model_cfg = self._get_model_config(model_id)
         
         if not model_cfg:
-            return GenerationResult(success=False, model_name=model_id, error="Model not found", is_async=False)
-        
-        base_url = model_cfg.get("base_url", "")
-        api_key = model_cfg.get("api_key", "")
+            return GenerationResult(success=False, model_name=model_id, error="Model not found")
         
         try:
             start_time = time.time()
             
-            # 尝试使用异步任务API
-            # 首先尝试直接调用（某些模型可能支持同步）
-            url = f"{base_url}/chat/completions"
+            # 方式1: 使用智谱SDK（推荐）
+            if self.zhipu_client:
+                try:
+                    response = self.zhipu_client.videos.generations(
+                        model=model_id,
+                        prompt=prompt
+                    )
+                    latency = time.time() - start_time
+                    
+                    task_id = response.id
+                    print(f"[视频生成] 任务已提交: {task_id}")
+                    
+                    return GenerationResult(
+                        success=True,
+                        model_name=model_id,
+                        url="",  # 异步任务，没有即时URL
+                        latency=latency,
+                        is_async=True,
+                        task_id=task_id
+                    )
+                except Exception as e:
+                    print(f"[视频生成] SDK调用失败: {e}")
+            
+            # 方式2: 备用HTTP API（可能不支持）
+            base_url = model_cfg.get("base_url", "")
+            api_key = model_cfg.get("api_key", "")
+            
+            url = f"{base_url}/videos/generations"
             headers = {"Authorization": f"Bearer {api_key}", "Content-Type": "application/json"}
             data = {
                 "model": model_id,
-                "messages": [{"role": "user", "content": prompt}],
-                "max_tokens": 2000
+                "prompt": prompt
             }
             
             response = requests.post(url, headers=headers, json=data, timeout=90)
@@ -342,41 +417,26 @@ class BrainstormPanel:
             
             if response.status_code == 200:
                 result_data = response.json()
-                content = result_data["choices"][0]["message"]["content"]
-                
-                # 解析返回的视频URL
-                video_url = ""
-                if isinstance(content, list):
-                    for item in content:
-                        if item.get("type") == "video_url":
-                            video_url = item.get("video_url", {}).get("url", "")
-                            break
+                task_id = result_data.get("id", "")
                 
                 return GenerationResult(
                     success=True,
                     model_name=model_id,
-                    url=video_url,
+                    url="",
                     latency=latency,
-                    is_async=False
+                    is_async=True,
+                    task_id=task_id
                 )
             elif response.status_code == 400:
                 error_msg = response.text
-                if "不支持SYNC" in error_msg or "async" in error_msg.lower():
-                    # 异步模型，需要返回task_id让用户轮询
+                if "不支持SYNC" in error_msg:
                     return GenerationResult(
                         success=False,
                         model_name=model_id,
-                        error="Video generation requires async API. Use async_task_id to poll results.",
+                        error="Video generation requires async API. Use query_video_task() to poll results.",
                         latency=latency,
                         is_async=True,
                         task_id=f"async_{int(time.time())}"
-                    )
-                else:
-                    return GenerationResult(
-                        success=False,
-                        model_name=model_id,
-                        error=f"HTTP 400: {response.text[:100]}",
-                        latency=latency
                     )
             else:
                 return GenerationResult(
@@ -387,6 +447,140 @@ class BrainstormPanel:
                 )
         except Exception as e:
             return GenerationResult(success=False, model_name=model_id, error=str(e), is_async=False)
+    
+    def query_video_task(
+        self, 
+        task_id: str
+    ) -> TaskStatusResult:
+        """
+        查询视频生成任务状态
+        
+        Args:
+            task_id: 任务ID (generate_video返回的task_id)
+            
+        Returns:
+            TaskStatusResult: 任务状态
+        """
+        if not task_id:
+            return TaskStatusResult(
+                task_id="",
+                status="failed",
+                error="No task_id provided"
+            )
+        
+        # 过滤掉模拟的task_id
+        if task_id.startswith("async_"):
+            return TaskStatusResult(
+                task_id=task_id,
+                status="failed",
+                error="Invalid task_id (mock ID)"
+            )
+        
+        try:
+            # 使用智谱SDK查询任务
+            if self.zhipu_client:
+                response = self.zhipu_client.videos.retrieve_videos_task(
+                    id=task_id
+                )
+                
+                return TaskStatusResult(
+                    task_id=task_id,
+                    status=response.task_status,
+                    progress=response.task_progress or 0,
+                    url=response.video_result or "",
+                    error=""
+                )
+            else:
+                # 备用HTTP方式
+                for m in self.models:
+                    if m.get("provider") == "zhipu":
+                        api_key = m.get("api_key")
+                        break
+                
+                base_url = "https://open.bigmodel.cn/api/paas/v4"
+                url = f"{base_url}/tasks/{task_id}"
+                headers = {"Authorization": f"Bearer {api_key}"}
+                
+                response = requests.get(url, headers=headers, timeout=30)
+                
+                if response.status_code == 200:
+                    data = response.json()
+                    return TaskStatusResult(
+                        task_id=task_id,
+                        status=data.get("task_status", "unknown"),
+                        progress=data.get("task_progress", 0),
+                        url=data.get("video_result", ""),
+                        error=""
+                    )
+                else:
+                    return TaskStatusResult(
+                        task_id=task_id,
+                        status="failed",
+                        error=f"HTTP {response.status_code}"
+                    )
+                    
+        except Exception as e:
+            return TaskStatusResult(
+                task_id=task_id,
+                status="failed",
+                error=str(e)
+            )
+    
+    def wait_video_task(
+        self, 
+        task_id: str,
+        timeout: int = 300,
+        poll_interval: int = 5
+    ) -> GenerationResult:
+        """
+        等待视频生成任务完成（轮询）
+        
+        Args:
+            task_id: 任务ID
+            timeout: 超时时间（秒）
+            poll_interval: 轮询间隔（秒）
+            
+        Returns:
+            GenerationResult: 最终结果
+        """
+        start_time = time.time()
+        
+        while time.time() - start_time < timeout:
+            status = self.query_video_task(task_id)
+            
+            print(f"[视频任务] 状态: {status.status}, 进度: {status.progress}%")
+            
+            if status.status == "success":
+                return GenerationResult(
+                    success=True,
+                    model_name="cogvideox-flash",
+                    url=status.url,
+                    latency=time.time() - start_time,
+                    is_async=False,
+                    task_id=task_id
+                )
+            elif status.status == "failed":
+                return GenerationResult(
+                    success=False,
+                    model_name="cogvideox-flash",
+                    error=status.error or "Task failed",
+                    latency=time.time() - start_time,
+                    is_async=False,
+                    task_id=task_id
+                )
+            else:
+                # pending 或 processing，继续等待
+                time.sleep(poll_interval)
+        
+        # 超时
+        return GenerationResult(
+            success=False,
+            model_name="cogvideox-flash",
+            error=f"Timeout after {timeout} seconds",
+            latency=timeout,
+            is_async=False,
+            task_id=task_id
+        )
     
     def discuss(self, topic: str, mode: str = "brainstorm", num_experts: int = 3) -> Dict:
         """多模型讨论"""
@@ -448,10 +642,13 @@ class BrainstormPanel:
 def main():
     """测试"""
     print("=" * 60)
-    print("BrainstormPanel v2.4.0 - 图像/视频生成支持")
+    print("BrainstormPanel v2.5.0 - 智谱SDK视频生成支持")
     print("=" * 60)
     
     panel = BrainstormPanel()
+    
+    print(f"\n智谱SDK: {'已安装' if ZHIPU_SDK_AVAILABLE else '未安装'}")
+    print(f"智谱客户端: {'已初始化' if panel.zhipu_client else '未初始化'}")
     
     print(f"\n已加载模型数: {len(panel.models)}")
     for m in panel.models:
@@ -470,27 +667,25 @@ def main():
     print(f"  模型: {result.model_name}")
     print(f"  延迟: {result.latency:.1f}s")
     
-    # 测试图像生成
-    print("\n--- 图像生成测试 ---")
-    img_result = panel.generate_image("一只可爱的蓝色小猫")
-    print(f"  成功: {img_result.success}")
-    print(f"  模型: {img_result.model_name}")
-    if img_result.success:
-        print(f"  URL: {img_result.url[:80]}...")
-    else:
-        print(f"  错误: {img_result.error}")
-    print(f"  延迟: {img_result.latency:.1f}s")
-    
-    # 测试视频生成
+    # 测试视频生成（异步）
     print("\n--- 视频生成测试 ---")
-    vid_result = panel.generate_video("一只可爱的小猫")
+    vid_result = panel.generate_video("一只可爱的小猫在草地上奔跑，阳光明媚")
     print(f"  成功: {vid_result.success}")
     print(f"  模型: {vid_result.model_name}")
     print(f"  异步: {vid_result.is_async}")
-    if vid_result.is_async:
-        print(f"  Task ID: {vid_result.task_id}")
+    print(f"  Task ID: {vid_result.task_id}")
     print(f"  错误: {vid_result.error}")
     print(f"  延迟: {vid_result.latency:.1f}s")
+    
+    # 如果有task_id，查询状态
+    if vid_result.task_id and not vid_result.task_id.startswith("async_"):
+        print("\n--- 任务状态查询 ---")
+        status = panel.query_video_task(vid_result.task_id)
+        print(f"  Task ID: {status.task_id}")
+        print(f"  状态: {status.status}")
+        print(f"  进度: {status.progress}%")
+        if status.url:
+            print(f"  视频URL: {status.url}")
 
 
 if __name__ == "__main__":
