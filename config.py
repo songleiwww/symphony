@@ -100,6 +100,22 @@ MODEL_CHAIN = [
         "priority": 6,
         "is_video_gen": True
     },
+    # ==================== ModelScope ZhipuAI/GLM-5 ====================
+    {
+        "name": "modelscope_glm5",
+        "provider": "modelscope",
+        "model_id": "ZhipuAI/GLM-5",
+        "alias": "ModelScope GLM-5",
+        "base_url": "https://api-inference.modelscope.cn/v1",
+        "api_key": "ms-eac6f154-3502-4721-a168-ce7caeaf1033",
+        "api_type": "openai-completions",
+        "context_window": 128000,
+        "timeout": 90,
+        "max_retries": 3,
+        "enabled": True,
+        "priority": 4,
+        "supports_stream": True
+    },
     # ==================== ModelScope 推理模型 ====================
     {
         "name": "modelscope_deepseek_r1",
@@ -113,19 +129,19 @@ MODEL_CHAIN = [
         "timeout": 90,
         "max_retries": 3,
         "enabled": True,
-        "priority": 4,
+        "priority": 5,
         "is_reasoning": True
     }
 ]
 
 # 模型统计
 MODEL_STATS = {
-    "total_models": 4,
+    "total_models": 9,
     "providers": [
-        {"name": "zhipu", "count": 3, "alias": "智谱"},
-        {"name": "modelscope", "count": 1, "alias": "ModelScope"}
+        {"name": "zhipu", "count": 6, "alias": "智谱"},
+        {"name": "modelscope", "count": 2, "alias": "ModelScope"}
     ],
-    "last_updated": "2026-03-06 14:20"
+    "last_updated": "2026-03-06 16:16"
 }
 
 # 故障恢复配置
