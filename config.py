@@ -1,13 +1,29 @@
 # =============================================================================
-# Symphony 配置文件 - ModelScope 推理模型专用
+# Symphony 配置文件 - 多模型配置
 # =============================================================================
 
-# 模型降级链配置 - 只保留ModelScope推理模型
-# API: https://api-inference.modelscope.cn/v1
+# 模型降级链配置
+# 优先级：智谱GLM > ModelScope推理模型
 MODEL_CHAIN = [
+    # ==================== 智谱 GLM-4-Flash ====================
+    {
+        "name": "zhipu_glm4_flash",
+        "provider": "zhipu",
+        "model_id": "glm-4-flash",
+        "alias": "智谱GLM-4-Flash",
+        "base_url": "https://open.bigmodel.cn/api/paas/v4",
+        "api_key": "16cf0a4a775c46cfa1684abcf4b802d0.rtb4oMgpFocBy87y",
+        "api_type": "openai-completions",
+        "context_window": 128000,
+        "timeout": 60,
+        "max_retries": 3,
+        "enabled": True,
+        "priority": 1
+    },
+    # ==================== ModelScope 推理模型 ====================
     {
         "name": "modelscope_deepseek_r1",
-        "provider": "cherry-modelscope",
+        "provider": "modelscope",
         "model_id": "deepseek-ai/DeepSeek-R1-0528",
         "alias": "DeepSeek R1 (推理模型)",
         "base_url": "https://api-inference.modelscope.cn/v1",
@@ -17,19 +33,19 @@ MODEL_CHAIN = [
         "timeout": 90,
         "max_retries": 3,
         "enabled": True,
-        "priority": 1,
-        "is_reasoning": True  # 推理模型
+        "priority": 2,
+        "is_reasoning": True
     }
 ]
 
 # 模型统计
 MODEL_STATS = {
-    "total_models": 1,
+    "total_models": 2,
     "providers": [
-        {"name": "cherry-modelscope", "count": 1}
+        {"name": "zhipu", "count": 1, "alias": "智谱"},
+        {"name": "modelscope", "count": 1, "alias": "ModelScope"}
     ],
-    "last_updated": "2026-03-06 13:30",
-    "note": "ModelScope 推理模型专用配置"
+    "last_updated": "2026-03-06 13:58"
 }
 
 # 故障恢复配置
@@ -50,11 +66,7 @@ LOGGING_CONFIG = {
     "log_file": None
 }
 
-
-# =============================================================================
-# Symphony 统一调度器配置
-# =============================================================================
-
+# Symphony统一调度器配置
 SYMPHONY_CONFIG = {
     "num_workers": 4,
     "task_queue": {
