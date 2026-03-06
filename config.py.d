@@ -271,6 +271,22 @@ MODEL_CHAIN = [
         "priority": 5,
         "is_reasoning": True
     },
+    # ==================== 英伟达 (NVIDIA) ====================
+    {
+        "name": "nvidia_minimax_m2_5",
+        "provider": "nvidia",
+        "model_id": "minimaxai/minimax-m2.5",
+        "alias": "NVIDIA MiniMax-M2.5",
+        "base_url": "https://integrate.api.nvidia.com/v1",
+        "api_key": "YOUR_NVIDIA_API_KEY_HERE",
+        "api_type": "openai-completions",
+        "context_window": 128000,
+        "timeout": 90,
+        "max_retries": 3,
+        "enabled": True,
+        "priority": 3,
+        "supports_stream": True
+    },
     # ==================== 火山引擎 (Volcengine) ====================
     # 核心主模型 (自动调度入口)
     {
@@ -339,11 +355,12 @@ MODEL_CHAIN = [
 
 # 模型统计
 MODEL_STATS = {
-    "total_models": 21,
+    "total_models": 22,
     "providers": [
         {"name": "zhipu", "count": 6, "alias": "智谱"},
         {"name": "modelscope", "count": 10, "alias": "ModelScope"},
-        {"name": "volcengine", "count": 5, "alias": "火山引擎"}
+        {"name": "volcengine", "count": 5, "alias": "火山引擎"},
+        {"name": "nvidia", "count": 1, "alias": "英伟达"}
     ],
     "last_updated": "2026-03-06",
     "rate_limits": {

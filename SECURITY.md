@@ -57,6 +57,10 @@ config.py
 - 注册: https://www.volcengine.com/
 - API控制台: https://console.volcengine.com/ark/
 
+### 英伟达 (NVIDIA)
+- 注册: https://www.nvidia.com/
+- API控制台: https://build.nvidia.com/
+
 ---
 
 **安全第一，请勿泄露您的API密钥！**
