@@ -68,6 +68,38 @@ MODEL_CHAIN = [
         "priority": 4,
         "is_vision": True
     },
+    # ==================== 智谱 CogView-3-Flash (图像生成) ====================
+    {
+        "name": "zhipu_cogview_3_flash",
+        "provider": "zhipu",
+        "model_id": "cogview-3-flash",
+        "alias": "智谱CogView-3-Flash (图像生成)",
+        "base_url": "https://open.bigmodel.cn/api/paas/v4",
+        "api_key": "16cf0a4a775c46cfa1684abcf4b802d0.rtb4oMgpFocBy87y",
+        "api_type": "openai-completions",
+        "context_window": 4000,
+        "timeout": 90,
+        "max_retries": 3,
+        "enabled": True,
+        "priority": 5,
+        "is_image_gen": True
+    },
+    # ==================== 智谱 CogVideoX-Flash (视频生成) ====================
+    {
+        "name": "zhipu_cogvideox_flash",
+        "provider": "zhipu",
+        "model_id": "cogvideox-flash",
+        "alias": "智谱CogVideoX-Flash (视频生成)",
+        "base_url": "https://open.bigmodel.cn/api/paas/v4",
+        "api_key": "16cf0a4a775c46cfa1684abcf4b802d0.rtb4oMgpFocBy87y",
+        "api_type": "openai-completions",
+        "context_window": 4000,
+        "timeout": 120,
+        "max_retries": 3,
+        "enabled": True,
+        "priority": 6,
+        "is_video_gen": True
+    },
     # ==================== ModelScope 推理模型 ====================
     {
         "name": "modelscope_deepseek_r1",
