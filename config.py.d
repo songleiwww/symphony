@@ -287,6 +287,23 @@ MODEL_CHAIN = [
         "priority": 3,
         "supports_stream": True
     },
+    {
+        "name": "nvidia_deepseek_v3_2",
+        "provider": "nvidia",
+        "model_id": "deepseek-ai/deepseek-v3.2",
+        "alias": "NVIDIA DeepSeek-V3.2 (思考模型)",
+        "base_url": "https://integrate.api.nvidia.com/v1",
+        "api_key": "YOUR_NVIDIA_API_KEY_HERE",
+        "api_type": "openai-completions",
+        "context_window": 128000,
+        "timeout": 120,
+        "max_retries": 3,
+        "enabled": True,
+        "priority": 2,
+        "supports_stream": True,
+        "supports_thinking": True,
+        "extra_params": {"chat_template_kwargs": {"thinking": True}}
+    },
     # ==================== 火山引擎 (Volcengine) ====================
     # 核心主模型 (自动调度入口)
     {
@@ -355,12 +372,12 @@ MODEL_CHAIN = [
 
 # 模型统计
 MODEL_STATS = {
-    "total_models": 22,
+    "total_models": 23,
     "providers": [
         {"name": "zhipu", "count": 6, "alias": "智谱"},
         {"name": "modelscope", "count": 10, "alias": "ModelScope"},
         {"name": "volcengine", "count": 5, "alias": "火山引擎"},
-        {"name": "nvidia", "count": 1, "alias": "英伟达"}
+        {"name": "nvidia", "count": 2, "alias": "英伟达"}
     ],
     "last_updated": "2026-03-06",
     "rate_limits": {
