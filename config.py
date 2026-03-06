@@ -52,6 +52,22 @@ MODEL_CHAIN = [
         "priority": 3,
         "is_vision": True
     },
+    # ==================== 智谱 GLM-4V-Flash (图像理解) ====================
+    {
+        "name": "zhipu_glm_4v_flash",
+        "provider": "zhipu",
+        "model_id": "glm-4v-flash",
+        "alias": "智谱GLM-4V-Flash (图像理解)",
+        "base_url": "https://open.bigmodel.cn/api/paas/v4",
+        "api_key": "16cf0a4a775c46cfa1684abcf4b802d0.rtb4oMgpFocBy87y",
+        "api_type": "openai-completions",
+        "context_window": 4000,
+        "timeout": 60,
+        "max_retries": 3,
+        "enabled": True,
+        "priority": 4,
+        "is_vision": True
+    },
     # ==================== ModelScope 推理模型 ====================
     {
         "name": "modelscope_deepseek_r1",
