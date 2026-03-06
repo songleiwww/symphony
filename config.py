@@ -181,6 +181,23 @@ MODEL_CHAIN = [
         "priority": 10,
         "supports_stream": True
     },
+    # ==================== ModelScope Qwen3-Embedding (向量模型) ====================
+    {
+        "name": "modelscope_qwen3_embedding",
+        "provider": "modelscope",
+        "model_id": "Qwen/Qwen3-Embedding-8B",
+        "alias": "ModelScope Qwen3-Embedding-8B (向量)",
+        "base_url": "https://api-inference.modelscope.cn/v1",
+        "api_key": "ms-eac6f154-3502-4721-a168-ce7caeaf1033",
+        "api_type": "openai-embeddings",
+        "context_window": 8192,
+        "timeout": 60,
+        "max_retries": 3,
+        "enabled": True,
+        "priority": 11,
+        "is_embedding": True,
+        "embedding_dim": 4096
+    },
     # ==================== ModelScope Kimi-K2.5 (视觉模型) ====================
     {
         "name": "modelscope_kimi_k2_5",
@@ -233,12 +250,12 @@ MODEL_CHAIN = [
 
 # 模型统计
 MODEL_STATS = {
-    "total_models": 14,
+    "total_models": 15,
     "providers": [
         {"name": "zhipu", "count": 6, "alias": "智谱"},
-        {"name": "modelscope", "count": 8, "alias": "ModelScope"}
+        {"name": "modelscope", "count": 9, "alias": "ModelScope"}
     ],
-    "last_updated": "2026-03-06 16:37"
+    "last_updated": "2026-03-06 16:39"
 }
 
 # 故障恢复配置
