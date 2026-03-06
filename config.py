@@ -116,6 +116,23 @@ MODEL_CHAIN = [
         "priority": 6,
         "supports_stream": True
     },
+    # ==================== ModelScope Z-Image-Turbo (图像生成) ====================
+    {
+        "name": "modelscope_z_image_turbo",
+        "provider": "modelscope",
+        "model_id": "Tongyi-MAI/Z-Image-Turbo",
+        "alias": "ModelScope Z-Image-Turbo (图像生成)",
+        "base_url": "https://api-inference.modelscope.cn",
+        "api_key": "ms-eac6f154-3502-4721-a168-ce7caeaf1033",
+        "api_type": "modelscope-async",
+        "context_window": 4000,
+        "timeout": 120,
+        "max_retries": 3,
+        "enabled": True,
+        "priority": 7,
+        "is_image_gen": True,
+        "async_mode": True
+    },
     # ==================== ModelScope Kimi-K2.5 (视觉模型) ====================
     {
         "name": "modelscope_kimi_k2_5",
@@ -168,12 +185,12 @@ MODEL_CHAIN = [
 
 # 模型统计
 MODEL_STATS = {
-    "total_models": 10,
+    "total_models": 11,
     "providers": [
         {"name": "zhipu", "count": 6, "alias": "智谱"},
-        {"name": "modelscope", "count": 4, "alias": "ModelScope"}
+        {"name": "modelscope", "count": 5, "alias": "ModelScope"}
     ],
-    "last_updated": "2026-03-06 16:22"
+    "last_updated": "2026-03-06 16:26"
 }
 
 # 故障恢复配置
