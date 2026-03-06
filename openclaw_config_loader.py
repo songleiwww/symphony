@@ -88,7 +88,7 @@ class OpenClawConfigLoader:
             provider_config = providers[provider_name]
             provider_models = provider_config.get("models", [])
             api_key = provider_config.get("apiKey", "")
-            base_url = provider_config.get("baseURL", "")
+            base_url = provider_config.get("baseUrl", "")
             api_type = provider_config.get("apiType", "openai-completions")
             
             for model in provider_models:

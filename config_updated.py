@@ -1,4 +1,29 @@
+# 配置文件
+# 多模型协作系统配置
+# 更新时间: 2026-03-05 21:45
+# 来源: OpenClaw配置文件 (openclaw.cherry.json)
 
+# 天气查询工具配置
+# WeatherAPI.com API Key
+# 请访问 https://www.weatherapi.com/ 注册获取免费API Key
+API_KEY = "YOUR_API_KEY_HERE"
+
+# API基础URL
+BASE_URL = "https://api.weatherapi.com/v1"
+
+# 请求超时时间（秒）
+REQUEST_TIMEOUT = 10
+
+# 重试次数
+MAX_RETRIES = 2
+
+# 语言设置（zh: 中文, en: 英文）
+LANGUAGE = "zh"
+
+
+# =============================================================================
+# 多模型协作系统配置 - 完整对接OpenClaw所有可用模型
+# =============================================================================
 
 # 模型降级链配置（按优先级排序）
 # 基于用户OpenClaw配置的所有可用模型（从openclaw.cherry.json读取）
