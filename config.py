@@ -224,29 +224,31 @@ MODEL_CHAIN = [
         "name": "modelscope_deepseek_r1",
         "provider": "cherry-modelscope",
         "model_id": "deepseek-ai/DeepSeek-R1-0528",
-        "alias": "DeepSeek R1",
-        "base_url": "https://api-inference.modelscope.cn",
+        "alias": "DeepSeek R1 (推理模型)",
+        "base_url": "https://api-inference.modelscope.cn/v1",
         "api_key": "ms-eac6f154-3502-4721-a168-ce7caeaf1033",
-        "api_type": "anthropic-messages",
+        "api_type": "openai-completions",
         "context_window": 128000,
-        "timeout": 30,
+        "timeout": 60,
         "max_retries": 3,
         "enabled": True,
-        "priority": 16
+        "priority": 16,
+        "is_reasoning": True  # 推理模型
     },
     {
         "name": "modelscope_qwen3_235b",
         "provider": "cherry-modelscope",
         "model_id": "Qwen/Qwen3-235B-A22B-Instruct-2507",
-        "alias": "Qwen3 235B",
-        "base_url": "https://api-inference.modelscope.cn",
+        "alias": "Qwen3 235B (推理模型)",
+        "base_url": "https://api-inference.modelscope.cn/v1",
         "api_key": "ms-eac6f154-3502-4721-a168-ce7caeaf1033",
-        "api_type": "anthropic-messages",
+        "api_type": "openai-completions",
         "context_window": 128000,
-        "timeout": 30,
+        "timeout": 60,
         "max_retries": 3,
         "enabled": True,
-        "priority": 17
+        "priority": 17,
+        "is_reasoning": True  # 推理模型
     }
 ]
 
