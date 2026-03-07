@@ -1,0 +1,264 @@
+{
+  "task": "被动触发功能开发",
+  "datetime": "2026-03-07T19:10:47.143153",
+  "models": [
+    {
+      "name": "林思远",
+      "id": "cherry-minimax/MiniMax-M2.5",
+      "role": "产品经理",
+      "emoji": "📋",
+      "provider": "cherry-minimax"
+    },
+    {
+      "name": "陈美琪",
+      "id": "cherry-doubao/ark-code-latest",
+      "role": "架构师",
+      "emoji": "🏗️",
+      "provider": "cherry-doubao"
+    },
+    {
+      "name": "王浩然",
+      "id": "cherry-doubao/glm-4.7",
+      "role": "开发工程师",
+      "emoji": "💻",
+      "provider": "cherry-doubao"
+    },
+    {
+      "name": "刘心怡",
+      "id": "cherry-doubao/kimi-k2.5",
+      "role": "测试工程师",
+      "emoji": "🧪",
+      "provider": "cherry-doubao"
+    },
+    {
+      "name": "张明远",
+      "id": "cherry-doubao/deepseek-v3.2",
+      "role": "运维工程师",
+      "emoji": "🔧",
+      "provider": "cherry-doubao"
+    },
+    {
+      "name": "赵敏",
+      "id": "cherry-doubao/doubao-seed-2.0-code",
+      "role": "产品运营",
+      "emoji": "📈",
+      "provider": "cherry-doubao"
+    }
+  ],
+  "reports": [
+    {
+      "name": "刘心怡",
+      "role": "测试工程师",
+      "emoji": "🧪",
+      "work_items": [
+        "测试用例",
+        "功能测试",
+        "性能测试",
+        "Bug跟踪"
+      ],
+      "result": "完成方案设计的全面测试，发现并跟踪Bug",
+      "hours": 4,
+      "efficiency": 96.9,
+      "model_id": "cherry-doubao/kimi-k2.5",
+      "tokens": 366
+    },
+    {
+      "name": "王浩然",
+      "role": "开发工程师",
+      "emoji": "💻",
+      "work_items": [
+        "编码实现",
+        "功能开发",
+        "Bug修复",
+        "性能优化"
+      ],
+      "result": "完成方案设计的核心代码实现和优化",
+      "hours": 4,
+      "efficiency": 95.4,
+      "model_id": "cherry-doubao/glm-4.7",
+      "tokens": 221
+    },
+    {
+      "name": "林思远",
+      "role": "产品经理",
+      "emoji": "📋",
+      "work_items": [
+        "需求分析",
+        "功能规划",
+        "优先级排序",
+        "用户调研"
+      ],
+      "result": "完成被动触发功能开发的功能设计，输出了详细的需求文档",
+      "hours": 3,
+      "efficiency": 95.1,
+      "model_id": "cherry-minimax/MiniMax-M2.5",
+      "tokens": 597
+    },
+    {
+      "name": "刘心怡",
+      "role": "测试工程师",
+      "emoji": "🧪",
+      "work_items": [
+        "测试用例",
+        "功能测试",
+        "性能测试",
+        "Bug跟踪"
+      ],
+      "result": "完成代码实现的全面测试，发现并跟踪Bug",
+      "hours": 3,
+      "efficiency": 94.9,
+      "model_id": "cherry-doubao/kimi-k2.5",
+      "tokens": 478
+    },
+    {
+      "name": "张明远",
+      "role": "运维工程师",
+      "emoji": "🔧",
+      "work_items": [
+        "环境部署",
+        "监控告警",
+        "日志分析",
+        "故障处理"
+      ],
+      "result": "完成被动触发功能开发的部署和监控配置",
+      "hours": 1,
+      "efficiency": 93.9,
+      "model_id": "cherry-doubao/deepseek-v3.2",
+      "tokens": 420
+    },
+    {
+      "name": "刘心怡",
+      "role": "测试工程师",
+      "emoji": "🧪",
+      "work_items": [
+        "测试用例",
+        "功能测试",
+        "性能测试",
+        "Bug跟踪"
+      ],
+      "result": "完成被动触发功能开发的全面测试，发现并跟踪Bug",
+      "hours": 2,
+      "efficiency": 93.6,
+      "model_id": "cherry-doubao/kimi-k2.5",
+      "tokens": 344
+    },
+    {
+      "name": "陈美琪",
+      "role": "架构师",
+      "emoji": "🏗️",
+      "work_items": [
+        "系统设计",
+        "技术选型",
+        "架构优化",
+        "代码评审"
+      ],
+      "result": "完成被动触发功能开发的架构设计和核心模块开发",
+      "hours": 3,
+      "efficiency": 93.5,
+      "model_id": "cherry-doubao/ark-code-latest",
+      "tokens": 422
+    },
+    {
+      "name": "王浩然",
+      "role": "开发工程师",
+      "emoji": "💻",
+      "work_items": [
+        "编码实现",
+        "功能开发",
+        "Bug修复",
+        "性能优化"
+      ],
+      "result": "完成被动触发功能开发的核心代码实现和优化",
+      "hours": 5,
+      "efficiency": 93.5,
+      "model_id": "cherry-doubao/glm-4.7",
+      "tokens": 618
+    },
+    {
+      "name": "陈美琪",
+      "role": "架构师",
+      "emoji": "🏗️",
+      "work_items": [
+        "系统设计",
+        "技术选型",
+        "架构优化",
+        "代码评审"
+      ],
+      "result": "完成方案设计的架构设计和核心模块开发",
+      "hours": 3,
+      "efficiency": 93.4,
+      "model_id": "cherry-doubao/ark-code-latest",
+      "tokens": 329
+    },
+    {
+      "name": "林思远",
+      "role": "产品经理",
+      "emoji": "📋",
+      "work_items": [
+        "需求分析",
+        "功能规划",
+        "优先级排序",
+        "用户调研"
+      ],
+      "result": "完成方案设计的功能设计，输出了详细的需求文档",
+      "hours": 4,
+      "efficiency": 92.5,
+      "model_id": "cherry-minimax/MiniMax-M2.5",
+      "tokens": 520
+    },
+    {
+      "name": "赵敏",
+      "role": "产品运营",
+      "emoji": "📈",
+      "work_items": [
+        "数据分析",
+        "用户反馈",
+        "运营策略",
+        "内容运营"
+      ],
+      "result": "完成被动触发功能开发的数据分析和运营报告",
+      "hours": 3,
+      "efficiency": 91.4,
+      "model_id": "cherry-doubao/doubao-seed-2.0-code",
+      "tokens": 345
+    },
+    {
+      "name": "王浩然",
+      "role": "开发工程师",
+      "emoji": "💻",
+      "work_items": [
+        "编码实现",
+        "功能开发",
+        "Bug修复",
+        "性能优化"
+      ],
+      "result": "完成代码实现的核心代码实现和优化",
+      "hours": 5,
+      "efficiency": 91.3,
+      "model_id": "cherry-doubao/glm-4.7",
+      "tokens": 643
+    },
+    {
+      "name": "张明远",
+      "role": "运维工程师",
+      "emoji": "🔧",
+      "work_items": [
+        "环境部署",
+        "监控告警",
+        "日志分析",
+        "故障处理"
+      ],
+      "result": "完成代码实现的部署和监控配置",
+      "hours": 1,
+      "efficiency": 89.8,
+      "model_id": "cherry-doubao/deepseek-v3.2",
+      "tokens": 723
+    }
+  ],
+  "stats": {
+    "total_tokens": 6026,
+    "avg_efficiency": 93.47692307692309,
+    "max_efficiency": 96.9,
+    "min_efficiency": 89.8
+  }
+}

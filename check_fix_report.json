@@ -1,0 +1,46 @@
+{
+  "title": "Symphony v1.5.0 Check & Fix",
+  "version": "1.5.0",
+  "datetime": "2026-03-07T22:03:42.471180",
+  "checklist": {
+    "核心模块": {
+      "fault_isolator.py": "故障隔离器",
+      "fallback.py": "降级策略",
+      "config.py": "配置文件",
+      "model_manager.py": "模型管理器"
+    },
+    "文档": {
+      "README.md": "README",
+      "RELEASE.md": "发布说明",
+      "USER_GUIDE.md": "用户指南",
+      "INSTALLATION.md": "安装文档"
+    },
+    "脚本": {
+      "true_multi_model_v4.py": "多模型脚本",
+      "dynamic_dispatcher.py": "动态调度",
+      "intelligent_dispatcher.py": "智能调度",
+      "passive_trigger_engine.py": "触发引擎"
+    }
+  },
+  "missing_files": [],
+  "generated_files": [],
+  "existing_files": [
+    "fault_isolator.py",
+    "fallback.py",
+    "config.py",
+    "model_manager.py",
+    "README.md",
+    "RELEASE.md",
+    "USER_GUIDE.md",
+    "INSTALLATION.md",
+    "true_multi_model_v4.py",
+    "dynamic_dispatcher.py",
+    "intelligent_dispatcher.py",
+    "passive_trigger_engine.py"
+  ],
+  "summary": {
+    "total_checked": 12,
+    "missing_count": 0,
+    "generated_count": 0
+  }
+}

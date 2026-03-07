@@ -1,0 +1,158 @@
+{
+  "version": "1.9.0",
+  "datetime": "2026-03-07T22:31:02.148908",
+  "test_results": [
+    {
+      "index": 0,
+      "name": "智谱GLM-4-Flash",
+      "status": "available",
+      "tokens": 24
+    },
+    {
+      "index": 1,
+      "name": "智谱GLM-Z1-Flash (推理模型)",
+      "status": "available",
+      "tokens": 56
+    },
+    {
+      "index": 2,
+      "name": "智谱GLM-4.1V-Thinking-Flash (视觉推理)",
+      "status": "available",
+      "tokens": 57
+    },
+    {
+      "index": 3,
+      "name": "智谱GLM-4V-Flash (图像理解)",
+      "status": "available",
+      "tokens": 110
+    },
+    {
+      "index": 4,
+      "name": "智谱CogView-3-Flash (图像生成)",
+      "status": "error",
+      "error": "HTTPSConnectionPool(host='open.bigmodel.cn', port=443): Read timed out. (read timeout=10)"
+    },
+    {
+      "index": 5,
+      "name": "智谱CogVideoX-Flash (视频生成)",
+      "status": "error",
+      "error": "HTTP 400"
+    },
+    {
+      "index": 6,
+      "name": "ModelScope GLM-4.7-Flash",
+      "status": "limited",
+      "analysis": {
+        "first_429_time": "22:30:42",
+        "elapsed_seconds": 0,
+        "consecutive_count": 1,
+        "estimated_recovery": 30,
+        "should_retry": false
+      }
+    },
+    {
+      "index": 7,
+      "name": "ModelScope Z-Image-Turbo (图像生成)",
+      "status": "error",
+      "error": "HTTP 404"
+    },
+    {
+      "index": 8,
+      "name": "ModelScope DeepSeek-V3.2",
+      "status": "limited",
+      "analysis": {
+        "first_429_time": "22:30:43",
+        "elapsed_seconds": 0,
+        "consecutive_count": 1,
+        "estimated_recovery": 30,
+        "should_retry": false
+      }
+    },
+    {
+      "index": 9,
+      "name": "ModelScope Qwen3-Coder-480B",
+      "status": "limited",
+      "analysis": {
+        "first_429_time": "22:30:43",
+        "elapsed_seconds": 0,
+        "consecutive_count": 1,
+        "estimated_recovery": 30,
+        "should_retry": false
+      }
+    },
+    {
+      "index": 10,
+      "name": "ModelScope Qwen3-235B",
+      "status": "available",
+      "tokens": 42
+    },
+    {
+      "index": 11,
+      "name": "ModelScope Qwen3-Embedding-8B (向量)",
+      "status": "error",
+      "error": "Expecting value: line 1 column 1 (char 0)"
+    },
+    {
+      "index": 12,
+      "name": "ModelScope MiniMax-M2.5",
+      "status": "available",
+      "tokens": 114
+    },
+    {
+      "index": 13,
+      "name": "ModelScope Kimi-K2.5 (视觉)",
+      "status": "available",
+      "tokens": 38
+    },
+    {
+      "index": 14,
+      "name": "ModelScope GLM-5",
+      "status": "available",
+      "tokens": 238
+    },
+    {
+      "index": 15,
+      "name": "DeepSeek R1 (推理模型)",
+      "status": "available",
+      "tokens": 191
+    }
+  ],
+  "summary": {
+    "available": 9,
+    "limited": 3,
+    "error": 4
+  },
+  "rate_limits": {
+    "rate_limits": {
+      "6": {
+        "first_429": 1772893842.6321442,
+        "count": 1,
+        "status": "limited"
+      },
+      "8": {
+        "first_429": 1772893843.315304,
+        "count": 1,
+        "status": "limited"
+      },
+      "9": {
+        "first_429": 1772893843.6784089,
+        "count": 1,
+        "status": "limited"
+      }
+    },
+    "model_status": {
+      "0": "available",
+      "1": "available",
+      "2": "available",
+      "3": "available",
+      "6": "limited",
+      "8": "limited",
+      "9": "limited",
+      "10": "available",
+      "12": "available",
+      "13": "available",
+      "14": "available",
+      "15": "available"
+    }
+  }
+}

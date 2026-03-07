@@ -59,11 +59,14 @@ class RealModelCaller:
         self.models = MODEL_CHAIN
         self.call_history: List[ModelCallResult] = []
         
+        # 获取提供商列表
+        providers = list(set(m["provider"] for m in self.models))
+        
         print("=" * 80)
         print("🤖 真实模型调用器 - Real Model Caller")
         print("=" * 80)
         print(f"\n✅ 已加载 {len(self.models)} 个模型")
-        print(f"✅ 提供商数量: {len(self.loader.get_providers())}")
+        print(f"✅ 提供商数量: {len(providers)}")
         
         # 按提供商分组显示
         provider_models: Dict[str, List] = {}
@@ -101,7 +104,12 @@ class RealModelCaller:
             模型调用结果
         """
         # 获取模型配置
-        model_config = self.loader.get_model_by_priority(priority)
+        model_config = None
+        for m in self.models:
+            if m.get("priority") == priority and m.get("enabled", True):
+                model_config = m
+                break
+        
         if not model_config:
             return ModelCallResult(
                 success=False,
