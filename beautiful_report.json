@@ -1,0 +1,27 @@
+{
+  "version": "1.5.0",
+  "datetime": "2026-03-08T01:51:29.932281",
+  "participants": [
+    {
+      "name": "林思远",
+      "role": "API架构师",
+      "tokens": 370
+    },
+    {
+      "name": "王明远",
+      "role": "中间件架构师",
+      "tokens": 311
+    },
+    {
+      "name": "赵心怡",
+      "role": "UI设计师",
+      "tokens": 0
+    },
+    {
+      "name": "陈浩然",
+      "role": "技术总监",
+      "tokens": 853
+    }
+  ],
+  "total_tokens": 1534
+}
