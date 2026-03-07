@@ -1,27 +1,48 @@
-# Symphony - 智韵交响
+# Symphony 智韵交响 🎵
+
 > 多模型协作智能系统 | Multi-Model Collaboration Intelligence System
 
 ## 概述
 
 Symphony（交响）是一个多模型协作智能系统，通过协调多个AI模型实现复杂任务处理。
 
-## 核心特性
+## 特性
 
-| 特性 | 说明 |
-|------|------|
-| 多模型协作 | 支持16+模型并行调用 |
-| 智能调度 | 根据任务自动选择最优模型 |
-| 限流优化 | 自动检测和处理限流 |
-| 错误恢复 | 完善的错误处理机制 |
-| 记忆协调 | 与OpenClaw记忆同步 |
-| 任务接管 | 主模型失败自动切换备份 |
-| 网络中断处理 | 检测/恢复/通知用户 |
-| 自适应进化 | 自我学习与优化 |
+- 🎯 **多模型协作** - 支持16+模型并行调用
+- 🔄 **智能调度** - 根据任务自动选择最优模型
+- ⚡ **限流优化** - 自动检测和处理限流
+- 🛡️ **错误恢复** - 完善的错误处理机制
+- 📝 **记忆协调** - 与OpenClaw记忆同步
+- 🧠 **人性化触发** - 主动/被动智能帮助
 
-## 快速开始
+## 安装
+
+```bash
+git clone https://github.com/songleiwww/symphony.git
+cd symphony
+pip install requests
+```
+
+## 配置
+
+编辑 `config.py` 配置你的API密钥：
 
 ```python
-from symphony import Symphony
+MODEL_CHAIN = [
+    {
+        "name": "your_model",
+        "api_key": "YOUR_API_KEY",
+        "base_url": "https://api.example.com/v1",
+        "model_id": "model-id",
+        "enabled": True
+    }
+]
+```
+
+## 使用
+
+```python
+from symphony_core import Symphony
 
 # 初始化
 s = Symphony()
@@ -31,74 +52,11 @@ result = s.call("你好")
 print(result)
 ```
 
-## 模型配置
-
-编辑 `config.py`:
-
-```python
-MODEL_CHAIN = [
-    {
-        "name": "your_model",
-        "api_key": "YOUR_API_KEY",
-        "enabled": True
-    }
-]
-```
-
-## 模块说明
-
-| 模块 | 说明 |
-|------|------|
-| config.py | 模型配置 |
-| model_manager.py | 模型管理 |
-| rate_limit_optimizer.py | 限流优化 |
-| error_handler.py | 错误处理 |
-| memory_coordinator.py | 记忆协调 |
-| model_interaction.py | 模型间交互 |
-| takeover_system.py | 任务接管 |
-| network_interrupt_handler.py | 网络中断处理 |
-| self_evolution.py | 自进化系统 |
-| adaptive_evolution.py | 自适应进化模块 |
-
-## 触发机制
-
-当用户消息包含以下关键字时，自动触发：
-
-| 优先级 | 关键字 | 示例 |
-|--------|--------|------|
-| P0 | `交响`, `symphony` | "使用交响"、"启动symphony" |
-| P1 | `讨论`, `开会`, `协作` | "模型讨论"、"让模型开会" |
-| P1 | `多模型`, `头脑风暴` | "多模型讨论"、"头脑风暴" |
-
 ## 版本历史
 
 | 版本 | 日期 | 说明 |
 |------|------|------|
-| v1.3.0 | 2026-03-08 | 公测版发布，7/7测试通过 |
-| v3.8.0 | 2026-03-07 | 自进化开发系统 |
-| v3.7.0 | 2026-03-07 | 网络中断处理系统 |
-| v3.6.0 | 2026-03-07 | 任务接管与备份系统 |
-| v3.5.0 | 2026-03-07 | 建议执行系统 |
-| v3.4.0 | 2026-03-07 | 全员大会系统 |
-| v3.3.0 | 2026-03-07 | 增强调度协作系统 |
-| v3.2.0 | 2026-03-07 | 模型间交互调度 |
-| v2.6.0 | 2026-03-07 | 限流优化+错误处理 |
-| v2.5.0 | 2026-03-07 | 技术交流会 |
-| v2.0.0 | 2026-03-07 | 标准化汇报 |
-
-## 测试结果
-
-| 模块 | 状态 |
-|------|------|
-| 模型间交互 | ✅ 通过 |
-| 文档协作 | ✅ 通过 |
-| 自适应系统 | ✅ 通过 |
-| 多模型协作 | ✅ 通过 |
-| 任务接管 | ✅ 通过 |
-| 网络中断处理 | ✅ 通过 |
-| 自适应进化 | ✅ 通过 |
-
-**测试通过率**: 100%
+| v1.0.0 | 2026-03-08 | 首发版发布 |
 
 ## 许可证
 
