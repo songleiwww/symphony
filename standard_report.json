@@ -1,19 +1,19 @@
 {
   "version": "2.0.0",
-  "datetime": "2026-03-08T02:58:50.892845",
+  "datetime": "2026-03-08T03:53:00.144256",
   "user_prompt": "测试",
   "total_models": 16,
-  "available": 9,
+  "available": 10,
   "limited": 2,
-  "error": 5,
-  "total_tokens": 446,
+  "error": 4,
+  "total_tokens": 610,
   "results": [
     {
       "success": true,
       "model_index": 0,
       "model_name": "智谱GLM-4-Flash",
       "provider": "zhipu",
-      "tokens": 21,
+      "tokens": 34,
       "status": "available"
     },
     {
@@ -62,7 +62,7 @@
       "recovery": {
         "recoverable": true,
         "model_name": "ModelScope GLM-4.7-Flash",
-        "first_429_time": "02:58:33",
+        "first_429_time": "03:52:45",
         "elapsed_seconds": 0,
         "estimated_recovery": 30,
         "should_retry": false
@@ -96,7 +96,7 @@
       "model_index": 10,
       "model_name": "ModelScope Qwen3-235B",
       "provider": "modelscope",
-      "tokens": 39,
+      "tokens": 25,
       "status": "available"
     },
     {
@@ -111,7 +111,7 @@
       "model_index": 12,
       "model_name": "ModelScope MiniMax-M2.5",
       "provider": "modelscope",
-      "tokens": 112,
+      "tokens": 105,
       "status": "available"
     },
     {
@@ -119,15 +119,16 @@
       "model_index": 13,
       "model_name": "ModelScope Kimi-K2.5 (视觉)",
       "provider": "modelscope",
-      "tokens": 37,
+      "tokens": 38,
       "status": "available"
     },
     {
-      "success": false,
+      "success": true,
       "model_index": 14,
       "model_name": "ModelScope GLM-5",
-      "status": "error",
-      "error": "HTTPSConnectionPool(host='api-inference.modelscope"
+      "provider": "modelscope",
+      "tokens": 171,
+      "status": "available"
     },
     {
       "success": false,
@@ -137,7 +138,7 @@
       "recovery": {
         "recoverable": true,
         "model_name": "DeepSeek R1 (推理模型)",
-        "first_429_time": "02:58:50",
+        "first_429_time": "03:53:00",
         "elapsed_seconds": 0,
         "estimated_recovery": 30,
         "should_retry": false
@@ -147,12 +148,12 @@
   "limited_models": [
     {
       "name": "ModelScope GLM-4.7-Flash",
-      "first_429": "02:58:33",
+      "first_429": "03:52:45",
       "estimated_recovery": 30
     },
     {
       "name": "DeepSeek R1 (推理模型)",
-      "first_429": "02:58:50",
+      "first_429": "03:53:00",
       "estimated_recovery": 30
     }
   ]
