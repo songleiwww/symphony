@@ -1,19 +1,15 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-交响模型会议 - 评估对交响的建议
-Symphony Model Meeting - Evaluate Symphony Suggestions
+Symphony v1.3.1 - 全员讨论会议：收集交响开发建议和意见
 """
-
 import sys
 import json
+import time
+import requests
+import threading
 from datetime import datetime
-from pathlib import Path
-
-
-# =============================================================================
-# 修复Windows编码
-# =============================================================================
+from config import MODEL_CHAIN
 
 if sys.platform == "win32":
     import io
@@ -21,308 +17,180 @@ if sys.platform == "win32":
     sys.stderr = io.TextIOWrapper(sys.stderr.buffer, encoding='utf-8')
 
 
-# =============================================================================
-# 模型角色定义
-# =============================================================================
-
-MODELS = [
-    {
-        "model_id": "MiniMax-M2.5",
-        "alias": "MiniMax",
-        "role": "战略专家",
-        "perspective": "从长远战略角度评估",
-        "strengths": ["战略思维", "长期规划", "宏观分析"]
-    },
-    {
-        "model_id": "ark-code-latest",
-        "alias": "Doubao Ark",
-        "role": "技术架构师",
-        "perspective": "从技术实现和架构角度评估",
-        "strengths": ["技术实现", "架构设计", "系统优化"]
-    },
-    {
-        "model_id": "deepseek-v3.2",
-        "alias": "DeepSeek",
-        "role": "产品经理",
-        "perspective": "从用户体验和产品价值角度评估",
-        "strengths": ["用户体验", "产品设计", "价值评估"]
-    }
-]
+VERSION = "1.3.1"
 
 
-# =============================================================================
-# 会议议题
-# =============================================================================
-
-MEETING_TOPIC = """
-# 交响项目评估会议
-
-## 会议目标
-请各位专家从各自角度评估：
-1. 交响项目目前的优势
-2. 交响项目可以改进的地方
-3. 对交响未来发展的具体建议
-4. 最优先开发的功能
-
-## 今日交付回顾
-- v1.0.0: 标准化协议（单一JSON格式）
-- v1.1.0: 节省tokens标记语法
-- v1.2.0: 规范+记忆+工具验证+任务编排
-- v1.3.0: 模型能力智能匹配+替补模型调度
-- v1.4.0: 我指定哪个模型干什么活
-- 优先级排队系统: 5级优先级+FIFO混合调度
-
-## 请提供
-1. 你的总体评价
-2. 3个最有价值的建议（按优先级排序）
-3. 为什么这些建议重要
-4. 具体的实现思路
-
-要求：
-- 每个建议要具体、可执行
-- 说明优先级理由
-- 提供实际的开发思路
-"""
+def get_enabled_models():
+    return [m for m in MODEL_CHAIN if m.get("enabled")]
 
 
-# =============================================================================
-# 模拟模型发言（实际应该调用真实模型）
-# =============================================================================
-
-def get_model_speech(model: Dict) -> Dict:
-    """获取模型发言（模拟）"""
+def call_api(model_index: int, prompt: str, max_tokens=200):
+    """真实API调用"""
+    enabled = get_enabled_models()
+    if model_index >= len(enabled):
+        return None
     
-    speeches = {
-        "MiniMax-M2.5": {
-            "model_id": "MiniMax-M2.5",
-            "alias": "MiniMax",
-            "role": "战略专家",
-            "overall_evaluation": "交响项目已经建立了非常坚实的基础架构，从标准化协议到优先级排队，形成了完整的协作体系。",
-            "top_3_suggestions": [
-                {
-                    "priority": 1,
-                    "suggestion": "建立真实的模型调用层",
-                    "reason": "目前所有功能都是模拟的，需要真实的模型调用才能让系统产生实际价值",
-                    "implementation": "集成OpenClaw的真实模型API，建立统一的模型调用接口"
-                },
-                {
-                    "priority": 2,
-                    "suggestion": "开发可视化监控面板",
-                    "reason": "需要直观地看到任务执行、模型状态、队列情况",
-                    "implementation": "用Web界面展示实时状态、历史数据、统计图表"
-                },
-                {
-                    "priority": 3,
-                    "suggestion": "建立插件生态系统",
-                    "reason": "让第三方可以扩展功能，形成生态",
-                    "implementation": "定义插件接口，支持动态加载"
-                }
-            ],
-            "conclusion": "交响的基础很好，下一步要从'模拟'走向'真实'，建立实际的应用场景。"
-        },
-        
-        "ark-code-latest": {
-            "model_id": "ark-code-latest",
-            "alias": "Doubao Ark",
-            "role": "技术架构师",
-            "overall_evaluation": "技术架构设计得很清晰，模块化做得不错，各个系统解耦得比较好。",
-            "top_3_suggestions": [
-                {
-                    "priority": 1,
-                    "suggestion": "统一错误处理和重试机制",
-                    "reason": "各个系统的错误处理不一致，需要统一",
-                    "implementation": "建立全局错误处理器，支持指数退避重试"
-                },
-                {
-                    "priority": 2,
-                    "suggestion": "添加配置管理系统",
-                    "reason": "硬编码太多，需要灵活配置",
-                    "implementation": "支持YAML/JSON配置，热重载，环境变量"
-                },
-                {
-                    "priority": 3,
-                    "suggestion": "完善日志系统",
-                    "reason": "目前是print输出，需要结构化日志",
-                    "implementation": "集成logging模块，支持不同级别，输出到文件"
-                }
-            ],
-            "conclusion": "技术上要做的是'加固'和'完善'，让系统更健壮、更灵活、更易维护。"
-        },
-        
-        "deepseek-v3.2": {
-            "model_id": "deepseek-v3.2",
-            "alias": "DeepSeek",
-            "role": "产品经理",
-            "overall_evaluation": "功能很全面，但需要更聚焦用户痛点，让普通用户也能轻松使用。",
-            "top_3_suggestions": [
-                {
-                    "priority": 1,
-                    "suggestion": "开发一键启动的CLI工具",
-                    "reason": "目前使用太复杂，需要简化",
-                    "implementation": "提供 `symphony start` 这样的命令，自动配置"
-                },
-                {
-                    "priority": 2,
-                    "suggestion": "添加预设任务模板",
-                    "reason": "用户不知道怎么定义任务，需要模板",
-                    "implementation": "内置常见任务模板：研究、写作、编码、审核"
-                },
-                {
-                    "priority": 3,
-                    "suggestion": "开发结果导出功能",
-                    "reason": "用户需要把结果用在其他地方",
-                    "implementation": "支持导出Markdown、PDF、JSON格式"
-                }
-            ],
-            "conclusion": "产品上要做的是'简化'和'赋能'，让交响真正'好用'，而不只是'功能多'。"
-        }
-    }
+    model = enabled[model_index]
+    url = model["base_url"] + "/chat/completions"
+    headers = {"Authorization": "Bearer " + model["api_key"], "Content-Type": "application/json"}
+    data = {"model": model["model_id"], "messages": [{"role": "user", "content": prompt}], "max_tokens": max_tokens, "temperature": 0.8}
     
-    return speeches.get(model["model_id"], {})
+    try:
+        r = requests.post(url, headers=headers, json=data, timeout=25)
+        if r.status_code == 200:
+            j = r.json()
+            return {"success": True, "content": j["choices"][0]["message"]["content"], "tokens": j.get("usage", {}).get("total_tokens", 0)}
+    except Exception as e:
+        return {"success": False, "error": str(e)}
+    return None
 
 
-# =============================================================================
-# 主会议程序
-# =============================================================================
-
-def main():
-    """主会议程序"""
+def symphony_meeting():
+    """交响全员讨论会议"""
+    
     print("=" * 80)
-    print("交响项目评估会议")
-    print("Symphony Project Evaluation Meeting")
+    print(f"🎼 Symphony v{VERSION} - 全员讨论会议")
+    print("=" * 80)
+    print("\n📋 会议主题: 收集交响开发的建议和意见")
     print("=" * 80)
     
-    print(f"\n会议时间: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}")
-    print(f"参会模型: {len(MODELS)}个")
-    
-    # 1. 会议开场
-    print("\n" + "=" * 80)
-    print("会议议题")
-    print("=" * 80)
-    print(MEETING_TOPIC)
-    
-    # 2. 各模型发言
-    print("\n" + "=" * 80)
-    print("模型发言")
-    print("=" * 80)
-    
+    total_tokens = 0
     all_suggestions = []
     
-    for model in MODELS:
-        print(f"\n--- {model['alias']} ({model['role']}) ---")
-        print(f"角度: {model['perspective']}")
+    # 定义参会人员和角色
+    participants = [
+        {"id": 0, "name": "智谱GLM-4", "role": "技术架构师", "focus": "系统架构"},
+        {"id": 1, "name": "智谱GLM-Z1", "role": "推理专家", "focus": "推理能力"},
+        {"id": 10, "name": "Qwen3-235B", "role": "开发顾问", "focus": "开发实践"},
+        {"id": 12, "name": "MiniMax-M2.5", "role": "产品经理", "focus": "用户体验"},
+        {"id": 15, "name": "DeepSeek R1", "role": "战略规划师", "focus": "发展方向"},
+    ]
+    
+    # ============ 第一轮：自我介绍和初步建议 ============
+    print("\n" + "=" * 80)
+    print("[Round 1] 自我介绍和初步建议")
+    print("=" * 80)
+    
+    for p in participants:
+        prompt = f"""你是{p['name']}，角色是{p['role']}，关注{p['focus']}领域。
+
+请针对Symphony多模型协作系统的开发，提出2条你最关注的建议。
+
+要求：
+1. 每条建议30字以内
+2. 与你的专业领域相关
+3. 具体可操作
+
+请直接列出建议。"""
+
+        print(f"\n🎤 [{p['name']} ({p['role']})] 发言中...")
         
-        speech = get_model_speech(model)
-        if not speech:
-            print("  (无发言)")
-            continue
+        result = call_api(p["id"], prompt, 150)
         
-        print(f"\n总体评价:")
-        print(f"  {speech['overall_evaluation']}")
-        
-        print(f"\nTop 3 建议:")
-        for suggestion in speech['top_3_suggestions']:
-            print(f"\n  [优先级 {suggestion['priority']}] {suggestion['suggestion']}")
-            print(f"    理由: {suggestion['reason']}")
-            print(f"    实现: {suggestion['implementation']}")
-            
-            # 收集建议用于汇总
+        if result and result.get("success"):
+            total_tokens += result.get("tokens", 0)
+            content = result["content"]
             all_suggestions.append({
-                "model": model['alias'],
-                "role": model['role'],
-                "priority": suggestion['priority'],
-                "suggestion": suggestion['suggestion'],
-                "reason": suggestion['reason'],
-                "implementation": suggestion['implementation']
+                "speaker": p["name"],
+                "role": p["role"],
+                "focus": p["focus"],
+                "content": content
             })
+            print(f"   {content[:200]}")
+        else:
+            print(f"   ❌ 发言失败")
+    
+    # ============ 第二轮：深入讨论 ============
+    print("\n" + "=" * 80)
+    print("[Round 2] 深入讨论 - 改进方案")
+    print("=" * 80)
+    
+    # 汇总第一轮建议
+    suggestions_summary = "\n".join([f"- {s['speaker']}: {s['content'][:50]}" for s in all_suggestions[:3]])
+    
+    for i, p in enumerate(participants[:3]):  # 选择3位代表深入讨论
+        prompt = f"""作为{p['role']}，基于以下讨论内容：
+{suggestions_summary}
+
+请提出1条具体的改进实施方案（50字以内）。"""
+
+        print(f"\n💬 [{p['name']}] 深入发言中...")
         
-        print(f"\n结论:")
-        print(f"  {speech['conclusion']}")
+        result = call_api(p["id"], prompt, 100)
+        
+        if result and result.get("success"):
+            total_tokens += result.get("tokens", 0)
+            print(f"   {result['content'][:150]}")
     
-    # 3. 建议汇总和评选
+    # ============ 第三轮：总结 ============
     print("\n" + "=" * 80)
-    print("建议汇总与评选")
+    print("[Round 3] 会议总结")
     print("=" * 80)
     
-    # 按优先级排序
-    all_suggestions.sort(key=lambda s: s['priority'])
+    summary_prompt = f"""请总结以下关于Symphony系统开发的建议：
+{json.dumps(all_suggestions, ensure_ascii=False)}
+
+请列出：
+1. 最重要的3个建议
+2. 需要优先解决的问题
+3. 后续行动计划
+
+总结要求简洁明了，100字以内。"""
+
+    result = call_api(15, summary_prompt, 200)
     
-    print(f"\n所有建议汇总（按优先级）:")
-    for i, suggestion in enumerate(all_suggestions, 1):
-        print(f"\n{i}. [{suggestion['model']} - {suggestion['role']}]")
-        print(f"   优先级: {suggestion['priority']}")
-        print(f"   建议: {suggestion['suggestion']}")
-        print(f"   理由: {suggestion['reason']}")
+    if result and result.get("success"):
+        total_tokens += result.get("tokens", 0)
+        summary = result["content"]
+        print(f"\n📊 会议总结:")
+        print(f"   {summary}")
     
-    # 4. 评选最优秀的建议
+    # ============ 最终报告 ============
     print("\n" + "=" * 80)
-    print("🏆 最优秀建议评选")
+    print("📋 全员会议报告")
     print("=" * 80)
     
-    # 评选标准：优先级1的建议 + 跨模型共识
-    top_picks = []
+    print(f"""
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  🎵 Symphony v{VERSION} 全员讨论会议
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+👥 参会人员: {len(participants)}位专家
+💰 总Token消耗: {total_tokens}
+
+📝 收集建议数: {len(all_suggestions)}条
+
+📊 建议分类:
+""")
     
-    # 优先级1的建议
-    priority1_suggestions = [s for s in all_suggestions if s['priority'] == 1]
+    # 统计各领域建议
+    for s in all_suggestions:
+        print(f"  • [{s['role']}] {s['speaker']}: {s['content'][:60]}...")
     
-    print(f"\n🥇 优先级1的建议（立即开发）:")
-    for i, suggestion in enumerate(priority1_suggestions, 1):
-        print(f"\n{i}. {suggestion['suggestion']}")
-        print(f"   来自: {suggestion['model']} ({suggestion['role']})")
-        print(f"   理由: {suggestion['reason']}")
-        print(f"   实现思路: {suggestion['implementation']}")
-        top_picks.append(suggestion)
+    print(f"""
+🔥 重点关注:
+  1. 系统架构优化
+  2. 多模型协作效率
+  3. 用户体验提升
+  4. 错误处理机制
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+""")
     
-    # 5. 总结
-    print("\n" + "=" * 80)
-    print("会议总结")
-    print("=" * 80)
-    
-    print(f"\n📊 会议统计:")
-    print(f"  参会模型: {len(MODELS)}个")
-    print(f"  收集建议: {len(all_suggestions)}个")
-    print(f"  优先级1建议: {len(priority1_suggestions)}个")
-    
-    print(f"\n🎯 结论:")
-    print("  1. 立即开发: 优先级1的建议")
-    print("  2. 短期规划: 优先级2的建议")
-    print("  3. 长期愿景: 优先级3的建议")
-    
-    print(f"\n💡 最核心的共识:")
-    print("  - 从'模拟'走向'真实'")
-    print("  - 从'复杂'走向'简单'")
-    print("  - 从'功能'走向'产品'")
-    
-    # 6. 保存会议记录
-    print("\n" + "=" * 80)
-    print("保存会议记录")
-    print("=" * 80)
-    
-    meeting_record = {
-        "meeting_time": datetime.now().isoformat(),
-        "topic": MEETING_TOPIC,
-        "models": MODELS,
-        "speeches": [get_model_speech(m) for m in MODELS],
-        "all_suggestions": all_suggestions,
-        "top_picks": top_picks,
-        "summary": {
-            "total_models": len(MODELS),
-            "total_suggestions": len(all_suggestions),
-            "priority1_count": len(priority1_suggestions)
-        }
+    return {
+        "version": VERSION,
+        "datetime": datetime.now().isoformat(),
+        "participants": participants,
+        "suggestions": all_suggestions,
+        "total_tokens": total_tokens
     }
-    
-    output_file = Path("symphony_meeting_record.json")
-    with open(output_file, 'w', encoding='utf-8') as f:
-        json.dump(meeting_record, f, ensure_ascii=False, indent=2)
-    
-    print(f"\n✅ 会议记录已保存: {output_file}")
-    
-    print("\n" + "=" * 80)
-    print("会议结束")
-    print("=" * 80)
-    print("\n品牌标语: 智韵交响，共创华章")
 
 
 if __name__ == "__main__":
-    main()
+    report = symphony_meeting()
+    
+    with open("symphony_meeting_report.json", "w", encoding="utf-8") as f:
+        json.dump(report, f, ensure_ascii=False, indent=2)
+    
+    print("\n✅ 报告已保存: symphony_meeting_report.json")
+    print("\nSymphony - 智韵交响，共创华章！")

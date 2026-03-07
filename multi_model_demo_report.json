@@ -1,0 +1,22 @@
+{
+  "version": "1.3.0",
+  "datetime": "2026-03-08T00:36:59.809862",
+  "total_tokens": 299,
+  "results": {
+    "智谱GLM-4-Flash": {
+      "perspective": "技术视角",
+      "content": "人工智能未来将向智能化、泛在化、个性化方向发展，应用领域将不断拓展，推动社会生产生活方式变革。",
+      "tokens": 40
+    },
+    "DeepSeek R1": {
+      "perspective": "推理视角",
+      "content": "未来人工智能将向通用人工智能（AGI）演进，大模型持续突破，专用AI深入各行业。自动化水平提升，伦理法规逐步完善，人机协作重塑工作与生活。",
+      "tokens": 259
+    },
+    "MiniMax-M2.5": {
+      "perspective": "应用视角",
+      "content": "调用失败: HTTPSConnectionPool(host='api-inference.modelscope.cn', port=443): Read timed out. (read timeout=20)",
+      "tokens": 0
+    }
+  }
+}

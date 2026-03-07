@@ -1,0 +1,51 @@
+{
+  "version": "1.4.1",
+  "datetime": "2026-03-08T01:35:48.117014",
+  "tasks": [
+    {
+      "id": 10,
+      "name": "Qwen3-235B",
+      "role": "中间件开发工程师",
+      "task": "实现中间件层代码",
+      "prompt": "请实现Symphony系统的中间件层Python代码。\n\n要求：\n1. ModelAdapter类 - 模型适配器基类\n2. MessageRouter类 - 消息路由器\n3. DataTransformer类 - 数据转换器\n4. 包含完整的错误处理\n\n请直接输出可运行的Python代码，用```python包裹。"
+    },
+    {
+      "id": 12,
+      "name": "MiniMax-M2.5",
+      "role": "前端开发工程师",
+      "task": "实现可视化任务面板代码",
+      "prompt": "请实现Symphony系统的可视化任务面板Python代码。\n\n要求：\n1. TaskPanel类 - 任务面板主类\n2. ModelSelector类 - 模型选择器\n3. ProgressTracker类 - 进度追踪器\n4. 包含状态展示方法\n\n请直接输出可运行的Python代码，用```python包裹。"
+    },
+    {
+      "id": 0,
+      "name": "智谱GLM-4",
+      "role": "测试工程师",
+      "task": "编写集成测试代码",
+      "prompt": "请为Symphony系统编写集成测试代码。\n\n要求：\n1. 测试中间件层功能\n2. 测试任务面板功能\n3. 测试模型协作流程\n4. 包含assert断言\n\n请直接输出可运行的Python测试代码，用```python包裹。"
+    }
+  ],
+  "results": {
+    "Qwen3-235B": {
+      "role": "中间件开发工程师",
+      "task": "实现中间件层代码",
+      "content": "```python\nimport json\nimport logging\nfrom abc import ABC, abstractmethod\nfrom typing import Any, Dict, Optional, Union\nfrom dataclasses import dataclass\nfrom enum import Enum\n\n# 配置日志\nlogging.basicConfig(level=logging.INFO)\nlogger = logging.getLogger(__name__)\n\n\nclass MessageType(Enum):\n    REQUEST = \"request\"\n    RESPONSE = \"response\"\n    ERROR = \"error\"\n\n\n@dataclass\nclass Message:\n    \"\"\"消息结构体\"\"\"\n    msg_type: MessageType\n    content: Any\n    sender: str\n    receiver: str\n    message_id: str\n    metadata: Optional[Dict[str, Any]] = None\n\n\nclass SymphonyError(Exception):\n    \"\"\"Symphony系统基础异常\"\"\"\n    pass\n\n\nclass ModelAdapterError(SymphonyError):\n    \"\"\"模型适配器异常\"\"\"\n    pass\n\n\nclass MessageRouterError(SymphonyError):\n    \"\"\"消息路由器异常\"\"\"\n    pass\n\n\nclass DataTransformerError(SymphonyError):\n    \"\"\"数据转换器异常\"\"\"\n    pass\n\n\nclass ModelAdapter(ABC):\n    \"\"\"\n    模型适配器基类 - 用于统一不同AI模型的接口\n    \"\"\"\n\n    def __init__(self, model_name: str, config: Optional[Dict[str, Any]] = None):\n        self.model_name = model_name\n        self.config = config or {}\n        self.is_initialized = False\n        logger.info(f\"初始化模型适配器: {model_name}\")\n\n    def initialize(self) -> None:\n        \"\"\"初始化模型适配器\"\"\"\n        try:\n            self._load_model()\n            self.is_initialized = True\n            logger.info(f\"模型适配器初始化成功: {self.model_name}\")\n        except Exception as e:\n            logger.error(f\"模型适配器初始化失败 {self.model_name}: {str(e)}\")\n            raise ModelAdapterError(f\"模型初始化失败: {str(e)}\") from e\n\n    @abstractmethod\n    def _load_model(self) -> None:\n        \"\"\"加载具体模型的抽象方法\"\"\"\n        pass\n\n    @abstractmethod\n    def predict(self, data: Any) -> Any:\n        \"\"\"执行预测的抽象方法\"\"\"\n        pass\n\n    def preprocess(self, input_data: Any) -> Any:\n        \"\"\"预处理输入数据\"\"\"\n        try:\n            return input_data\n        except Exception as e:\n            logger.error(f\"预处理失败: {str(e)}\")\n            raise ModelAdapterError(f",
+      "tokens": 580,
+      "success": true
+    },
+    "MiniMax-M2.5": {
+      "role": "前端开发工程师",
+      "task": "实现可视化任务面板代码",
+      "content": "# Symphony系统可视化任务面板实现\n\n以下是完整的Python代码实现，包含任务面板、模型选择器和进度追踪器：\n\n```python\n\"\"\"\nSymphony系统可视化任务面板\nSymphony System Visualization Task Panel\n\"\"\"\n\nimport time\nfrom enum import Enum\nfrom typing import List, Optional, Dict, Any\nfrom dataclasses import dataclass, field\nfrom datetime import datetime\n\n\nclass TaskStatus(Enum):\n    \"\"\"任务状态枚举\"\"\"\n    PENDING = \"pending\"\n    RUNNING = \"running\"\n    COMPLETED = \"completed\"\n    FAILED = \"failed\"\n    CANCELLED = \"cancelled\"\n\n\nclass ModelType(Enum):\n    \"\"\"模型类型枚举\"\"\"\n    TRANSFORMER = \"transformer\"\n    CNN = \"cnn\"\n    RNN = \"rnn\"\n    GAN = \"gan\"\n    REINFORCEMENT = \"reinforcement\"\n\n\n@dataclass\nclass Task:\n    \"\"\"任务数据类\"\"\"\n    task_id: str\n    name: str\n    description: str = \"\"\n    status: TaskStatus = TaskStatus.PENDING\n    progress: float = 0.0\n    model_type: Optional[ModelType] = None\n    created_at: datetime = field(default_factory=datetime.now)\n    started_at: Optional[datetime] = None\n    completed_at: Optional[datetime] = None\n    error_message: str = \"\"\n    metadata: Dict[str, Any] = field(default_factory=dict)\n\n\nclass ProgressTracker:\n    \"\"\"进度追踪器\"\"\"\n    \n    def __init__(self):\n        self._tasks: Dict[str, Task] = {}\n        self._listeners: List[callable] = []\n    \n    def add_task(self, task: Task) -> None:\n        \"\"\"添加任务\"\"\"\n        self._tasks[task.task_id] = task\n        self._notify_listeners(\"task_added\", task)\n    \n    def update_progress(self, task_id: str, progress: float, \n                       status: Optional[TaskStatus] = None) -> None:\n        \"\"\"更新任务进度\"\"\"\n        if task_id not in self._tasks:\n            raise ValueError(f\"Task {task_id} not found\")\n        \n        task = self._tasks[task_id]\n        task.progress = min(100.0, max(0.0, progress))\n        \n        if status:\n            task.status = status\n            if status == TaskStatus.RUNNING and not task.started_at:\n               ",
+      "tokens": 783,
+      "success": true
+    },
+    "智谱GLM-4": {
+      "role": "测试工程师",
+      "task": "编写集成测试代码",
+      "content": "```python\nimport unittest\nfrom unittest.mock import patch\n\n# 假设Symphony系统已经有一个中间件层模块、任务面板模块和模型协作流程模块\n# 以及相应的接口和方法\n\nclass TestSymphonySystem(unittest.TestCase):\n    def test MiddlewareLayerFunctionality(self):\n        # 假设MiddlewareLayer有一个process_data方法\n        middleware_layer = MiddlewareLayer()\n        mock_data = \"some data\"\n        expected_output = \"processed data\"\n        \n        with patch.object(middleware_layer, 'process_data') as mock_process_data:\n            mock_process_data.return_value = expected_output\n            output = middleware_layer.process_data(mock_data)\n        \n        self.assertEqual(output, expected_output)\n\n    def test TaskPanelFunctionality(self):\n        # 假设TaskPanel有一个add_task方法\n        task_panel = TaskPanel()\n        task_data = {\"name\": \"Test Task\", \"description\": \"This is a test task\"}\n        task_panel.add_task(task_data)\n        \n        # 假设TaskPanel有一个get_task方法\n        retrieved_task = task_panel.get_task(\"Test Task\")\n        self.assertEqual(retrieved_task, task_data)\n\n    def test ModelCollaborationProcess(self):\n        # 假设模型协作流程包括一个ModelA和一个ModelB\n        model_a = ModelA()\n        model_b = ModelB()\n        \n        # 模拟协作过程\n        result_a = model_a.compute()\n        result_b = model_b.compute(result_a)\n        \n        # 假设最终结果应该是某个特定的值\n        expected_result = \"final result\"\n        self.assertEqual(result_b, expected_result)\n\nif __name__ == '__main__':\n    unittest.main()\n```\n\n请注意，上述代码是基于一些假设编写的。在实际的测试中，你需要根据Symphony系统的具体实现来调整测试代码，包括模块、类、方法和函数的名称以及它们的行为。此外，`unittest.mock.patch`用于模拟外部依赖或方法，这在测试中很有用，特别是在中间件层可能依赖于外部服务或模块时。",
+      "tokens": 488,
+      "success": true
+    }
+  },
+  "total_tokens": 1851
+}
