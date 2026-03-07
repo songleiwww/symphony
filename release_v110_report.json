@@ -1,0 +1,68 @@
+{
+  "title": "Symphony v1.1.0-beta Release",
+  "version": "1.1.0-beta",
+  "datetime": "2026-03-07T22:22:21.942433",
+  "install_methods": [
+    "bash",
+    "powershell",
+    "docker",
+    "pip"
+  ],
+  "file_structure": {
+    "核心模块/": [
+      "symphony_core.py",
+      "model_manager.py",
+      "fault_isolator.py",
+      "fallback.py",
+      "memory_coordinator.py"
+    ],
+    "配置/": [
+      "config.py"
+    ],
+    "安装脚本/": [
+      "install.sh",
+      "install.ps1",
+      "Dockerfile",
+      "setup.py"
+    ],
+    "文档/": [
+      "README.md",
+      "RELEASE.md",
+      "USER_GUIDE.md",
+      "CHANGELOG.md"
+    ]
+  },
+  "team": [
+    {
+      "name": "林思远",
+      "role": "产品经理",
+      "emoji": "PE",
+      "model_index": 0,
+      "provider": "智谱GLM-4-Flash"
+    },
+    {
+      "name": "陈美琪",
+      "role": "架构师",
+      "emoji": "AR",
+      "model_index": 1,
+      "provider": "智谱GLM-Z1-Flash (推理模型)"
+    },
+    {
+      "name": "王浩然",
+      "role": "开发工程师",
+      "emoji": "DEV",
+      "model_index": 6,
+      "provider": "ModelScope GLM-4.7-Flash"
+    },
+    {
+      "name": "刘心怡",
+      "role": "测试工程师",
+      "emoji": "TEST",
+      "model_index": 8,
+      "provider": "ModelScope DeepSeek-V3.2"
+    }
+  ],
+  "summary": {
+    "total_tokens": 391
+  }
+}
