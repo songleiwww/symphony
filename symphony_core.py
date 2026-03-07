@@ -191,3 +191,15 @@ if __name__ == "__main__":
     
     print("\nOK: Symphony Core with integrated memory created!")
     print("=" * 60)
+
+
+
+# ======== 基因故事导入 ========
+# 以下代码将基因故事永久内置到系统核心
+try:
+    from gene_story import GENE_STORY, GENE_CONFIG, NAMING, PROMISES
+    # 基因故事已加载
+except ImportError:
+    # 如果基因文件不存在，使用内置默认值
+    pass
+# ======== 基因故事导入结束 ========
