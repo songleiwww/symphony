@@ -360,18 +360,61 @@ MODEL_CHAIN = [
         "temperature": 0.2,
         "top_p": 0.7,
         "max_tokens": 1024
+    },
+    # ==================== NVIDIA Qwen 3.5 397B ====================
+    {
+        "name": "nvidia_qwen_3_5_397b",
+        "provider": "nvidia",
+        "model_id": "qwen/qwen3.5-397b-a17b",
+        "alias": "NVIDIA Qwen 3.5 397B (MoE)",
+        "base_url": "https://integrate.api.nvidia.com/v1",
+        "api_key": "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",
+        "api_type": "openai-completions",
+        "context_window": 128000,
+        "timeout": 120,
+        "max_retries": 3,
+        "enabled": True,
+        "priority": 6,
+        "supports_stream": True,
+        "supports_thinking": True,
+        "temperature": 0.6,
+        "top_p": 0.95,
+        "top_k": 20,
+        "max_tokens": 16384,
+        "presence_penalty": 0,
+        "repetition_penalty": 1
+    },
+    # ==================== NVIDIA GLM-4.7 ====================
+    {
+        "name": "nvidia_glm_4_7",
+        "provider": "nvidia",
+        "model_id": "z-ai/glm4.7",
+        "alias": "NVIDIA GLM-4.7 (Agentic Coding)",
+        "base_url": "https://integrate.api.nvidia.com/v1",
+        "api_key": "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",
+        "api_type": "openai-completions",
+        "context_window": 200000,
+        "timeout": 120,
+        "max_retries": 3,
+        "enabled": True,
+        "priority": 7,
+        "supports_stream": True,
+        "supports_thinking": True,
+        "temperature": 1.0,
+        "top_p": 1.0,
+        "max_tokens": 16384
     }
 ]
 
 # 模型统计
 MODEL_STATS = {
-    "total_models": 21,
+    "total_models": 23,
     "providers": [
         {"name": "zhipu", "count": 6, "alias": "智谱"},
         {"name": "modelscope", "count": 10, "alias": "ModelScope"},
-        {"name": "nvidia", "count": 5, "alias": "NVIDIA"}
+        {"name": "nvidia", "count": 7, "alias": "NVIDIA"}
     ],
-    "last_updated": "2026-03-08 12:00"
+    "last_updated": "2026-03-08 12:15"
 }
 
 # 故障恢复配置
