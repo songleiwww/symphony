@@ -1,38 +1,6 @@
 # =============================================================================
-# 向量嵌入模型配置 (2026-03-08 添加)
+# Symphony 配置文件 - 多模型配置
 # =============================================================================
-EMBEDDING_MODELS = [
-    {
-        "name": "nvidia_bge_m3",
-        "provider": "nvidia",
-        "model_id": "baai/bge-m3",
-        "alias": "NVIDIA BGE-M3 (中文向量)",
-        "base_url": "https://integrate.api.nvidia.com/v1",
-        "api_key": "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",
-        "embedding_dim": 1024,
-        "enabled": True,
-        "type": "embedding"
-    },
-    {
-        "name": "nvidia_nv_embed_v1",
-        "provider": "nvidia",
-        "model_id": "nvidia/nv-embed-v1",
-        "alias": "NVIDIA NV-Embed-V1",
-        "base_url": "https://integrate.api.nvidia.com/v1",
-        "api_key": "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",
-        "embedding_dim": 4096,
-        "enabled": True,
-        "type": "embedding"
-    },
-]
-
-# 向量存储配置
-VECTOR_STORE_CONFIG = {
-    "enabled": True,
-    "default_model": "nvidia_bge_m3",
-    "storage_path": "./vector_store/",
-    "index_name": "symphony_index"
-}
 
 # 模型降级链配置
 # 优先级：智谱GLM > ModelScope推理模型
