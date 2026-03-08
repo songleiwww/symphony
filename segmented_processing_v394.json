@@ -1,0 +1,41 @@
+{
+  "version": "v3.9.4",
+  "topic": "多任务分段自动处理研究",
+  "timestamp": "2026-03-08T18:16:27.296066",
+  "total_experts": 3,
+  "success_count": 3,
+  "total_tokens": 6896,
+  "success_rate": "100.0%",
+  "results": [
+    {
+      "name": "林思远",
+      "role": "分段处理架构师",
+      "model": "meta/llama-3.1-405b-instruct",
+      "status": "成功",
+      "prompt_tokens": 151,
+      "completion_tokens": 938,
+      "total_tokens": 1089,
+      "elapsed": 36.34
+    },
+    {
+      "name": "张晓明",
+      "role": "超时监控专家",
+      "model": "qwen/qwen3.5-397b-a17b",
+      "status": "成功",
+      "prompt_tokens": 101,
+      "completion_tokens": 2308,
+      "total_tokens": 2409,
+      "elapsed": 93.32
+    },
+    {
+      "name": "赵心怡",
+      "role": "进度管理专家",
+      "model": "minimaxai/minimax-m2.5",
+      "status": "成功",
+      "prompt_tokens": 134,
+      "completion_tokens": 3264,
+      "total_tokens": 3398,
+      "elapsed": 257.27
+    }
+  ]
+}
