@@ -1,0 +1,27 @@
+{
+  "version": "v3.9.17",
+  "topic": "具体解决方案",
+  "timestamp": "2026-03-08T22:31:39.894487",
+  "results": [
+    {
+      "name": "林思远",
+      "status": "成功",
+      "tokens": 556
+    },
+    {
+      "name": "张晓明",
+      "status": "成功",
+      "tokens": 506
+    },
+    {
+      "name": "赵心怡",
+      "status": "异常"
+    },
+    {
+      "name": "陈浩然",
+      "status": "成功",
+      "tokens": 545
+    }
+  ],
+  "total_tokens": 1607
+}
