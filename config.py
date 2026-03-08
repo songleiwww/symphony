@@ -300,18 +300,38 @@ MODEL_CHAIN = [
         "temperature": 1.0,
         "top_p": 0.95,
         "max_tokens": 8192
+    },
+    # ==================== NVIDIA DeepSeek V3.2 ====================
+    {
+        "name": "nvidia_deepseek_v3_2",
+        "provider": "nvidia",
+        "model_id": "deepseek-ai/deepseek-v3.2",
+        "alias": "NVIDIA DeepSeek V3.2",
+        "base_url": "https://integrate.api.nvidia.com/v1",
+        "api_key": "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",
+        "api_type": "openai-completions",
+        "context_window": 128000,
+        "timeout": 90,
+        "max_retries": 3,
+        "enabled": True,
+        "priority": 3,
+        "supports_stream": True,
+        "supports_thinking": True,
+        "temperature": 1.0,
+        "top_p": 0.95,
+        "max_tokens": 8192
     }
 ]
 
 # 模型统计
 MODEL_STATS = {
-    "total_models": 18,
+    "total_models": 19,
     "providers": [
         {"name": "zhipu", "count": 6, "alias": "智谱"},
         {"name": "modelscope", "count": 10, "alias": "ModelScope"},
-        {"name": "nvidia", "count": 2, "alias": "NVIDIA"}
+        {"name": "nvidia", "count": 3, "alias": "NVIDIA"}
     ],
-    "last_updated": "2026-03-08 11:25"
+    "last_updated": "2026-03-08 11:43"
 }
 
 # 故障恢复配置
