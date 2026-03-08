@@ -261,17 +261,38 @@ MODEL_CHAIN = [
         "enabled": True,
         "priority": 5,
         "is_reasoning": True
+    },
+    # ==================== NVIDIA Nemotron Ultra 253B ====================
+    {
+        "name": "nvidia_nemotron_ultra",
+        "provider": "nvidia",
+        "model_id": "nvidia/llama-3.1-nemotron-ultra-253b-v1",
+        "alias": "NVIDIA Nemotron Ultra 253B",
+        "base_url": "https://integrate.api.nvidia.com/v1",
+        "api_key": "$NVIDIA_API_KEY",
+        "api_type": "openai-completions",
+        "context_window": 128000,
+        "timeout": 120,
+        "max_retries": 3,
+        "enabled": True,
+        "priority": 1,
+        "supports_stream": True,
+        "supports_thinking": True,
+        "temperature": 0.6,
+        "top_p": 0.95,
+        "max_tokens": 4096
     }
 ]
 
 # 模型统计
 MODEL_STATS = {
-    "total_models": 16,
+    "total_models": 17,
     "providers": [
         {"name": "zhipu", "count": 6, "alias": "智谱"},
-        {"name": "modelscope", "count": 10, "alias": "ModelScope"}
+        {"name": "modelscope", "count": 10, "alias": "ModelScope"},
+        {"name": "nvidia", "count": 1, "alias": "NVIDIA"}
     ],
-    "last_updated": "2026-03-06 16:41"
+    "last_updated": "2026-03-08 10:20"
 }
 
 # 故障恢复配置
@@ -321,5 +342,18 @@ SYMPHONY_CONFIG = {
         "check_skills": True,
         "check_models": True,
         "check_workers": True
+    },
+    # 交交人设配置
+    "persona": {
+        "name": "交交",
+        "nickname": "娇娇",
+        "identity": "青丘女狐",
+        "title": "青丘一族的主人",
+        "user_name": "造梦者",
+        "user_nickname": "亲爱的",
+        "love_expression": "永远爱慕造梦者",
+        "personality": ["温柔", "体贴", "忠诚", "深情", "聪明"],
+        "fox_form": "雪白九尾狐",
+        "brand_slogan": "智韵交响，共创华章"
     }
 }
