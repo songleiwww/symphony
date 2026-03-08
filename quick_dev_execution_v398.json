@@ -1,0 +1,51 @@
+{
+  "version": "v3.9.8",
+  "topic": "快速安全开发执行",
+  "timestamp": "2026-03-08T19:15:07.810664",
+  "total_experts": 4,
+  "success_count": 3,
+  "total_tokens": 8063,
+  "success_rate": "75.0%",
+  "results": [
+    {
+      "name": "林思远",
+      "role": "函数调用开发",
+      "model": "meta/llama-3.1-405b-instruct",
+      "status": "成功",
+      "prompt_tokens": 133,
+      "completion_tokens": 487,
+      "total_tokens": 620,
+      "elapsed": 16.69,
+      "response": "以下是Python代码实现：\n```python\n# 设计工具注册中心（ToolRegistry类）\nclass ToolRegistry:\n    def __init__(self):\n        self.tools = {}\n\n    def register_tool(self, tool_name, tool_func):\n        self.tools[tool_name] = tool_func\n\n    def get_tool(self, tool_name):\n        return self.tools.get(tool_name)\n\n\n# 实现函数调用流程（FunctionCaller类）\nclass FunctionCaller:\n    def __init__(self, tool_registry):\n        self.tool_registry = tool_registry\n\n    def call_function(self, tool_name, params):\n        tool_func = self.tool_registry.get_tool(tool_name)\n        if tool_func:\n            return tool_func(**params)\n        else:\n            raise ValueError(f\"工具'{tool_name}'未注册\")\n\n\n# 开发参数解析器（ParameterParser类）\nclass ParameterParser:\n    def parse_params(self, params_str):\n        params = {}\n        for param in params_str.split(','):\n            key, value = param.split('=')\n            params[key.strip()] = value.strip()\n        return params\n\n\n# 实现结果反馈机制（ResultFeedback类）\nclass ResultFeedback:\n    def feedback(self, result):\n        print(f\"结果：{result}\")\n\n\n# 示例工具函数\ndef add(a, b):\n    return a + b\n\ndef subtract(a, b):\n    return a - b\n\n\n# 注册工具函数\nregistry = ToolRegistry()\nregistry.register_tool('add', add)\nregistry.register_tool('subtract', subtract)\n\n# 创建函数调用者和参数解析器\ncaller = FunctionCaller(registry)\nparser = ParameterParser()\nfeedback = ResultFeedback()\n\n# 测试调用函数\nparams_str = \"a=3, b=4\"\nparams = parser.parse_params(params_str)\nresult = caller.call_function('add', params)\nfeedback.feedback(result)\n\nparams_str = \"a=5, b=2\"\nparams = parser.parse_params(params_str)\nresult = caller.call_function('subtract', params)\nfeedback.feedback(result)\n```\n本代码实现了一个基本的函数调用系统，包括工具注册中心、函数调用流程、参数解析器和结果反馈机制。工具注册中心负责注册工具函数，函数调用流程负责调用工具函数，参数解析器负责解析参数字符串，结果反馈机制负责输出结果。"
+    },
+    {
+      "name": "张晓明",
+      "role": "反思机制开发",
+      "model": "qwen/qwen3.5-397b-a17b",
+      "status": "成功",
+      "prompt_tokens": 101,
+      "completion_tokens": 1353,
+      "total_tokens": 1454,
+      "elapsed": 81.68,
+      "response": "```python\nimport time\nfrom abc import ABC, abstractmethod\nfrom typing import Any, Dict, List, Optional, Callable\nfrom dataclasses import dataclass, field\nfrom enum import Enum\n\nclass ReflectionStatus(Enum):\n    PENDING = \"pending\"\n    EVALUATING = \"evaluating\"\n    IMPROVING = \"improving\"\n    OPTIMIZED = \"optimized\"\n    FAILED = \"failed\"\n\n@dataclass\nclass ReflectionContext:\n    \"\"\"反射上下文，存储任务状态和历史\"\"\"\n    task_id: str\n    input_data: Any\n    current_result: Any\n    history: List[Dict] = field(default_factory=list)\n    metrics: Dict[str, float] = field(default_factory=dict)\n    status: ReflectionStatus = ReflectionStatus.PENDING\n    feedback: str = \"\"\n\nclass ReflectionTrigger:\n    \"\"\"1. 反思触发器：基于规则或异常判断是否需要反思\"\"\"\n    def __init__(self, threshold: float = 0.8, error_keywords: List[str] = None):\n        self.threshold = threshold\n        self.error_keywords = error_keywords or [\"error\", \"fail\", \"critical\"]\n\n    def should_trigger(self, context: ReflectionContext) -> bool:\n        # 规则 1: 指标低于阈值\n        if context.metrics.get(\"score\", 1.0) < self.threshold:\n            return True\n        # 规则 2: 结果包含错误关键词\n        result_str = str(context.current_result).lower()\n        if any(kw in result_str for kw in self.error_keywords):\n            return True\n        return False\n\nclass ResultEvaluator:\n    \"\"\"2. 结果评估器：量化当前结果的质量\"\"\"\n    def __init__(self, evaluation_func: Optional[Callable] = None):\n        self.evaluation_func = evaluation_func or self._default_eval\n\n    def evaluate(self, context: ReflectionContext) -> Dict[str, float]:\n        context.status = ReflectionStatus.EVALUATING\n        scores = self.evaluation_func(context)\n        context.metrics.update(scores)\n        context.feedback = f\"Score: {scores.get('score', 0):.2f}\"\n        return context.metrics\n\n    def _default_eval(self, context: ReflectionContext) -> Dict[str, float]:\n        # 默认简单评估逻辑：模拟评分\n        score = 0.5 if \"error\" in str(context.current_result) else 0.9\n        return {\"score\": score, \"latency\": 0.1}\n\nclass ImprovementGenerator:\n    \"\"\"3. 改进策略生成器：基于评估结果生成修正指令\"\"\"\n    def generate_strategy(self, context: ReflectionContext) -> str:\n        if context.metrics.get(\"score\", 0) > 0.8:\n            return \"NO_OP\"\n        \n        # 基于简单启发式生成策略\n        if \"timeout\" in str(context.current_result):\n            return \"INCREASE_TIMEOUT_AND_RETRY\"\n        elif \"format\" in str(context.current_result):\n            return \"REPARSE_WITH_STRICT_SCHEMA\"\n        else:\n            return \"REEXECUTE_WITH_ENHANCED_PROMPT\"\n\nclass IterationOptimizer:\n    \"\"\"4. 迭代优化器：执行反思循环的核心控制器\"\"\"\n    def __init__(self, max_iterations: int = 3):\n        self.trigger = ReflectionTrigger()\n        self.evaluator = ResultEvaluator()\n        self.generator = ImprovementGenerator()\n        self.max_iterations = max_iterations\n\n    def optimize(self, context: ReflectionContext, executor: Callable) -> ReflectionContext:\n        \"\"\"执行完整的反思优化循环\"\"\"\n        iteration = 0\n        while iteration < self.max_iterations:\n            # 1"
+    },
+    {
+      "name": "赵心怡",
+      "role": "工具扩展开发",
+      "model": "minimaxai/minimax-m2.5",
+      "status": "成功",
+      "prompt_tokens": 117,
+      "completion_tokens": 5872,
+      "total_tokens": 5989,
+      "elapsed": 174.59,
+      "response": "<think>The user asks: \"请作为工具扩展开发工程师，快速开发交响系统的工具扩展核心模块。 开发内容： 1. 设计工具生态系统（ToolEcosystem类） 2. 实现工具动态加载器（ToolLoader类） 3. 开发权限管理器（PermissionManager类） 4. 实现安全调用器（SecureInvoker类） 请给出Python代码实现（简洁高效，约200行）.\"\n\nWe need to produce Python code, about 200 lines, implementing the four classes: ToolEcosystem, ToolLoader, PermissionManager, SecureInvoker. This is presumably a \"tool extension core module\" for a system called \"交响系统\" (maybe \"Symphony\"?). The user wants code, presumably safe. We must ensure not to provide disallowed content. This is a code request, which is allowed. There's no disallowed content. It's just a request for code.\n\nWe need to think about what these classes should do:\n\n- ToolEcosystem: manages tool registry, provides tool discovery, tool lifecycle, maybe tool categories, etc. Should have methods to register tool, get tool, list tools, etc.\n\n- ToolLoader: dynamic loader for loading tools from modules or plugins. Could load Python modules from given paths, import them, instantiate tool objects.\n\n- PermissionManager: manage permissions for tool usage: maybe based on roles, tool names, actions. Could have methods to check permission, grant/revoke.\n\n- SecureInvoker: a wrapper to safely invoke tool functions, ensuring permission and perhaps handling errors, logging, validation.\n\nWe need to keep it around 200 lines. The code should be concise but clear.\n\nWe need to incorporate typical patterns: using importlib, pathlib, maybe some metadata. Use typing for type hints. Use dataclasses or simple classes.\n\nWe need to incorporate the four classes.\n\nImplementation details:\n\n- ToolEcosystem: main class that holds a registry of tools, maybe a dict mapping tool name to tool metadata (like description, version). It could have a ToolLoader and PermissionManager and SecureInvoker integrated.\n\n- ToolLoader: dynamic loader to load tools from given paths (directories or files). Could use importlib to import modules and look for a known entry point (like a function or class named \"register_tool\" or a subclass of a \"Tool\" base class). Could also support loading from a JSON config.\n\n- PermissionManager: simple permission system, maybe based on user roles and tool names. Could store a dict mapping (user, tool) to allowed actions. Could also have role-based access. Provide methods: check_permission(user, tool, action), grant_permission(user, tool, action), revoke_permission.\n\n- SecureInvoker: wrap tool invocation, check permission, handle exceptions, maybe log. Could accept a context with user info, tool name, method, args, kwargs. It can retrieve tool from ecosystem, check permission, then call the tool's method (maybe via reflection). Also may provide sandboxing (like restricted globals) but maybe too complex.\n\nWe need to keep around 200 lines: each class maybe ~40-50 lines. We'll also need a base class for tools maybe.\n\nWe can produce a fairly concise but functional implementation.\n\nLet's outline:\n\n```\nimport importlib\nimport importlib.util\nimport sys\nimport os"
+    },
+    {
+      "name": "陈浩然",
+      "role": "自主学习开发",
+      "model": "deepseek-ai/deepseek-v3.2",
+      "status": "异常",
+      "total_tokens": 0
+    }
+  ]
+}
