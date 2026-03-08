@@ -1,3 +1,18 @@
+---
+name: symphony
+description: 多模型协作调度系统 - 支持头脑风暴、辩论、评估等多人协作模式，可并行调用多个AI模型完成任务
+version: 3.7.0
+author: 造梦者 & 交交
+triggers:
+  - 交响
+  - symphony
+  - 交响工具
+  - 多模型
+  - 模型开会
+  - 头脑风暴
+  - 专家会诊
+---
+
 # Symphony 技能
 
 ## 触发关键字（v2.0 优化版）
