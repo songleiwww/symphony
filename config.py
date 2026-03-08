@@ -341,18 +341,37 @@ MODEL_CHAIN = [
         "max_tokens": 2048,
         "frequency_penalty": 0.0,
         "presence_penalty": 0.0
+    },
+    # ==================== NVIDIA Llama 3.1 405B ====================
+    {
+        "name": "nvidia_llama_3_1_405b",
+        "provider": "nvidia",
+        "model_id": "meta/llama-3.1-405b-instruct",
+        "alias": "NVIDIA Llama 3.1 405B Instruct",
+        "base_url": "https://integrate.api.nvidia.com/v1",
+        "api_key": "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",
+        "api_type": "openai-completions",
+        "context_window": 128000,
+        "timeout": 120,
+        "max_retries": 3,
+        "enabled": True,
+        "priority": 5,
+        "supports_stream": True,
+        "temperature": 0.2,
+        "top_p": 0.7,
+        "max_tokens": 1024
     }
 ]
 
 # 模型统计
 MODEL_STATS = {
-    "total_models": 20,
+    "total_models": 21,
     "providers": [
         {"name": "zhipu", "count": 6, "alias": "智谱"},
         {"name": "modelscope", "count": 10, "alias": "ModelScope"},
-        {"name": "nvidia", "count": 4, "alias": "NVIDIA"}
+        {"name": "nvidia", "count": 5, "alias": "NVIDIA"}
     ],
-    "last_updated": "2026-03-08 11:48"
+    "last_updated": "2026-03-08 12:00"
 }
 
 # 故障恢复配置
