@@ -1,0 +1,51 @@
+{
+  "version": "v3.6.0",
+  "meeting_type": "多人开发会议",
+  "timestamp": "2026-03-08T10:55:17.838067",
+  "participants": [
+    "林思远",
+    "张晓明",
+    "赵心怡",
+    "陈浩然"
+  ],
+  "results": [
+    {
+      "name": "林思远",
+      "role": "CI/CD工程师",
+      "task": "GitHub Actions工作流配置",
+      "response": "核心功能：自动化测试、构建、发布流程\n技术方案：YAML工作流定义、矩阵测试、自动版本发布\n预期效果：代码提交后自动测试，通过后自动发布",
+      "tokens": 850,
+      "status": "成功"
+    },
+    {
+      "name": "张晓明",
+      "role": "测试工程师",
+      "task": "单元测试框架搭建",
+      "response": "核心功能：pytest测试框架、覆盖率统计、测试报告\n技术方案：pytest + pytest-cov + allure报告\n预期效果：测试覆盖率>80%，自动化测试报告生成",
+      "tokens": 920,
+      "status": "成功"
+    },
+    {
+      "name": "赵心怡",
+      "role": "文档工程师",
+      "task": "API文档编写",
+      "response": "核心功能：接口文档、使用示例、错误码说明\n技术方案：Markdown格式、Swagger规范、在线预览\n预期效果：开发者快速上手，减少沟通成本",
+      "tokens": 780,
+      "status": "成功"
+    },
+    {
+      "name": "陈浩然",
+      "role": "集成工程师",
+      "task": "系统集成测试",
+      "response": "核心功能：端到端测试、性能测试、压力测试\n技术方案：Locust负载测试、API集成测试、监控告警\n预期效果：系统稳定性>99%，响应时间<2s",
+      "tokens": 890,
+      "status": "成功"
+    }
+  ],
+  "summary": {
+    "total_members": 4,
+    "successful": 4,
+    "failed": 0,
+    "total_tokens": 3440
+  }
+}
