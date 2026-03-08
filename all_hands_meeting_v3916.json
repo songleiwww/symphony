@@ -1,0 +1,38 @@
+{
+  "version": "v3.9.16",
+  "topic": "全员讨论大会-任务连贯性研究",
+  "timestamp": "2026-03-08T22:24:07.617702",
+  "results": [
+    {
+      "name": "林思远",
+      "status": "成功",
+      "tokens": 410
+    },
+    {
+      "name": "张晓明",
+      "status": "成功",
+      "tokens": 194
+    },
+    {
+      "name": "赵心怡",
+      "status": "成功",
+      "tokens": 387
+    },
+    {
+      "name": "陈浩然",
+      "status": "成功",
+      "tokens": 398
+    },
+    {
+      "name": "王明远",
+      "status": "成功",
+      "tokens": 197
+    },
+    {
+      "name": "周小芳",
+      "status": "成功",
+      "tokens": 382
+    }
+  ],
+  "total_tokens": 1968
+}
