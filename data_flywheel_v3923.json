@@ -1,0 +1,80 @@
+{
+  "version": "v3.9.23",
+  "topic": "数据飞轮机制",
+  "timestamp": "2026-03-09T00:23:28.163860",
+  "results": [
+    {
+      "name": "林思远",
+      "fox": "银白九尾狐",
+      "role": "数据收集",
+      "model": "meta/llama-3.1-405b-instruct",
+      "status": "成功",
+      "tokens": 504,
+      "prompt_tokens": 154,
+      "completion_tokens": 350,
+      "elapsed": 25.26,
+      "real_model_verified": true,
+      "verify_message": "模型匹配: meta/llama-3.1-405b-instruct"
+    },
+    {
+      "name": "张晓明",
+      "fox": "墨黑九尾狐",
+      "role": "数据飞轮引擎",
+      "model": "qwen/qwen3.5-397b-a17b",
+      "status": "成功",
+      "tokens": 449,
+      "prompt_tokens": 99,
+      "completion_tokens": 350,
+      "elapsed": 29.33,
+      "real_model_verified": true,
+      "verify_message": "模型匹配: qwen/qwen3.5-397b-a17b"
+    },
+    {
+      "name": "赵心怡",
+      "fox": "金黄九尾狐",
+      "role": "反馈循环",
+      "model": "minimaxai/minimax-m2.5",
+      "status": "成功",
+      "tokens": 462,
+      "prompt_tokens": 112,
+      "completion_tokens": 350,
+      "elapsed": 9.29,
+      "real_model_verified": true,
+      "verify_message": "模型匹配: minimaxai/minimax-m2.5"
+    },
+    {
+      "name": "陈浩然",
+      "fox": "青灰九尾狐",
+      "role": "模型更新",
+      "model": "meta/llama-3.1-405b-instruct",
+      "status": "成功",
+      "tokens": 483,
+      "prompt_tokens": 133,
+      "completion_tokens": 350,
+      "elapsed": 9.67,
+      "real_model_verified": true,
+      "verify_message": "模型匹配: meta/llama-3.1-405b-instruct"
+    },
+    {
+      "name": "王明远",
+      "fox": "火红九尾狐",
+      "role": "效果评估",
+      "model": "qwen/qwen3.5-397b-a17b",
+      "status": "成功",
+      "tokens": 443,
+      "prompt_tokens": 93,
+      "completion_tokens": 350,
+      "elapsed": 5.4,
+      "real_model_verified": true,
+      "verify_message": "模型匹配: qwen/qwen3.5-397b-a17b"
+    },
+    {
+      "name": "周小芳",
+      "status": "异常",
+      "error": "HTTPSConnectionPool(host='integrate.api.nvidia.com"
+    }
+  ],
+  "total_tokens": 2341,
+  "success_rate": "5/6",
+  "real_model_verification": "5/6"
+}
