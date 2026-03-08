@@ -1,0 +1,48 @@
+{
+  "version": "v3.9.13",
+  "topic": "多人研发模式执行改进计划",
+  "timestamp": "2026-03-08T21:04:19.349084",
+  "total_experts": 4,
+  "success_count": 3,
+  "total_tokens": 7128,
+  "success_rate": "75.0%",
+  "results": [
+    {
+      "name": "林思远",
+      "role": "函数调用增强开发",
+      "model": "meta/llama-3.1-405b-instruct",
+      "status": "成功",
+      "prompt_tokens": 151,
+      "completion_tokens": 634,
+      "total_tokens": 785,
+      "elapsed": 13.53
+    },
+    {
+      "name": "张晓明",
+      "role": "反思机制增强开发",
+      "model": "qwen/qwen3.5-397b-a17b",
+      "status": "成功",
+      "prompt_tokens": 115,
+      "completion_tokens": 957,
+      "total_tokens": 1072,
+      "elapsed": 25.77
+    },
+    {
+      "name": "赵心怡",
+      "role": "工具生态系统开发",
+      "model": "minimaxai/minimax-m2.5",
+      "status": "成功",
+      "prompt_tokens": 131,
+      "completion_tokens": 5140,
+      "total_tokens": 5271,
+      "elapsed": 68.35
+    },
+    {
+      "name": "陈浩然",
+      "role": "自主学习迭代开发",
+      "model": "deepseek-ai/deepseek-v3.2",
+      "status": "异常",
+      "total_tokens": 0
+    }
+  ]
+}
