@@ -269,7 +269,7 @@ MODEL_CHAIN = [
         "model_id": "nvidia/llama-3.1-nemotron-ultra-253b-v1",
         "alias": "NVIDIA Nemotron Ultra 253B",
         "base_url": "https://integrate.api.nvidia.com/v1",
-        "api_key": "$NVIDIA_API_KEY",
+        "api_key": "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",
         "api_type": "openai-completions",
         "context_window": 128000,
         "timeout": 120,
@@ -281,18 +281,37 @@ MODEL_CHAIN = [
         "temperature": 0.6,
         "top_p": 0.95,
         "max_tokens": 4096
+    },
+    # ==================== NVIDIA MiniMax M2.5 ====================
+    {
+        "name": "nvidia_minimax_m2_5",
+        "provider": "nvidia",
+        "model_id": "minimaxai/minimax-m2.5",
+        "alias": "NVIDIA MiniMax M2.5",
+        "base_url": "https://integrate.api.nvidia.com/v1",
+        "api_key": "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",
+        "api_type": "openai-completions",
+        "context_window": 128000,
+        "timeout": 90,
+        "max_retries": 3,
+        "enabled": True,
+        "priority": 2,
+        "supports_stream": True,
+        "temperature": 1.0,
+        "top_p": 0.95,
+        "max_tokens": 8192
     }
 ]
 
 # 模型统计
 MODEL_STATS = {
-    "total_models": 17,
+    "total_models": 18,
     "providers": [
         {"name": "zhipu", "count": 6, "alias": "智谱"},
         {"name": "modelscope", "count": 10, "alias": "ModelScope"},
-        {"name": "nvidia", "count": 1, "alias": "NVIDIA"}
+        {"name": "nvidia", "count": 2, "alias": "NVIDIA"}
     ],
-    "last_updated": "2026-03-08 10:20"
+    "last_updated": "2026-03-08 11:25"
 }
 
 # 故障恢复配置
