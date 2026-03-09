@@ -1,0 +1,50 @@
+{
+  "uptime": 1773050252.3407123,
+  "total_calls": 3,
+  "success_rate": 100.0,
+  "active_calls": 0,
+  "model_stats": {
+    "glm-z1-flash": {
+      "success": 1,
+      "fail": 0,
+      "total_time": 0.8911821842193604,
+      "calls": 1
+    },
+    "qwen/qwen3.5-397b-a17b": {
+      "success": 1,
+      "fail": 0,
+      "total_time": 1.8891046047210693,
+      "calls": 1
+    },
+    "Doubao-Seed-2.0-Code": {
+      "success": 1,
+      "fail": 0,
+      "total_time": 9.015389204025269,
+      "calls": 1
+    }
+  },
+  "recent_calls": [
+    {
+      "model": "glm-z1-flash",
+      "success": true,
+      "elapsed": 0.8911821842193604,
+      "prompt": "hello",
+      "timestamp": "2026-03-09T17:57:32"
+    },
+    {
+      "model": "qwen/qwen3.5-397b-a17b",
+      "success": true,
+      "elapsed": 1.8891046047210693,
+      "prompt": "hello",
+      "timestamp": "2026-03-09T17:57:32"
+    },
+    {
+      "model": "Doubao-Seed-2.0-Code",
+      "success": true,
+      "elapsed": 9.015389204025269,
+      "prompt": "hello",
+      "timestamp": "2026-03-09T17:57:32"
+    }
+  ],
+  "last_update": "2026-03-09T17:57:32"
+}

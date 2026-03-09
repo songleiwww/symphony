@@ -1,37 +1,26 @@
-# Symphony .gitignore
-
-# 配置文件 (包含敏感信息)
-config.py
-*.pyc
+# Python
 __pycache__/
 *.py[cod]
 *$py.class
-
-# 环境变量
-.env
-.env.local
-.env.*.local
-
-# 密钥文件
-*.key
-*.pem
-*.cert
+*.so
+.Python
+*.egg-info/
 
 # IDE
 .vscode/
 .idea/
-*.swp
-*.swo
-*~
 
-# 日志
-*.log
-logs/
-
-# 系统文件
+# OS
 .DS_Store
 Thumbs.db
 
-# 输出目录
-outputs/
-results/
+# Logs
+*.log
+
+# Test
+.pytest_cache/
+
+# Build
+dist/
+build/
+*.egg/

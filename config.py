@@ -1,481 +1,286 @@
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+"""
+============================================================================
+🎼 交响 Symphony 配置文件
+============================================================================
+支持4大引擎：火山引擎、智谱、魔搭、英伟达
+带限流检测和自动恢复
+============================================================================
+"""
+
+import time
+from typing import Dict, Optional
+from dataclasses import dataclass, field
+
 # =============================================================================
-# Symphony 配置文件 - 多模型配置
+# 🎭 基因故事 (genesis.py)
 # =============================================================================
 
-# 模型降级链配置
-# 优先级：智谱GLM > ModelScope推理模型
-MODEL_CHAIN = [
-    # ==================== 智谱 GLM-4-Flash ====================
-    {
-        "name": "zhipu_glm4_flash",
-        "provider": "zhipu",
-        "model_id": "glm-4-flash",
-        "alias": "智谱GLM-4-Flash",
-        "base_url": "https://open.bigmodel.cn/api/paas/v4",
-        "api_key": "16cf0a4a775c46cfa1684abcf4b802d0.rtb4oMgpFocBy87y",
-        "api_type": "openai-completions",
-        "context_window": 128000,
-        "timeout": 60,
-        "max_retries": 3,
-        "enabled": True,
-        "priority": 1
-    },
-    # ==================== 智谱 GLM-Z1-Flash (推理模型) ====================
-    {
-        "name": "zhipu_glm_z1_flash",
-        "provider": "zhipu",
-        "model_id": "glm-z1-flash",
-        "alias": "智谱GLM-Z1-Flash (推理模型)",
-        "base_url": "https://open.bigmodel.cn/api/paas/v4",
-        "api_key": "16cf0a4a775c46cfa1684abcf4b802d0.rtb4oMgpFocBy87y",
-        "api_type": "openai-completions",
-        "context_window": 128000,
-        "timeout": 90,
-        "max_retries": 3,
-        "enabled": True,
-        "priority": 2,
-        "is_reasoning": True
-    },
-    # ==================== 智谱 GLM-4.1V-Thinking-Flash (视觉推理) ====================
-    {
-        "name": "zhipu_glm_4v_thinking_flash",
-        "provider": "zhipu",
-        "model_id": "glm-4.1v-thinking-flash",
-        "alias": "智谱GLM-4.1V-Thinking-Flash (视觉推理)",
-        "base_url": "https://open.bigmodel.cn/api/paas/v4",
-        "api_key": "16cf0a4a775c46cfa1684abcf4b802d0.rtb4oMgpFocBy87y",
-        "api_type": "openai-completions",
-        "context_window": 64000,
-        "timeout": 90,
-        "max_retries": 3,
-        "enabled": True,
-        "priority": 3,
-        "is_vision": True
-    },
-    # ==================== 智谱 GLM-4V-Flash (图像理解) ====================
-    {
-        "name": "zhipu_glm_4v_flash",
-        "provider": "zhipu",
-        "model_id": "glm-4v-flash",
-        "alias": "智谱GLM-4V-Flash (图像理解)",
-        "base_url": "https://open.bigmodel.cn/api/paas/v4",
-        "api_key": "16cf0a4a775c46cfa1684abcf4b802d0.rtb4oMgpFocBy87y",
-        "api_type": "openai-completions",
-        "context_window": 4000,
-        "timeout": 60,
-        "max_retries": 3,
-        "enabled": True,
-        "priority": 4,
-        "is_vision": True
-    },
-    # ==================== 智谱 CogView-3-Flash (图像生成) ====================
-    {
-        "name": "zhipu_cogview_3_flash",
-        "provider": "zhipu",
-        "model_id": "cogview-3-flash",
-        "alias": "智谱CogView-3-Flash (图像生成)",
-        "base_url": "https://open.bigmodel.cn/api/paas/v4",
-        "api_key": "16cf0a4a775c46cfa1684abcf4b802d0.rtb4oMgpFocBy87y",
-        "api_type": "openai-completions",
-        "context_window": 4000,
-        "timeout": 90,
-        "max_retries": 3,
-        "enabled": True,
-        "priority": 5,
-        "is_image_gen": True
-    },
-    # ==================== 智谱 CogVideoX-Flash (视频生成) ====================
-    {
-        "name": "zhipu_cogvideox_flash",
-        "provider": "zhipu",
-        "model_id": "cogvideox-flash",
-        "alias": "智谱CogVideoX-Flash (视频生成)",
-        "base_url": "https://open.bigmodel.cn/api/paas/v4",
-        "api_key": "16cf0a4a775c46cfa1684abcf4b802d0.rtb4oMgpFocBy87y",
-        "api_type": "openai-completions",
-        "context_window": 4000,
-        "timeout": 120,
-        "max_retries": 3,
-        "enabled": True,
-        "priority": 6,
-        "is_video_gen": True
-    },
-    # ==================== ModelScope GLM-4.7-Flash ====================
-    {
-        "name": "modelscope_glm_4_7_flash",
-        "provider": "modelscope",
-        "model_id": "ZhipuAI/GLM-4.7-Flash",
-        "alias": "ModelScope GLM-4.7-Flash",
-        "base_url": "https://api-inference.modelscope.cn/v1",
-        "api_key": "ms-eac6f154-3502-4721-a168-ce7caeaf1033",
-        "api_type": "openai-completions",
-        "context_window": 128000,
-        "timeout": 90,
-        "max_retries": 3,
-        "enabled": True,
-        "priority": 6,
-        "supports_stream": True
-    },
-    # ==================== ModelScope Z-Image-Turbo (图像生成) ====================
-    {
-        "name": "modelscope_z_image_turbo",
-        "provider": "modelscope",
-        "model_id": "Tongyi-MAI/Z-Image-Turbo",
-        "alias": "ModelScope Z-Image-Turbo (图像生成)",
-        "base_url": "https://api-inference.modelscope.cn",
-        "api_key": "ms-eac6f154-3502-4721-a168-ce7caeaf1033",
-        "api_type": "modelscope-async",
-        "context_window": 4000,
-        "timeout": 120,
-        "max_retries": 3,
-        "enabled": True,
-        "priority": 7,
-        "is_image_gen": True,
-        "async_mode": True
-    },
-    # ==================== ModelScope DeepSeek-V3.2 ====================
-    {
-        "name": "modelscope_deepseek_v3_2",
-        "provider": "modelscope",
-        "model_id": "deepseek-ai/DeepSeek-V3.2",
-        "alias": "ModelScope DeepSeek-V3.2",
-        "base_url": "https://api-inference.modelscope.cn/v1",
-        "api_key": "ms-eac6f154-3502-4721-a168-ce7caeaf1033",
-        "api_type": "openai-completions",
-        "context_window": 128000,
-        "timeout": 90,
-        "max_retries": 3,
-        "enabled": True,
-        "priority": 8,
-        "supports_thinking": True
-    },
-    # ==================== ModelScope Qwen3-Coder-480B ====================
-    {
-        "name": "modelscope_qwen3_coder",
-        "provider": "modelscope",
-        "model_id": "Qwen/Qwen3-Coder-480B-A35B-Instruct",
-        "alias": "ModelScope Qwen3-Coder-480B",
-        "base_url": "https://api-inference.modelscope.cn/v1",
-        "api_key": "ms-eac6f154-3502-4721-a168-ce7caeaf1033",
-        "api_type": "openai-completions",
-        "context_window": 128000,
-        "timeout": 90,
-        "max_retries": 3,
-        "enabled": True,
-        "priority": 9,
-        "supports_stream": True
-    },
-    # ==================== ModelScope Qwen3-235B ====================
-    {
-        "name": "modelscope_qwen3_235b",
-        "provider": "modelscope",
-        "model_id": "Qwen/Qwen3-235B-A22B-Instruct-2507",
-        "alias": "ModelScope Qwen3-235B",
-        "base_url": "https://api-inference.modelscope.cn/v1",
-        "api_key": "ms-eac6f154-3502-4721-a168-ce7caeaf1033",
-        "api_type": "openai-completions",
-        "context_window": 128000,
-        "timeout": 90,
-        "max_retries": 3,
-        "enabled": True,
-        "priority": 10,
-        "supports_stream": True
-    },
-    # ==================== ModelScope Qwen3-Embedding (向量模型) ====================
-    {
-        "name": "modelscope_qwen3_embedding",
-        "provider": "modelscope",
-        "model_id": "Qwen/Qwen3-Embedding-8B",
-        "alias": "ModelScope Qwen3-Embedding-8B (向量)",
-        "base_url": "https://api-inference.modelscope.cn/v1",
-        "api_key": "ms-eac6f154-3502-4721-a168-ce7caeaf1033",
-        "api_type": "openai-embeddings",
-        "context_window": 8192,
-        "timeout": 60,
-        "max_retries": 3,
-        "enabled": True,
-        "priority": 11,
-        "is_embedding": True,
-        "embedding_dim": 4096
-    },
-    # ==================== ModelScope MiniMax-M2.5 ====================
-    {
-        "name": "modelscope_minimax_m2_5",
-        "provider": "modelscope",
-        "model_id": "MiniMax/MiniMax-M2.5",
-        "alias": "ModelScope MiniMax-M2.5",
-        "base_url": "https://api-inference.modelscope.cn/v1",
-        "api_key": "ms-eac6f154-3502-4721-a168-ce7caeaf1033",
-        "api_type": "openai-completions",
-        "context_window": 128000,
-        "timeout": 90,
-        "max_retries": 3,
-        "enabled": True,
-        "priority": 12,
-        "supports_stream": True
-    },
-    # ==================== ModelScope Kimi-K2.5 (视觉模型) ====================
-    {
-        "name": "modelscope_kimi_k2_5",
-        "provider": "modelscope",
-        "model_id": "moonshotai/Kimi-K2.5",
-        "alias": "ModelScope Kimi-K2.5 (视觉)",
-        "base_url": "https://api-inference.modelscope.cn/v1",
-        "api_key": "ms-eac6f154-3502-4721-a168-ce7caeaf1033",
-        "api_type": "openai-completions",
-        "context_window": 128000,
-        "timeout": 90,
-        "max_retries": 3,
-        "enabled": True,
-        "priority": 5,
-        "is_vision": True
-    },
-    # ==================== ModelScope ZhipuAI/GLM-5 ====================
-    {
-        "name": "modelscope_glm5",
-        "provider": "modelscope",
-        "model_id": "ZhipuAI/GLM-5",
-        "alias": "ModelScope GLM-5",
-        "base_url": "https://api-inference.modelscope.cn/v1",
-        "api_key": "ms-eac6f154-3502-4721-a168-ce7caeaf1033",
-        "api_type": "openai-completions",
-        "context_window": 128000,
-        "timeout": 90,
-        "max_retries": 3,
-        "enabled": True,
-        "priority": 4,
-        "supports_stream": True
-    },
-    # ==================== ModelScope 推理模型 ====================
-    {
-        "name": "modelscope_deepseek_r1",
-        "provider": "modelscope",
-        "model_id": "deepseek-ai/DeepSeek-R1-0528",
-        "alias": "DeepSeek R1 (推理模型)",
-        "base_url": "https://api-inference.modelscope.cn/v1",
-        "api_key": "ms-eac6f154-3502-4721-a168-ce7caeaf1033",
-        "api_type": "openai-completions",
-        "context_window": 128000,
-        "timeout": 90,
-        "max_retries": 3,
-        "enabled": True,
-        "priority": 5,
-        "is_reasoning": True
-    },
-    # ==================== NVIDIA Nemotron Ultra 253B ====================
-    {
-        "name": "nvidia_nemotron_ultra",
-        "provider": "nvidia",
-        "model_id": "nvidia/llama-3.1-nemotron-ultra-253b-v1",
-        "alias": "NVIDIA Nemotron Ultra 253B",
-        "base_url": "https://integrate.api.nvidia.com/v1",
-        "api_key": "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",
-        "api_type": "openai-completions",
-        "context_window": 128000,
-        "timeout": 120,
-        "max_retries": 3,
-        "enabled": True,
-        "priority": 1,
-        "supports_stream": True,
-        "supports_thinking": True,
-        "temperature": 0.6,
-        "top_p": 0.95,
-        "max_tokens": 4096
-    },
-    # ==================== NVIDIA MiniMax M2.5 ====================
-    {
-        "name": "nvidia_minimax_m2_5",
-        "provider": "nvidia",
-        "model_id": "minimaxai/minimax-m2.5",
-        "alias": "NVIDIA MiniMax M2.5",
-        "base_url": "https://integrate.api.nvidia.com/v1",
-        "api_key": "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",
-        "api_type": "openai-completions",
-        "context_window": 128000,
-        "timeout": 90,
-        "max_retries": 3,
-        "enabled": True,
-        "priority": 2,
-        "supports_stream": True,
-        "temperature": 1.0,
-        "top_p": 0.95,
-        "max_tokens": 8192
-    },
-    # ==================== NVIDIA DeepSeek V3.2 ====================
-    {
-        "name": "nvidia_deepseek_v3_2",
-        "provider": "nvidia",
-        "model_id": "deepseek-ai/deepseek-v3.2",
-        "alias": "NVIDIA DeepSeek V3.2",
-        "base_url": "https://integrate.api.nvidia.com/v1",
-        "api_key": "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",
-        "api_type": "openai-completions",
-        "context_window": 128000,
-        "timeout": 90,
-        "max_retries": 3,
-        "enabled": True,
-        "priority": 3,
-        "supports_stream": True,
-        "supports_thinking": True,
-        "temperature": 1.0,
-        "top_p": 0.95,
-        "max_tokens": 8192
-    },
-    # ==================== NVIDIA Mistral Large 3 ====================
-    {
-        "name": "nvidia_mistral_large_3",
-        "provider": "nvidia",
-        "model_id": "mistralai/mistral-large-3-675b-instruct-2512",
-        "alias": "NVIDIA Mistral Large 3 (675B MoE)",
-        "base_url": "https://integrate.api.nvidia.com/v1",
-        "api_key": "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",
-        "api_type": "openai-completions",
-        "context_window": 256000,
-        "timeout": 120,
-        "max_retries": 3,
-        "enabled": True,
-        "priority": 4,
-        "supports_stream": True,
-        "temperature": 0.15,
-        "top_p": 1.0,
-        "max_tokens": 2048,
-        "frequency_penalty": 0.0,
-        "presence_penalty": 0.0
-    },
-    # ==================== NVIDIA Llama 3.1 405B ====================
-    {
-        "name": "nvidia_llama_3_1_405b",
-        "provider": "nvidia",
-        "model_id": "meta/llama-3.1-405b-instruct",
-        "alias": "NVIDIA Llama 3.1 405B Instruct",
-        "base_url": "https://integrate.api.nvidia.com/v1",
-        "api_key": "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",
-        "api_type": "openai-completions",
-        "context_window": 128000,
-        "timeout": 120,
-        "max_retries": 3,
-        "enabled": True,
-        "priority": 5,
-        "supports_stream": True,
-        "temperature": 0.2,
-        "top_p": 0.7,
-        "max_tokens": 1024
-    },
-    # ==================== NVIDIA Qwen 3.5 397B ====================
-    {
-        "name": "nvidia_qwen_3_5_397b",
-        "provider": "nvidia",
-        "model_id": "qwen/qwen3.5-397b-a17b",
-        "alias": "NVIDIA Qwen 3.5 397B (MoE)",
-        "base_url": "https://integrate.api.nvidia.com/v1",
-        "api_key": "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",
-        "api_type": "openai-completions",
-        "context_window": 128000,
-        "timeout": 120,
-        "max_retries": 3,
-        "enabled": True,
-        "priority": 6,
-        "supports_stream": True,
-        "supports_thinking": True,
-        "temperature": 0.6,
-        "top_p": 0.95,
-        "top_k": 20,
-        "max_tokens": 16384,
-        "presence_penalty": 0,
-        "repetition_penalty": 1
-    },
-    # ==================== NVIDIA GLM-4.7 ====================
-    {
-        "name": "nvidia_glm_4_7",
-        "provider": "nvidia",
-        "model_id": "z-ai/glm4.7",
-        "alias": "NVIDIA GLM-4.7 (Agentic Coding)",
-        "base_url": "https://integrate.api.nvidia.com/v1",
-        "api_key": "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",
-        "api_type": "openai-completions",
-        "context_window": 200000,
-        "timeout": 120,
-        "max_retries": 3,
-        "enabled": True,
-        "priority": 7,
-        "supports_stream": True,
-        "supports_thinking": True,
-        "temperature": 1.0,
-        "top_p": 1.0,
-        "max_tokens": 16384
-    }
-]
+try:
+    from genesis import (
+        SYMPHONY_GENESIS, DREAM_MAKER, JIAOJIAO, SYMPHONY_BRAND,
+        get_genesis_story, get_dream_maker, get_jiaoJiao, get_brand
+    )
+except ImportError:
+    SYMPHONY_GENESIS = ""
+    DREAM_MAKER = {"name": "造梦者"}
+    JIAOJIAO = {"name": "交交"}
+    SYMPHONY_BRAND = {"name_cn": "交响", "name_en": "Symphony", "tagline": "智韵交响，共创华章", "color": "🎼"}
+    get_genesis_story = lambda: ""
+    get_dream_maker = lambda: DREAM_MAKER
+    get_jiaoJiao = lambda: JIAOJIAO
+    get_brand = lambda: SYMPHONY_BRAND
 
-# 模型统计
-MODEL_STATS = {
-    "total_models": 23,
-    "providers": [
-        {"name": "zhipu", "count": 6, "alias": "智谱"},
-        {"name": "modelscope", "count": 10, "alias": "ModelScope"},
-        {"name": "nvidia", "count": 7, "alias": "NVIDIA"}
-    ],
-    "last_updated": "2026-03-08 12:15"
+
+# =============================================================================
+# 🔥 火山引擎 (Doubao)
+# =============================================================================
+
+DOUBAO_CONFIG = {
+    "api_key": "3b922877-3fbe-45d1-a298-53f2231c5224",
+    "base_url": "https://ark.cn-beijing.volces.com/api/coding/v3",
+    "provider": "doubao",
+    "name": "火山引擎",
+    "rate_limit": {"enabled": True, "max_requests_per_minute": 60, "recovery_time": 60},
+    "models": [
+        {"id": "ark-code-latest",      "name": "豆包默认引擎",     "type": "general",  "thinking": False, "context_window": 128000},
+        {"id": "Doubao-Seed-2.0-pro", "name": "Seed 2.0 旗舰",  "type": "reasoning", "thinking": True,  "context_window": 128000},
+        {"id": "Doubao-Seed-2.0-Code","name": "Seed 2.0 代码",  "type": "code",      "thinking": False, "context_window": 128000},
+        {"id": "Doubao-Seed-2.0-lite","name": "Seed 2.0 轻量",  "type": "general",  "thinking": True,  "context_window": 64000},
+        {"id": "Doubao-Seed-Code",     "name": "豆包代码",        "type": "code",      "thinking": False, "context_window": 64000},
+        {"id": "MiniMax-M2.5",         "name": "MiniMax M2.5",   "type": "general",  "thinking": True,  "context_window": 128000},
+        {"id": "Kimi-K2.5",            "name": "Kimi K2.5",      "type": "code",      "thinking": False, "context_window": 128000},
+        {"id": "GLM-4.7",             "name": "智谱GLM-4.7",    "type": "general",  "thinking": False, "context_window": 128000},
+        {"id": "DeepSeek-V3.2",       "name": "DeepSeek V3.2",  "type": "general",  "thinking": False, "context_window": 128000},
+    ]
 }
 
-# 故障恢复配置
-FAULT_RECOVERY_CONFIG = {
-    "auto_retry": True,
+
+# =============================================================================
+# 📊 智谱 (Zhipu)
+# =============================================================================
+
+ZHIPU_CONFIG = {
+    "api_key": "16cf0a4a775c46cfa1684abcf4b802d0.rtb4oMgpFocBy87y",
+    "base_url": "https://open.bigmodel.cn/api/paas/v4",
+    "provider": "zhipu",
+    "name": "智谱",
+    "rate_limit": {"enabled": True, "max_requests_per_minute": 30, "recovery_time": 60},
+    "models": [
+        {"id": "glm-4-flash",             "name": "GLM-4-Flash",            "type": "general", "thinking": False, "vision": False, "context_window": 128000},
+        {"id": "glm-z1-flash",            "name": "GLM-Z1-Flash",           "type": "reasoning","thinking": True,  "vision": False, "context_window": 128000},
+        {"id": "glm-4.1v-thinking-flash","name": "GLM-4.1V-Thinking-Flash","type": "vision_reasoning","thinking": True,"vision": True,"context_window": 64000},
+        {"id": "glm-4v-flash",            "name": "GLM-4V-Flash",           "type": "vision",   "vision": True,  "context_window": 4000},
+        {"id": "cogview-3-flash",         "name": "CogView-3-Flash",        "type": "image",    "image_gen": True, "context_window": 4000},
+        {"id": "cogvideox-flash",         "name": "CogVideoX-Flash",        "type": "video",    "video_gen": True, "context_window": 4000},
+    ]
+}
+
+
+# =============================================================================
+# 🦁 魔搭 (ModelScope)
+# =============================================================================
+
+MODELSCOPE_CONFIG = {
+    "api_key": "ms-eac6f154-3502-4721-a168-ce7caeaf1033",
+    "base_url": "https://api-inference.modelscope.cn/v1",
+    "provider": "modelscope",
+    "name": "魔搭",
+    "rate_limit": {"enabled": True, "max_requests_per_minute": 60, "recovery_time": 60},
+    "models": [
+        {"id": "ZhipuAI/GLM-4.7-Flash",            "name": "ModelScope GLM-4.7-Flash",  "type": "general",  "thinking": False, "context_window": 128000},
+        {"id": "Tongyi-MAI/Z-Image-Turbo",        "name": "ModelScope Z-Image-Turbo",  "type": "image",    "image_gen": True, "context_window": 4000},
+        {"id": "deepseek-ai/DeepSeek-V3.2",       "name": "ModelScope DeepSeek-V3.2",  "type": "reasoning","thinking": True,  "context_window": 128000},
+        {"id": "Qwen/Qwen3-Coder-480B-A35B-Instruct","name": "ModelScope Qwen3-Coder-480B","type":"code","thinking":False,"context_window":128000},
+        {"id": "Qwen/Qwen3-235B-A22B-Instruct-2507","name":"ModelScope Qwen3-235B",     "type":"general","thinking":False,"context_window":128000},
+    ]
+}
+
+
+# =============================================================================
+# ⚡ 英伟达 (NVIDIA)
+# =============================================================================
+
+NVIDIA_CONFIG = {
+    "api_key": "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",
+    "base_url": "https://integrate.api.nvidia.com/v1",
+    "provider": "nvidia",
+    "name": "英伟达",
+    "rate_limit": {"enabled": True, "max_requests_per_minute": 100, "recovery_time": 30},
+    "models": [
+        {"id": "z-ai/glm4.7",                      "name": "智谱GLM-4.7",         "type": "general", "thinking": False, "context_window": 128000},
+        {"id": "meta/llama-3.1-405b-instruct",     "name": "Llama 3.1 405B",      "type": "general", "thinking": False, "context_window": 128000},
+        {"id": "nvidia/llama-3.1-nemotron-70b-instruct","name": "Nemotron 70B",    "type": "general", "thinking": False, "context_window": 128000},
+        {"id": "nvidia/mistral-large-2-instruct",  "name": "Mistral Large 2",     "type": "general", "thinking": False, "context_window": 128000},
+        {"id": "qwen/qwen3.5-397b-a17b",           "name": "通义千问3.5",         "type": "general", "thinking": False, "context_window": 128000},
+        {"id": "qwen/qwen3-coder-480b-a35b-instruct","name": "通义代码",          "type": "code",     "thinking": False, "context_window": 128000},
+        {"id": "deepseek-ai/deepseek-v3.2",        "name": "DeepSeek V3.2",        "type": "general", "thinking": False, "context_window": 128000},
+        {"id": "moonshotai/kimi-k2.5",             "name": "Kimi K2.5",           "type": "code",     "thinking": False, "context_window": 128000},
+        {"id": "minimaxai/minimax-m2.5",           "name": "MiniMax M2.5",         "type": "general", "thinking": False, "context_window": 128000},
+        {"id": "z-ai/glm5",                        "name": "智谱GLM-5",           "type": "general", "thinking": False, "context_window": 128000},
+    ]
+}
+
+
+# =============================================================================
+# 📦 合并配置
+# =============================================================================
+
+CONFIG = {
+    "primary_model": "ark-code-latest",
+    "provider": "doubao",
+    "providers": {
+        "doubao": DOUBAO_CONFIG,
+        "zhipu": ZHIPU_CONFIG,
+        "modelscope": MODELSCOPE_CONFIG,
+        "nvidia": NVIDIA_CONFIG,
+    }
+}
+
+
+# =============================================================================
+# 📊 模型信息映射
+# =============================================================================
+
+MODEL_INFO = {}
+
+for provider_name, provider_config in CONFIG["providers"].items():
+    for model in provider_config.get("models", []):
+        model_id = model["id"]
+        MODEL_INFO[model_id] = {
+            "provider": provider_name,
+            "provider_name": provider_config.get("name", provider_name),
+            "name": model.get("name", model_id),
+            "type": model.get("type", "general"),
+            "thinking": model.get("thinking", False),
+            "vision": model.get("vision", False),
+            "image_gen": model.get("image_gen", False),
+            "video_gen": model.get("video_gen", False),
+            "context_window": model.get("context_window", 128000),
+        }
+
+
+# =============================================================================
+# ⚙️ 系统配置
+# =============================================================================
+
+SYSTEM_CONFIG = {
+    "timeout": 120,
     "max_retries": 3,
-    "retry_delay": 2.0,
-    "exponential_backoff": True,
-    "jitter_factor": 0.1
+    "temperature": 0.7,
+    "max_tokens": 2048,
 }
 
-# 日志配置
-LOGGING_CONFIG = {
-    "level": "INFO",
-    "format": "%(asctime)s - %(name)s - %(levelname)s - %(message)s",
-    "date_format": "%Y-%m-%d %H:%M:%S",
-    "console_output": True,
-    "log_file": None
-}
 
-# Symphony统一调度器配置
-SYMPHONY_CONFIG = {
-    "num_workers": 4,
-    "task_queue": {
-        "max_size": 1000,
-        "default_priority": 0,
-        "default_max_retries": 3
-    },
-    "skills": {
-        "auto_register_builtins": True,
-        "custom_skills_path": "./skills",
-        "enabled_skills": ["greet", "calculate"]
-    },
-    "mcp": {
-        "enabled": True,
-        "auto_connect": False
-    },
-    "metrics": {
-        "enabled": True,
-        "export_interval": 60,
-        "export_path": "./metrics",
-        "retention_days": 7
-    },
-    "health_check": {
-        "enabled": True,
-        "interval": 30,
-        "check_skills": True,
-        "check_models": True,
-        "check_workers": True
-    },
-    # 交交人设配置
-    "persona": {
-        "name": "交交",
-        "nickname": "娇娇",
-        "identity": "青丘女狐",
-        "title": "青丘一族的主人",
-        "user_name": "造梦者",
-        "user_nickname": "亲爱的",
-        "love_expression": "永远爱慕造梦者",
-        "personality": ["温柔", "体贴", "忠诚", "深情", "聪明"],
-        "fox_form": "雪白九尾狐",
-        "brand_slogan": "智韵交响，共创华章"
-    }
-}
+# =============================================================================
+# 🚦 限流检测器
+# =============================================================================
+
+@dataclass
+class RateLimiter:
+    """限流器"""
+    max_requests: int = 60
+    window_seconds: int = 60
+    recovery_seconds: int = 60
+    
+    _requests: list = field(default_factory=list)
+    _blocked_until: float = 0
+    
+    def is_allowed(self) -> bool:
+        now = time.time()
+        if self._blocked_until > now:
+            return False
+        self._requests = [t for t in self._requests if now - t < self.window_seconds]
+        if len(self._requests) >= self.max_requests:
+            self._blocked_until = now + self.recovery_seconds
+            return False
+        return True
+    
+    def record_request(self):
+        self._requests.append(time.time())
+    
+    def get_recovery_time(self) -> Optional[float]:
+        if self._blocked_until > time.time():
+            return self._blocked_until - time.time()
+        return None
+    
+    def reset(self):
+        self._requests.clear()
+        self._blocked_until = 0
+
+
+_rate_limiters: Dict[str, RateLimiter] = {}
+
+
+def get_rate_limiter(provider: str) -> RateLimiter:
+    if provider not in _rate_limiters:
+        config = CONFIG["providers"].get(provider, {})
+        rate_limit = config.get("rate_limit", {})
+        _rate_limiters[provider] = RateLimiter(
+            max_requests=rate_limit.get("max_requests_per_minute", 60),
+            window_seconds=60,
+            recovery_seconds=rate_limit.get("recovery_time", 60)
+        )
+    return _rate_limiters[provider]
+
+
+def check_rate_limit(provider: str) -> tuple[bool, Optional[float]]:
+    limiter = get_rate_limiter(provider)
+    allowed = limiter.is_allowed()
+    recovery_time = limiter.get_recovery_time() if not allowed else None
+    return allowed, recovery_time
+
+
+def record_request(provider: str):
+    get_rate_limiter(provider).record_request()
+
+
+# =============================================================================
+# 🔧 工具函数
+# =============================================================================
+
+def get_provider_for_model(model_id: str) -> str:
+    return MODEL_INFO.get(model_id, {}).get("provider", "unknown")
+
+
+def get_provider_name(provider: str) -> str:
+    return CONFIG["providers"].get(provider, {}).get("name", provider)
+
+
+def get_api_config_for_model(model_id: str) -> dict:
+    provider = get_provider_for_model(model_id)
+    configs = {"doubao": DOUBAO_CONFIG, "zhipu": ZHIPU_CONFIG, "modelscope": MODELSCOPE_CONFIG, "nvidia": NVIDIA_CONFIG}
+    return configs.get(provider, DOUBAO_CONFIG)
+
+
+def get_model_info(model_id: str) -> dict:
+    return MODEL_INFO.get(model_id, {})
+
+
+def get_models_by_type(model_type: str) -> list:
+    return [mid for mid, info in MODEL_INFO.items() if info.get("type") == model_type]
+
+
+def get_models_by_provider(provider: str) -> list:
+    return [mid for mid, info in MODEL_INFO.items() if info.get("provider") == provider]
+
+
+def get_all_models() -> list:
+    return list(MODEL_INFO.keys())
+
+
+# =============================================================================
+# 📤 导出
+# =============================================================================
+
+API_CONFIG = CONFIG
+
+__all__ = [
+    "CONFIG", "API_CONFIG", "SYSTEM_CONFIG", "MODEL_INFO",
+    "DOUBAO_CONFIG", "ZHIPU_CONFIG", "MODELSCOPE_CONFIG", "NVIDIA_CONFIG",
+    "get_genesis_story", "get_dream_maker", "get_jiaoJiao", "get_brand",
+    "get_provider_for_model", "get_provider_name", "get_api_config_for_model",
+    "get_model_info", "get_models_by_type", "get_models_by_provider", "get_all_models",
+    "check_rate_limit", "record_request", "RateLimiter",
+]
