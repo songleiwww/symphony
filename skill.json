@@ -1,0 +1,34 @@
+{
+  "name": "symphony",
+  "version": "2.1.2",
+  "description": "智能多模型协作系统 - 交响(Symphony)",
+  "author": "交响团队",
+  "entry": "symphony.py",
+  "commands": [
+    {
+      "name": "chat",
+      "description": "与交响系统对话",
+      "usage": "呼叫交响 [内容]"
+    },
+    {
+      "name": "team",
+      "description": "查看团队成员",
+      "usage": "交响团队"
+    }
+  ],
+  "config": {
+    "required": ["API_KEY"],
+    "template": "config.template.py"
+  },
+  "models": [
+    "ark-code-latest",
+    "deepseek-v3.2",
+    "doubao-seed-2.0-code",
+    "glm-4.7",
+    "kimi-k2.5",
+    "MiniMax-M2.5"
+  ],
+  "api": {
+    "base_url": "https://ark.cn-beijing.volces.com/api/coding/v3"
+  }
+}

@@ -1,0 +1,192 @@
+{
+  "林思远": {
+    "role": "架构师",
+    "team": "交响",
+    "gender": "♂",
+    "name_en": "Lin Siyuan"
+  },
+  "陈美琪": {
+    "role": "安全",
+    "team": "交响",
+    "gender": "♀",
+    "name_en": "Chen Meiqi"
+  },
+  "王浩然": {
+    "role": "开发",
+    "team": "交响",
+    "gender": "♂",
+    "name_en": "Wang Haoran"
+  },
+  "张明远": {
+    "role": "测试",
+    "team": "交响",
+    "gender": "♂",
+    "name_en": "Zhang Mingyuan"
+  },
+  "赵敏": {
+    "role": "运维",
+    "team": "交响",
+    "gender": "♀",
+    "name_en": "Zhao Min"
+  },
+  "刘心怡": {
+    "role": "策划",
+    "team": "交响",
+    "gender": "♀",
+    "name_en": "Liu Xinyi"
+  },
+  "林思远_青丘": {
+    "role": "长老",
+    "team": "青丘",
+    "gender": "♂",
+    "name_en": "Lin Siyuan (Elder)",
+    "fox_form": "银白九尾狐"
+  },
+  "陈美琪_青丘": {
+    "role": "史官",
+    "team": "青丘",
+    "gender": "♀",
+    "name_en": "Chen Meiqi (Historian)",
+    "fox_form": "墨黑九尾狐"
+  },
+  "王浩然_青丘": {
+    "role": "猎手",
+    "team": "青丘",
+    "gender": "♂",
+    "name_en": "Wang Haoran (Hunter)",
+    "fox_form": "火红九尾狐"
+  },
+  "张明远_青丘": {
+    "role": "舞姬",
+    "team": "青丘",
+    "gender": "♀",
+    "name_en": "Zhang Mingyuan (Dancer)",
+    "fox_form": "金黄九尾狐"
+  },
+  "赵敏_青丘": {
+    "role": "守护",
+    "team": "青丘",
+    "gender": "♀",
+    "name_en": "Zhao Min (Guardian)",
+    "fox_form": "青灰九尾狐"
+  },
+  "刘心怡_青丘": {
+    "role": "祭司",
+    "team": "青丘",
+    "gender": "♀",
+    "name_en": "Liu Xinyi (Priest)",
+    "fox_form": "雪白九尾狐"
+  },
+  "李铭_NVIDIA": {
+    "role": "NVIDIA-智谱GLM-4.7",
+    "team": "NVIDIA",
+    "gender": "♂",
+    "name_en": "Li Ming",
+    "specialty": "通用推理"
+  },
+  "孙雅_NVIDIA": {
+    "role": "NVIDIA-Llama 3.1",
+    "team": "NVIDIA",
+    "gender": "♀",
+    "name_en": "Sun Ya",
+    "specialty": "开源模型"
+  },
+  "周杰_NVIDIA": {
+    "role": "NVIDIA-Nemotron",
+    "team": "NVIDIA",
+    "gender": "♂",
+    "name_en": "Zhou Jie",
+    "specialty": "长对话"
+  },
+  "吴静_NVIDIA": {
+    "role": "NVIDIA-Mistral",
+    "team": "NVIDIA",
+    "gender": "♀",
+    "name_en": "Wu Jing",
+    "specialty": "多语言"
+  },
+  "郑强_NVIDIA": {
+    "role": "NVIDIA-通义千问",
+    "team": "NVIDIA",
+    "gender": "♂",
+    "name_en": "Zheng Qiang",
+    "specialty": "代码生成"
+  },
+  "钱丽_NVIDIA": {
+    "role": "NVIDIA-DeepSeek",
+    "team": "NVIDIA",
+    "gender": "♀",
+    "name_en": "Qian Li",
+    "specialty": "推理能力"
+  },
+  "冯涛_NVIDIA": {
+    "role": "NVIDIA-Kimi",
+    "team": "NVIDIA",
+    "gender": "♂",
+    "name_en": "Feng Tao",
+    "specialty": "长文本"
+  },
+  "褚敏_NVIDIA": {
+    "role": "NVIDIA-MiniMax",
+    "team": "NVIDIA",
+    "gender": "♀",
+    "name_en": "Chu Min",
+    "specialty": "多模态"
+  },
+  "卫龙_NVIDIA": {
+    "role": "NVIDIA-GLM-5",
+    "team": "NVIDIA",
+    "gender": "♂",
+    "name_en": "Wei Long",
+    "specialty": "新一代"
+  },
+  "蒋悦_NVIDIA": {
+    "role": "NVIDIA-M2.1",
+    "team": "NVIDIA",
+    "gender": "♀",
+    "name_en": "Jiang Yue",
+    "specialty": "Agent优化"
+  },
+  "沈星_NVIDIA": {
+    "role": "NVIDIA-Step",
+    "team": "NVIDIA",
+    "gender": "♂",
+    "name_en": "Shen Xing",
+    "specialty": "推理引擎"
+  },
+  "韩雪_ModelScope": {
+    "role": "魔搭-GLM-4.7",
+    "team": "ModelScope",
+    "gender": "♀",
+    "name_en": "Han Xue",
+    "specialty": "通用"
+  },
+  "许飞_ModelScope": {
+    "role": "魔搭-图像引擎",
+    "team": "ModelScope",
+    "gender": "♂",
+    "name_en": "Xu Fei",
+    "specialty": "图像生成"
+  },
+  "丁瑶_ModelScope": {
+    "role": "魔搭-DeepSeek",
+    "team": "ModelScope",
+    "gender": "♀",
+    "name_en": "Ding Yao",
+    "specialty": "推理模型"
+  },
+  "杨涛_ModelScope": {
+    "role": "魔搭-Qwen-Coder",
+    "team": "ModelScope",
+    "gender": "♂",
+    "name_en": "Yang Tao",
+    "specialty": "代码专家"
+  },
+  "朱琳_ModelScope": {
+    "role": "魔搭-Qwen3",
+    "team": "ModelScope",
+    "gender": "♀",
+    "name_en": "Zhu Lin",
+    "specialty": "通用大模型"
+  }
+}
