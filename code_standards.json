@@ -1,0 +1,61 @@
+{
+  "results": [
+    {
+      "name": "林思远",
+      "role": "首席架构师",
+      "content": "# Symphony 统一架构与代码质量标准\n**版本**：v1.0.0  \n**生效日期**：202X-XX-XX  \n**编制人**：林思远（首席架构师）  \n**适用范围**：Symphony 生态下所有前端、后端、中间件、基础设施类项目  \n\n---\n\n## 1. 统一架构设计原则\n架构设计需遵循「高内聚低耦合、可扩展可观测、业务与技术分离」核心目标，所有方案必须满足以下原则：\n\n### 1.1 通用设计原则\n| 原则 | 具体要求 |\n|------|----------|\n| 单一职责 | 每个模块/服务/类仅负责一项核心职责，边界清晰，避免通用逻辑散落在多个业务模块中 |\n| 开闭原则 | 对扩展开放、对修改关闭：新增需求优先通过扩展接口/实现类完成，禁止频繁修改稳定的核心底层代码 |\n| 依赖倒置 | 高层模块不依赖低层具体实现，二者都依赖抽象：例如业务层依赖缓存抽象接口，而非直接依赖 Redis 实现 |\n| 最少知道 | 模块间仅暴露必要的接口，隐藏内部实现细节，禁止跨层直接调用内部方法 |\n| 避免过度设计 | 架构复杂度与业务规模匹配：中小规模业务不强制引入分布式事务、多活等重型方案，预留扩展空间即可 |\n\n### 1.2 分层架构规范\n所有服务默认采用**四层架构**，层间调用必须自上而下，禁止反向调用、跨层调用：\n```\n┌─────────────────┐\n│ 接入层 (API)    │  负责参数校验、权限校验、请求限流、响应统一封装，不包含业务逻辑\n├─────────────────┤\n│ 业务逻辑层 (Service) │  实现核心"
+    },
+    {
+      "name": "陈美琪",
+      "role": "安全架构",
+      "content": "# Symphony Unified Architecture and Code Quality Standards\n\n**Document Version:** 2.0  \n**Author:** 陈美琪, Security Architect  \n**Effective Date:** 2023年10月  \n**Applicable Scope:** All Symphony platform projects and microservices\n\n---\n\n## 1. Unified Architecture Design Principles\n\n### 1.1 Core Principles\n- **Security by Design**: Security requirements must be defined in the design phase, not as an afterthought\n- **Layered Defense**: Implement multiple security layers (network, application, data)\n- **Least Privilege**: Every component operates with minimum necessary permissions\n- **Zero Trust**: Never trust, always verify; authenticate and authorize every request\n- **Fail-Safe Defaults**: Default to secure state when failures occur\n\n### 1.2 Microservices Architecture Standards\n```\n┌─────────────────────────────────────────────────────────────┐\n│                    API Gateway (TLS 1.3+)                    │\n├──────────────┬──────────────┬────────────────┬──────────────┤\n│   Service A  │   Service B  │   Service C    │   Service D  │\n│   (Auth)     │   (Business) │   (Data)       │   (Logging)  │\n├──────────────┴──────────────┴────────────────┴──────────────┤\n│          Service Mesh (mTLS, Automatic Certificate)         │\n├─────────────────────────────────────────────────────────────┤\n│        Unified Configuration Management (Encrypted)         │\n└─────────────────────────────────────────────────────────────┘\n```\n\n### 1.3 Technical Specifications\n- **API Gateway**: Kong/Envoy with OAuth2.0, JWT validation, rate limiting\n- **Service Communication**: gRPC over HTTP/2 with mTLS mandatory\n- **Data Storage**: Encrypted at rest (AES-256), encrypted in transit (TLS 1.3)\n"
+    },
+    {
+      "name": "王浩然",
+      "role": "技术Lead",
+      "content": "---\n\n# Symphony Unified Architecture and Code Quality Standards\n\n**Document Version**: 1.0  \n**Last Updated**: 2024-05-20  \n**Author**: 王浩然 (Tech Lead, Symphony Team)  \n**Scope**: All Symphony platform projects (backend, frontend, microservices, APIs)\n\n\n---\n\n## 1. Preamble\n\nHi team,\n\nAs we scale the Symphony platform, consistent architecture and code quality are critical to maintainability, collaboration, and speed. This document defines our unified standards—adherence is mandatory for all new code, and we’ll refactor legacy code to align over time.\n\nLet’s build something we’re proud of together.\n\n— 王浩然\n\n\n---\n\n## 2. Unified Architecture Design Principles\n\nThese principles guide all system design and module implementation.\n\n### 2.1 Separation of Concerns (SoC)\n- Split the system into distinct layers (e.g., API, Service, Data Access, Infrastructure) with clear responsibilities.\n- No layer should bypass the one below it (e.g., API layer → Service layer → Data Access layer only).\n\n### 2.2 Single Responsibility Principle (SRP)\n- Each class, module, or service should have **one reason to change**.\n- Example: A `UserService` handles user business logic, not password hashing (delegate to a `PasswordService`).\n\n### 2.3 Dependency Inversion Principle (DIP)\n- Depend on abstractions, not concretions.\n- Use dependency injection (DI) for loose coupling (e.g., Spring DI, NestJS DI, React Context).\n\n### 2.4 Loose Coupling + High Cohesion\n- **Loose Coupling**: Modules depend on interfaces, not specific implementations. Avoid tight dependencies between services.\n- **High Cohesion**: Related functionality lives in the same module; unrelated"
+    },
+    {
+      "name": "张明远",
+      "role": "开发主管",
+      "content": "大家好，我是张明远，开发主管。\n\n为了确保 Symphony 项目的长期可维护性、团队协作效率以及系统的高性能，我制定了这份 **《Symphony 统一架构与代码质量规范》**。这不仅仅是一份文档，更是我们工程文化的体现。\n\n以下是完整的标准规范文档，请各位团队成员务必严格执行。\n\n---\n\n# Symphony Unified Architecture and Code Quality Standards\n\n**Version:** 1.0.0\n**Owner:** Zhang Mingyuan (Dev Lead)\n**Status:** Active\n\n## 1. Unified Architecture Design Principles (统一架构设计原则)\n\n我们的架构追求**高内聚、低耦合**，确保业务逻辑与技术实现分离，以适应未来的业务变更。\n\n*   **1.1 分层架构**\n    *   项目严格遵循分层结构，禁止跨层调用。\n    *   **Presentation Layer (表现层):** 处理 HTTP 请求、参数校验、响应格式化。\n    *   **Application Layer (应用层):** 编排业务流程，事务控制。\n    *   **Domain Layer (领域层):** 核心业务逻辑、实体模型、领域服务。\n    *   **Infrastructure Layer (基础设施层):** 数据访问、外部服务调用、具体技术实现。\n\n*   **1.2 依赖倒置**\n    *   高层模块不应依赖低层模块，二者都应依赖其抽象。\n    *   接口定义在 Domain 或 Application 层，实现在 Infrastructure 层。\n\n*   **1.3 DRY (Don't Repeat Yourself)**\n    *   逻辑重复超过 2 次，必须提取为公共函数或组件。\n\n*   **1.4 单一职责**\n    *   一个类/模块/函数应当只有一个引起它变化的原因。\n\n*   **1.5 开闭原则**\n    *   对扩展开放，对修改关闭。使用策略模式、工厂模式等模式替代大量的"
+    },
+    {
+      "name": "赵敏",
+      "role": "测试主管",
+      "content": "**Symphony Unified Architecture and Code Quality Standards**  \n**Document Version:** 2.4  \n**Effective Date:** 2024-Q1  \n**Owner:** 赵敏 (Zhao Min), Testing & Quality Architecture Lead  \n**Review Cycle:** Quarterly  \n\n---\n\n## Table of Contents\n1. [Foreword from Testing Architecture](#foreword)\n2. [Unified Architecture Design Principles](#architecture)\n3. [Code Naming Conventions](#naming)\n4. [Comment and Documentation Requirements](#documentation)\n5. [Error Handling Standards](#error-handling)\n6. [Testing Specifications (Test-First Standards)](#testing)\n7. [Code Review Standards](#code-review)\n8. [Commit Conventions](#commits)\n9. [Appendix: Compliance Checklist](#appendix)\n\n---\n\n## <a name=\"foreword\"></a>1. Foreword from Testing Architecture\n*\"Code that cannot be tested cannot be trusted. Architecture that cannot be observed cannot be maintained.\"*\n\nAs Testing & Quality Architecture Lead, I mandate that **testability is a first-class architectural constraint**. Every module, microservice, and utility function must be designed with the assumption that it will be unit tested, integration tested, chaos-tested, and observed in production.\n\nThis document establishes the **Symphony Unified Quality Contract** between Development, Testing, and Operations.\n\n---\n\n## <a name=\"architecture\"></a>2. Unified Architecture Design Principles\n\n### 2.1 Core Architectural Tenets\n| Principle | Implementation Rule | Rationale |\n|-----------|---------------------|-----------|\n| **Separation of Concerns** | Business logic, data access, and presentation layers must be in distinct projects/packages | Enables mocking during testing |\n| **Dependency Inversion** | All dependencies must be injected via interfaces/abstract classes | Supports unit testing with mocks |\n| **Single Responsibility** | No class/file may exceed 500 lines; no method may exceed 50 lines | Testability and cognitive load |\n| **Fail-Fast"
+    }
+  ],
+  "tokens": [
+    {
+      "name": "林思远",
+      "model": "ark-code-latest",
+      "total": 516,
+      "time": 12.4
+    },
+    {
+      "name": "陈美琪",
+      "model": "deepseek-v3.2",
+      "total": 472,
+      "time": 14.36
+    },
+    {
+      "name": "王浩然",
+      "model": "doubao-seed-2.0-code",
+      "total": 1144,
+      "time": 21.03
+    },
+    {
+      "name": "张明远",
+      "model": "glm-4.7",
+      "total": 2062,
+      "time": 42.59
+    },
+    {
+      "name": "赵敏",
+      "model": "kimi-k2.5",
+      "total": 1368,
+      "time": 70.18
+    }
+  ]
+}

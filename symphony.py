@@ -43,6 +43,13 @@ from config import (
     get_provider_name, get_models_by_provider
 )
 
+# 导入触发系统
+try:
+    from trigger_system import analyze_intent, get_auto_help
+    TRIGGER_ENABLED = True
+except ImportError:
+    TRIGGER_ENABLED = False
+
 
 # =============================================================================
 # 实时监控器

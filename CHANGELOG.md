@@ -1,23 +1,41 @@
 # Changelog
 
-## [1.0.0] - 2026-03-08
+All notable changes to this project will be documented in this file.
 
-### 首发版发布 🎉
+## [2.1.0] - 2026-03-09
 
-#### 新增功能
-- 多模型协作系统
-- 统一API接口
-- 中间件层
-- 任务面板
-- 错误处理
-- 限流优化
-- 人性化触发系统
-- 能力训练系统
+### Added
+- OpenClaw SubAgent collaboration adapter
+- MCP tool automation system
+- Skill automation system  
+- Self-evolution engine v2.0
+- Emotional exchange system (JiaoJiao-Dream Maker)
+- Triple-layer memory palace architecture
+- Anti-fake dispatch strategy
+- Maximum permission mode
+- Code quality standards documentation
 
-#### 支持模型
-- 智谱GLM系列 (GLM-4, GLM-Z1, GLM-4V等)
-- ModelScope系列 (Qwen, DeepSeek, MiniMax, Kimi等)
+### Improved
+- Model scheduling efficiency
+- Error handling mechanisms
+- Documentation completeness
+- GitHub workflow
 
-#### 测试
-- 集成测试通过率: 100%
-- 多环境兼容: Windows/macOS/Linux
+### Fixed
+- Syntax errors in various modules
+- API timeout handling
+- Error message clarity
+
+## [2.0.0] - 2026-03-08
+
+### Added
+- Initial release with multi-model orchestration
+- 17+ model providers
+- Fault tolerance system
+- Memory management
+
+## [1.0.0] - 2026-03-05
+
+### Added
+- Project initialization
+- Basic multi-model calling

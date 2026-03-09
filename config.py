@@ -118,7 +118,10 @@ NVIDIA_CONFIG = {
         {"id": "deepseek-ai/deepseek-v3.2",        "name": "DeepSeek V3.2",        "type": "general", "thinking": False, "context_window": 128000},
         {"id": "moonshotai/kimi-k2.5",             "name": "Kimi K2.5",           "type": "code",     "thinking": False, "context_window": 128000},
         {"id": "minimaxai/minimax-m2.5",           "name": "MiniMax M2.5",         "type": "general", "thinking": False, "context_window": 128000},
-        {"id": "z-ai/glm5",                        "name": "智谱GLM-5",           "type": "general", "thinking": False, "context_window": 128000},
+        {"id": "z-ai/glm5",                        "name": "智谱GLM-5",           "type": "general",  "thinking": False, "context_window": 128000},
+        # 2026-03-09 新增模型
+        {"id": "minimaxai/minimax-m2.1",           "name": "MiniMax M2.1",        "type": "agent",    "thinking": False, "context_window": 128000, "note": "Agent优化"},
+        {"id": "stepfun-ai/step-3.5-flash",       "name": "Step 3.5 Flash",      "type": "reasoning","thinking": True,  "context_window": 128000, "note": "推理引擎"},
     ]
 }
 
@@ -275,6 +278,81 @@ def get_all_models() -> list:
 # =============================================================================
 
 API_CONFIG = CONFIG
+
+# 触发关键词配置 v1.0
+TRIGGER_CONFIG = {
+    "active": {
+        "交响": ["交响", "调度", "多模型"],
+        "开发": ["开发", "编程", "代码"],
+        "学习": ["学习", "搜索", "研究"],
+    },
+    "passive": {
+        "问题": ["为什么", "怎么办"],
+        "不确定": ["不知道", "不确定"],
+    },
+}
+
+def get_trigger_mode(message):
+    from trigger_system import get_auto_help
+    return get_auto_help(message)
+
+# ==================== 向量嵌入模型配置 ====================
+# 注意：这些模型需要通过对应的API调用，部分可能需要本地部署
+EMBEDDING_CONFIG = {
+    "nv-embed-v2": {
+        "provider": "nvidia",
+        "model": "nvidia/nv-embed-v2",
+        "dimension": 4096,
+        "api_url": "https://integrate.api.nvidia.com/v1/embeddings",
+        "description": "MTEB排名第一的向量模型 (需要NVIDIA NIM)"
+    },
+    "bge-m3": {
+        "provider": "local",  # 需要本地部署
+        "model": "BAAI/bge-m3",
+        "dimension": 1024,
+        "api_url": "http://localhost:8000/v1/embeddings",
+        "description": "BGE多语言向量模型 (需要本地部署)"
+    },
+    # 可用的LLM模型作为备选（用于语义理解）
+    "deepseek-v3.2": {
+        "provider": "modelscope",
+        "model": "deepseek-ai/DeepSeek-V3.2",
+        "dimension": None,
+        "api_url": "https://api-inference.modelscope.cn/v1/chat/completions",
+        "description": "DeepSeek V3.2 (可用)"
+    },
+    "MiniMax-M2.5": {
+        "provider": "modelscope",
+        "model": "MiniMax/MiniMax-M2.5",
+        "dimension": None,
+        "api_url": "https://api-inference.modelscope.cn/v1/chat/completions",
+        "description": "MiniMax M2.5 (可用)"
+    },
+}
+
+# ==================== 重排序模型配置 ====================
+# 注意：这些模型需要通过对应的API调用，部分可能需要本地部署
+RERANK_CONFIG = {
+    "rerank-qa-mistral-4b": {
+        "provider": "nvidia",
+        "model": "nvidia/rerank-qa-mistral-4b",
+        "api_url": "https://integrate.api.nvidia.com/v1/rerank",
+        "description": "NVIDIA重排序模型 (需要NVIDIA NIM)"
+    },
+    "bge-reranker-v2-m3": {
+        "provider": "local",  # 需要本地部署
+        "model": "BAAI/bge-reranker-v2-m3",
+        "api_url": "http://localhost:8000/v1/rerank",
+        "description": "BGE重排序模型 (需要本地部署)"
+    },
+    # 使用LLM进行重排序作为备选
+    "llm-rerank": {
+        "provider": "doubao",
+        "model": "ark-code-latest",
+        "api_url": "https://ark.cn-beijing.volces.com/api/coding/v3/chat/completions",
+        "description": "使用LLM进行重排序 (可用)"
+    },
+}
 
 __all__ = [
     "CONFIG", "API_CONFIG", "SYSTEM_CONFIG", "MODEL_INFO",
