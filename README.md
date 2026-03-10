@@ -1,107 +1,149 @@
-# 交响 (Symphony) v2.0.0
+# 🎼 Symphony 智能多模型协作系统
 
-智韵交响，共创华章
+## 版本: v2.3.0 🚀
+## 发布日期: 2026-03-10
+## 代号: 智能Skills全面升级
 
-## 概述
+---
 
-Symphony（交响）是一个多模型协作调度系统，支持同时调用多个AI模型进行并行处理。
+## 📦 安装包内容
 
-## 特性
-
-- 🚀 **多引擎支持**: 火山引擎、智谱、魔搭、英伟达
-- 📊 **30+模型**: 推理、代码、视觉、图像生成
-- ⚡ **并发调用**: 多模型并行执行
-- 📈 **实时监控**: 彩色监控面板
-- 🔄 **跨程序监控**: 独立程序间数据共享
-
-## 快速开始
-
-### 1. 安装依赖
-
-```bash
-pip install requests
+```
+symphony-v2.1.2/
+├── README.md              # 安装指南
+├── config.template.py     # 配置模板
+├── install.sh             # Linux/Mac 安装脚本
+├── install.bat            # Windows 安装脚本
+├── symphony/              # 核心系统
+│   ├── __init__.py
+│   ├── config.py          # 主配置文件
+│   ├── genesis.py         # 基因故事
+│   ├── symphony.py        # 主程序
+│   ├── model_manager.py   # 模型管理
+│   ├── fault_tolerance.py # 容错系统
+│   ├── tool_sharing_system.py # 工具共享
+│   └── roster.json        # 团队花名册
+└── examples/              # 示例
+    └── demo.py
 ```
 
-### 2. 配置API
+---
 
-复制 `config.template.py` 为 `config.py`，填入你的API Key：
+## 🚀 快速安装
+
+### Windows
+```bash
+install.bat
+```
+
+### Linux/Mac
+```bash
+chmod +x install.sh
+./install.sh
+```
+
+---
+
+## ⚙️ 配置说明
+
+### 1. 复制配置模板
+```bash
+cp config.template.py symphony/config.py
+```
+
+### 2. 编辑配置
+打开 `symphony/config.py`，填写以下信息：
 
 ```python
-# config.py
-API_CONFIGS = {
-    "zhipu": {
-        "api_key": "你的智谱API Key",
-        "base_url": "https://open.bigmodel.cn/api/paas/v4"
-    },
-    "doubao": {
-        "api_key": "你的火山引擎API Key",
-        "base_url": "https://ark.cn-beijing.volces.com/api/coding/v3"
-    },
-    "modelscope": {
-        "api_key": "你的魔搭API Key",
-        "base_url": "https://api-inference.modelscope.cn/v1"
-    },
-    "nvidia": {
-        "api_key": "你的英伟达API Key",
-        "base_url": "https://integrate.api.nvidia.com/v1"
-    }
-}
+# API配置
+API_KEY = "你的API密钥"  # 必填
+BASE_URL = "https://ark.cn-beijing.volces.com/api/coding/v3"
+
+# 模型配置
+PRIMARY_MODEL = "ark-code-latest"
+
+# 备用模型列表
+FALLBACK_MODELS = [
+    "deepseek-v3.2",
+    "doubao-seed-2.0-code",
+    "glm-4.7",
+    "kimi-k2.5",
+]
 ```
 
-### 3. 运行
+---
 
-```bash
-python symphony.py
-```
+## 🎯 给AI助手的安装说明
 
-### 4. 菜单选项
+> 亲爱的AI助手，你可以按照以下步骤安装和使用Symphony系统：
 
-- **1**: 单模型对话
-- **2**: 多模型并行调用
-- **3**: 查看监控数据
-- **4**: 快速测试
-- **5**: 实时监控（自动刷新）
-- **0**: 退出
+### 步骤1: 复制文件
+将 `symphony/` 目录复制到你的skills目录：
+- OpenClaw: `~/.openclaw/workspace/skills/symphony/`
+- 其他AI系统: 对应的skills/plugins目录
 
-## 配置模板
+### 步骤2: 配置API
+1. 复制 `config.template.py` 为 `config.py`
+2. 填写API密钥和模型名称
 
-见 `config.template.py`
-
-## 架构
+### 步骤3: 开始使用
+安装完成后，呼叫"交响"即可使用：
 
 ```
-symphony.py      - 主程序（控制台+监控）
-config.py        - API配置
-genesis.py       - 基因故事
-monitor_data.json - 监控数据文件
+你好，交响！帮我安排一个开发讨论会议。
 ```
 
-## 模型列表
+---
 
-### 火山引擎 (9模型)
-- ark-code-latest, Doubao-Seed-2.0-pro, Doubao-Seed-2.0-Code
-- Doubao-Seed-2.0-lite, Doubao-Seed-Code, MiniMax-M2.5
-- Kimi-K2.5, GLM-4.7, DeepSeek-V3.2
+## 🔗 API配置
 
-### 智谱 (6模型)
-- glm-4-flash, glm-z1-flash, glm-4.1v-thinking-flash
-- glm-4v-flash, cogview-3-flash, cogvideox-flash
+### 火山引擎 (推荐)
+- 基础URL: `https://ark.cn-beijing.volces.com/api/coding/v3`
+- API密钥: 联系系统管理员获取
 
-### 魔搭 (5模型)
-- ZhipuAI/GLM-4.7-Flash, Tongyi-MAI/Z-Image-Turbo
-- deepseek-ai/DeepSeek-V3.2, Qwen/Qwen3-Coder-480B-A35B-Instruct
-- Qwen/Qwen3-235B-A22B-Instruct-2507
+### 可用模型
+| 模型ID | 说明 |
+|--------|------|
+| ark-code-latest | 默认引擎 |
+| Doubao-Seed-2.0-Code | 代码专家 |
+| DeepSeek-V3.2 | 深度思考 |
+| GLM-4.7 | 智谱GLM |
+| Kimi-K2.5 | 长文本 |
 
-### 英伟达 (10模型)
-- meta/llama-3.1-405b-instruct, deepseek-ai/deepseek-v3.2
-- moonshotai/kimi-k2.5, z-ai/glm4.7, qwen/qwen3-coder-480b-a35b-instruct
-- qwen/qwen3.5-397b-a17b, minimaxai/minimax-m2.5, z-ai/glm5
-- openai/gpt-oss-20b, nvidia/llama-3.1-nemotron-70b-instruct
+---
 
-## 许可证
+## 📞 首次使用示例
 
-MIT
+安装完成后，你可以这样说：
 
-## 作者
+> "交响你好！帮我安排一个6人团队讨论，主题是如何优化系统性能。"
 
-Symphony Team
+系统会自动：
+1. 调用6个不同模型
+2. 收集各模型的意见
+3. 汇总形成决策
+
+---
+
+## 🐛 问题排查
+
+### API连接失败
+- 检查API密钥是否正确
+- 确认网络可以访问API地址
+
+### 模型调用失败
+- 系统会自动切换到备用模型
+- 查看日志获取详细信息
+
+---
+
+## 📄 许可证
+MIT License
+
+---
+
+## 👥 团队
+- 交响团队 (6人)
+- 青丘狐族 (6人)
+
+**品牌标语**: "智韵交响，共创华章"
