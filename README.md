@@ -1,73 +1,66 @@
-# symphony
+﻿# symphony
 
-#### 介绍
-Symphony（交响）是史上最强多模型协作调度系统！支持多模型并行调用、故障转移、任务调度等功能。
+#### 浠嬬粛
+Symphony锛堜氦鍝嶏級鏄彶涓婃渶寮哄妯″瀷鍗忎綔璋冨害绯荤粺锛佹敮鎸佸妯″瀷骞惰璋冪敤銆佹晠闅滆浆绉汇€佷换鍔¤皟搴︾瓑鍔熻兘銆?
+#### 杞欢鏋舵瀯
+- 浠诲姟璋冨害锛氭櫤鑳藉垎閰嶄换鍔★紝鎻愬崌鏁堢巼
+- 妯″瀷绠＄悊锛氭敮鎸?3+妯″瀷锛堟櫤璋便€佺伀灞便€丯VIDIA銆丮odelScope绛夛級
+- 瀹归敊绯荤粺锛氳嚜鍔ㄦ晠闅滆浆绉伙紝纭繚鏈嶅姟姘哥画
+- 璁板繂绯荤粺锛氱煭鏈?闀挎湡/宸ヤ綔/鎯呮櫙鍥涚璁板繂
+- 鍗忎綔缂栨帓锛氬妯″瀷鍗忓悓宸ヤ綔
 
-#### 软件架构
-- 任务调度：智能分配任务，提升效率
-- 模型管理：支持23+模型（智谱、火山、NVIDIA、ModelScope等）
-- 容错系统：自动故障转移，确保服务永续
-- 记忆系统：短期/长期/工作/情景四种记忆
-- 协作编排：多模型协同工作
+#### 瀹夎鏁欑▼
 
-#### 安装教程
-
-1. 安装最新版本
-```bash
+1. 瀹夎鏈€鏂扮増鏈?```bash
 pip install symphony-ai
 ```
 
-2. 安装指定版本
+2. 瀹夎鎸囧畾鐗堟湰
 ```bash
 pip install symphony-ai==1.0.0
 ```
 
-3. 从源码安装
-```bash
+3. 浠庢簮鐮佸畨瑁?```bash
 git clone https://github.com/songleiwww/symphony.git
 cd symphony
 pip install -r requirements.txt
 cp config.template.py config.py
-# 编辑 config.py 填入你的API密钥
+# 缂栬緫 config.py 濉叆浣犵殑API瀵嗛挜
 ```
 
-#### 使用说明
+#### 浣跨敤璇存槑
 
 ```python
 from symphony import SymphonyCore
 
-# 创建交响实例
+# 鍒涘缓浜ゅ搷瀹炰緥
 symphony = SymphonyCore()
 
-# 发起协作任务
-result = symphony.dispatch("帮我安排一个6人团队讨论会")
+# 鍙戣捣鍗忎綔浠诲姟
+result = symphony.dispatch("甯垜瀹夋帓涓€涓?浜哄洟闃熻璁轰細")
 
-# 获取系统状态
-status = symphony.get_status()
+# 鑾峰彇绯荤粺鐘舵€?status = symphony.get_status()
 print(status)
 ```
 
-#### 参与贡献
+#### 鍙備笌璐＄尞
 
-1. Fork 本仓库
-2. 新建 Feat_xxx 分支
-3. 提交代码
-4. 新建 Pull Request
+1. Fork 鏈粨搴?2. 鏂板缓 Feat_xxx 鍒嗘敮
+3. 鎻愪氦浠ｇ爜
+4. 鏂板缓 Pull Request
 
-#### 特技
+#### 鐗规妧
 
-1. 多模型并行：同时调用多个AI模型，协同工作
-2. 智能容错：自动故障转移，确保服务永续
-3. 任务调度：智能分配任务，提升效率
-4. 模型热插拔：运行时动态切换模型
-5. 负载均衡：合理分配计算资源
-6. 跨平台支持：Windows/Linux/Mac全面兼容
+1. 澶氭ā鍨嬪苟琛岋細鍚屾椂璋冪敤澶氫釜AI妯″瀷锛屽崗鍚屽伐浣?2. 鏅鸿兘瀹归敊锛氳嚜鍔ㄦ晠闅滆浆绉伙紝纭繚鏈嶅姟姘哥画
+3. 浠诲姟璋冨害锛氭櫤鑳藉垎閰嶄换鍔★紝鎻愬崌鏁堢巼
+4. 妯″瀷鐑彃鎷旓細杩愯鏃跺姩鎬佸垏鎹㈡ā鍨?5. 璐熻浇鍧囪　锛氬悎鐞嗗垎閰嶈绠楄祫婧?6. 璺ㄥ钩鍙版敮鎸侊細Windows/Linux/Mac鍏ㄩ潰鍏煎
 
-#### 联系方式
+#### 鑱旂郴鏂瑰紡
 
-- 邮箱: songlei_www@qq.com
-- 问题反馈: GitHub Issues
+- 閭: songlei_www@qq.com
+- 闂鍙嶉: GitHub Issues
 
 ---
 
-*智韵交响，共创华章*
+*鏅洪煹浜ゅ搷锛屽叡鍒涘崕绔?
+
