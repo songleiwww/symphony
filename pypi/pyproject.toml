@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "symphony-ai"
-version = "2.4.0"
+version = "1.0.0"
 description = "多模型协作调度系统 - Multi-Model Collaboration Dispatch System"
 readme = "README.md"
 requires-python = ">=3.9"
