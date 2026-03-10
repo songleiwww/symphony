@@ -1,93 +1,78 @@
-# =============================================================================
-# 交响 (Symphony) 配置模板
-# 
-# 使用方法：
-# 1. 复制此文件为 config.py
-# 2. 填入你的 API Key
-# 3. 运行 python symphony.py
-# =============================================================================
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+"""
+============================================================================
+🎼 交响 Symphony 配置模板
+============================================================================
+请复制此文件为 config.py 并填写你的配置
+============================================================================
+"""
 
 # =============================================================================
-# API 配置 - 请填入你的 API Key
+# 🔑 API配置 (必填)
 # =============================================================================
 
-API_CONFIGS = {
-    # 智谱 API (https://open.bigmodel.cn)
-    "zhipu": {
-        "api_key": "YOUR_ZHIPU_API_KEY",
-        "base_url": "https://open.bigmodel.cn/api/paas/v4"
-    },
-    
-    # 火山引擎 API (https://ark.cn-beijing.volces.com)
-    "doubao": {
-        "api_key": "YOUR_DOUBAO_API_KEY", 
-        "base_url": "https://ark.cn-beijing.volces.com/api/coding/v3"
-    },
-    
-    # 魔搭 API (https://api-inference.modelscope.cn)
-    "modelscope": {
-        "api_key": "YOUR_MODELSCOPE_API_KEY",
-        "base_url": "https://api-inference.modelscope.cn/v1"
-    },
-    
-    # 英伟达 API (https://integrate.api.nvidia.com)
-    "nvidia": {
-        "api_key": "YOUR_NVIDIA_API_KEY",
-        "base_url": "https://integrate.api.nvidia.com/v1"
-    }
-}
+API_KEY = "YOUR_API_KEY_HERE"  # 火山引擎API密钥
+BASE_URL = "https://ark.cn-beijing.volces.com/api/coding/v3"
 
 # =============================================================================
-# 模型配置
+# 🎯 模型配置
 # =============================================================================
 
-MODELS = {
-    # 火山引擎模型
-    "ark-code-latest": {"provider": "doubao", "type": "general"},
-    "Doubao-Seed-2.0-pro": {"provider": "doubao", "type": "reasoning"},
-    "Doubao-Seed-2.0-Code": {"provider": "doubao", "type": "code"},
-    "Doubao-Seed-2.0-lite": {"provider": "doubao", "type": "general"},
-    "Doubao-Seed-Code": {"provider": "doubao", "type": "code"},
-    "MiniMax-M2.5": {"provider": "doubao", "type": "general"},
-    "Kimi-K2.5": {"provider": "doubao", "type": "code"},
-    "GLM-4.7": {"provider": "doubao", "type": "general"},
-    "DeepSeek-V3.2": {"provider": "doubao", "type": "general"},
-    
-    # 智谱模型
-    "glm-4-flash": {"provider": "zhipu", "type": "general"},
-    "glm-z1-flash": {"provider": "zhipu", "type": "reasoning"},
-    "glm-4.1v-thinking-flash": {"provider": "zhipu", "type": "reasoning"},
-    "glm-4v-flash": {"provider": "zhipu", "type": "vision"},
-    "cogview-3-flash": {"provider": "zhipu", "type": "image"},
-    "cogvideox-flash": {"provider": "zhipu", "type": "video"},
-    
-    # 魔搭模型
-    "ZhipuAI/GLM-4.7-Flash": {"provider": "modelscope", "type": "general"},
-    "Tongyi-MAI/Z-Image-Turbo": {"provider": "modelscope", "type": "image"},
-    "deepseek-ai/DeepSeek-V3.2": {"provider": "modelscope", "type": "reasoning"},
-    "Qwen/Qwen3-Coder-480B-A35B-Instruct": {"provider": "modelscope", "type": "code"},
-    "Qwen/Qwen3-235B-A22B-Instruct-2507": {"provider": "modelscope", "type": "general"},
-    
-    # 英伟达模型
-    "meta/llama-3.1-405b-instruct": {"provider": "nvidia", "type": "general"},
-    "deepseek-ai/deepseek-v3.2": {"provider": "nvidia", "type": "reasoning"},
-    "moonshotai/kimi-k2.5": {"provider": "nvidia", "type": "code"},
-    "z-ai/glm4.7": {"provider": "nvidia", "type": "general"},
-    "qwen/qwen3-coder-480b-a35b-instruct": {"provider": "nvidia", "type": "code"},
-    "qwen/qwen3.5-397b-a17b": {"provider": "nvidia", "type": "general"},
-    "minimaxai/minimax-m2.5": {"provider": "nvidia", "type": "general"},
-    "z-ai/glm5": {"provider": "nvidia", "type": "general"},
-    "openai/gpt-oss-20b": {"provider": "nvidia", "type": "general"},
-    "nvidia/llama-3.1-nemotron-70b-instruct": {"provider": "nvidia", "type": "general"}
-}
+# 主模型 (默认使用的模型)
+PRIMARY_MODEL = "ark-code-latest"
+
+# 备用模型列表 (当主模型失败时自动切换)
+FALLBACK_MODELS = [
+    "deepseek-v3.2",        # 深度思考模型
+    "doubao-seed-2.0-code", # 代码专家
+    "glm-4.7",             # 智谱GLM
+    "kimi-k2.5",           # 长文本模型
+    "MiniMax-M2.5",        # 多模态模型
+]
 
 # =============================================================================
-# 系统配置
+# ⚡ 高级配置 (可选)
 # =============================================================================
 
-SYSTEM_CONFIG = {
-    "timeout": 120,
-    "max_retries": 3,
-    "rate_limit_window": 60,
-    "rate_limit_max": 30
-}
+# 超时设置 (秒)
+REQUEST_TIMEOUT = 60
+
+# 重试次数
+MAX_RETRIES = 3
+
+# 是否启用日志
+ENABLE_LOGGING = True
+
+# 日志级别: DEBUG, INFO, WARNING, ERROR
+LOG_LEVEL = "INFO"
+
+# =============================================================================
+# 🔧 团队配置 (可选)
+# =============================================================================
+
+# 团队成员配置
+TEAM_MEMBERS = [
+    {"name": "林思远", "role": "架构师", "model": "ark-code-latest"},
+    {"name": "陈美琪", "role": "安全", "model": "deepseek-v3.2"},
+    {"name": "王浩然", "role": "开发", "model": "doubao-seed-2.0-code"},
+    {"name": "张明远", "role": "测试", "model": "glm-4.7"},
+    {"name": "赵敏", "role": "运维", "model": "kimi-k2.5"},
+    {"name": "刘心怡", "role": "策划", "model": "MiniMax-M2.5"},
+]
+
+# =============================================================================
+# 📝 使用说明
+# =============================================================================
+"""
+配置步骤：
+1. 将此文件复制为 config.py
+2. 填写 API_KEY (必填)
+3. 可选配置根据需要修改
+4. 保存文件即可使用
+
+示例：
+    from symphony import Symphony
+    s = Symphony()
+    result = s.chat("你好，交响！")
+"""

@@ -1,0 +1,50 @@
+[
+  {
+    "name": "沈清弦",
+    "role": "枢密使",
+    "model": "Qwen2.5-14B-Instruct",
+    "response": "{\n  \"架构\": {\n    \"模块\": [\"监控面板\", \"数据采集\", \"告警模块\"],\n    \"数据流程\": [\"采集\", \"存储\", \"分析\", \"展示\"],\n    \"特性\": {\n      \"实时性\": \"秒级\",\n      \"扩展性\": \"插件化\"\n    }\n  }\n}",
+    "tokens": 194,
+    "status": "OK"
+  },
+  {
+    "name": "苏云渺",
+    "role": "工部尚书",
+    "model": "Qwen2.5-14B-Instruct",
+    "response": "下面是基于您要求的Python类定义示例：\n\n```python\nclass MonitorDataCollector:\n    def __init__(self):\n        self.cache = {}\n\n    def collect(self, metric, value):\n        self.cache[metric] = value\n\n    def save_to_file(self):\n        pass\n\n    def get_data(self, metric):\n        return self.cache.get(metric, None)\n```\n\n这只是一个基本框架，具体实现细节需要根据实际需求进一步开发。",
+    "tokens": 215,
+    "status": "OK"
+  },
+  {
+    "name": "顾清歌",
+    "role": "翰林学士",
+    "model": "glm-4-9b-chat",
+    "response": "\n```json\n{\n  \"alert_rules\": [\n    {\n      \"level\": \"INFO\",\n      \"trigger\": \"response_timeout\",\n      \"threshold\": 5,\n      \"actions\": [\"log\", \"message\"]\n    },\n    {\n      \"level\": \"WARNING\",\n      \"trigger\": \"error_rate\",\n      \"threshold\": 10,\n      \"actions\": [\"log\", \"message\", \"email\"]\n    },\n    {\n      \"level\": \"ERROR\",\n      \"trigger\": \"resource_exhaustion\",\n      \"threshold\": 80,\n      \"actions\": [\"log\", \"email\"]\n    },\n    {\n      \"level\": \"CRITICAL\",\n      \"trigger\": [\"response_timeout\", \"error_rate\", \"resource_exhaustion\"],\n      \"threshold\": 100,\n      \"actions\": [\"log\", \"email\"]\n    }\n  ]\n}\n```",
+    "tokens": 277,
+    "status": "OK"
+  },
+  {
+    "name": "沈星衍",
+    "role": "智囊博士",
+    "model": "Qwen2.5-14B-Instruct",
+    "response": "设计方案：中心仪表盘展示关键性能指标，右侧实时图表反映模型响应时间，下方成员状态栏更新在线情况，左侧历史记录详述最近10次调用细节。",
+    "tokens": 155,
+    "status": "OK"
+  },
+  {
+    "name": "叶轻尘",
+    "role": "行走使",
+    "model": "Qwen2.5-7B-Instruct",
+    "response": "轻量监控探针设计：最小化侵入性，高效采集，动态配置频率，智能异常检测，CPU<1%，内存<10MB。",
+    "tokens": 153,
+    "status": "OK"
+  },
+  {
+    "name": "林码",
+    "role": "营造司正",
+    "model": "Qwen2.5-72B-Instruct",
+    "response": "```python\nclass Symphony:\n    def __init__(self):\n        self.monitors = []\n        self.status = 'idle'\n    \n    def register_monitor(self, plugin):\n        self.monitors.append(plugin)\n    \n    def run_symphony(self, task, mode='auto'):\n        self.status = 'running'\n        for plugin in self.monitors:\n            plugin.on_start(task)\n        try:\n            # Task execution logic\n            task.run(mode)\n            self.status = 'completed'\n            for plugin in self.monitors:\n                plugin.on_end(task)\n        except Exception as e:\n            self.status = 'error'\n            for plugin in self.monitors:\n                plugin.on_error(task, e)\n    \n    def get_status(self):\n        return self.status\n```",
+    "tokens": 277,
+    "status": "OK"
+  }
+]

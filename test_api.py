@@ -1,42 +1,32 @@
+#!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-import sys
-import io
-sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf-8')
+"""序境全员述职脚本 - 调试版"""
 import requests
+import json
+import sys
 
-print('Checking ModelScope API...')
+sys.stdout.reconfigure(encoding='utf-8', errors='replace')
 
-# 获取可用模型列表
-url = 'https://api-inference.modelscope.cn/v1/models'
-headers = {
-    'Authorization': 'Bearer ms-eac6f154-3502-4721-a168-ce7caeaf1033'
+API_URL = 'https://ark.cn-beijing.volces.com/api/coding/v3/chat/completions'
+API_KEY = '3b922877-3fbe-45d1-a298-53f2231c5224'
+
+# 测试单个成员
+member = {'name': '沈清弦', 'model': 'ark-code-latest', 'task': '你好，请回复"收到"'}
+
+headers = {'Authorization': API_KEY, 'Content-Type': 'application/json'}
+data = {
+    'model': member['model'],
+    'messages': [{'role': 'user', 'content': member['task']}],
+    'max_tokens': 100
 }
+
+print('Testing API...')
+print('URL:', API_URL)
+print('Model:', member['model'])
+
 try:
-    r = requests.get(url, headers=headers, timeout=30)
+    r = requests.post(API_URL, headers=headers, json=data, timeout=30)
     print('Status:', r.status_code)
-    if r.status_code == 200:
-        data = r.json()
-        print('Available models:')
-        for m in data.get('data', [])[:15]:
-            model_id = m.get('id', 'unknown')
-            print(' -', model_id)
+    print('Response:', r.text[:500])
 except Exception as e:
-    print('Error:', e)
-
-# 检查火山引擎的embedding
-print('\n\nChecking Doubao API...')
-url2 = 'https://ark.cn-beijing.volces.com/api/coding/v3/chat/completions'
-headers2 = {
-    'Authorization': 'Bearer 3b922877-3fbe-45d1-a298-53f2231c5224',
-    'Content-Type': 'application/json'
-}
-data2 = {
-    'model': 'ark-code-latest',
-    'messages': [{'role': 'user', 'content': 'Hi'}],
-    'max_tokens': 10
-}
-try:
-    r2 = requests.post(url2, headers=headers2, json=data2, timeout=30)
-    print('Doubao Status:', r2.status_code)
-except Exception as e:
-    print('Doubao Error:', e)
+    print('Error:', str(e))

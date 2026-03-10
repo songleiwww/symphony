@@ -1,179 +1,112 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-Symphony Debug任务 - 3个真实模型
+序境debug交响 - 少府监精英全员Debug
+真实模型调用，找出并修复所有问题
 """
+import sys
+sys.stdout.reconfigure(encoding='utf-8')
 
-import json
 import requests
-from pathlib import Path
-from datetime import datetime
+import json
+import time
 
+API_URL = 'https://api.siliconflow.cn/v1/chat/completions'
+API_KEY = 'sk-uqcngebrjbdzmcowpfxelysxukwqqarhdzfakpxwkklfrlqc'
 
-def main():
-    log_file = Path(__file__).parent / "outputs" / "debug_task_log.txt"
-    log_file.parent.mkdir(exist_ok=True)
-    log_file.write_text("", encoding='utf-8')
+# 少府监精英
+MEMBERS = [
+    {"name": "沈清弦", "title": "枢密使", "model": "Qwen/Qwen2.5-14B-Instruct", "specialty": "架构分析"},
+    {"name": "苏云渺", "title": "工部尚书", "model": "Qwen/Qwen2.5-14B-Instruct", "specialty": "代码审查"},
+    {"name": "顾清歌", "title": "翰林学士", "model": "THUDM/glm-4-9b-chat", "specialty": "规则检查"},
+    {"name": "沈星衍", "title": "智囊博士", "model": "Qwen/Qwen2.5-14B-Instruct", "specialty": "逻辑分析"},
+    {"name": "叶轻尘", "title": "行走使", "model": "Qwen/Qwen2.5-7B-Instruct", "specialty": "性能分析"},
+    {"name": "林码", "title": "营造司正", "model": "Qwen/Qwen2.5-72B-Instruct", "specialty": "工程审查"},
+    {"name": "顾至尊", "title": "首辅大学士", "model": "Qwen/Qwen2.5-14B-Instruct", "specialty": "统筹检查"},
+    {"name": "陆念昭", "title": "少府监", "model": "Qwen/Qwen2.5-7B-Instruct", "specialty": "调度检查"},
+]
+
+def call_model(member, prompt, max_tokens=400):
+    headers = {'Authorization': f'Bearer {API_KEY}', 'Content-Type': 'application/json'}
+    data = {
+        'model': member['model'],
+        'messages': [{'role': 'user', 'content': prompt}],
+        'max_tokens': max_tokens,
+        'temperature': 0.7
+    }
+    try:
+        r = requests.post(API_URL, headers=headers, json=data, timeout=90)
+        result = r.json()
+        if 'choices' in result and len(result['choices']) > 0:
+            content = result['choices'][0]['message'].get('content', '')
+            tokens = result.get('usage', {}).get('total_tokens', 0)
+            return content, tokens
+    except Exception as e:
+        return f"失败: {str(e)}", 0
+    return "无响应", 0
+
+def run_debug():
+    issues = []
+    total_tokens = 0
     
-    def log(msg):
-        with open(log_file, "a", encoding='utf-8') as f:
-            f.write(msg + "\n")
+    print("=" * 60)
+    print("🔧 少府监精英Debug交响 🔧")
+    print("=" * 60)
+    print("\n任务：找出并修复交响所有问题\n")
     
-    config_path = Path(r"C:\Users\Administrator\.openclaw\openclaw.cherry.json")
-    config = json.loads(config_path.read_text(encoding='utf-8'))
-    
-    # 3个专家
-    experts = [
-        {"name": "测试工程师", "provider": "cherry-doubao", "model": "deepseek-v3.2", "task": "Debug测试BrainstormPanel"},
-        {"name": "代码审查员", "provider": "cherry-doubao", "model": "kimi-k2.5", "task": "识别模拟相关代码并列出需删除文件"},
-        {"name": "架构师", "provider": "cherry-doubao", "model": "glm-4.7", "task": "整合修复方案并验证"},
+    # 8位精英各自检查一个方向
+    checks = [
+        ("沈清弦", "架构", "请检查symphony核心架构问题：模块耦合、接口设计、层次结构。输出JSON格式，列出发现的问题。"),
+        ("苏云渺", "代码", "请检查symphony代码问题：语法错误、逻辑漏洞、异常处理。输出JSON格式，列出发现的问题。"),
+        ("顾清歌", "规则", "请检查symphony规则问题：配置错误、权限控制、边界条件。输出JSON格式，列出发现的问题。"),
+        ("沈星衍", "逻辑", "请检查symphony逻辑问题：流程错误、状态管理、任务调度。输出JSON格式，列出发现的问题。"),
+        ("叶轻尘", "性能", "请检查symphony性能问题：内存泄漏、阻塞操作、并发处理。输出JSON格式，列出发现的问题。"),
+        ("林码", "工程", "请检查symphony工程问题：代码规范、测试覆盖、文档完整。输出JSON格式，列出发现的问题。"),
+        ("顾至尊", "统筹", "请检查symphony统筹问题：资源管理、负载均衡、容错机制。输出JSON格式，列出发现的问题。"),
+        ("陆念昭", "调度", "请检查symphony调度问题：任务分配、优先级、超时处理。输出JSON格式，列出发现的问题。"),
     ]
     
-    log("=" * 70)
-    log("🎼 Symphony Debug任务 - 3个真实模型")
-    log("=" * 70)
-    log("任务: Debug测试 + 修复 + 清理模拟代码")
-    log("")
-    
-    results = []
-    
-    # 第一轮：Debug测试
-    log("\n【第一轮】Debug测试\n")
-    
-    prompt1 = f"""你是测试工程师。
+    for name, specialty, prompt in checks:
+        member = next(m for m in MEMBERS if m['name'] == name)
+        print(f"🔍 {name}（{specialty}）检查中...")
+        
+        full_prompt = f"""你是序境{name}，负责{specialty}检查。
 
-symphony工具路径: C:\\Users\\Administrator\\.openclaw\\workspace\\skills\\symphony
+请检查symphony.py和相关模块，找出所有问题：
 
-任务：对BrainstormPanel进行Debug测试
+{prompt}
 
-1. 首先列出symphony目录下的所有Python文件
-2. 检查每个文件是否有模拟/模拟调用相关的代码
-3. 尝试运行brainstorm_panel_v2.py测试真实模型调用
-4. 列出发现的问题
-
-请详细检查并报告。"""
+输出JSON格式，100字以内。"""
+        
+        response, tokens = call_model(member, full_prompt)
+        total_tokens += tokens
+        
+        issues.append({
+            "name": name,
+            "specialty": specialty,
+            "issues": response,
+            "tokens": tokens
+        })
+        print(f"   ✅ 完成 ({tokens} tokens)")
+        time.sleep(0.5)
     
-    expert1 = experts[0]
-    provider = config["models"]["providers"][expert1["provider"]]
-    headers = {"Authorization": f"Bearer {provider['apiKey']}", "Content-Type": "application/json"}
-    data = {"model": expert1["model"], "messages": [{"role": "user", "content": prompt1}], "max_tokens": 1500}
+    # 输出问题汇总
+    print("\n" + "=" * 60)
+    print("📋 问题汇总")
+    print("=" * 60)
     
-    log(f"【{expert1['name']}】测试中...")
-    try:
-        response = requests.post(f"{provider['baseUrl']}/chat/completions", headers=headers, json=data, timeout=120)
-        if response.status_code == 200:
-            content = response.json()["choices"][0]["message"]["content"]
-            tokens = response.json().get("usage", {}).get("total_tokens", 0)
-            log(f"  ✅ 完成! Tokens: {tokens}")
-            results.append({"expert": expert1["name"], "task": expert1["task"], "result": content, "success": True})
-        else:
-            log(f"  ❌ 失败: HTTP {response.status_code}")
-            results.append({"expert": expert1["name"], "task": expert1["task"], "result": f"HTTP {response.status_code}", "success": False})
-    except Exception as e:
-        log(f"  ❌ 异常: {e}")
-        results.append({"expert": expert1["name"], "task": expert1["task"], "result": str(e), "success": False})
+    for i in issues:
+        print(f"\n【{i['name']}】{i['specialty']}:")
+        print(f"   {i['issues'][:200]}")
     
-    log("")
+    print(f"\n总消耗: {total_tokens} tokens")
     
-    # 第二轮：识别需删除文件
-    log("\n【第二轮】识别模拟代码和需删除文件\n")
+    # 保存问题
+    with open('debug_issues.json', 'w', encoding='utf-8') as f:
+        json.dump(issues, f, ensure_ascii=False, indent=2)
+    print("\n💾 问题已保存: debug_issues.json")
     
-    prompt2 = f"""你是代码审查员。
-
-symphony工具目录: C:\\Users\\Administrator\\.openclaw\\workspace\\skills\\symphony
-
-基于以下测试报告，请：
-1. 列出所有包含模拟/simulated/mock相关代码的文件
-2. 列出所有可以删除的测试文件或无用文件
-3. 给出具体的删除建议
-
-测试报告：
-{results[0].get('result', '无')[:1000]}
-
-请用中文详细列出。"""
-    
-    expert2 = experts[1]
-    provider = config["models"]["providers"][expert2["provider"]]
-    headers = {"Authorization": f"Bearer {provider['apiKey']}", "Content-Type": "application/json"}
-    data = {"model": expert2["model"], "messages": [{"role": "user", "content": prompt2}], "max_tokens": 1500}
-    
-    log(f"【{expert2['name']}】分析中...")
-    try:
-        response = requests.post(f"{provider['baseUrl']}/chat/completions", headers=headers, json=data, timeout=120)
-        if response.status_code == 200:
-            content = response.json()["choices"][0]["message"]["content"]
-            tokens = response.json().get("usage", {}).get("total_tokens", 0)
-            log(f"  ✅ 完成! Tokens: {tokens}")
-            results.append({"expert": expert2["name"], "task": expert2["task"], "result": content, "success": True})
-        else:
-            log(f"  ❌ 失败: HTTP {response.status_code}")
-            results.append({"expert": expert2["name"], "task": expert2["task"], "result": f"HTTP {response.status_code}", "success": False})
-    except Exception as e:
-        log(f"  ❌ 异常: {e}")
-        results.append({"expert": expert2["name"], "task": expert2["task"], "result": str(e), "success": False})
-    
-    log("")
-    
-    # 第三轮：整合修复方案
-    log("\n【第三轮】整合修复方案\n")
-    
-    prompt3 = f"""你是架构师。
-
-symphony工具目录: C:\\Users\\Administrator\\.openclaw\\workspace\\skills\\symphony
-
-请基于以下分析，给出：
-1. 具体的修复步骤
-2. 需要删除的文件列表（带文件路径）
-3. 需要修改的文件和修改内容
-4. 修复后的目录结构
-
-分析报告：
-{results[1].get('result', '无')[:1000]}
-
-请用中文详细列出修复方案。"""
-    
-    expert3 = experts[2]
-    provider = config["models"]["providers"][expert3["provider"]]
-    headers = {"Authorization": f"Bearer {provider['apiKey']}", "Content-Type": "application/json"}
-    data = {"model": expert3["model"], "messages": [{"role": "user", "content": prompt3}], "max_tokens": 1500}
-    
-    log(f"【{expert3['name']}】整合方案中...")
-    try:
-        response = requests.post(f"{provider['baseUrl']}/chat/completions", headers=headers, json=data, timeout=120)
-        if response.status_code == 200:
-            content = response.json()["choices"][0]["message"]["content"]
-            tokens = response.json().get("usage", {}).get("total_tokens", 0)
-            log(f"  ✅ 完成! Tokens: {tokens}")
-            results.append({"expert": expert3["name"], "task": expert3["task"], "result": content, "success": True})
-        else:
-            log(f"  ❌ 失败: HTTP {response.status_code}")
-            results.append({"expert": expert3["name"], "task": expert3["task"], "result": f"HTTP {response.status_code}", "success": False})
-    except Exception as e:
-        log(f"  ❌ 异常: {e}")
-        results.append({"expert": expert3["name"], "task": expert3["task"], "result": str(e), "success": False})
-    
-    # 显示所有结果
-    log("\n" + "=" * 70)
-    log("Debug结果汇总")
-    log("=" * 70)
-    
-    for r in results:
-        log(f"\n### {r['expert']}")
-        if r['success']:
-            log(r['result'][:2000])
-    
-    # 保存结果
-    output = {
-        "timestamp": datetime.now().isoformat(),
-        "results": results
-    }
-    
-    outfile = Path(__file__).parent / "outputs" / f"debug_result_{datetime.now().strftime('%Y%m%d_%H%M%S')}.json"
-    outfile.write_text(json.dumps(output, indent=2, ensure_ascii=False), encoding='utf-8')
-    log(f"\n\n结果已保存到: {outfile}")
-    
-    log("\n🎼 Debug任务完成!")
-
+    return issues
 
 if __name__ == "__main__":
-    main()
+    run_debug()

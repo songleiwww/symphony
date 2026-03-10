@@ -1,0 +1,66 @@
+[
+  {
+    "name": "沈清弦",
+    "role": "枢密使 - 架构设计",
+    "model": "Qwen/Qwen2.5-7B-Instruct",
+    "response": "当前正梳理边境安全策略，整合各方资源，加强防御体系，确保边疆稳定。",
+    "tokens": 68,
+    "status": "OK"
+  },
+  {
+    "name": "苏云渺",
+    "role": "工部尚书 - 代码开发",
+    "model": "Qwen/Qwen2.5-14B-Instruct",
+    "response": "近期致力于推进序境工部创新项目，优化资源配置，现已完成初步设计，进入实施阶段。",
+    "tokens": 70,
+    "status": "OK"
+  },
+  {
+    "name": "顾清歌",
+    "role": "翰林学士 - 知识博学",
+    "model": "THUDM/glm-4-9b-chat",
+    "response": "\n当前工作进度：序境翰林学士顾清歌，已完成初稿撰写，正修订完善。",
+    "tokens": 47,
+    "status": "OK"
+  },
+  {
+    "name": "沈星衍",
+    "role": "智囊博士 - 智慧谋士",
+    "model": "deepseek-ai/DeepSeek-V2-Chat",
+    "response": "{'code': 30003, 'message': 'Model disabled.', 'data': None}",
+    "tokens": 0,
+    "status": "FAIL"
+  },
+  {
+    "name": "叶轻尘",
+    "role": "行走使 - 轻量高效",
+    "model": "01ai/Yi-1.5-9B-Chat",
+    "response": "{'code': 20012, 'message': 'Model does not exist. Please check it carefully.', 'data': None}",
+    "tokens": 0,
+    "status": "FAIL"
+  },
+  {
+    "name": "林码",
+    "role": "营造司正 - 代码实现",
+    "model": "Qwen/Qwen2.5-72B-Instruct",
+    "response": "当前正林码项目进展顺利，已完成基础架构搭建，正进行功能模块优化与测试，预计按期交付。",
+    "tokens": 73,
+    "status": "OK"
+  },
+  {
+    "name": "沈星衍",
+    "role": "智囊博士 - 智慧谋士",
+    "model": "deepseek-ai/DeepSeek-V2",
+    "response": "{'code': 20012, 'message': 'Model does not exist. Please check it carefully.', 'data': None}",
+    "tokens": 0,
+    "status": "FAIL"
+  },
+  {
+    "name": "叶轻尘",
+    "role": "行走使 - 轻量高效",
+    "model": "01ai/Yi-1.5-34B-Chat",
+    "response": "{'code': 20012, 'message': 'Model does not exist. Please check it carefully.', 'data': None}",
+    "tokens": 0,
+    "status": "FAIL"
+  }
+]

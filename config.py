@@ -82,18 +82,35 @@ ZHIPU_CONFIG = {
 # 🦁 魔搭 (ModelScope)
 # =============================================================================
 
+# =============================================================================
+# 🦁 魔搭 (ModelScope) - 免费API限制说明
+# =============================================================================
+# 每日总调用：2000次/天（所有模型合计）
+# 单模型上限：≤500次/天
+# 限制：非商用、单并发、无SLA；超量返回429
+# =============================================================================
+
 MODELSCOPE_CONFIG = {
     "api_key": "ms-eac6f154-3502-4721-a168-ce7caeaf1033",
     "base_url": "https://api-inference.modelscope.cn/v1",
     "provider": "modelscope",
     "name": "魔搭",
-    "rate_limit": {"enabled": True, "max_requests_per_minute": 60, "recovery_time": 60},
+    "rate_limit": {
+        "enabled": True,
+        "max_requests_per_day": 2000,        # 每日总调用上限
+        "max_requests_per_model_per_day": 500, # 单模型每日上限
+        "max_concurrent": 1,                 # 单并发限制
+        "recovery_time": 60
+    },
     "models": [
-        {"id": "ZhipuAI/GLM-4.7-Flash",            "name": "ModelScope GLM-4.7-Flash",  "type": "general",  "thinking": False, "context_window": 128000},
-        {"id": "Tongyi-MAI/Z-Image-Turbo",        "name": "ModelScope Z-Image-Turbo",  "type": "image",    "image_gen": True, "context_window": 4000},
-        {"id": "deepseek-ai/DeepSeek-V3.2",       "name": "ModelScope DeepSeek-V3.2",  "type": "reasoning","thinking": True,  "context_window": 128000},
-        {"id": "Qwen/Qwen3-Coder-480B-A35B-Instruct","name": "ModelScope Qwen3-Coder-480B","type":"code","thinking":False,"context_window":128000},
-        {"id": "Qwen/Qwen3-235B-A22B-Instruct-2507","name":"ModelScope Qwen3-235B",     "type":"general","thinking":False,"context_window":128000},
+        # 已测试可用的在线体验模型 (2026-03-10)
+        # 建议分配：每个模型每天最多500次，总计2000次
+        {"id": "ZhipuAI/GLM-5",                   "name": "GLM-5 (智谱)",              "type": "general",  "thinking": False, "vision": True,  "context_window": 128000, "params": "753.86B", "framework": "Safetensors", "daily_limit": 500},
+        {"id": "moonshotai/Kimi-K2.5",           "name": "Kimi K2.5 (月之暗面)",       "type": "vision",   "thinking": False, "vision": True,  "context_window": 128000, "params": "170.74B", "framework": "Safetensors", "daily_limit": 500},
+        {"id": "MiniMax/MiniMax-M2.5",           "name": "MiniMax M2.5 (海螺)",        "type": "general",  "thinking": True,  "vision": False, "context_window": 128000, "params": "228.70B", "framework": "Safetensors", "daily_limit": 500},
+        {"id": "Qwen/Qwen3.5-397B-A17B",         "name": "Qwen3.5 397B (通义千问)",    "type": "vision",   "thinking": False, "vision": True,  "context_window": 128000, "params": "403.40B", "framework": "Safetensors", "daily_limit": 500},
+        # 其他可用模型
+        {"id": "ZhipuAI/GLM-4.7-Flash",          "name": "GLM-4.7-Flash (智谱)",       "type": "general",  "thinking": False, "vision": False, "context_window": 128000, "params": "31.22B", "framework": "Transformers", "daily_limit": 500},
     ]
 }
 
@@ -127,6 +144,58 @@ NVIDIA_CONFIG = {
 
 
 # =============================================================================
+# 🌀 硅基流动 (Silicon Flow) - 免费API - 2026-03-10新增
+# =============================================================================
+# API Key: sk-uqcngebrjbdzmcowpfxelysxukwqqarhdzfakpxwkklfrlqc
+# 基础URL: https://api.siliconflow.cn/v1
+# 限制: 免费用户100万Token/天, 高峰期可能限流
+# =============================================================================
+
+SILICONFLOW_CONFIG = {
+    "api_key": "sk-uqcngebrjbdzmcowpfxelysxukwqqarhdzfakpxwkklfrlqc",
+    "base_url": "https://api.siliconflow.cn/v1",
+    "provider": "siliconflow",
+    "name": "硅基流动",
+    "rate_limit": {"enabled": True, "max_requests_per_minute": 60, "recovery_time": 30},
+    "models": [
+        # Qwen系列 - 阿里开源
+        {"id": "Qwen/Qwen2.5-7B-Instruct",     "name": "通义2.5 7B",      "type": "general",  "thinking": False, "context_window": 32768,  "params": "7.72B",   "daily_limit": 100000, "focus": "轻量对话"},
+        {"id": "Qwen/Qwen2.5-14B-Instruct",    "name": "通义2.5 14B",     "type": "general",  "thinking": False, "context_window": 32768,  "params": "14.77B",  "daily_limit": 100000, "focus": "平衡性能"},
+        {"id": "Qwen/Qwen2.5-72B-Instruct",    "name": "通义2.5 72B",     "type": "reasoning", "thinking": True,  "context_window": 32768,  "params": "72.71B",  "daily_limit": 100000, "focus": "高性能推理"},
+        # GLM系列 - 智谱
+        {"id": "THUDM/glm-4-9b-chat",          "name": "GLM-4 9B",         "type": "general",  "thinking": False, "context_window": 128000, "params": "9.15B",   "daily_limit": 100000, "focus": "中文对话"},
+        {"id": "THUDM/glm-4-32k",              "name": "GLM-4 32K",        "type": "general",  "thinking": False, "context_window": 32000,  "params": "32.39B",  "daily_limit": 100000, "focus": "长文本"},
+        # DeepSeek系列 - 深度求索
+        {"id": "deepseek-ai/DeepSeek-V2-Chat",  "name": "DeepSeek V2 对话",  "type": "general",  "thinking": False, "context_window": 64000,  "params": "45.96B",  "daily_limit": 100000, "focus": "代码推理"},
+        {"id": "deepseek-ai/DeepSeek-V2",       "name": "DeepSeek V2",       "type": "reasoning", "thinking": True,  "context_window": 64000,  "params": "45.96B",  "daily_limit": 100000, "focus": "深度推理"},
+        # Yi系列 - 01.AI
+        {"id": "01ai/Yi-1.5-9B-Chat",         "name": "Yi 1.5 9B",        "type": "general",  "thinking": False, "context_window": 16000,  "params": "8.91B",   "daily_limit": 100000, "focus": "轻量高效"},
+        {"id": "01ai/Yi-1.5-34B-Chat",        "name": "Yi 1.5 34B",       "type": "reasoning", "thinking": True,  "context_window": 32000,  "params": "34.78B",  "daily_limit": 100000, "focus": "高性能"},
+    ]
+}
+
+
+# =============================================================================
+# 🆓 OpenRouter 免费模型 (2026-03-10)
+# =============================================================================
+# API Key: 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
+# 模型: openrouter/free - 自动路由到当前可用免费模型
+# 限制: 50次/天, 20次/分钟
+# =============================================================================
+
+OPENROUTER_CONFIG = {
+    "api_key": "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",
+    "base_url": "https://openrouter.ai/api/v1",
+    "provider": "openrouter",
+    "name": "OpenRouter免费",
+    "rate_limit": {"enabled": True, "max_requests_per_minute": 20, "recovery_time": 60},
+    "models": [
+        {"id": "openrouter/free", "name": "免费路由", "type": "general", "thinking": False, "context_window": 128000, "note": "自动选择可用免费模型"},
+    ]
+}
+
+
+# =============================================================================
 # 📦 合并配置
 # =============================================================================
 
@@ -138,6 +207,8 @@ CONFIG = {
         "zhipu": ZHIPU_CONFIG,
         "modelscope": MODELSCOPE_CONFIG,
         "nvidia": NVIDIA_CONFIG,
+        "openrouter": OPENROUTER_CONFIG,
+        "siliconflow": SILICONFLOW_CONFIG,
     }
 }
 

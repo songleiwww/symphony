@@ -22,6 +22,13 @@ if sys.platform == 'win32':
 # 添加symphony技能到路径
 sys.path.insert(0, str(Path(__file__).parent))
 
+# 导入监控模块
+try:
+    from orchestration_monitor import log_model_call, log_model_complete, get_monitor
+    MONITOR_ENABLED = True
+except ImportError:
+    MONITOR_ENABLED = False
+
 
 class SymphonyMode(Enum):
     """交响技能运行模式"""
@@ -324,18 +331,28 @@ class SymphonySkillWrapper:
         
         try:
             response = requests.post(url, headers=headers, json=data, timeout=90)
+            elapsed = time.time() - start_time
             if response.status_code == 200:
                 result = response.json()
+                # 记录成功
+                if MONITOR_ENABLED:
+                    log_model_complete(f"Symphony讨论", model_name, True, elapsed)
                 return {
                     "success": True,
                     "response": result['choices'][0]['message']['content']
                 }
             else:
+                # 记录失败
+                if MONITOR_ENABLED:
+                    log_model_complete(f"Symphony讨论", model_name, False, 0)
                 return {
                     "success": False,
                     "response": f"HTTP {response.status_code}: {response.text}"
                 }
         except Exception as e:
+            # 记录异常
+            if MONITOR_ENABLED:
+                log_model_complete(f"Symphony讨论", model_name, False, 0)
             return {
                 "success": False,
                 "response": f"调用异常：{str(e)}"
