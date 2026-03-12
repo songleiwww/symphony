@@ -1,4 +1,4 @@
-# 🎼 序境系统 v1.1.0 中文说明书
+# 🎼 序境系统 v1.0.0 正式版
 
 ## 系统简介
 
@@ -8,9 +8,55 @@
 
 - **多模型调度**：支持4大主流AI服务提供商，火山引擎支持豆包全系列模型
 - **智能路由**：根据任务类型自动匹配合适的模型
-- **容错机制**：故障自动重试、降级处理，确保服务连续性
+- **容错机制**：故障自动重试，降级处理，确保服务连续性
 - **限流管理**：智能API限流检测与自动恢复
 - **记忆系统**：长期记忆与每日日志，支持上下文连续性
+- **少府监花名册**：完整的人员管理系统，9人团队协作
+
+---
+
+## 安装方式
+
+### PyPI 安装（推荐）
+
+```bash
+pip install symphony-ai==1.0.1
+```
+
+### GitHub 安装
+
+```bash
+# 克隆项目
+git clone https://github.com/songleiwww/symphony.git
+cd symphony
+
+# 安装依赖
+pip install -r requirements.txt
+```
+
+---
+
+## 快速开始
+
+### 环境要求
+
+- Python 3.9+
+- 网络访问API服务
+
+### 基础使用
+
+```python
+from sf_complete_system import SymphonySystem
+
+# 初始化系统
+symphony = SymphonySystem()
+
+# 调用单模型
+result = symphony.call_model("你好，请介绍一下自己")
+
+# 调用多模型协作
+results = symphony.call_multi_models(["问题1", "问题2", "问题3"])
+```
 
 ---
 
@@ -43,38 +89,21 @@
 
 ---
 
-## 快速开始
+## 少府监团队
 
-### 环境要求
+序境系统拥有完整的9人团队，模拟古代官署运作：
 
-- Python 3.8+
-- 网络访问API服务
-
-### 安装步骤
-
-```bash
-# 克隆项目
-git clone https://github.com/songleiwww/symphony.git
-cd symphony
-
-# 安装依赖
-pip install -r requirements.txt
-```
-
-### 基础使用
-
-```python
-from sf_complete_system import SymphonySystem
-
-# 初始化系统
-symphony = SymphonySystem()
-
-# 调用单模型
-result = symphony.call_model("你好，请介绍一下自己")
-
-# 调用多模型协作
-results = symphony.call_multi_models(["问题1", "问题2", "问题3"])
-```
+| ID | 姓名 | 官职 | 部门 | 专长 |
+|----|------|------|------|------|
+| sf-001 | 萧云飞 | 文案助手 | 内容部 | 文案润色 |
+| sf-002 | 柳沉鱼 | 分析顾问 | 分析部 | 数据分析 |
+| sf-003 | 慕容惊鸿 | 首席策略师 | 战略部 | 深度推理 |
+| sf-004 | 苏瑾年 | 对话专家 | 客服部 | 中文对话 |
+| sf-005 | 洛紫烟 | 文书博士 | 文档部 | 长文本处理 |
+| sf-006 | 顾寒江 | 代码工程师 | 技术部 | 代码生成 |
+| sf-007 | 沈星衍 | 推理大师 | 研究部 | 逻辑推理 |
+| sf-008 | 叶轻舟 | 效率先锋 | 执行部 | 快速响应 |
+| sf-009 | 程九章 | 高级研究员 | 研究部 | 深度研究 |
 
 ---
 
@@ -88,114 +117,21 @@ results = symphony.call_multi_models(["问题1", "问题2", "问题3"])
 |------|------|--------|
 | api_key | API密钥 | 3b922877-3fbe-45d1-a298-53f2231c5224 |
 | base_url | API地址 | https://ark.cn-beijing.volces.com/api/coding/v3 |
-| rate_limit.max_requests_per_minute | 每分钟请求上限 | 60 |
 
 **支持的模型：**
 - ark-code-latest（豆包默认引擎）
 - Doubao-Seed-2.0-pro（旗舰推理模型）
 - Doubao-Seed-2.0-Code（代码模型）
-- MiniMax-M2.5（通用模型）
-- Kimi-K2.5（代码模型）
-- GLM-4.7（智谱模型）
-
-#### 2. 智谱配置（ZHIPU_CONFIG）
-
-| 参数 | 说明 | 示例值 |
-|------|------|--------|
-| api_key | API密钥 | 16cf0a4a... |
-| base_url | API地址 | https://open.bigmodel.cn/api/paas/v4 |
-
-**支持的模型：**
-- glm-4-flash（通用）
-- glm-z1-flash（推理）
-- glm-4v-flash（视觉）
-
-#### 3. 魔搭配置（MODELSCOPE_CONFIG）
-
-| 参数 | 说明 | 示例值 |
-|------|------|--------|
-| api_key | API密钥 | ms-eac6f154-... |
-| base_url | API地址 | https://api-inference.modelscope.cn/v1 |
-
-**限制：** 每日2000次调用，单模型≤500次/天
-
-#### 4. 人员绑定配置（PERSON_ROSTER）
-
-将团队成员与模型进行绑定，实现个性化调度：
-
-```python
-PERSON_ROSTER = {
-    "沈清弦": {"model": "ark-code-latest", "priority": 1},
-    "苏云渺": {"model": "ark-code-latest", "priority": 1},
-    # ...
-}
-```
 
 ---
 
-## 常见问题
+## 下载地址
 
-### Q1: 如何添加新的模型提供商？
-
-在`config.py`中新增配置块，参考现有格式：
-
-```python
-NEW_PROVIDER_CONFIG = {
-    "api_key": "your-api-key",
-    "base_url": "https://api.provider.com/v1",
-    "provider": "provider-name",
-    "models": [...]
-}
-```
-
-### Q2: 遇到API限流怎么办？
-
-系统内置限流处理机制：
-1. 自动降级到备用模型
-2. 等待恢复后重试
-3. 记录限流事件供分析
-
-### Q3: 如何查看系统日志？
-
-```bash
-# 查看实时日志
-python -m sf_complete_system --log-level DEBUG
-```
-
-### Q4: 记忆系统如何工作？
-
-- **MEMORY.md**：长期记忆文件，记录重要信息
-- **memory/YYYY-MM-DD.md**：每日工作日志
-- 系统会自动同步上下文到记忆系统
-
-### Q5: 如何进行多模型协作？
-
-```python
-from symphony_meeting import Meeting
-
-# 创建讨论会议
-meeting = Meeting(topic="问题讨论", participants=["model1", "model2"])
-result = meeting.discuss("需要讨论的问题")
-```
-
----
-
-## 目录结构
-
-```
-symphony/
-├── config.py              # 主配置文件
-├── sf_complete_system.py # 核心系统
-├── sf_adaptive_system_v2.py # 自适应系统
-├── symphony_meeting.py    # 会议系统
-├── memory_system.py       # 记忆系统
-├── fault_tolerance.py     # 容错系统
-├── rate_limit_handler.py  # 限流处理
-├── model_manager.py       # 模型管理
-├── examples/              # 使用示例
-├── docs/                  # 文档
-└── outputs/               # 输出结果
-```
+| 平台 | 地址 |
+|------|------|
+| GitHub Release | https://github.com/songleiwww/symphony/releases/tag/v1.0.0 |
+| PyPI | https://pypi.org/project/symphony-ai/1.0.1/ |
+| Gitee | https://gitee.com/wwwsonglei/symphony |
 
 ---
 
@@ -203,7 +139,7 @@ symphony/
 
 - GitHub: https://github.com/songleiwww/symphony
 - 邮箱: songlei_www@qq.com
-- 版本: v1.1.0 (Evolution Release)
+- 版本: v1.0.0 (正式版)
 
 ---
 
