@@ -1,388 +1,702 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-序境 Symphony - 系统性Debug修复版
-包含：架构优化、代码修复、规则增强、策略完善、性能优化、工程改进
+🎼 交响监控控制台
+实时监控交响系统的工作状态
 """
-import json
-from threading import Thread, Lock
-from queue import Queue, Full, Empty
-import time
-import logging
-import os
+
 import sys
-from enum import Enum
-from typing import Optional, Dict, Any
+import io
+import os
 
-# 日志配置（不干扰其他模块）
-logger = logging.getLogger('Symphony')
-if not logger.handlers:
-    handler = logging.StreamHandler()
-    handler.setFormatter(logging.Formatter('%(asctime)s - %(levelname)s - %(message)s'))
-    logger.addHandler(handler)
-    logger.setLevel(logging.INFO)
+# 简单设置编码，不要修改stdout
+if sys.platform == 'win32':
+    # 设置标准输出编码为UTF-8
+    try:
+        import codecs
+        sys.stdout = codecs.getwriter('utf-8')(sys.stdout.buffer, 'strict')
+        sys.stderr = codecs.getwriter('utf-8')(sys.stderr.buffer, 'strict')
+    except:
+        pass
 
-# ==================== 枚举定义 ====================
+# 只在直接运行时修改stdout，import时不修改
+if __name__ == "__main__" and sys.platform == 'win32':
+    try:
+        sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf-8')
+    except:
+        pass
 
-class TaskPriority(Enum):
-    LOW = 1
-    NORMAL = 2
-    HIGH = 3
-    URGENT = 4
+import time
+import json
+import requests
+import threading
+from pathlib import Path
+from datetime import datetime
+from typing import Dict, Any, List, Optional
+from concurrent.futures import ThreadPoolExecutor, as_completed
+from config import (
+    CONFIG, MODEL_INFO, SYSTEM_CONFIG,
+    get_provider_for_model, get_api_config_for_model, get_model_info,
+    get_genesis_story, get_dream_maker, get_jiaoJiao, get_brand,
+    DOUBAO_CONFIG, NVIDIA_CONFIG, ZHIPU_CONFIG,
+    check_rate_limit, record_request, get_models_by_type, get_all_models,
+    get_provider_name, get_models_by_provider
+)
 
-class TaskStatus(Enum):
-    PENDING = "pending"
-    RUNNING = "running"
-    COMPLETED = "completed"
-    FAILED = "failed"
-    TIMEOUT = "timeout"
+# 导入触发系统
+try:
+    from trigger_system import analyze_intent, get_auto_help
+    TRIGGER_ENABLED = True
+except ImportError:
+    TRIGGER_ENABLED = False
 
-# ==================== 核心类 ====================
 
-class MonitorDataCollector:
-    """监控数据采集器 - 已修复"""
+# =============================================================================
+# 实时监控器
+# =============================================================================
+
+class RealtimeMonitor:
+    """实时监控器"""
+    
     def __init__(self):
-        self.cache = {}
-        self.lock = Lock()
+        self.active_calls: Dict[str, Dict] = {}  # 进行中的调用
+        self.call_history: List[Dict] = []  # 调用历史
+        self.model_stats: Dict[str, Dict] = {}  # 模型统计
+        self.start_time = datetime.now()
+        self.lock = threading.Lock()
+        self.callbacks: List[callable] = []
     
-    def collect(self, metric: str, value: Any) -> None:
-        with self.lock:
-            self.cache[metric] = {
-                'value': value,
-                'timestamp': time.time()
-            }
-            logger.info(f"Collected: {metric}={value}")
+    def register_callback(self, callback: callable):
+        """注册回调"""
+        self.callbacks.append(callback)
     
-    def get_data(self, metric: str) -> Optional[Any]:
-        with self.lock:
-            return self.cache.get(metric, {}).get('value')
-    
-    def get_all(self) -> Dict:
-        with self.lock:
-            return self.cache.copy()
-
-
-class AlertEngine:
-    """告警引擎 - 已修复边界条件"""
-    def __init__(self):
-        self.rules = [
-            {"level": "WARNING", "trigger": "response_timeout", "threshold": 5, "enabled": True},
-            {"level": "ERROR", "trigger": "error_rate", "threshold": 10, "enabled": True},
-            {"level": "CRITICAL", "trigger": "queue_full", "threshold": 0.9, "enabled": True},
-        ]
-        self.alerts = []
-        self.lock = Lock()
-    
-    def check_and_alert(self, metric: str, value: float) -> Optional[Dict]:
-        with self.lock:
-            for rule in self.rules:
-                if rule.get('enabled') and metric == rule['trigger']:
-                    # 边界条件修复：正确比较阈值
-                    if value >= rule['threshold']:
-                        alert = {
-                            'level': rule['level'],
-                            'metric': metric,
-                            'value': value,
-                            'threshold': rule['threshold'],
-                            'timestamp': time.time()
-                        }
-                        self.alerts.append(alert)
-                        logger.warning(f"Alert: {rule['level']} - {metric}={value}>={rule['threshold']}")
-                        return alert
-        return None
-    
-    def get_alerts(self) -> list:
-        with self.lock:
-            return self.alerts.copy()
-
-
-class Module:
-    """模块化管理 - 已优化解耦"""
-    def __init__(self):
-        self.core = {}
-        self.interfaces = {}
-        self.configs = {}
-        self.plugins = {}
-        self.lock = Lock()
-    
-    def register_plugin(self, name: str, plugin: Any) -> None:
-        with self.lock:
-            self.plugins[name] = plugin
-    
-    def get_plugin(self, name: str) -> Optional[Any]:
-        with self.lock:
-            return self.plugins.get(name)
-
-
-class UserProfile:
-    """个性化服务 - 已增强"""
-    def __init__(self):
-        self.preferences = {'Content': {}, 'Interests': [], 'Interactions': {}}
-        self.behavior_learning = {'Patterns': {}, 'Adaptation': {}}
-        self.response_adaptation = {'PersonalizedFeedback': {}, 'InterfaceCustomization': {}}
-        self.historical_memory = {'InteractionTimeline': {}, 'ContentRelevance': {}}
-        self.lock = Lock()
-    
-    def learn(self, interaction_type: str, data: Dict) -> None:
-        with self.lock:
-            if 'Patterns' not in self.behavior_learning:
-                self.behavior_learning['Patterns'] = {}
-            self.behavior_learning['Patterns'][interaction_type] = data
-
-
-class IntentUnderstanding:
-    """意图理解增强 - 已完善"""
-    def __init__(self):
-        self.intent_classifier = None
-        self.key_extractor = None
-        self.context_understand = None
-        self.fuzzy_handler = None
-        self.confidence_threshold = 0.7
-    
-    def understand(self, message: str) -> Dict:
-        # 简化的意图理解实现
-        intent = {
-            'intent': 'analyze',
-            'confidence': 0.9,
-            'entities': [],
-            'message': message
-        }
-        return intent
-
-
-class ResponseOptimizer:
-    """响应速度优化 - 已启用异步缓存"""
-    def __init__(self):
-        self.cache = {}
-        self.cache_ttl = 300  # 缓存5分钟
-        self.async_handler = None
-        self.preloader = None
-        self.lock = Lock()
-    
-    def optimize(self, task: str) -> Dict:
-        with self.lock:
-            # 检查缓存
-            if task in self.cache:
-                cached = self.cache[task]
-                if time.time() - cached['time'] < self.cache_ttl:
-                    return {'optimized': True, 'from_cache': True}
-            
-            result = {'optimized': True, 'from_cache': False}
-            self.cache[task] = {'result': result, 'time': time.time()}
-            return result
-
-
-class ConcurrencyManager:
-    """并发处理 - 已修复队列和线程"""
-    def __init__(self):
-        self.thread_pool_size = 10
-        self.max_concurrent = 15
-        # 修复：使用动态队列大小
-        self.queue = Queue(maxsize=1000)
-        self.lock = Lock()
-        self.running_tasks = 0
-        self.completed_tasks = 0
-    
-    def execute(self, task: Any) -> Dict:
-        # 修复：添加超时和资源控制
-        with self.lock:
-            if self.running_tasks >= self.max_concurrent:
-                return {'executed': False, 'reason': 'max_concurrent_reached'}
-            self.running_tasks += 1
-        
-        try:
-            # 模拟任务执行
-            time.sleep(0.01)
-            with self.lock:
-                self.completed_tasks += 1
-            return {'executed': True, 'task': task}
-        finally:
-            with self.lock:
-                self.running_tasks -= 1
-    
-    def get_status(self) -> Dict:
-        with self.lock:
-            return {
-                'running': self.running_tasks,
-                'completed': self.completed_tasks,
-                'queue_size': self.queue.qsize()
-            }
-
-
-class Scalability:
-    """扩展性 - 已提供实际机制"""
-    def __init__(self):
-        self.horizontal = True
-        self.vertical = True
-        self.plugin_support = True
-        self.extensions = {}
-    
-    def add_extension(self, name: str, ext: Any) -> None:
-        self.extensions[name] = ext
-    
-    def get_extension(self, name: str) -> Optional[Any]:
-        return self.extensions.get(name)
-
-
-class DevelopmentEfficiency:
-    """开发效率 - 已增加测试支持"""
-    def __init__(self):
-        self.templates = {}
-        self.debug_tools = True
-        self.test_support = True
-    
-    def generate_template(self, name: str) -> str:
-        return f"Template {name}"
-    
-    def run_test(self, test_name: str) -> Dict:
-        """内置测试方法"""
-        return {'test': test_name, 'passed': True}
-
-
-class TaskScheduler:
-    """任务调度器 - 新增调度功能"""
-    def __init__(self):
-        self.queue = Queue()
-        self.priority_queue = Queue()
-        self.lock = Lock()
-        self.current_task = None
-        self.task_history = []
-    
-    def add_task(self, task: Any, priority: TaskPriority = TaskPriority.NORMAL) -> bool:
-        try:
-            if priority == TaskPriority.URGENT or priority == TaskPriority.HIGH:
-                self.priority_queue.put_nowait((priority.value, task))
-            else:
-                self.queue.put_nowait(task)
-            return True
-        except Full:
-            return False
-    
-    def get_task(self, timeout: float = 1.0) -> Optional[Any]:
-        try:
-            # 优先处理高优先级
+    def notify(self, event: str, data: Any = None):
+        """通知更新"""
+        for cb in self.callbacks:
             try:
-                _, task = self.priority_queue.get_nowait()
-                return task
-            except Empty:
-                return self.queue.get(timeout=timeout)
-        except Empty:
-            return None
+                cb(event, data)
+            except:
+                pass
     
-    def get_history(self) -> list:
-        return self.task_history[-10:]
-
-
-class StatusManager:
-    """状态管理器 - 新增状态管理"""
-    def __init__(self):
-        self.status = 'idle'
-        self.last_update = time.time()
-        self.lock = Lock()
-    
-    def set_status(self, new_status: str) -> None:
+    def start_call(self, call_id: str, model: str, prompt: str):
+        """开始调用"""
         with self.lock:
-            self.status = new_status
-            self.last_update = time.time()
-    
-    def get_status(self) -> Dict:
-        with self.lock:
-            return {
-                'status': self.status,
-                'last_update': self.last_update
+            self.active_calls[call_id] = {
+                "model": model,
+                "prompt": prompt[:50],
+                "start_time": time.time(),
+                "status": "running"
             }
+            self.notify("start", {"call_id": call_id, "model": model})
+    
+    def end_call(self, call_id: str, success: bool, response: str = "", error: str = "", elapsed: float = 0):
+        """结束调用"""
+        with self.lock:
+            if call_id in self.active_calls:
+                call = self.active_calls.pop(call_id)
+                
+                record = {
+                    "call_id": call_id,
+                    "model": call["model"],
+                    "prompt": call["prompt"],
+                    "success": success,
+                    "response": response[:100] if response else "",
+                    "error": error,
+                    "elapsed": elapsed,
+                    "timestamp": datetime.now().isoformat()
+                }
+                self.call_history.append(record)
+                
+                # 更新统计
+                model = call["model"]
+                if model not in self.model_stats:
+                    self.model_stats[model] = {"success": 0, "fail": 0, "total_time": 0, "calls": 0}
+                
+                stats = self.model_stats[model]
+                stats["calls"] += 1
+                if success:
+                    stats["success"] += 1
+                    stats["total_time"] += elapsed
+                else:
+                    stats["fail"] += 1
+                
+                # 保持历史记录
+                if len(self.call_history) > 1000:
+                    self.call_history = self.call_history[-500:]
+                
+                self.notify("end", record)
+                
+                # 保存到文件供外部程序读取
+                save_monitor_to_file()
+    
+    def get_active(self) -> List[Dict]:
+        """获取进行中的调用"""
+        with self.lock:
+            return list(self.active_calls.values())
+    
+    def get_stats(self) -> Dict[str, Any]:
+        """获取统计"""
+        with self.lock:
+            uptime = (datetime.now() - self.start_time).total_seconds()
+            total_calls = len(self.call_history)
+            success_calls = sum(1 for c in self.call_history if c["success"])
+            
+            return {
+                "uptime": uptime,
+                "total_calls": total_calls,
+                "success_rate": (success_calls / total_calls * 100) if total_calls > 0 else 0,
+                "active_calls": len(self.active_calls),
+                "model_stats": self.model_stats.copy()
+            }
+    
+    def get_history(self, limit: int = 20) -> List[Dict]:
+        """获取历史记录"""
+        with self.lock:
+            return self.call_history[-limit:]
 
 
-# ==================== 主入口类 ====================
+# 全局监控器
+_monitor = RealtimeMonitor()
+
+# 监控数据文件路径
+MONITOR_FILE = str(Path(__file__).parent / "monitor_data.json")
+
+
+def save_monitor_to_file():
+    """保存监控数据到文件（供外部程序读取）"""
+    try:
+        stats = _monitor.get_stats()
+        history = _monitor.get_history(10)
+        
+        data = {
+            "uptime": stats.get("uptime", 0),
+            "total_calls": stats.get("total_calls", 0),
+            "success_rate": stats.get("success_rate", 0),
+            "active_calls": stats.get("active_calls", 0),
+            "model_stats": stats.get("model_stats", {}),
+            "recent_calls": [
+                {
+                    "model": h.get("model", ""),
+                    "success": h.get("success", False),
+                    "elapsed": h.get("elapsed", 0),
+                    "prompt": h.get("prompt", "")[:50] + "..." if len(h.get("prompt", "")) > 50 else h.get("prompt", ""),
+                    "timestamp": h.get("timestamp", "")
+                }
+                for h in history
+            ],
+            "last_update": datetime.now().isoformat()
+        }
+        
+        with open(MONITOR_FILE, "w", encoding="utf-8") as f:
+            json.dump(data, f, ensure_ascii=False, indent=2)
+    except Exception as e:
+        pass  # 静默失败，不影响主流程
+
+
+def load_monitor_from_file() -> dict:
+    """从文件加载监控数据（供外部程序读取）"""
+    try:
+        if Path(MONITOR_FILE).exists():
+            with open(MONITOR_FILE, "r", encoding="utf-8") as f:
+                return json.load(f)
+    except:
+        pass
+    return {}
+
+
+def get_monitor() -> RealtimeMonitor:
+    return _monitor
+
+
+# =============================================================================
+# 交响调用器（带监控）
+# =============================================================================
 
 class Symphony:
-    """序境主入口类 - 修复版"""
-    def __init__(self):
-        self.status_manager = StatusManager()
-        self.module = Module()
-        self.user_profile = UserProfile()
-        self.intent_understanding = IntentUnderstanding()
-        self.response_optimizer = ResponseOptimizer()
-        self.concurrency_manager = ConcurrencyManager()
-        self.scalability = Scalability()
-        self.development_efficiency = DevelopmentEfficiency()
-        self.collector = MonitorDataCollector()
-        self.alert_engine = AlertEngine()
-        self.scheduler = TaskScheduler()
-        self.status_manager.set_status('ready')
-        logger.info("Symphony initialized (Debug Fixed)")
+    """交响核心类"""
     
-    def run_symphony(self, task: str, mode: str = 'auto', priority: TaskPriority = TaskPriority.NORMAL) -> Dict:
-        """运行序境任务 - 已增强调度"""
-        self.status_manager.set_status('running')
-        self.collector.collect('task_start', time.time())
+    def __init__(self):
+        self.config = CONFIG
+        self.monitor = _monitor
+        self.call_count = 0
         
+        # 品牌信息
+        brand = get_brand()
+        self.brand = brand
+    
+    def call_model(self, model_id: str, prompt: str) -> Dict[str, Any]:
+        """调用模型（带监控和限流检测）"""
+        self.call_count += 1
+        call_id = f"call_{self.call_count}_{int(time.time())}"
+        
+        # 获取模型信息
+        model_info = get_model_info(model_id)
+        provider = model_info.get("provider", "unknown")
+        
+        # 检查限流
+        allowed, recovery_time = check_rate_limit(provider)
+        if not allowed:
+            return {
+                "success": False,
+                "model": model_id,
+                "error": f"限流中，{recovery_time:.1f}秒后恢复",
+                "rate_limited": True,
+                "recovery_time": recovery_time,
+                "call_id": call_id
+            }
+        
+        # 记录请求
+        record_request(provider)
+        
+        # 开始监控
+        self.monitor.start_call(call_id, model_id, prompt)
+        
+        # 获取API配置
+        api_config = get_api_config_for_model(model_id)
+        
+        url = f"{api_config['base_url']}/chat/completions"
+        headers = {
+            "Authorization": f"Bearer {api_config['api_key']}",
+            "Content-Type": "application/json"
+        }
+        
+        data = {
+            "model": model_id,
+            "messages": [{"role": "user", "content": prompt}],
+            "max_tokens": 1024,
+            "temperature": 0.7
+        }
+        
+        start = time.time()
         try:
-            # 意图理解
-            intent = self.intent_understanding.understand(task)
+            resp = requests.post(url, headers=headers, json=data, timeout=120)
+            elapsed = time.time() - start
             
-            # 响应优化
-            optimized = self.response_optimizer.optimize(task)
+            # 先检查状态码
+            if resp.status_code == 429:
+                # 限流错误
+                try:
+                    err_data = resp.json()
+                    err_msg = err_data.get("error", {}).get("message", "达到调用限制")
+                except:
+                    err_msg = "达到调用限制，请稍后再试"
+                
+                # 尝试解析恢复时间
+                recovery = check_rate_limit(provider)
+                if recovery[1]:
+                    error = f"⏳ API限流中，预计{recovery[1]:.0f}秒后恢复 | 原因: {err_msg}"
+                else:
+                    error = f"⏳ API限流: {err_msg}"
+                content = ""
+                success = False
+            elif resp.status_code != 200:
+                # 其他错误
+                content = ""
+                try:
+                    err_data = resp.json()
+                    error = f"Status {resp.status_code}: {err_data.get('error', {}).get('message', resp.text[:100])}"
+                except:
+                    error = f"Status {resp.status_code}: {resp.text[:100]}"
+                success = False
+            else:
+                # 200 OK
+                result = resp.json()
+                choices = result.get("choices", [])
+                if choices:
+                    content = choices[0]["message"].get("content", "") or ""
+                    finish_reason = choices[0].get("finish_reason", "")
+                    
+                    # 检查是否正常结束
+                    if not content and finish_reason == "length":
+                        content = "[响应被截断]"
+                    
+                    success = True
+                    error = ""
+                else:
+                    content = ""
+                    error = "⚠️ 无响应内容"
+                    success = False
             
-            # 并发执行（带超时）
-            result = self.concurrency_manager.execute(task)
-            
-            # 检查告警
-            self.alert_engine.check_and_alert('response_time', 0.1)
-            
-            self.collector.collect('task_end', time.time())
-            self.status_manager.set_status('ready')
+            # 结束监控
+            self.monitor.end_call(call_id, success, content, error, elapsed)
             
             return {
-                'status': 'completed',
-                'task': task,
-                'intent': intent,
-                'optimized': optimized,
-                'result': result
+                "success": success,
+                "model": model_id,
+                "response": content,
+                "elapsed": elapsed,
+                "call_id": call_id
             }
         except Exception as e:
-            self.status_manager.set_status('error')
-            logger.error(f"Task failed: {e}")
-            return {'status': 'failed', 'error': str(e)}
+            elapsed = time.time() - start
+            self.monitor.end_call(call_id, False, "", str(e), elapsed)
+            return {
+                "success": False,
+                "model": model_id,
+                "error": str(e),
+                "elapsed": elapsed,
+                "call_id": call_id
+            }
     
-    def get_status(self) -> Dict:
-        """获取状态 - 已完善"""
-        return {
-            'status_manager': self.status_manager.get_status(),
-            'concurrency': self.concurrency_manager.get_status(),
-            'collector_metrics': len(self.collector.get_all()),
-            'alerts': len(self.alert_engine.get_alerts()),
-            'ready': True
+    def call_multiple(self, prompt: str, models: List[str] = None) -> List[Dict]:
+        """多模型调用"""
+        if models is None:
+            models = self.config["models"][:3]
+        
+        results = []
+        with ThreadPoolExecutor(max_workers=len(models)) as executor:
+            futures = {executor.submit(self.call_model, m, prompt): m for m in models}
+            for future in as_completed(futures):
+                results.append(future.result())
+        
+        # 保存监控数据到文件
+        save_monitor_to_file()
+        
+        return results
+
+
+# =============================================================================
+# 监控控制台
+# =============================================================================
+
+def show_dashboard():
+    """显示监控仪表板"""
+    # 优先从共享文件读取（可跨进程）
+    file_data = load_monitor_from_file()
+    
+    if file_data and file_data.get("total_calls", 0) > 0:
+        # 使用文件数据
+        stats = {
+            "uptime": file_data.get("uptime", 0),
+            "total_calls": file_data.get("total_calls", 0),
+            "success_rate": file_data.get("success_rate", 0),
+            "active_calls": file_data.get("active_calls", 0),
+            "model_stats": file_data.get("model_stats", {})
         }
+        history = file_data.get("recent_calls", [])
+        active = []
+        source = "文件共享"
+    else:
+        # 降级到内存数据
+        monitor = _monitor
+        stats = monitor.get_stats()
+        history = monitor.get_history(10)
+        active = monitor.get_active()
+        source = "内存"
     
-    def run_test(self) -> Dict:
-        """运行内置测试"""
-        return self.development_efficiency.run_test('symphony_test')
+    # 颜色代码
+    GREEN = "\033[92m"
+    RED = "\033[91m"
+    YELLOW = "\033[93m"
+    BLUE = "\033[94m"
+    CYAN = "\033[96m"
+    BOLD = "\033[1m"
+    RESET = "\033[0m"
+    
+    # ===== 系统状态 =====
+    print(f"{BOLD}{CYAN}📊 系统状态{RESET}")
+    uptime_mins = stats['uptime'] / 60
+    print(f"   ⏱️  运行时间: {uptime_mins:.1f}分钟")
+    print(f"   📞 总调用次数: {stats['total_calls']}")
+    
+    # 成功率颜色
+    rate = stats['success_rate']
+    rate_color = GREEN if rate >= 80 else YELLOW if rate >= 50 else RED
+    print(f"   ✅ 成功率: {rate_color}{rate:.1f}%{RESET}")
+    
+    # 进行中
+    if stats['active_calls'] > 0:
+        print(f"   🔄 进行中: {YELLOW}{stats['active_calls']}个{RESET}")
+    else:
+        print(f"   💤 进行中: 0个")
+    
+    # ===== 进行中的调用 =====
+    if active:
+        print(f"\n{BOLD}{YELLOW}🔄 进行中的调用:{RESET}")
+        for a in active:
+            elapsed = time.time() - a["start_time"]
+            print(f"   • {a['model']}: {a['prompt'][:20]}... ({elapsed:.1f}s)")
+    
+    # ===== 最近调用 =====
+    if history:
+        print(f"\n{BOLD}{CYAN}📜 最近调用 (最新5条):{RESET}")
+        for h in reversed(history[-5:]):
+            status = f"{GREEN}✅{RESET}" if h["success"] else f"{RED}❌{RESET}"
+            prompt = h['prompt'][:25] + "..." if len(h['prompt']) > 25 else h['prompt']
+            print(f"   {status} {h['model']} ({h['elapsed']:.2f}s) - {prompt}")
+    
+    # ===== 详细模型统计 =====
+    if stats["model_stats"]:
+        print(f"\n{BOLD}{BLUE}📈 模型统计 (所有模型):{RESET}")
+        
+        # 计算汇总
+        total_success = sum(s['success'] for s in stats["model_stats"].values())
+        total_fail = sum(s['fail'] for s in stats["model_stats"].values())
+        total_time = sum(s['total_time'] for s in stats["model_stats"].values())
+        total_calls_model = sum(s['calls'] for s in stats["model_stats"].values())
+        
+        # 汇总信息
+        avg_time = total_time / total_calls_model if total_calls_model > 0 else 0
+        print(f"\n   {BOLD}汇总:{RESET} 总调用{total_calls_model}次 | 成功{total_success}次 | 失败{total_fail}次 | 平均{avg_time:.2f}秒/次")
+        
+        # 找出最快和最慢
+        if stats["model_stats"]:
+            fastest = min(stats["model_stats"].items(), key=lambda x: x[1]['total_time']/x[1]['calls'] if x[1]['calls'] > 0 else 999)
+            slowest = max(stats["model_stats"].items(), key=lambda x: x[1]['total_time']/x[1]['calls'] if x[1]['calls'] > 0 else 0)
+            fastest_avg = fastest[1]['total_time']/fastest[1]['calls'] if fastest[1]['calls'] > 0 else 0
+            slowest_avg = slowest[1]['total_time']/slowest[1]['calls'] if slowest[1]['calls'] > 0 else 0
+            print(f"   🚀 最快: {fastest[0]} ({fastest_avg:.2f}s) | 🐢 最慢: {slowest[0]} ({slowest_avg:.2f}s)")
+        
+        # 每个模型的详细统计
+        print(f"\n   {BOLD}模型详情:{RESET}")
+        for model, s in sorted(stats["model_stats"].items(), key=lambda x: -x[1]['calls']):
+            rate = (s["success"] / s["calls"] * 100) if s["calls"] > 0 else 0
+            rate_color = GREEN if rate >= 80 else YELLOW if rate >= 50 else RED
+            avg = s["total_time"] / s["success"] if s["success"] > 0 else 0
+            
+            # 状态图标
+            if s['calls'] == s['success']:
+                icon = f"{GREEN}✓{RESET}"
+            elif s['success'] == 0:
+                icon = f"{RED}✗{RESET}"
+            else:
+                icon = f"{YELLOW}~{RESET}"
+            
+            print(f"   {icon} {model}: {s['success']}/{s['calls']} ({rate_color}{rate:.0f}%{RESET}) 平均{avg:.2f}s | 总{s['total_time']:.1f}s")
 
 
-# ==================== 测试 ====================
+def show_menu():
+    """显示菜单"""
+    brand = get_brand()
+    
+    print("\n" + "="*70)
+    print(f"🎼 {brand['name_cn']} {brand['name_en']} 控制系统 v2.0")
+    print("="*70)
+    print("\n📋 可用模型:")
+    
+    # 按提供商分组显示
+    print("\n  🔥 火山引擎 (Doubao):")
+    for m in get_models_by_provider("doubao"):
+        info = get_model_info(m)
+        type_icon = get_type_icon(info.get("type", "general"))
+        print(f"    • {m} {type_icon}")
+    
+    print("\n  📊 智谱 (Zhipu):")
+    for m in get_models_by_provider("zhipu"):
+        info = get_model_info(m)
+        type_icon = get_type_icon(info.get("type", "general"))
+        print(f"    • {m} {type_icon}")
+    
+    print("\n  🦁 魔搭 (ModelScope):")
+    for m in get_models_by_provider("modelscope"):
+        info = get_model_info(m)
+        type_icon = get_type_icon(info.get("type", "general"))
+        print(f"    • {m} {type_icon}")
+    
+    print("\n  ⚡ 英伟达 (NVIDIA):")
+    for m in get_models_by_provider("nvidia"):
+        info = get_model_info(m)
+        type_icon = get_type_icon(info.get("type", "general"))
+        print(f"    • {m} {type_icon}")
+    
+    print("\n" + "="*70)
+    print("📌 模型类型说明:")
+    print("  🧠 推理  💻 代码  👁️ 视觉  🖼️ 图像  🎬 视频  📝 通用")
+    print("="*70)
+    print("\n选择模式:")
+    print("  1. 🎯 对话模式")
+    print("  2. 👥 多人调度")
+    print("  3. 📊 监控面板")
+    print("  4. 🧪 快速测试")
+    print("  5. 🔄 实时监控(自动刷新)")
+    print("  0. 🚪 退出")
+    print("="*70)
+
+
+def get_type_icon(model_type: str) -> str:
+    """获取模型类型图标"""
+    icons = {
+        "general": "📝",
+        "reasoning": "🧠",
+        "code": "💻",
+        "vision": "👁️",
+        "vision_reasoning": "🧠👁️",
+        "image": "🖼️",
+        "video": "🎬",
+    }
+    return icons.get(model_type, "📝")
+
+
+def chat_mode():
+    """对话模式"""
+    symphony = Symphony()
+    print("\n🎯 对话模式 (输入 'quit' 退出, 'stats' 查看统计)")
+    
+    while True:
+        try:
+            prompt = input("\n> ").strip()
+            if not prompt:
+                continue
+            if prompt.lower() == "quit":
+                break
+            if prompt.lower() == "stats":
+                show_dashboard()
+                continue
+            
+            result = symphony.call_model(CONFIG["primary_model"], prompt)
+            
+            if result["success"]:
+                print(f"\n✅ [{result['model']}] ({result['elapsed']:.2f}s)")
+                print(result["response"])
+            else:
+                print(f"\n❌ 失败: {result.get('error')}")
+        
+        except KeyboardInterrupt:
+            break
+        except Exception as e:
+            print(f"\n错误: {e}")
+
+
+def multi_mode():
+    """多模型模式"""
+    symphony = Symphony()
+    print("\n👥 多人调度模式")
+    prompt = input("请输入问题: ").strip()
+    
+    if not prompt:
+        return
+    
+    print("\n🚀 开始多模型调用...")
+    results = symphony.call_multiple(prompt)
+    
+    print("\n" + "="*70)
+    print("📊 多模型协作结果")
+    print("="*70)
+    
+    for r in results:
+        status = "✅" if r["success"] else "❌"
+        print(f"\n{status} {r['model']} ({r.get('elapsed', 0):.2f}s)")
+        if r["success"]:
+            print(f"   {r['response'][:200]}...")
+        else:
+            print(f"   错误: {r.get('error', 'unknown')}")
+
+
+def monitor_mode():
+    """监控模式"""
+    show_dashboard()
+
+
+def realtime_monitor():
+    """实时监控"""
+    import os
+    import shutil
+    
+    # 获取终端宽度
+    def get_width():
+        return shutil.get_terminal_size().columns or 60
+    
+    print("\n🔄 实时监控模式已启动")
+    print("按 Enter 退出\n")
+    
+    try:
+        count = 0
+        while True:
+            count += 1
+            
+            # 清除屏幕
+            os.system('cls' if os.name == 'nt' else 'clear')
+            
+            # 显示刷新标识
+            width = get_width()
+            print("🎼 交响 Symphony 实时监控".center(width))
+            print(f"🔄 刷新 #{count} | {time.strftime('%Y-%m-%d %H:%M:%S')}".center(width))
+            print("─"*width)
+            
+            try:
+                show_dashboard()
+            except Exception as e:
+                print(f"显示错误: {e}")
+            
+            print("─"*width)
+            print(f"💡 1秒后刷新 | 按 Enter 退出")
+            
+            # 使用线程来监听输入
+            import threading
+            import sys
+            def check_input():
+                try:
+                    input()
+                except:
+                    pass
+            
+            t = threading.Thread(target=check_input, daemon=True)
+            t.start()
+            t.join(timeout=1)
+            
+            if not t.is_alive():
+                break
+                
+    except KeyboardInterrupt:
+        print("\n\n👋 退出监控")
+    except Exception as e:
+        print(f"\n\n退出监控: {e}")
+
+
+def quick_test():
+    """快速测试"""
+    symphony = Symphony()
+    print("\n🧪 快速测试...")
+    
+    test_models = ["ark-code-latest", "Doubao-Seed-2.0-pro"]
+    prompt = "用一句话介绍你自己"
+    
+    results = symphony.call_multiple(prompt, test_models)
+    
+    success = sum(1 for r in results if r["success"])
+    print(f"\n✅ 测试完成: {success}/{len(results)} 成功")
+    
+    show_dashboard()
+
+
+# =============================================================================
+# 主程序
+# =============================================================================
+
+def main():
+    """主程序"""
+    # 修复可能的stdout关闭问题
+    try:
+        if sys.stdout.closed:
+            sys.stdout = io.StringIO()
+    except:
+        pass
+    
+    # 显示品牌
+    brand = get_brand()
+    print(f"\n{brand['color']} {brand['name_cn']} ({brand['name_en']}) - {brand['tagline']}")
+    
+    while True:
+        show_menu()
+        
+        choice = input("\n请选择 (0-5): ").strip()
+        
+        if choice == "0":
+            print("\n👋 再见!")
+            break
+        elif choice == "1":
+            chat_mode()
+        elif choice == "2":
+            multi_mode()
+        elif choice == "3":
+            monitor_mode()
+        elif choice == "4":
+            quick_test()
+        elif choice == "5":
+            realtime_monitor()
+        else:
+            print("\n❌ 无效选择")
+
 
 if __name__ == "__main__":
-    print("=== 序境 Symphony Debug修复版 ===\n")
-    
-    s = Symphony()
-    print("Symphony 创建成功 (Debug Fixed)")
-    print("状态:", s.get_status())
-    
-    # 测试任务
-    result = s.run_symphony("测试任务")
-    print("\n任务执行结果:", result['status'])
-    
-    # 测试调度
-    s.scheduler.add_task("任务1", TaskPriority.HIGH)
-    s.scheduler.add_task("任务2", TaskPriority.NORMAL)
-    print("调度队列测试: OK")
-    
-    # 测试告警
-    s.alert_engine.check_and_alert('response_timeout', 6)
-    print("告警系统测试: OK")
-    
-    # 测试状态管理
-    print("状态管理:", s.status_manager.get_status())
-    
-    print("\n=== Debug修复验证通过 ===")
+    main()

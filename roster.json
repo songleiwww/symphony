@@ -1,20 +1,20 @@
 {
-  "version": "2.0",
-  "date": "2026-03-10",
-  "description": "交响团队完整花名册 - 古风唯美名字",
-  "note": "同一人的双重身份：社会身份(人类) + 青丘身份(狐狸)。2026-03-10更新为古风唯美名字",
+  "version": "1.0",
+  "date": "2026-03-09",
+  "description": "交响团队完整花名册 - 人类与青丘双身份",
+  "note": "同一人的双重身份：社会身份(人类) + 青丘身份(狐狸)",
   
   "core_team": [
     {
       "id": 1,
-      "name": "沈清弦",
+      "name": "林思远",
       "gender": "♂",
       "human": {
         "team": "交响",
         "role": "架构师",
         "engine": "火山引擎-ark-code-latest",
         "skill": "系统架构设计",
-        "name_en": "Shen Qingxian"
+        "name_en": "Lin Siyuan"
       },
       "fox": {
         "team": "青丘",
@@ -25,14 +25,14 @@
     },
     {
       "id": 2,
-      "name": "沈怀秋",
+      "name": "陈美琪",
       "gender": "♀",
       "human": {
         "team": "交响",
         "role": "安全",
         "engine": "火山引擎-deepseek-v3.2",
         "skill": "系统安全与权限",
-        "name_en": "Shen Huaiqiu"
+        "name_en": "Chen Meiqi"
       },
       "fox": {
         "team": "青丘",
@@ -43,14 +43,14 @@
     },
     {
       "id": 3,
-      "name": "苏云渺",
+      "name": "王浩然",
       "gender": "♂",
       "human": {
         "team": "交响",
         "role": "开发",
         "engine": "火山引擎-doubao-seed-2.0-code",
         "skill": "代码开发与实现",
-        "name_en": "Su Yunmiao"
+        "name_en": "Wang Haoran"
       },
       "fox": {
         "team": "青丘",
@@ -61,14 +61,14 @@
     },
     {
       "id": 4,
-      "name": "陆鸣镝",
+      "name": "张明远",
       "gender": "♂",
       "human": {
         "team": "交响",
         "role": "测试",
         "engine": "火山引擎-glm-4.7",
         "skill": "质量测试与验证",
-        "name_en": "Lu Mingdi"
+        "name_en": "Zhang Mingyuan"
       },
       "fox": {
         "team": "青丘",
@@ -79,14 +79,14 @@
     },
     {
       "id": 5,
-      "name": "顾清歌",
+      "name": "赵敏",
       "gender": "♀",
       "human": {
         "team": "交响",
         "role": "运维",
         "engine": "火山引擎-kimi-k2.5",
         "skill": "系统运维与部署",
-        "name_en": "Gu Qingge"
+        "name_en": "Zhao Min"
       },
       "fox": {
         "team": "青丘",
@@ -97,14 +97,14 @@
     },
     {
       "id": 6,
-      "name": "沈轻罗",
+      "name": "刘心怡",
       "gender": "♀",
       "human": {
         "team": "交响",
         "role": "策划",
         "engine": "火山引擎-MiniMax-M2.5",
         "skill": "项目策划与规划",
-        "name_en": "Shen Qingluo"
+        "name_en": "Liu Xinyi"
       },
       "fox": {
         "team": "青丘",
@@ -117,112 +117,112 @@
   
   "tech_support": [
     {
-      "name": "叶寒舟",
+      "name": "李铭",
       "gender": "♂",
       "engine": "英伟达-GLM-4.7",
       "skill": "通用推理",
       "role": "技术支持-GLM"
     },
     {
-      "name": "柳烟罗",
+      "name": "孙雅",
       "gender": "♀", 
       "engine": "英伟达-Llama-3.1",
       "skill": "开源模型",
       "role": "技术支持-Llama"
     },
     {
-      "name": "风无痕",
+      "name": "周杰",
       "gender": "♂",
       "engine": "英伟达-Nemotron",
       "skill": "长对话",
       "role": "技术支持-Nemotron"
     },
     {
-      "name": "沐清秋",
+      "name": "吴静",
       "gender": "♀",
       "engine": "英伟达-Mistral",
       "skill": "多语言",
       "role": "技术支持-Mistral"
     },
     {
-      "name": "凌天羽",
+      "name": "郑强",
       "gender": "♂",
       "engine": "英伟达-通义千问",
       "skill": "代码生成",
       "role": "技术支持-千问"
     },
     {
-      "name": "云浅梦",
+      "name": "钱丽",
       "gender": "♀",
       "engine": "英伟达-DeepSeek",
       "skill": "推理能力",
       "role": "技术支持-DeepSeek"
     },
     {
-      "name": "白墨轩",
+      "name": "冯涛",
       "gender": "♂",
       "engine": "英伟达-Kimi",
       "skill": "长文本",
       "role": "技术支持-Kimi"
     },
     {
-      "name": "秋水灵",
+      "name": "褚敏",
       "gender": "♀",
       "engine": "英伟达-MiniMax",
       "skill": "多模态",
       "role": "技术支持-MiniMax"
     },
     {
-      "name": "梦星河",
+      "name": "卫龙",
       "gender": "♂",
       "engine": "英伟达-GLM-5",
       "skill": "新一代模型",
       "role": "技术支持-GLM5"
     },
     {
-      "name": "灵韵诗",
+      "name": "蒋悦",
       "gender": "♀",
       "engine": "英伟达-M2.1",
       "skill": "Agent优化",
       "role": "技术支持-M2.1"
     },
     {
-      "name": "夜归鸿",
+      "name": "沈星",
       "gender": "♂",
       "engine": "英伟达-Step",
       "skill": "推理引擎",
       "role": "技术支持-Step"
     },
     {
-      "name": "曲流觞",
+      "name": "韩雪",
       "gender": "♀",
       "engine": "魔搭-GLM-4.7",
       "skill": "通用",
       "role": "技术支持-魔搭"
     },
     {
-      "name": "箫韶九",
+      "name": "许飞",
       "gender": "♂",
       "engine": "魔搭-图像引擎",
       "skill": "图像生成",
       "role": "技术支持-图像"
     },
     {
-      "name": "羽衣霓",
+      "name": "丁瑶",
       "gender": "♀",
       "engine": "魔搭-DeepSeek",
       "skill": "推理模型",
       "role": "技术支持-推理"
     },
     {
-      "name": "醉花阴",
+      "name": "杨涛",
       "gender": "♂",
       "engine": "魔搭-Qwen-Coder",
       "skill": "代码专家",
       "role": "技术支持-代码"
     },
     {
-      "name": "采桑子",
+      "name": "朱琳",
       "gender": "♀",
       "engine": "魔搭-Qwen3",
       "skill": "通用大模型",
@@ -244,7 +244,5 @@
     "火山引擎": 6,
     "英伟达": 11,
     "魔搭": 5
-  },
-  
-  "name_style": "古风唯美 - 沈/苏/陆/顾/叶/柳/风/沐/凌/云/白/秋/梦/灵"
+  }
 }
