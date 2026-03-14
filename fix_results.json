@@ -1,0 +1,66 @@
+[
+  {
+    "name": "沈清弦",
+    "role": "枢密使",
+    "model": "Qwen2.5-14B-Instruct",
+    "response": "{\n    \"方案\": [\n        {\"类型\": \"模块耦合\", \"解决\": \"引入接口隔离\"},\n        {\"类型\": \"设计模式\", \"解决\": \"引入工厂模式\"},\n        {\"类型\": \"潜在死锁\", \"解决\": \"优化锁策略\"},\n        {\"类型\": \"内存泄漏\", \"解决\": \"添加资源释放机制\"}\n    ]\n}",
+    "tokens": 233,
+    "status": "OK"
+  },
+  {
+    "name": "苏云渺",
+    "role": "工部尚书",
+    "model": "Qwen2.5-14B-Instruct",
+    "response": "{\n  \"修复方案\": \"在主入口类定义前添加'class'关键字，确保类定义正确\"\n}",
+    "tokens": 107,
+    "status": "OK"
+  },
+  {
+    "name": "顾清歌",
+    "role": "翰林学士",
+    "model": "glm-4-9b-chat",
+    "response": "\n```json\n{\n  \"修复方案\": [\n    \"添加错误率阈值检查\",\n    \"处理Queue maxsize超过情况\",\n    \"调整logging.basicConfig配置\",\n    \"指定Thread和Queue实例默认参数\"\n  ]\n}\n```",
+    "tokens": 157,
+    "status": "OK"
+  },
+  {
+    "name": "沈星衍",
+    "role": "智囊博士",
+    "model": "Qwen2.5-14B-Instruct",
+    "response": "{\n  \"策略\": \"增加调度策略\", \n  \"优先级\": \"设定\", \n  \"超时\": \"处理\", \n  \"降级\": \"策略\", \n  \"并发控制\": \"优化\", \n  \"资源竞争\": \"解决\"\n}",
+    "tokens": 146,
+    "status": "OK"
+  },
+  {
+    "name": "叶轻尘",
+    "role": "行走使",
+    "model": "Qwen2.5-7B-Instruct",
+    "response": "```json\n{\"方案\":\"扩并发线程池,启用异步处理,优化缓存策略。\"}\n```",
+    "tokens": 110,
+    "status": "OK"
+  },
+  {
+    "name": "林码",
+    "role": "营造司正",
+    "model": "Qwen2.5-72B-Instruct",
+    "response": "```json\n{\n  \"solutions\": [\n    \"完善接口文档。\",\n    \"设计扩展机制。\",\n    \"增加测试方法。\"\n  ]\n}\n```",
+    "tokens": 165,
+    "status": "OK"
+  },
+  {
+    "name": "顾至尊",
+    "role": "首辅大学士",
+    "model": "Qwen2.5-14B-Instruct",
+    "response": "{\n    \"修复方案\": [\"构建主逻辑流程\", \"增强类间交互\", \"实现具体业务逻辑\"]\n}",
+    "tokens": 112,
+    "status": "OK"
+  },
+  {
+    "name": "陆念昭",
+    "role": "少府监",
+    "model": "Qwen2.5-7B-Instruct",
+    "response": "```json\n{\"方案\":[\"引入任务队列\",\"实现负载均衡\",\"添加故障转移机制\",\"完善状态管理\"]}\n```",
+    "tokens": 116,
+    "status": "OK"
+  }
+]

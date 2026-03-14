@@ -1,0 +1,497 @@
+[
+  {
+    "timestamp": "2026-03-10T11:55:32.848220",
+    "event_type": "dispatch",
+    "workflow": "conversation",
+    "task": "Test monitoring task",
+    "model": "",
+    "status": "running",
+    "details": "Starting"
+  },
+  {
+    "timestamp": "2026-03-10T11:55:33.849509",
+    "event_type": "call",
+    "workflow": "conversation",
+    "task": "Test monitoring task",
+    "model": "ark-code-latest",
+    "status": "running",
+    "details": "Calling..."
+  },
+  {
+    "timestamp": "2026-03-10T11:55:34.854715",
+    "event_type": "complete",
+    "workflow": "conversation",
+    "task": "Test monitoring task",
+    "model": "ark-code-latest",
+    "status": "completed",
+    "details": "Success | 2.35s"
+  },
+  {
+    "timestamp": "2026-03-10T11:55:35.856395",
+    "event_type": "complete",
+    "workflow": "conversation",
+    "task": "Test monitoring task",
+    "model": "deepseek-v3.2",
+    "status": "completed",
+    "details": "Success | 1.89s"
+  },
+  {
+    "timestamp": "2026-03-10T12:26:36.068548",
+    "event_type": "dispatch",
+    "workflow": "conversation",
+    "task": "测试序境监控功能",
+    "model": "",
+    "status": "running",
+    "details": "任务开始"
+  },
+  {
+    "timestamp": "2026-03-10T12:26:37.070091",
+    "event_type": "call",
+    "workflow": "conversation",
+    "task": "测试序境监控功能",
+    "model": "ark-code-latest",
+    "status": "running",
+    "details": "模型调用中..."
+  },
+  {
+    "timestamp": "2026-03-10T12:26:38.072036",
+    "event_type": "complete",
+    "workflow": "conversation",
+    "task": "测试序境监控功能",
+    "model": "ark-code-latest",
+    "status": "completed",
+    "details": "成功 | 3.21秒"
+  },
+  {
+    "timestamp": "2026-03-10T12:26:38.574484",
+    "event_type": "call",
+    "workflow": "conversation",
+    "task": "测试序境监控功能",
+    "model": "deepseek-v3.2",
+    "status": "running",
+    "details": "模型调用中..."
+  },
+  {
+    "timestamp": "2026-03-10T12:26:39.577311",
+    "event_type": "complete",
+    "workflow": "conversation",
+    "task": "测试序境监控功能",
+    "model": "deepseek-v3.2",
+    "status": "completed",
+    "details": "成功 | 2.15秒"
+  },
+  {
+    "timestamp": "2026-03-10T12:26:40.079290",
+    "event_type": "call",
+    "workflow": "conversation",
+    "task": "测试序境监控功能",
+    "model": "glm-4.7",
+    "status": "running",
+    "details": "模型调用中..."
+  },
+  {
+    "timestamp": "2026-03-10T12:26:41.081322",
+    "event_type": "complete",
+    "workflow": "conversation",
+    "task": "测试序境监控功能",
+    "model": "glm-4.7",
+    "status": "completed",
+    "details": "成功 | 1.87秒"
+  },
+  {
+    "timestamp": "2026-03-10T13:18:52.056294",
+    "event_type": "dispatch",
+    "workflow": "test",
+    "task": "自动测试任务",
+    "model": "",
+    "status": "running",
+    "details": "开始执行"
+  },
+  {
+    "timestamp": "2026-03-10T13:18:52.057557",
+    "event_type": "call",
+    "workflow": "test",
+    "task": "自动测试任务",
+    "model": "ark-code-latest",
+    "status": "running",
+    "details": "模型调用中..."
+  },
+  {
+    "timestamp": "2026-03-10T13:18:54.008481",
+    "event_type": "complete",
+    "workflow": "test",
+    "task": "自动测试任务",
+    "model": "ark-code-latest",
+    "status": "completed",
+    "details": "成功 | 1.95秒"
+  },
+  {
+    "timestamp": "2026-03-10T13:21:41.762878",
+    "event_type": "dispatch",
+    "workflow": "realtime",
+    "task": "实时监控测试1",
+    "model": "",
+    "status": "running",
+    "details": "开始执行"
+  },
+  {
+    "timestamp": "2026-03-10T13:21:42.264902",
+    "event_type": "call",
+    "workflow": "realtime",
+    "task": "实时监控测试1",
+    "model": "ark-code-latest",
+    "status": "running",
+    "details": "模型调用中..."
+  },
+  {
+    "timestamp": "2026-03-10T13:21:44.077408",
+    "event_type": "complete",
+    "workflow": "realtime",
+    "task": "实时监控测试1",
+    "model": "ark-code-latest",
+    "status": "completed",
+    "details": "成功 | 1.81秒"
+  },
+  {
+    "timestamp": "2026-03-10T13:21:45.079956",
+    "event_type": "dispatch",
+    "workflow": "realtime",
+    "task": "实时监控测试2",
+    "model": "",
+    "status": "running",
+    "details": "开始执行"
+  },
+  {
+    "timestamp": "2026-03-10T13:21:45.581607",
+    "event_type": "call",
+    "workflow": "realtime",
+    "task": "实时监控测试2",
+    "model": "deepseek-v3.2",
+    "status": "running",
+    "details": "模型调用中..."
+  },
+  {
+    "timestamp": "2026-03-10T13:21:51.665192",
+    "event_type": "complete",
+    "workflow": "realtime",
+    "task": "实时监控测试2",
+    "model": "deepseek-v3.2",
+    "status": "completed",
+    "details": "成功 | 6.08秒"
+  },
+  {
+    "timestamp": "2026-03-10T13:21:52.667460",
+    "event_type": "dispatch",
+    "workflow": "realtime",
+    "task": "实时监控测试3",
+    "model": "",
+    "status": "running",
+    "details": "开始执行"
+  },
+  {
+    "timestamp": "2026-03-10T13:21:53.170239",
+    "event_type": "call",
+    "workflow": "realtime",
+    "task": "实时监控测试3",
+    "model": "glm-4.7",
+    "status": "running",
+    "details": "模型调用中..."
+  },
+  {
+    "timestamp": "2026-03-10T13:22:02.897080",
+    "event_type": "complete",
+    "workflow": "realtime",
+    "task": "实时监控测试3",
+    "model": "glm-4.7",
+    "status": "completed",
+    "details": "成功 | 9.73秒"
+  },
+  {
+    "timestamp": "2026-03-10T13:22:30.023737",
+    "event_type": "dispatch",
+    "workflow": "realtime",
+    "task": "实时监控测试1",
+    "model": "",
+    "status": "running",
+    "details": "开始执行"
+  },
+  {
+    "timestamp": "2026-03-10T13:22:30.525515",
+    "event_type": "call",
+    "workflow": "realtime",
+    "task": "实时监控测试1",
+    "model": "ark-code-latest",
+    "status": "running",
+    "details": "模型调用中..."
+  },
+  {
+    "timestamp": "2026-03-10T13:22:32.910168",
+    "event_type": "complete",
+    "workflow": "realtime",
+    "task": "实时监控测试1",
+    "model": "ark-code-latest",
+    "status": "completed",
+    "details": "成功 | 2.38秒"
+  },
+  {
+    "timestamp": "2026-03-10T13:22:34.912697",
+    "event_type": "dispatch",
+    "workflow": "realtime",
+    "task": "实时监控测试2",
+    "model": "",
+    "status": "running",
+    "details": "开始执行"
+  },
+  {
+    "timestamp": "2026-03-10T13:22:35.414921",
+    "event_type": "call",
+    "workflow": "realtime",
+    "task": "实时监控测试2",
+    "model": "deepseek-v3.2",
+    "status": "running",
+    "details": "模型调用中..."
+  },
+  {
+    "timestamp": "2026-03-10T13:22:41.762022",
+    "event_type": "complete",
+    "workflow": "realtime",
+    "task": "实时监控测试2",
+    "model": "deepseek-v3.2",
+    "status": "completed",
+    "details": "成功 | 6.35秒"
+  },
+  {
+    "timestamp": "2026-03-10T13:22:43.764602",
+    "event_type": "dispatch",
+    "workflow": "realtime",
+    "task": "实时监控测试3",
+    "model": "",
+    "status": "running",
+    "details": "开始执行"
+  },
+  {
+    "timestamp": "2026-03-10T13:22:44.266719",
+    "event_type": "call",
+    "workflow": "realtime",
+    "task": "实时监控测试3",
+    "model": "glm-4.7",
+    "status": "running",
+    "details": "模型调用中..."
+  },
+  {
+    "timestamp": "2026-03-10T13:23:14.573451",
+    "event_type": "complete",
+    "workflow": "realtime",
+    "task": "实时监控测试3",
+    "model": "glm-4.7",
+    "status": "error",
+    "details": "错误: HTTPSConnectionPool(host='ark."
+  },
+  {
+    "timestamp": "2026-03-10T13:23:16.575421",
+    "event_type": "dispatch",
+    "workflow": "realtime",
+    "task": "实时监控测试4",
+    "model": "",
+    "status": "running",
+    "details": "开始执行"
+  },
+  {
+    "timestamp": "2026-03-10T13:23:17.077983",
+    "event_type": "call",
+    "workflow": "realtime",
+    "task": "实时监控测试4",
+    "model": "kimi-k2.5",
+    "status": "running",
+    "details": "模型调用中..."
+  },
+  {
+    "timestamp": "2026-03-10T13:23:35.137321",
+    "event_type": "complete",
+    "workflow": "realtime",
+    "task": "实时监控测试4",
+    "model": "kimi-k2.5",
+    "status": "completed",
+    "details": "成功 | 18.06秒"
+  },
+  {
+    "timestamp": "2026-03-10T13:23:37.140187",
+    "event_type": "dispatch",
+    "workflow": "realtime",
+    "task": "实时监控测试5",
+    "model": "",
+    "status": "running",
+    "details": "开始执行"
+  },
+  {
+    "timestamp": "2026-03-10T13:23:37.642461",
+    "event_type": "call",
+    "workflow": "realtime",
+    "task": "实时监控测试5",
+    "model": "MiniMax-M2.5",
+    "status": "running",
+    "details": "模型调用中..."
+  },
+  {
+    "timestamp": "2026-03-10T13:23:49.754557",
+    "event_type": "complete",
+    "workflow": "realtime",
+    "task": "实时监控测试5",
+    "model": "MiniMax-M2.5",
+    "status": "completed",
+    "details": "成功 | 12.11秒"
+  },
+  {
+    "timestamp": "2026-03-10T13:26:14.759039",
+    "event_type": "call",
+    "workflow": "openclaw_skill",
+    "task": "测试任务",
+    "model": "ark-code-latest",
+    "status": "running",
+    "details": "模型调用中..."
+  },
+  {
+    "timestamp": "2026-03-10T13:26:15.761201",
+    "event_type": "complete",
+    "workflow": "openclaw_skill",
+    "task": "测试任务",
+    "model": "ark-code-latest",
+    "status": "completed",
+    "details": "成功 | 1.00秒"
+  },
+  {
+    "timestamp": "2026-03-10T14:08:34.397655",
+    "event_type": "dispatch",
+    "workflow": "realtime",
+    "task": "实时监控测试1",
+    "model": "",
+    "status": "running",
+    "details": "开始执行"
+  },
+  {
+    "timestamp": "2026-03-10T14:08:34.899979",
+    "event_type": "call",
+    "workflow": "realtime",
+    "task": "实时监控测试1",
+    "model": "ark-code-latest",
+    "status": "running",
+    "details": "模型调用中..."
+  },
+  {
+    "timestamp": "2026-03-10T14:08:44.019631",
+    "event_type": "complete",
+    "workflow": "realtime",
+    "task": "实时监控测试1",
+    "model": "ark-code-latest",
+    "status": "completed",
+    "details": "成功 | 9.12秒"
+  },
+  {
+    "timestamp": "2026-03-10T14:08:46.022172",
+    "event_type": "dispatch",
+    "workflow": "realtime",
+    "task": "实时监控测试2",
+    "model": "",
+    "status": "running",
+    "details": "开始执行"
+  },
+  {
+    "timestamp": "2026-03-10T14:08:46.524057",
+    "event_type": "call",
+    "workflow": "realtime",
+    "task": "实时监控测试2",
+    "model": "deepseek-v3.2",
+    "status": "running",
+    "details": "模型调用中..."
+  },
+  {
+    "timestamp": "2026-03-10T14:08:54.228848",
+    "event_type": "complete",
+    "workflow": "realtime",
+    "task": "实时监控测试2",
+    "model": "deepseek-v3.2",
+    "status": "completed",
+    "details": "成功 | 7.70秒"
+  },
+  {
+    "timestamp": "2026-03-10T14:08:56.232397",
+    "event_type": "dispatch",
+    "workflow": "realtime",
+    "task": "实时监控测试3",
+    "model": "",
+    "status": "running",
+    "details": "开始执行"
+  },
+  {
+    "timestamp": "2026-03-10T14:08:56.734702",
+    "event_type": "call",
+    "workflow": "realtime",
+    "task": "实时监控测试3",
+    "model": "glm-4.7",
+    "status": "running",
+    "details": "模型调用中..."
+  },
+  {
+    "timestamp": "2026-03-10T14:09:08.085408",
+    "event_type": "complete",
+    "workflow": "realtime",
+    "task": "实时监控测试3",
+    "model": "glm-4.7",
+    "status": "completed",
+    "details": "成功 | 11.35秒"
+  },
+  {
+    "timestamp": "2026-03-10T14:09:10.089542",
+    "event_type": "dispatch",
+    "workflow": "realtime",
+    "task": "实时监控测试4",
+    "model": "",
+    "status": "running",
+    "details": "开始执行"
+  },
+  {
+    "timestamp": "2026-03-10T14:09:10.591782",
+    "event_type": "call",
+    "workflow": "realtime",
+    "task": "实时监控测试4",
+    "model": "kimi-k2.5",
+    "status": "running",
+    "details": "模型调用中..."
+  },
+  {
+    "timestamp": "2026-03-10T14:09:40.889014",
+    "event_type": "complete",
+    "workflow": "realtime",
+    "task": "实时监控测试4",
+    "model": "kimi-k2.5",
+    "status": "error",
+    "details": "错误: HTTPSConnectionPool(host='ark."
+  },
+  {
+    "timestamp": "2026-03-10T14:09:42.891457",
+    "event_type": "dispatch",
+    "workflow": "realtime",
+    "task": "实时监控测试5",
+    "model": "",
+    "status": "running",
+    "details": "开始执行"
+  },
+  {
+    "timestamp": "2026-03-10T14:09:43.393764",
+    "event_type": "call",
+    "workflow": "realtime",
+    "task": "实时监控测试5",
+    "model": "MiniMax-M2.5",
+    "status": "running",
+    "details": "模型调用中..."
+  },
+  {
+    "timestamp": "2026-03-10T14:10:13.694042",
+    "event_type": "complete",
+    "workflow": "realtime",
+    "task": "实时监控测试5",
+    "model": "MiniMax-M2.5",
+    "status": "error",
+    "details": "错误: HTTPSConnectionPool(host='ark."
+  }
+]

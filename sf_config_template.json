@@ -1,0 +1,145 @@
+{
+  "version": "1.1.0",
+  "system_name": "序境系统",
+  "description": "序境系统配置文件模板 - 请复制并填入真实配置",
+  
+  "api_config": {
+    "global_timeout": 120,
+    "max_retries": 3,
+    "retry_delay": 2,
+    "rate_limit": {
+      "requests_per_minute": 60,
+      "tokens_per_minute": 100000
+    }
+  },
+  
+  "providers": {
+    "volcano": {
+      "name": "火山引擎",
+      "enabled": true,
+      "api_base": "https://ark.cn-beijing.volces.com/api/coding/v3/chat/completions",
+      "api_key": "YOUR_VOLCANO_API_KEY_HERE",
+      "default_model": "ark-code-latest",
+      "priority": 1,
+      "fallback_models": [
+        "ark-code-latest"
+      ]
+    },
+    "silicon_flow": {
+      "name": "硅基流动",
+      "enabled": true,
+      "api_base": "https://api.siliconflow.cn/v1",
+      "api_key": "YOUR_SILICON_FLOW_API_KEY_HERE",
+      "default_model": "Qwen/Qwen2.5-14B-Instruct",
+      "priority": 2,
+      "fallback_models": [
+        "Qwen/Qwen2.5-14B-Instruct",
+        "Qwen/Qwen2.5-7B-Instruct",
+        "THUDM/glm-4-9b-chat"
+      ]
+    },
+    "gitee_ai": {
+      "name": "魔力方舟",
+      "enabled": false,
+      "api_base": "https://open.gitee.com/api/v1",
+      "api_key": "YOUR_GITEE_AI_API_KEY_HERE",
+      "default_model": "Qwen3-8B",
+      "priority": 3,
+      "fallback_models": [
+        "Qwen3-8B",
+        "DeepSeek-R1-Distill-Qwen-14B"
+      ]
+    },
+    "nvidia": {
+      "name": "NVIDIA",
+      "enabled": false,
+      "api_base": "https://api.nvidia.com",
+      "api_key": "YOUR_NVIDIA_API_KEY_HERE",
+      "default_model": "nvidia/llama-3.1-nemotron-70b-instruct",
+      "priority": 4
+    }
+  },
+  
+  "models": {
+    "primary": {
+      "provider": "volcano",
+      "model": "ark-code-latest",
+      "description": "主模型 - 火山引擎Auto智能调度"
+    },
+    "secondary": {
+      "provider": "silicon_flow",
+      "model": "Qwen/Qwen2.5-14B-Instruct",
+      "description": "备用模型 - 14B参数"
+    },
+    "lightweight": {
+      "provider": "silicon_flow",
+      "model": "Qwen/Qwen2.5-7B-Instruct",
+      "description": "轻量模型 - 7B参数"
+    }
+  },
+  
+  "orchestration": {
+    "strategy": "parallel",
+    "parallel_config": {
+      "max_concurrent": 3,
+      "timeout_per_model": 60,
+      "aggregate_method": "majority_vote"
+    },
+    "fallback_chain": [
+      "volcano",
+      "silicon_flow",
+      "gitee_ai"
+    ]
+  },
+  
+  "personnel_bindings": {
+    "core_team": [
+      {
+        "name": "沈清弦",
+        "title": "枢密使",
+        "primary_model": "ark-code-latest",
+        "provider": "volcano"
+      },
+      {
+        "name": "苏云渺",
+        "title": "工部尚书",
+        "primary_model": "ark-code-latest",
+        "provider": "volcano"
+      },
+      {
+        "name": "顾清歌",
+        "title": "翰林学士",
+        "primary_model": "ark-code-latest",
+        "provider": "volcano"
+      }
+    ],
+    "backup_team": [
+      {
+        "name": "杜甫",
+        "title": "铸钱监正",
+        "primary_model": "Qwen/Qwen2.5-7B-Instruct",
+        "provider": "silicon_flow"
+      },
+      {
+        "name": "韩愈",
+        "title": "少府少监",
+        "primary_model": "Qwen/Qwen2.5-7B-Instruct",
+        "provider": "silicon_flow"
+      }
+    ]
+  },
+  
+  "logging": {
+    "level": "INFO",
+    "save_requests": true,
+    "save_responses": true,
+    "log_dir": "./logs"
+  },
+  
+  "notes": [
+    "请将 YOUR_XXX_API_KEY_HERE 替换为真实的API Key",
+    "启用/禁用服务商请修改 enabled 字段",
+    "模型优先级按 priority 数值从小到大排序",
+    "建议生产环境使用环境变量存储敏感信息"
+  ]
+}

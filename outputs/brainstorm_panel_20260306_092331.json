@@ -1,0 +1,22 @@
+{
+  "tool": "brainstorm_panel",
+  "version": "2.1.0",
+  "mode": "brainstorm",
+  "topic": "人工智能如何改变未来的工作方式？",
+  "participants": [
+    "创意专家",
+    "行业专家",
+    "用户代表"
+  ],
+  "timestamp": "2026-03-06T09:23:31.792189",
+  "results": [
+    {
+      "role": "系统",
+      "model": "n/a",
+      "model_alias": "n/a",
+      "response": "调用真实模型时出错：I/O operation on closed file.",
+      "success": false
+    }
+  ],
+  "token_usage": {}
+}

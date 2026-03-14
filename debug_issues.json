@@ -1,0 +1,50 @@
+[
+  {
+    "name": "沈清弦",
+    "specialty": "架构",
+    "issues": "{\n  \"问题列表\": [\n    {\n      \"模块\": \"symphony.py\",\n      \"类型\": \"模块耦合\",\n      \"详情\": \"模块间依赖关系复杂，存在高耦合风险\"\n    }\n  ]\n}",
+    "tokens": 138
+  },
+  {
+    "name": "苏云渺",
+    "specialty": "代码",
+    "issues": "{\n   \"issues\": [\n      {\"file\": \"symphony.py\", \"line\": 23, \"type\": \"语法错误\", \"description\": \"缺少右括号\"},\n      {\"file\": \"symphony.py\", \"line\": 56, \"type\": \"逻辑漏洞\", \"description\": \"未处理空列表情况\"},\n      {\"file\": \"symphony.py\", \"line\": 89, \"type\": \"异常处理\", \"description\": \"缺少对文件读取失败的处理\"}\n   ]\n}",
+    "tokens": 197
+  },
+  {
+    "name": "顾清歌",
+    "specialty": "规则",
+    "issues": "\n```python\n# 假设 symphony.py 和相关模块的内容如下：\n\n# symphony.py\nclass SymphonyConfig:\n    def __init__(self):\n        self.config = {\n            'database_url': 'localhost:5432/db_name',\n            'admin_role': 'admin',\n            'user_role': 'user'\n        }\n\n    def validate_config(self):\n        if not self.config['database_url'].startswith('localhost'):\n            return {'config_error': 'Database URL should start with localhost.'}\n        if 'admin_role' not in self.config or 'user_role' not in self.config:\n            return {'config_error': 'Missing roles in configuration.'}\n        return None\n\n# Symphony模块中的权限控制\nclass PermissionControl:\n    def __init__(self):\n        self.allowed_roles = ['admin', 'user']\n\n    def check_permission(self, role):\n        if role not in self.allowed_roles:\n            return {'permission_error': f'Role {role} is not allowed.'}\n        return None\n\n# Symphony模块中的边界条件处理\nclass BoundaryConditionHandler:\n    def __init__(self):\n        self.max_users = 1000\n\n    def validate_user_limit(self, current_users):\n        if current_users > self.max_users:\n            return {'boundary_error': f'Current user limit exceeded: {current_users} > {self.max_users}'}\n        return None\n```\n\n```python\ndef check_symphony_rules():\n    issues = []\n\n    # 检查 config 错误\n    symphony_config = SymphonyConfig()\n    config_issue = symphony_config.validate_config()\n    if config_issue:\n        issues.append(config_issue)\n\n    # 检查权限控制\n    permission_control = PermissionControl()\n    permission_issue = permission_control.check_permission('guest')\n    if permission_issue:\n        issues.append(permission_issue)\n\n    # 检查边界条件\n    boundary_condition_handler = BoundaryConditionHandler()\n    boundary_issue =",
+    "tokens": 460
+  },
+  {
+    "name": "沈星衍",
+    "specialty": "逻辑",
+    "issues": "{\n  \"issues\": [\n    {\n      \"type\": \"流程错误\",\n      \"description\": \"任务A未完成即触发任务B\"\n    },\n    {\n      \"type\": \"状态管理\",\n      \"description\": \"状态变量未正确初始化\"\n    },\n    {\n      \"type\": \"任务调度\",\n      \"description\": \"定时任务配置错误\"\n    }\n  ]\n}",
+    "tokens": 167
+  },
+  {
+    "name": "叶轻尘",
+    "specialty": "性能",
+    "issues": "```json\n{\n  \"问题\": [\n    {\n      \"模块\": \"symphony.py\",\n      \"问题类型\": \"内存泄漏\",\n      \"描述\": \"未释放大量占用的临时对象\"\n    },\n    {\n      \"模块\": \"utils.py\",\n      \"问题类型\": \"阻塞操作\",\n      \"描述\": \"使用了阻塞IO操作，影响并发性能\"\n    },\n    {\n      \"模块\": \"handler.py\",\n      \"问题类型\": \"并发处理\",\n      \"描述\": \"并发处理不当，导致资源竞争\"\n    }\n  ]\n}\n```",
+    "tokens": 208
+  },
+  {
+    "name": "林码",
+    "specialty": "工程",
+    "issues": "```json\n{\n  \"code_issues\": [\"symphony.py:12 - 需要增加类型注解\", \"module_a.py:23 - 未处理异常\"],\n  \"test_coverage\": [\"symphony.py - 75%\", \"module_a.py - 50%\", \"module_b.py - 0%\"],\n  \"documentation\": [\"symphony.py - 缺少模块文档\", \"module_b.py - 函数无注释\"]\n}\n```",
+    "tokens": 185
+  },
+  {
+    "name": "顾至尊",
+    "specialty": "统筹",
+    "issues": "{\n   \"symphony.py\": {\n      \"资源管理\": [\"内存泄漏\"],\n      \"负载均衡\": [\"任务分配不均\"],\n      \"容错机制\": [\"异常处理不当\"]\n   }\n}",
+    "tokens": 129
+  },
+  {
+    "name": "陆念昭",
+    "specialty": "调度",
+    "issues": "```json\n{\n  \"问题\": [\n    {\n      \"模块\": \"symphony.py\",\n      \"问题\": \"任务分配逻辑不清晰，优先级规则未明确\"\n    },\n    {\n      \"模块\": \"symphony.py\",\n      \"问题\": \"超时处理未定义，可能导致任务阻塞\"\n    }\n  ]\n}\n```",
+    "tokens": 160
+  }
+]

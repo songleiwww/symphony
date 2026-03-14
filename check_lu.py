@@ -1,0 +1,17 @@
+# -*- coding: utf-8 -*-
+import sqlite3
+conn = sqlite3.connect(r'C:\Users\Administrator\.openclaw\workspace\skills\symphony\data\symphony.db')
+c = conn.cursor()
+c.execute('SELECT * FROM 官属角色表 WHERE id="evolve_002"')
+r = c.fetchone()
+print('Raw data for evolve_002:')
+print('  Position 0 (id):', r[0])
+print('  Position 1 (name):', r[1])
+print('  Position 2 (gender):', r[2])
+print('  Position 3 (position):', r[3])
+print('  Position 4 (duty):', r[4])
+print('  Position 5 (specialty):', r[5])
+print('  Position 6 (model):', r[6])
+print('  Position 7 (provider):', r[7])
+print('  Position 8 (level):', r[8])
+conn.close()

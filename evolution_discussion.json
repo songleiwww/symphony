@@ -1,0 +1,50 @@
+[
+  {
+    "name": "沈清弦",
+    "role": "枢密使",
+    "model": "Qwen2.5-14B-Instruct",
+    "response": "关键进化方向：架构层面的模块化改进与生态层面的OpenClaw集成。",
+    "tokens": 143,
+    "status": "OK"
+  },
+  {
+    "name": "苏云渺",
+    "role": "工部尚书",
+    "model": "Qwen2.5-14B-Instruct",
+    "response": "最关键的进化方向是代码质量和开发效率，特别是可维护性、可扩展性和开发体验。",
+    "tokens": 139,
+    "status": "OK"
+  },
+  {
+    "name": "顾清歌",
+    "role": "翰林学士",
+    "model": "glm-4-9b-chat",
+    "response": "\n最关键的是：1. 知识库：领域知识积累 2. 学习能力：持续学习新知识",
+    "tokens": 115,
+    "status": "OK"
+  },
+  {
+    "name": "沈星衍",
+    "role": "智囊博士",
+    "model": "Qwen2.5-14B-Instruct",
+    "response": "最关键的是意图理解与个性化，确保精准服务每位用户。",
+    "tokens": 127,
+    "status": "OK"
+  },
+  {
+    "name": "叶轻尘",
+    "role": "行走使",
+    "model": "Qwen2.5-7B-Instruct",
+    "response": "最关键的是响应速度和并发处理能力，以提升用户体验和处理效率。",
+    "tokens": 131,
+    "status": "OK"
+  },
+  {
+    "name": "林码",
+    "role": "营造司正",
+    "model": "Qwen2.5-72B-Instruct",
+    "response": "模块化与自动化是序境营造司正林码最需进化的方向，以提升开发效率和系统稳定性。",
+    "tokens": 140,
+    "status": "OK"
+  }
+]

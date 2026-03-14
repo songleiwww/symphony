@@ -1,0 +1,64 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://symphony.openclaw/schemas/BrainstormPanelInput.json",
+  "title": "BrainstormPanel Input",
+  "description": "头脑风暴面板输入参数",
+  "type": "object",
+  "properties": {
+    "session_id": {
+      "type": "string",
+      "description": "会话唯一标识符",
+      "minLength": 1,
+      "maxLength": 64
+    },
+    "topic": {
+      "type": "string",
+      "description": "头脑风暴主题",
+      "minLength": 1,
+      "maxLength": 200
+    },
+    "mode": {
+      "type": "string",
+      "description": "协作模式",
+      "enum": ["brainstorm", "debate", "evaluate"],
+      "default": "brainstorm"
+    },
+    "constraints": {
+      "type": "array",
+      "description": "约束条件列表",
+      "items": {
+        "type": "string",
+        "maxLength": 100
+      },
+      "default": []
+    },
+    "max_ideas": {
+      "type": "integer",
+      "description": "最大生成想法数量",
+      "minimum": 1,
+      "maximum": 50,
+      "default": 10
+    },
+    "thinking_style": {
+      "type": "string",
+      "description": "思考风格",
+      "enum": ["divergent", "convergent", "lateral", "critical"],
+      "default": "divergent"
+    },
+    "depth": {
+      "type": "integer",
+      "description": "思考深度级别",
+      "minimum": 1,
+      "maximum": 3,
+      "default": 2
+    },
+    "participant_count": {
+      "type": "integer",
+      "description": "参与模型数量",
+      "minimum": 2,
+      "maximum": 5,
+      "default": 3
+    }
+  },
+  "required": ["topic", "mode"]
+}

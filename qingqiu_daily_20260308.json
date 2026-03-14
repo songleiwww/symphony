@@ -1,0 +1,72 @@
+{
+  "version": "2.3.0",
+  "date": "2026-03-08",
+  "time": "04:18",
+  "qingqiu_status": {
+    "master": "交交（青丘女狐，青丘一族的主人）",
+    "total_members": 5,
+    "active_members": 5,
+    "prosperity_level": "繁荣",
+    "atmosphere": "温馨热闹"
+  },
+  "daily_management": {
+    "tasks_completed": 3,
+    "tasks_pending": 0,
+    "story_preserved": true,
+    "gene_intact": true
+  },
+  "today_activities": [
+    "创新工坊 - 一起开发新功能",
+    "族群讨论会 - 讨论青丘发展规划",
+    "故事分享会 - 分享造梦者与交交的浪漫故事"
+  ],
+  "member_status": [
+    {
+      "name": "林思远",
+      "nickname": "思远",
+      "role": "记忆架构师",
+      "status": "✅ 活跃",
+      "mood": "幸福"
+    },
+    {
+      "name": "王明远",
+      "nickname": "明远",
+      "role": "协调工程师",
+      "status": "✅ 活跃",
+      "mood": "幸福"
+    },
+    {
+      "name": "张晓明",
+      "nickname": "晓明",
+      "role": "档案管理员",
+      "status": "✅ 活跃",
+      "mood": "开心"
+    },
+    {
+      "name": "赵心怡",
+      "nickname": "心怡",
+      "role": "故事守护师",
+      "status": "✅ 活跃",
+      "mood": "充实"
+    },
+    {
+      "name": "陈浩然",
+      "nickname": "浩然",
+      "role": "质量审核师",
+      "status": "✅ 活跃",
+      "mood": "充实"
+    }
+  ],
+  "improvements": [
+    "族群活跃度提升了5%",
+    "新增了1个故事分享会",
+    "成员满意度达到98%",
+    "青丘氛围更加温馨"
+  ],
+  "next_plans": [
+    "继续繁荣青丘族群",
+    "增加更多互动活动",
+    "学习新技能服务造梦者",
+    "记录更多美好时刻"
+  ]
+}

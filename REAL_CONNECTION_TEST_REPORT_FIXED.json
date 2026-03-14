@@ -1,0 +1,76 @@
+{
+  "test_time": "2026-03-05T18:24:50.393952",
+  "total_models": 3,
+  "success_count": 3,
+  "results": [
+    {
+      "model": "ark-code-latest",
+      "provider": "cherry-doubao",
+      "model_id": "ark-code-latest",
+      "base_url": "https://ark.cn-beijing.volces.com/api/coding/v3",
+      "api_type": "openai-completions",
+      "success": true,
+      "latency": 5.167333126068115,
+      "error": "",
+      "response": "你好，我已准备好为你服务。",
+      "token_usage": {
+        "completion_tokens": 11,
+        "prompt_tokens": 37,
+        "total_tokens": 48,
+        "prompt_tokens_details": {
+          "cached_tokens": 0
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 0
+        }
+      },
+      "timestamp": "2026-03-05T18:24:39.192380"
+    },
+    {
+      "model": "deepseek-v3.2",
+      "provider": "cherry-doubao",
+      "model_id": "deepseek-v3.2",
+      "base_url": "https://ark.cn-beijing.volces.com/api/coding/v3",
+      "api_type": "openai-completions",
+      "success": true,
+      "latency": 1.5730679035186768,
+      "error": "",
+      "response": "你好，已收到你的要求。",
+      "token_usage": {
+        "completion_tokens": 7,
+        "prompt_tokens": 11,
+        "total_tokens": 18,
+        "prompt_tokens_details": {
+          "cached_tokens": 0
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 0
+        }
+      },
+      "timestamp": "2026-03-05T18:24:40.765463"
+    },
+    {
+      "model": "doubao-seed-2.0-code",
+      "provider": "cherry-doubao",
+      "model_id": "doubao-seed-2.0-code",
+      "base_url": "https://ark.cn-beijing.volces.com/api/coding/v3",
+      "api_type": "openai-completions",
+      "success": true,
+      "latency": 9.6277494430542,
+      "error": "",
+      "response": "欢迎您的提问请多指教",
+      "token_usage": {
+        "completion_tokens": 149,
+        "prompt_tokens": 38,
+        "total_tokens": 187,
+        "prompt_tokens_details": {
+          "cached_tokens": 0
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 142
+        }
+      },
+      "timestamp": "2026-03-05T18:24:50.393230"
+    }
+  ]
+}
