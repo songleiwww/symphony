@@ -1,0 +1,154 @@
+[
+  {
+    "timestamp": "2026-03-13 22:41:53",
+    "user_message": "序境 我饿了",
+    "dispatched_official": {
+      "id": "shaofu_001",
+      "name": null,
+      "position": null,
+      "level": 1
+    },
+    "model_info": {
+      "provider": "NVIDIA",
+      "model": "mistralai/mixtral-8x7b-instruct-v0.1",
+      "original_config": {
+        "model": "glm-4.7",
+        "provider": "火山引擎"
+      }
+    },
+    "api_response": {
+      "status": 200,
+      "elapsed_seconds": 1.648909568786621,
+      "prompt_tokens": 62,
+      "completion_tokens": 32,
+      "total_tokens": 94
+    },
+    "reply": " 天帝所natian、人间博爱，闻君言饥，速為hens supply，即刻解救！"
+  },
+  {
+    "timestamp": "2026-03-13 22:44:26",
+    "user_message": "序境 我累了",
+    "official": {
+      "id": "evolve_002",
+      "name": null,
+      "position": null
+    },
+    "model_config": {
+      "original_provider": "火山引擎",
+      "original_model": "glm-4.7",
+      "actual_provider": "unknown",
+      "actual_model": "glm-4.7"
+    },
+    "api_stats": {
+      "elapsed_seconds": 24.61983561515808,
+      "prompt_tokens": 20,
+      "completion_tokens": 1196,
+      "total_tokens": 1216
+    },
+    "reply": "君既困顿，宜且暂歇。"
+  },
+  {
+    "timestamp": "2026-03-13 22:47:38",
+    "user_message": "序境 我饿了",
+    "official": {
+      "id": "evolve_002",
+      "position": null,
+      "level": 1
+    },
+    "model_info": {
+      "provider": "火山引擎",
+      "model": "glm-4.7"
+    },
+    "tokens": {
+      "prompt": 20,
+      "completion": 1001,
+      "total": 1021
+    },
+    "elapsed": 21.663890600204468,
+    "reply": "且勿躁，即传膳。"
+  },
+  {
+    "timestamp": "2026-03-13 22:49:35",
+    "user_message": "序境 不好",
+    "official": {
+      "id": "shaofu_001",
+      "position": null,
+      "level": 1
+    },
+    "model_info": {
+      "provider": "火山引擎",
+      "model": "glm-4.7"
+    },
+    "tokens": {
+      "prompt": 19,
+      "completion": 1396,
+      "total": 1415
+    },
+    "elapsed": 30.21287488937378,
+    "reply": "甚谬。"
+  },
+  {
+    "timestamp": "2026-03-13 22:54:02",
+    "user_message": "序境 不好",
+    "official": {
+      "id": "evolve_002",
+      "name": "陆念昭",
+      "title": "少府监",
+      "level": 1
+    },
+    "model_info": {
+      "provider": "火山引擎",
+      "model": "glm-4.7"
+    },
+    "tokens": {
+      "prompt": 21,
+      "completion": 1527,
+      "total": 1548
+    },
+    "elapsed": 30.982598543167114,
+    "reply": "既不佳，速改之。"
+  },
+  {
+    "timestamp": "2026-03-13 22:57:57",
+    "user_message": "序境 不好",
+    "official": {
+      "id": "evolve_002",
+      "name": "陆念昭",
+      "title": "少府监",
+      "level": 1
+    },
+    "model_info": {
+      "provider": "火山引擎",
+      "model": "glm-4.7"
+    },
+    "tokens": {
+      "prompt": 21,
+      "completion": 833,
+      "total": 854
+    },
+    "elapsed": 14.463569402694702,
+    "reply": "愿闻其详，当令匠工速改。"
+  },
+  {
+    "timestamp": "2026-03-13 23:03:54",
+    "user_message": "序境 不好",
+    "official": {
+      "id": "evolve_002",
+      "name": "陆念昭",
+      "title": "少府监",
+      "office": "少府监本部",
+      "level": 1
+    },
+    "model_info": {
+      "provider": "火山引擎",
+      "model": "glm-4.7"
+    },
+    "tokens": {
+      "prompt": 21,
+      "completion": 1717,
+      "total": 1738
+    },
+    "elapsed": 38.73202872276306,
+    "reply": "既言不妥，重制。"
+  }
+]
