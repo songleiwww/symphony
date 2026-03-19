@@ -1,0 +1,15 @@
+{
+  "data_id": "data_20260317004513_085a7f",
+  "user_id": "user_f5652f6c89f1",
+  "data": {
+    "task": "创作价值描述",
+    "model": "doubao-seed-2.0-code",
+    "tokens": 1101,
+    "response": "序境以雅正空灵笔墨写山川风神寄托士夫旷远胸怀弥院画刻板轻神之弊传续天人合一之画意留古韵悠长之典"
+  },
+  "metadata": {
+    "source": "host_takeover",
+    "timestamp": "2026-03-17T00:44:30"
+  },
+  "created_at": "2026-03-17T00:45:13.691832"
+}

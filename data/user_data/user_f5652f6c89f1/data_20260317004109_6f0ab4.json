@@ -1,0 +1,40 @@
+{
+  "data_id": "data_20260317004109_6f0ab4",
+  "user_id": "user_f5652f6c89f1",
+  "data": {
+    "session_id": "conv_1773676998",
+    "messages": [
+      {
+        "role": "user",
+        "content": "陆念昭 演示"
+      },
+      {
+        "role": "assistant",
+        "content": "序境连续对话模式..."
+      },
+      {
+        "role": "user",
+        "content": "开会 多研究 一些 三个人员..."
+      },
+      {
+        "role": "assistant",
+        "content": "三引擎三模型组合..."
+      }
+    ],
+    "preferences": {
+      "theme": "dark",
+      "language": "zh-CN",
+      "model": "MiniMax-M2.5"
+    },
+    "usage": {
+      "total_tokens": 5000,
+      "model_calls": 20
+    }
+  },
+  "metadata": {
+    "source": "feishu",
+    "channel": "feishu",
+    "timestamp": "2026-03-17T00:40:00"
+  },
+  "created_at": "2026-03-17T00:41:09.052810"
+}

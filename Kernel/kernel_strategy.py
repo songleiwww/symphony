@@ -77,7 +77,7 @@ class KernelStrategy:
         cursor = conn.cursor()
         
         # 检查核心表
-        required_tables = ['官署表', '官属角色表', '模型配置表', '内核规则表']
+        required_tables = ['官署表', '官署角色表', '模型配置表', '内核规则表']
         all_exist = True
         
         for table in required_tables:
@@ -107,9 +107,9 @@ class KernelStrategy:
         cursor.execute("SELECT id, 名称, 级别, 职责, 编制 FROM 官署表 ORDER BY 级别, 名称")
         self.data['offices'] = [{'id': r[0], 'name': r[1], 'level': r[2], 'duty': r[3], 'quota': r[4]} for r in cursor.fetchall()]
         
-        # 加载官属
-        cursor.execute("SELECT id, 姓名, 官职, 官署ID, 模型名称, 模型服务商 FROM 官属角色表")
-        self.data['roles'] = [{'id': r[0], 'name': r[1], 'title': r[2], 'office_id': r[3], 'model': r[4], 'provider': r[5]} for r in cursor.fetchall()]
+        # 加载官署角色（绑定模型）
+        cursor.execute("SELECT id, 姓名, 官职, 官署ID, 职务, 模型配置表_ID FROM 官署角色表")
+        self.data['office_roles'] = [{'id': r[0], 'name': r[1], 'title': r[2], 'office_id': r[3], 'duty': r[4], 'model_config_id': r[5]} for r in cursor.fetchall()]
         
         # 加载模型
         cursor.execute("SELECT 模型名称, 服务商, url, 模型类型 FROM 模型配置表 WHERE 状态='正常'")
@@ -120,7 +120,7 @@ class KernelStrategy:
         print(f"\n📊 数据加载完成:")
         print(f"   规则: {len(self.data['rules'])}条")
         print(f"   官署: {len(self.data['offices'])}个")
-        print(f"   官属: {len(self.data['roles'])}人")
+        print(f"   官署角色: {len(self.data['office_roles'])}人")
         print(f"   模型: {len(self.data['models'])}个")
     
     def _generate_kernel_files(self):
@@ -224,16 +224,16 @@ class KernelLoader:
         print(f"加载官署: {{len(self.offices)}}个")
         return True
     
-    def load_roles(self) -> bool:
-        """加载官属角色"""
+    def load_office_roles(self) -> bool:
+        """加载官署角色（绑定模型）"""
         conn = sqlite3.connect(self.db_path)
         cursor = conn.cursor()
-        cursor.execute("PRAGMA table_info(官属角色表)")
+        cursor.execute("PRAGMA table_info(官署角色表)")
         columns = [col[1] for col in cursor.fetchall()]
-        cursor.execute("SELECT * FROM 官属角色表 WHERE 状态='正常'")
-        self.roles = [dict(zip(columns, row)) for row in cursor.fetchall()]
+        cursor.execute("SELECT * FROM 官署角色表 WHERE 状态='正常'")
+        self.office_roles = [dict(zip(columns, row)) for row in cursor.fetchall()]
         conn.close()
-        print(f"加载官属: {{len(self.roles)}}人")
+        print(f"加载官署角色: {len(self.office_roles)}人")
         return True
     
     def load_models(self) -> bool:
@@ -329,14 +329,14 @@ class DispatchManager:
         return [p for p, v in self.providers.items() if v['status'] == 'available']
     
     def dispatch(self, office_id: str, task_type: str = 'general') -> Optional[Dict]:
-        """调度官属执行任务"""
+        """调度官署角色执行任务"""
         conn = sqlite3.connect(self.db_path)
         cursor = conn.cursor()
         
-        # 查找可用官属
+        # 查找可用官署角色
         cursor.execute("""
-            SELECT r.id, r.姓名, r.官职, r.模型名称, r.模型服务商
-            FROM 官属角色表 r
+            SELECT r.id, r.姓名, r.官职, r.职务, r.所属官署, r.模型配置表_ID
+            FROM 官署角色表 r
             WHERE r.官署ID = ? AND r.状态 = '正常'
         """, (office_id,))
         

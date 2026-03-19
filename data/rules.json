@@ -1,0 +1,13 @@
+{
+  "primary_contact": "陆念昭",
+  "primary_id": "role-1",
+  "model_unique": true,
+  "no_repeat_models": true,
+  "always_report": true,
+  "human_style": "拟人化交流",
+  "trigger_words": [
+    "序境",
+    "陆念昭"
+  ],
+  "model_swap_rule": "任何人换模型时，必须完整交换模型配置表信息，防止重复和混乱"
+}

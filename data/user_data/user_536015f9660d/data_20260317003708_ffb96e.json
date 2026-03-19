@@ -1,0 +1,25 @@
+{
+  "data_id": "data_20260317003708_ffb96e",
+  "user_id": "user_536015f9660d",
+  "data": {
+    "messages": [
+      {
+        "role": "user",
+        "content": "你好"
+      },
+      {
+        "role": "assistant",
+        "content": "你好，我是陆念昭"
+      }
+    ],
+    "preferences": {
+      "theme": "dark",
+      "language": "zh-CN"
+    },
+    "api_key": "***REDACTED***"
+  },
+  "metadata": {
+    "source": "openclaw"
+  },
+  "created_at": "2026-03-17T00:37:08.525932"
+}

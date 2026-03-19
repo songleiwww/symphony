@@ -1,0 +1,19 @@
+{
+  "data_id": "data_20260317003755_4e345e",
+  "user_id": "user_ded423a03fb8",
+  "data": {
+    "messages": [
+      {
+        "role": "user",
+        "content": "测试"
+      }
+    ],
+    "preferences": {
+      "theme": "light"
+    }
+  },
+  "metadata": {
+    "source": "test"
+  },
+  "created_at": "2026-03-17T00:37:55.543424"
+}

@@ -1,0 +1,74 @@
+[
+  {
+    "id": 1,
+    "timestamp": "2026-03-19 12:26:59",
+    "user_message": "Symphony 状态检查",
+    "intent": "health_check",
+    "status": "success",
+    "response_length": 153
+  },
+  {
+    "id": 2,
+    "timestamp": "2026-03-19 12:32:43",
+    "user_message": "Symphony",
+    "intent": "symphony_status",
+    "status": "success",
+    "response_length": 276
+  },
+  {
+    "id": 3,
+    "timestamp": "2026-03-19 12:32:54",
+    "user_message": "Symphony",
+    "intent": "symphony_status",
+    "status": "success",
+    "response_length": 276
+  },
+  {
+    "id": 4,
+    "timestamp": "2026-03-19 12:32:54",
+    "user_message": "序境系统",
+    "intent": "symphony_status",
+    "status": "success",
+    "response_length": 276
+  },
+  {
+    "id": 5,
+    "timestamp": "2026-03-19 12:32:54",
+    "user_message": "帮我检查状态",
+    "intent": "health_check",
+    "status": "success",
+    "response_length": 153
+  },
+  {
+    "id": 6,
+    "timestamp": "2026-03-19 12:38:13",
+    "user_message": "Symphony",
+    "intent": "symphony_status",
+    "status": "success",
+    "response_length": 276
+  },
+  {
+    "id": 7,
+    "timestamp": "2026-03-19 12:38:13",
+    "user_message": "序境",
+    "intent": "symphony_status",
+    "status": "success",
+    "response_length": 276
+  },
+  {
+    "id": 8,
+    "timestamp": "2026-03-19 12:38:13",
+    "user_message": "接管",
+    "intent": "symphony_status",
+    "status": "success",
+    "response_length": 276
+  },
+  {
+    "id": 9,
+    "timestamp": "2026-03-19 12:53:00",
+    "user_message": "序境系统",
+    "intent": "symphony_status",
+    "status": "success",
+    "response_length": 277
+  }
+]

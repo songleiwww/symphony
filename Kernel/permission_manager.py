@@ -27,21 +27,21 @@ class PermissionManager:
         conn = sqlite3.connect(self.db_path)
         cursor = conn.cursor()
         
-        # 官属角色表（替换sf_team_roster.json）
+        # 官署角色表（绑定模型）
         cursor.execute('''
-        CREATE TABLE IF NOT EXISTS 官属角色表 (
+        CREATE TABLE IF NOT EXISTS 官署角色表 (
             id TEXT PRIMARY KEY,
             姓名 TEXT NOT NULL,
-            性别 TEXT,
             官职 TEXT,
             职务 TEXT,
-            描述 TEXT,
-            模型名称 TEXT,
-            模型服务商 TEXT,
+            所属官署 TEXT,
+            职责 TEXT,
             角色等级 INTEGER DEFAULT 1,
             状态 TEXT DEFAULT '正常',
             创建时间 TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-            更新时间 TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+            更新时间 TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+            官署ID TEXT,
+            模型配置表_ID TEXT
         )
         ''')
         
@@ -64,7 +64,7 @@ class PermissionManager:
             授权时间 TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
             授权人 TEXT,
             PRIMARY KEY (角色ID, 权限ID),
-            FOREIGN KEY (角色ID) REFERENCES 官属角色表(id),
+            FOREIGN KEY (角色ID) REFERENCES 官署角色表(id),
             FOREIGN KEY (权限ID) REFERENCES 权限表(id)
         )
         ''')
@@ -79,7 +79,7 @@ class PermissionManager:
             操作时间 TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
             IP地址 TEXT,
             操作结果 TEXT DEFAULT '成功',
-            FOREIGN KEY (角色ID) REFERENCES 官属角色表(id)
+            FOREIGN KEY (角色ID) REFERENCES 官署角色表(id)
         )
         ''')
         
@@ -87,21 +87,22 @@ class PermissionManager:
         conn.close()
     
     def add_role(self, role_data: Dict) -> bool:
-        """新增官属角色"""
+        """新增官署角色"""
         try:
             conn = sqlite3.connect(self.db_path)
             cursor = conn.cursor()
             
             cursor.execute('''
-            INSERT INTO 官属角色表 (
-                id, 姓名, 性别, 官职, 职务, 描述, 
-                模型名称, 模型服务商, 角色等级, 状态
+            INSERT INTO 官署角色表 (
+                id, 姓名, 官职, 职务, 所属官署, 职责,
+                角色等级, 状态, 官署ID, 模型配置表_ID
             ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
             ''', (
-                role_data["id"], role_data["姓名"], role_data.get("性别"),
-                role_data.get("官职"), role_data.get("职务"), role_data.get("描述"),
-                role_data.get("模型名称"), role_data.get("模型服务商"),
-                role_data.get("角色等级", 1), role_data.get("状态", "正常")
+                role_data["id"], role_data["姓名"],
+                role_data.get("官职"), role_data.get("职务"),
+                role_data.get("所属官署"), role_data.get("职责"),
+                role_data.get("角色等级", 1), role_data.get("状态", "正常"),
+                role_data.get("官署ID"), role_data.get("模型配置表_ID")
             ))
             
             conn.commit()
@@ -119,7 +120,7 @@ class PermissionManager:
         conn = sqlite3.connect(self.db_path)
         cursor = conn.cursor()
         
-        cursor.execute("SELECT * FROM 官属角色表 WHERE id = ?", (role_id,))
+        cursor.execute("SELECT * FROM 官署角色表 WHERE id = ?", (role_id,))
         row = cursor.fetchone()
         
         if not row:
@@ -127,7 +128,7 @@ class PermissionManager:
             return None
         
         # 获取列名
-        cursor.execute("PRAGMA table_info(官属角色表)")
+        cursor.execute("PRAGMA table_info(官署角色表)")
         columns = [col[1] for col in cursor.fetchall()]
         
         conn.close()
@@ -142,7 +143,7 @@ class PermissionManager:
             set_clause = ", ".join([f"{k} = ?" for k in update_data.keys()])
             params = list(update_data.values()) + [role_id]
             
-            cursor.execute(f"UPDATE 官属角色表 SET {set_clause}, 更新时间 = CURRENT_TIMESTAMP WHERE id = ?", params)
+            cursor.execute(f"UPDATE 官署角色表 SET {set_clause}, 更新时间 = CURRENT_TIMESTAMP WHERE id = ?", params)
             
             conn.commit()
             conn.close()

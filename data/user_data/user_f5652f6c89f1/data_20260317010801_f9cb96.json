@@ -1,0 +1,12 @@
+{
+  "data_id": "data_20260317010801_f9cb96",
+  "user_id": "user_f5652f6c89f1",
+  "data": {
+    "mode": "failover_process",
+    "timestamp": "2026-03-17T01:08:01.039047"
+  },
+  "metadata": {
+    "source": "advanced"
+  },
+  "created_at": "2026-03-17T01:08:01.040372"
+}

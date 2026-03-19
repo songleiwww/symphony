@@ -1,14 +1,50 @@
-# -*- coding: utf-8 -*-
 """
-序境交响内核
-策略: 现在进行时永远优先过去进行时
-数据源: symphony.db (唯一数据源)
+序境内核
+基于序境系统总则构建
+
+目录: symphony/Kernel/
 """
-__version__ = "2.0.0"
-__author__ = "序境系统"
 
-from .kernel_loader import KernelLoader
-from .config_manager import ConfigManager
-from .dispatch_manager import DispatchManager
+from .main import XujingKernel, get_kernel
+from .core.scheduler import Scheduler, ModelConfig, ModelStatus, SchedulerConfig
+from .core.load_balancer import LoadBalancer, LoadBalanceAlgorithm, get_balancer
+from .rules.engine import RuleEngine
+from .rules.hot_reload import HotReloadRuleEngine, Rule, get_hot_engine
+from .logs.logger import XujingLogger
+from .monitor.monitor import Monitor
+from .monitor.self_healer import HealthChecker, SelfHealer, get_health_checker
+from .infra.database import ModelRepository
+from .infra.model_registry import ModelRegistry, get_registry
+from .infra.api_client import APIClient
 
-__all__ = ['KernelLoader', 'ConfigManager', 'DispatchManager']
+__all__ = [
+    # 主内核
+    "XujingKernel",
+    "get_kernel",
+    # 调度器
+    "Scheduler",
+    "SchedulerConfig",
+    "ModelConfig",
+    "ModelStatus",
+    # 负载均衡
+    "LoadBalancer",
+    "LoadBalanceAlgorithm",
+    "get_balancer",
+    # 规则引擎
+    "RuleEngine",
+    "HotReloadRuleEngine",
+    "Rule",
+    "get_hot_engine",
+    # 日志
+    "XujingLogger",
+    # 监控
+    "Monitor",
+    "HealthChecker",
+    "SelfHealer",
+    "get_health_checker",
+    # 基础设施
+    "ModelRepository",
+    "ModelRegistry",
+    "get_registry",
+    "APIClient",
+]

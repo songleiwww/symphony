@@ -30,7 +30,7 @@ def create_kernel_files():
     cursor = conn.cursor()
     
     # 检查必要表
-    required_tables = ['官署表', '官属角色表', '模型配置表', '内核规则表']
+    required_tables = ['官署表', '官署角色表', '模型配置表', '内核规则表']
     for table in required_tables:
         cursor.execute(f"SELECT name FROM sqlite_master WHERE type='table' AND name='{table}'")
         if not cursor.fetchone():
@@ -60,15 +60,15 @@ def verify_kernel():
     cursor.execute("SELECT COUNT(*) FROM 官署表")
     offices = cursor.fetchone()[0]
     
-    cursor.execute("SELECT COUNT(*) FROM 官属角色表")
-    roles = cursor.fetchone()[0]
+    cursor.execute("SELECT COUNT(*) FROM 官署角色表")
+    office_roles = cursor.fetchone()[0]
     
     cursor.execute("SELECT COUNT(*) FROM 模型配置表")
     models = cursor.fetchone()[0]
     
     print(f"\n数据统计:")
     print(f"  • 官署: {offices} 个")
-    print(f"  • 官属: {roles} 人")
+    print(f"  • 官署角色: {office_roles} 人")
     print(f"  • 模型: {models} 个")
     
     conn.close()

@@ -71,18 +71,18 @@ def migrate_roster_to_db():
                 perm_manager.grant_permission(role_data["id"], "role_manage")
                 perm_manager.grant_permission(role_data["id"], "system_update")
     
-    print(f"✅ 成功迁移 {success_count} 位官属到数据库")
+    print(f"✅ 成功迁移 {success_count} 位官署角色到数据库")
     
     # 验证迁移结果
     conn = perm_manager.db_path
     import sqlite3
     conn = sqlite3.connect(conn)
     cursor = conn.cursor()
-    cursor.execute("SELECT COUNT(*) FROM 官属角色表")
+    cursor.execute("SELECT COUNT(*) FROM 官署角色表")
     count = cursor.fetchone()[0]
     conn.close()
     
-    print(f"✅ 数据库中共有 {count} 位官属")
+    print(f"✅ 数据库中共有 {count} 位官署角色")
     
     return True
 

@@ -1,0 +1,14 @@
+{
+  "data_id": "data_20260317004120_4dbf2c",
+  "user_id": "user_f5652f6c89f1",
+  "data": {
+    "model_response": "序境是我创立的，一个专注于文字创作与内容陪伴的温柔创作空间，致力于帮人安放情绪、梳理思路，接住每一段散落的思绪。",
+    "model": "ark-code-latest",
+    "tokens": 83,
+    "timestamp": "2026-03-17T00:41:00"
+  },
+  "metadata": {
+    "source": "闭环测试"
+  },
+  "created_at": "2026-03-17T00:41:20.561806"
+}

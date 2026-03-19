@@ -1,0 +1,29 @@
+{
+  "users": {
+    "user_536015f9660d": {
+      "user_id": "user_536015f9660d",
+      "openid": "ou_test_user",
+      "created_at": "2026-03-17T00:37:08.524523",
+      "data_count": 0
+    },
+    "user_ded423a03fb8": {
+      "user_id": "user_ded423a03fb8",
+      "openid": "ou_test_3engine",
+      "created_at": "2026-03-17T00:37:55.542399",
+      "data_count": 0
+    },
+    "user_f5652f6c89f1": {
+      "user_id": "user_f5652f6c89f1",
+      "openid": "ou_9fdef2dd0c9dfd043d5c5ddb2f66d2b7",
+      "created_at": "2026-03-18T08:54:05.995454",
+      "data_count": 0
+    },
+    "user_9da1f8e0aecc": {
+      "user_id": "user_9da1f8e0aecc",
+      "openid": "test_user",
+      "created_at": "2026-03-17T04:10:25.907106",
+      "data_count": 0
+    }
+  },
+  "created_at": "2026-03-17T00:37:08.522667"
+}

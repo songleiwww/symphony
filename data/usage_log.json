@@ -1,0 +1,954 @@
+[
+  {
+    "role_id": "role-1",
+    "success": true,
+    "latency": 0.5,
+    "tokens": 100,
+    "timestamp": "2026-03-16 23:38:13.164775"
+  },
+  {
+    "role_id": "role-1",
+    "success": true,
+    "latency": 0.5,
+    "tokens": 100,
+    "timestamp": "2026-03-16 23:50:33.024911"
+  },
+  {
+    "role_id": "role-1",
+    "success": true,
+    "latency": 1.254723,
+    "tokens": 64,
+    "timestamp": "2026-03-16 23:57:19.454023"
+  },
+  {
+    "role_id": "role-56",
+    "success": true,
+    "latency": 12.294023,
+    "tokens": 712,
+    "timestamp": "2026-03-16 23:57:31.752848"
+  },
+  {
+    "role_id": "role-1",
+    "success": true,
+    "latency": 1.850307,
+    "tokens": 80,
+    "timestamp": "2026-03-16 23:57:33.608898"
+  },
+  {
+    "role_id": "role-1",
+    "success": true,
+    "latency": 1.093245,
+    "tokens": 76,
+    "timestamp": "2026-03-16 23:59:13.805227"
+  },
+  {
+    "role_id": "role-10",
+    "success": true,
+    "latency": 1.536986,
+    "tokens": 28,
+    "timestamp": "2026-03-16 23:59:15.347036"
+  },
+  {
+    "role_id": "role-55",
+    "success": true,
+    "latency": 3.073524,
+    "tokens": 153,
+    "timestamp": "2026-03-16 23:59:18.425935"
+  },
+  {
+    "role_id": "role-1",
+    "success": true,
+    "latency": 2.779481,
+    "tokens": 64,
+    "timestamp": "2026-03-17 00:00:04.507908"
+  },
+  {
+    "role_id": "role-10",
+    "success": true,
+    "latency": 2.94396,
+    "tokens": 69,
+    "timestamp": "2026-03-17 00:00:07.456401"
+  },
+  {
+    "role_id": "role-55",
+    "success": true,
+    "latency": 8.52487,
+    "tokens": 138,
+    "timestamp": "2026-03-17 00:00:15.985925"
+  },
+  {
+    "role_id": "role-1",
+    "success": true,
+    "latency": 2.660757,
+    "tokens": 208,
+    "timestamp": "2026-03-17 00:01:08.614086"
+  },
+  {
+    "role_id": "role-1",
+    "success": true,
+    "latency": 2.282669,
+    "tokens": 147,
+    "timestamp": "2026-03-17 00:01:10.902054"
+  },
+  {
+    "role_id": "role-1",
+    "success": true,
+    "latency": 3.507248,
+    "tokens": 198,
+    "timestamp": "2026-03-17 00:01:14.413393"
+  },
+  {
+    "role_id": "role-1",
+    "success": true,
+    "latency": 2.587034,
+    "tokens": 208,
+    "timestamp": "2026-03-17 00:03:21.101372"
+  },
+  {
+    "role_id": "role-1",
+    "success": true,
+    "latency": 3.031101,
+    "tokens": 209,
+    "timestamp": "2026-03-17 00:03:24.136809"
+  },
+  {
+    "role_id": "role-1",
+    "success": true,
+    "latency": 3.741748,
+    "tokens": 260,
+    "timestamp": "2026-03-17 00:03:27.882538"
+  },
+  {
+    "role_id": "role-1",
+    "success": true,
+    "latency": 2.658422,
+    "tokens": 153,
+    "timestamp": "2026-03-17 00:03:30.545237"
+  },
+  {
+    "role_id": "role-1",
+    "success": true,
+    "latency": 7.580315,
+    "tokens": 589,
+    "timestamp": "2026-03-17 00:07:20.666138"
+  },
+  {
+    "role_id": "role-10",
+    "success": true,
+    "latency": 19.515237,
+    "tokens": 654,
+    "timestamp": "2026-03-17 00:07:40.185671"
+  },
+  {
+    "role_id": "role-55",
+    "success": true,
+    "latency": 51.423126,
+    "tokens": 2739,
+    "timestamp": "2026-03-17 00:08:31.613025"
+  },
+  {
+    "role_id": "role-1",
+    "success": true,
+    "latency": 1.729637,
+    "tokens": 161,
+    "timestamp": "2026-03-17 00:08:58.823593"
+  },
+  {
+    "role_id": "role-10",
+    "success": true,
+    "latency": 9.531623,
+    "tokens": 106,
+    "timestamp": "2026-03-17 00:09:08.359983"
+  },
+  {
+    "role_id": "role-55",
+    "success": true,
+    "latency": 19.9423,
+    "tokens": 573,
+    "timestamp": "2026-03-17 00:09:28.306783"
+  },
+  {
+    "role_id": "role-1",
+    "success": true,
+    "latency": 1.446306,
+    "tokens": 101,
+    "timestamp": "2026-03-17 00:12:56.726151"
+  },
+  {
+    "role_id": "role-10",
+    "success": true,
+    "latency": 9.002269,
+    "tokens": 60,
+    "timestamp": "2026-03-17 00:13:05.732582"
+  },
+  {
+    "role_id": "role-55",
+    "success": true,
+    "latency": 29.76614,
+    "tokens": 1977,
+    "timestamp": "2026-03-17 00:13:35.503051"
+  },
+  {
+    "role_id": "role-1",
+    "success": true,
+    "latency": 1.563178,
+    "tokens": 100,
+    "timestamp": "2026-03-17 00:13:37.070885"
+  },
+  {
+    "role_id": "role-10",
+    "success": true,
+    "latency": 2.354806,
+    "tokens": 77,
+    "timestamp": "2026-03-17 00:13:39.429921"
+  },
+  {
+    "role_id": "role-55",
+    "success": true,
+    "latency": 21.681474,
+    "tokens": 1081,
+    "timestamp": "2026-03-17 00:14:01.115783"
+  },
+  {
+    "role_id": "role-1",
+    "success": true,
+    "latency": 1.390456,
+    "tokens": 135,
+    "timestamp": "2026-03-17 00:14:02.510469"
+  },
+  {
+    "role_id": "role-10",
+    "success": true,
+    "latency": 2.038001,
+    "tokens": 76,
+    "timestamp": "2026-03-17 00:14:04.552894"
+  },
+  {
+    "role_id": "role-55",
+    "success": true,
+    "latency": 18.128603,
+    "tokens": 936,
+    "timestamp": "2026-03-17 00:14:22.686103"
+  },
+  {
+    "role_id": "role-1",
+    "success": true,
+    "latency": 2.914721,
+    "tokens": 219,
+    "timestamp": "2026-03-17 00:15:08.413477"
+  },
+  {
+    "role_id": "role-10",
+    "success": true,
+    "latency": 7.457316,
+    "tokens": 160,
+    "timestamp": "2026-03-17 00:15:15.875246"
+  },
+  {
+    "role_id": "role-55",
+    "success": true,
+    "latency": 16.855959,
+    "tokens": 815,
+    "timestamp": "2026-03-17 00:15:32.735519"
+  },
+  {
+    "role_id": "role-1",
+    "success": true,
+    "latency": 3.81836,
+    "tokens": 339,
+    "timestamp": "2026-03-17 00:17:19.572368"
+  },
+  {
+    "role_id": "role-10",
+    "success": true,
+    "latency": 14.250664,
+    "tokens": 306,
+    "timestamp": "2026-03-17 00:17:33.827368"
+  },
+  {
+    "role_id": "role-1",
+    "success": true,
+    "latency": 11.046293,
+    "tokens": 1098,
+    "timestamp": "2026-03-17 00:18:15.890617"
+  },
+  {
+    "role_id": "role-10",
+    "success": true,
+    "latency": 31.037963,
+    "tokens": 978,
+    "timestamp": "2026-03-17 00:18:46.933583"
+  },
+  {
+    "role_id": "role-55",
+    "success": true,
+    "latency": 46.564809,
+    "tokens": 2523,
+    "timestamp": "2026-03-17 00:19:33.502683"
+  },
+  {
+    "role_id": "role-1",
+    "success": true,
+    "latency": 8.880792,
+    "tokens": 950,
+    "timestamp": "2026-03-17 00:23:39.436386"
+  },
+  {
+    "role_id": "role-10",
+    "success": true,
+    "latency": 24.901222,
+    "tokens": 761,
+    "timestamp": "2026-03-17 00:24:04.342988"
+  },
+  {
+    "role_id": "role-55",
+    "success": true,
+    "latency": 34.479316,
+    "tokens": 1679,
+    "timestamp": "2026-03-17 00:24:38.826698"
+  },
+  {
+    "role_id": "role-1",
+    "success": true,
+    "latency": 14.191589,
+    "tokens": 1277,
+    "timestamp": "2026-03-17 00:25:13.902437"
+  },
+  {
+    "role_id": "role-10",
+    "success": true,
+    "latency": 11.188647,
+    "tokens": 135,
+    "timestamp": "2026-03-17 00:25:25.095660"
+  },
+  {
+    "role_id": "role-1",
+    "success": true,
+    "latency": 2.698086,
+    "tokens": 232,
+    "timestamp": "2026-03-17 00:26:16.823736"
+  },
+  {
+    "role_id": "role-10",
+    "success": true,
+    "latency": 7.177466,
+    "tokens": 207,
+    "timestamp": "2026-03-17 00:26:24.005655"
+  },
+  {
+    "role_id": "role-55",
+    "success": true,
+    "latency": 23.461155,
+    "tokens": 958,
+    "timestamp": "2026-03-17 00:26:47.471381"
+  },
+  {
+    "role_id": "role-1",
+    "success": true,
+    "latency": 1.58972,
+    "tokens": 142,
+    "timestamp": "2026-03-17 00:27:12.630994"
+  },
+  {
+    "role_id": "role-10",
+    "success": true,
+    "latency": 4.024326,
+    "tokens": 108,
+    "timestamp": "2026-03-17 00:27:16.659962"
+  },
+  {
+    "role_id": "role-55",
+    "success": true,
+    "latency": 13.644378,
+    "tokens": 581,
+    "timestamp": "2026-03-17 00:27:30.309212"
+  },
+  {
+    "role_id": "role-1",
+    "success": true,
+    "latency": 2.449608,
+    "tokens": 170,
+    "timestamp": "2026-03-17 00:28:23.803527"
+  },
+  {
+    "role_id": "role-10",
+    "success": true,
+    "latency": 5.810176,
+    "tokens": 150,
+    "timestamp": "2026-03-17 00:28:29.618841"
+  },
+  {
+    "role_id": "role-1",
+    "success": true,
+    "latency": 2.273246,
+    "tokens": 128,
+    "timestamp": "2026-03-17 00:29:36.402282"
+  },
+  {
+    "role_id": "role-10",
+    "success": true,
+    "latency": 4.332596,
+    "tokens": 96,
+    "timestamp": "2026-03-17 00:29:40.739389"
+  },
+  {
+    "role_id": "role-55",
+    "success": true,
+    "latency": 20.815931,
+    "tokens": 1212,
+    "timestamp": "2026-03-17 00:30:01.559798"
+  },
+  {
+    "role_id": "role-1",
+    "success": true,
+    "latency": 4.665864,
+    "tokens": 354,
+    "timestamp": "2026-03-17 00:30:41.709477"
+  },
+  {
+    "role_id": "role-10",
+    "success": true,
+    "latency": 3.900727,
+    "tokens": 135,
+    "timestamp": "2026-03-17 00:30:45.615293"
+  },
+  {
+    "role_id": "role-1",
+    "success": true,
+    "latency": 5.479351,
+    "tokens": 444,
+    "timestamp": "2026-03-17 00:31:26.534999"
+  },
+  {
+    "role_id": "role-10",
+    "success": true,
+    "latency": 5.815805,
+    "tokens": 184,
+    "timestamp": "2026-03-17 00:31:32.355392"
+  },
+  {
+    "role_id": "role-1",
+    "success": true,
+    "latency": 1.330134,
+    "tokens": 105,
+    "timestamp": "2026-03-17 00:37:38.374627"
+  },
+  {
+    "role_id": "role-10",
+    "success": true,
+    "latency": 2.589736,
+    "tokens": 52,
+    "timestamp": "2026-03-17 00:37:40.968925"
+  },
+  {
+    "role_id": "role-55",
+    "success": true,
+    "latency": 12.8769,
+    "tokens": 751,
+    "timestamp": "2026-03-17 00:37:53.850544"
+  },
+  {
+    "role_id": "role-1",
+    "success": true,
+    "latency": 3.151545,
+    "tokens": 262,
+    "timestamp": "2026-03-17 00:39:27.298286"
+  },
+  {
+    "role_id": "role-1",
+    "success": true,
+    "latency": 1.397733,
+    "tokens": 94,
+    "timestamp": "2026-03-17 00:43:47.953814"
+  },
+  {
+    "role_id": "role-10",
+    "success": true,
+    "latency": 1.724856,
+    "tokens": 48,
+    "timestamp": "2026-03-17 00:43:49.684260"
+  },
+  {
+    "role_id": "role-55",
+    "success": true,
+    "latency": 26.755225,
+    "tokens": 1101,
+    "timestamp": "2026-03-17 00:45:13.688697"
+  },
+  {
+    "role_id": "role-1",
+    "success": true,
+    "latency": 1.619947,
+    "tokens": 72,
+    "timestamp": "2026-03-17 00:46:33.965946"
+  },
+  {
+    "role_id": "role-10",
+    "success": true,
+    "latency": 1.434138,
+    "tokens": 31,
+    "timestamp": "2026-03-17 00:46:35.404765"
+  },
+  {
+    "role_id": "role-55",
+    "success": true,
+    "latency": 10.949891,
+    "tokens": 542,
+    "timestamp": "2026-03-17 00:46:46.358969"
+  },
+  {
+    "role_id": "role-1",
+    "success": true,
+    "latency": 1.593479,
+    "tokens": 116,
+    "timestamp": "2026-03-17 00:47:14.430575"
+  },
+  {
+    "role_id": "role-10",
+    "success": true,
+    "latency": 3.687286,
+    "tokens": 97,
+    "timestamp": "2026-03-17 00:47:18.122534"
+  },
+  {
+    "role_id": "role-55",
+    "success": true,
+    "latency": 25.124166,
+    "tokens": 1103,
+    "timestamp": "2026-03-17 00:47:43.251965"
+  },
+  {
+    "role_id": "role-1",
+    "success": true,
+    "latency": 1.448852,
+    "tokens": 89,
+    "timestamp": "2026-03-17 00:53:55.149351"
+  },
+  {
+    "role_id": "role-10",
+    "success": true,
+    "latency": 1.852459,
+    "tokens": 51,
+    "timestamp": "2026-03-17 00:53:57.007682"
+  },
+  {
+    "role_id": "role-55",
+    "success": true,
+    "latency": 14.762941,
+    "tokens": 458,
+    "timestamp": "2026-03-17 00:54:11.775322"
+  },
+  {
+    "role_id": "role-1",
+    "success": true,
+    "latency": 1.16081,
+    "tokens": 90,
+    "timestamp": "2026-03-17 00:54:51.647396"
+  },
+  {
+    "role_id": "role-10",
+    "success": true,
+    "latency": 1.692264,
+    "tokens": 46,
+    "timestamp": "2026-03-17 00:54:53.344575"
+  },
+  {
+    "role_id": "role-55",
+    "success": true,
+    "latency": 18.546619,
+    "tokens": 633,
+    "timestamp": "2026-03-17 00:55:11.895728"
+  },
+  {
+    "role_id": "role-1",
+    "success": true,
+    "latency": 1.077488,
+    "tokens": 83,
+    "timestamp": "2026-03-17 00:55:51.116188"
+  },
+  {
+    "role_id": "role-10",
+    "success": true,
+    "latency": 1.78773,
+    "tokens": 49,
+    "timestamp": "2026-03-17 00:55:52.909270"
+  },
+  {
+    "role_id": "role-55",
+    "success": true,
+    "latency": 17.195469,
+    "tokens": 628,
+    "timestamp": "2026-03-17 00:56:10.109598"
+  },
+  {
+    "role_id": "role-1",
+    "success": true,
+    "latency": 1.4476,
+    "tokens": 116,
+    "timestamp": "2026-03-17 01:08:22.322934"
+  },
+  {
+    "role_id": "role-10",
+    "success": true,
+    "latency": 2.655009,
+    "tokens": 62,
+    "timestamp": "2026-03-17 01:08:24.982452"
+  },
+  {
+    "role_id": "role-55",
+    "success": true,
+    "latency": 24.84023,
+    "tokens": 1053,
+    "timestamp": "2026-03-17 01:08:49.827481"
+  },
+  {
+    "role_id": "role-1",
+    "success": true,
+    "latency": 0.842691,
+    "tokens": 62,
+    "timestamp": "2026-03-17 01:14:41.633081"
+  },
+  {
+    "role_id": "role-10",
+    "success": true,
+    "latency": 1.842683,
+    "tokens": 39,
+    "timestamp": "2026-03-17 01:14:43.481497"
+  },
+  {
+    "role_id": "role-1",
+    "success": true,
+    "latency": 0.958125,
+    "tokens": 63,
+    "timestamp": "2026-03-17 01:14:44.445397"
+  },
+  {
+    "role_id": "role-10",
+    "success": true,
+    "latency": 1.865179,
+    "tokens": 37,
+    "timestamp": "2026-03-17 01:14:46.315171"
+  },
+  {
+    "role_id": "role-1",
+    "success": true,
+    "latency": 7.991385,
+    "tokens": 506,
+    "timestamp": "2026-03-17 01:14:54.311154"
+  },
+  {
+    "role_id": "role-10",
+    "success": true,
+    "latency": 14.572918,
+    "tokens": 375,
+    "timestamp": "2026-03-17 01:15:08.889704"
+  },
+  {
+    "role_id": "role-55",
+    "success": true,
+    "latency": 14.631602,
+    "tokens": 439,
+    "timestamp": "2026-03-17 01:15:23.526441"
+  },
+  {
+    "role_id": "role-1",
+    "success": true,
+    "latency": 0.852378,
+    "tokens": 64,
+    "timestamp": "2026-03-17 01:15:24.384173"
+  },
+  {
+    "role_id": "role-10",
+    "success": true,
+    "latency": 2.007974,
+    "tokens": 31,
+    "timestamp": "2026-03-17 01:15:26.396935"
+  },
+  {
+    "role_id": "role-1",
+    "success": true,
+    "latency": 6.447207,
+    "tokens": 412,
+    "timestamp": "2026-03-17 01:15:32.848649"
+  },
+  {
+    "role_id": "role-10",
+    "success": true,
+    "latency": 9.269743,
+    "tokens": 211,
+    "timestamp": "2026-03-17 01:15:42.123222"
+  },
+  {
+    "role_id": "role-55",
+    "success": true,
+    "latency": 30.294217,
+    "tokens": 956,
+    "timestamp": "2026-03-17 01:16:12.422151"
+  },
+  {
+    "role_id": "role-1",
+    "success": true,
+    "latency": 4.159228,
+    "tokens": 269,
+    "timestamp": "2026-03-17 01:16:16.586303"
+  },
+  {
+    "role_id": "role-10",
+    "success": true,
+    "latency": 2.839755,
+    "tokens": 69,
+    "timestamp": "2026-03-17 01:16:19.431685"
+  },
+  {
+    "role_id": "role-55",
+    "success": true,
+    "latency": 28.044373,
+    "tokens": 1434,
+    "timestamp": "2026-03-17 01:16:47.480661"
+  },
+  {
+    "role_id": "role-56",
+    "success": true,
+    "latency": 16.140362,
+    "tokens": 1261,
+    "timestamp": "2026-03-17 01:17:03.625744"
+  },
+  {
+    "role_id": "role-1",
+    "success": true,
+    "latency": 1.516606,
+    "tokens": 70,
+    "timestamp": "2026-03-17 01:20:58.857305"
+  },
+  {
+    "role_id": "role-1",
+    "success": true,
+    "latency": 1.936162,
+    "tokens": 114,
+    "timestamp": "2026-03-17 01:26:49.847249"
+  },
+  {
+    "role_id": "role-10",
+    "success": true,
+    "latency": 3.265053,
+    "tokens": 90,
+    "timestamp": "2026-03-17 01:26:53.117357"
+  },
+  {
+    "role_id": "role-55",
+    "success": true,
+    "latency": 31.769313,
+    "tokens": 1483,
+    "timestamp": "2026-03-17 01:27:24.891428"
+  },
+  {
+    "role_id": "role-1",
+    "success": true,
+    "latency": 4.347693,
+    "tokens": 304,
+    "timestamp": "2026-03-17 01:33:22.302507"
+  },
+  {
+    "role_id": "role-1",
+    "success": true,
+    "latency": 8.021964,
+    "tokens": 411,
+    "timestamp": "2026-03-17 01:41:56.695659"
+  },
+  {
+    "role_id": "role-10",
+    "success": true,
+    "latency": 22.105787,
+    "tokens": 597,
+    "timestamp": "2026-03-17 01:42:18.806662"
+  },
+  {
+    "role_id": "role-55",
+    "success": true,
+    "latency": 34.246883,
+    "tokens": 1323,
+    "timestamp": "2026-03-17 01:42:53.058349"
+  },
+  {
+    "role_id": "role-56",
+    "success": true,
+    "latency": 17.078747,
+    "tokens": 1522,
+    "timestamp": "2026-03-17 01:43:10.142533"
+  },
+  {
+    "role_id": "role-1",
+    "success": true,
+    "latency": 7.214026,
+    "tokens": 575,
+    "timestamp": "2026-03-17 01:44:11.160893"
+  },
+  {
+    "role_id": "role-10",
+    "success": true,
+    "latency": 26.56163,
+    "tokens": 752,
+    "timestamp": "2026-03-17 01:44:37.728239"
+  },
+  {
+    "role_id": "role-55",
+    "success": true,
+    "latency": 12.207202,
+    "tokens": 501,
+    "timestamp": "2026-03-17 01:44:49.941919"
+  },
+  {
+    "role_id": "role-56",
+    "success": true,
+    "latency": 17.587049,
+    "tokens": 1636,
+    "timestamp": "2026-03-17 01:45:07.533607"
+  },
+  {
+    "role_id": "role-1",
+    "success": true,
+    "latency": 1.438101,
+    "tokens": 116,
+    "timestamp": "2026-03-17 01:49:39.024129"
+  },
+  {
+    "role_id": "role-10",
+    "success": true,
+    "latency": 2.414756,
+    "tokens": 65,
+    "timestamp": "2026-03-17 01:49:41.444337"
+  },
+  {
+    "role_id": "role-55",
+    "success": true,
+    "latency": 18.020804,
+    "tokens": 976,
+    "timestamp": "2026-03-17 01:49:59.470680"
+  },
+  {
+    "role_id": "role-1",
+    "success": true,
+    "latency": 1.662271,
+    "tokens": 135,
+    "timestamp": "2026-03-17 02:07:36.789977"
+  },
+  {
+    "role_id": "role-10",
+    "success": true,
+    "latency": 3.377287,
+    "tokens": 90,
+    "timestamp": "2026-03-17 02:07:40.172281"
+  },
+  {
+    "role_id": "role-55",
+    "success": true,
+    "latency": 31.053304,
+    "tokens": 868,
+    "timestamp": "2026-03-17 02:08:11.231008"
+  },
+  {
+    "role_id": "role-1",
+    "success": true,
+    "latency": 2.008918,
+    "tokens": 115,
+    "timestamp": "2026-03-17 02:27:30.890520"
+  },
+  {
+    "role_id": "role-10",
+    "success": true,
+    "latency": 3.093472,
+    "tokens": 79,
+    "timestamp": "2026-03-17 02:27:33.988768"
+  },
+  {
+    "role_id": "role-55",
+    "success": true,
+    "latency": 26.397011,
+    "tokens": 839,
+    "timestamp": "2026-03-17 02:28:00.390638"
+  },
+  {
+    "role_id": "role-1",
+    "success": true,
+    "latency": 1.418166,
+    "tokens": 105,
+    "timestamp": "2026-03-17 02:46:51.109206"
+  },
+  {
+    "role_id": "role-10",
+    "success": true,
+    "latency": 5.345842,
+    "tokens": 151,
+    "timestamp": "2026-03-17 02:46:56.459896"
+  },
+  {
+    "role_id": "role-55",
+    "success": true,
+    "latency": 12.959565,
+    "tokens": 773,
+    "timestamp": "2026-03-17 02:47:09.424342"
+  },
+  {
+    "role_id": "role-1",
+    "success": true,
+    "latency": 2.369532,
+    "tokens": 106,
+    "timestamp": "2026-03-17 03:06:57.043457"
+  },
+  {
+    "role_id": "role-10",
+    "success": true,
+    "latency": 2.828382,
+    "tokens": 77,
+    "timestamp": "2026-03-17 03:06:59.876572"
+  },
+  {
+    "role_id": "role-55",
+    "success": true,
+    "latency": 32.55555,
+    "tokens": 859,
+    "timestamp": "2026-03-17 03:07:32.437234"
+  },
+  {
+    "role_id": "role-1",
+    "success": true,
+    "latency": 1.832989,
+    "tokens": 103,
+    "timestamp": "2026-03-17 03:26:56.563191"
+  },
+  {
+    "role_id": "role-10",
+    "success": true,
+    "latency": 2.09063,
+    "tokens": 52,
+    "timestamp": "2026-03-17 03:26:58.659032"
+  },
+  {
+    "role_id": "role-55",
+    "success": true,
+    "latency": 26.611478,
+    "tokens": 975,
+    "timestamp": "2026-03-17 03:27:25.275428"
+  },
+  {
+    "role_id": "role-1",
+    "success": true,
+    "latency": 1.410801,
+    "tokens": 109,
+    "timestamp": "2026-03-17 03:47:00.121754"
+  },
+  {
+    "role_id": "role-10",
+    "success": true,
+    "latency": 2.597486,
+    "tokens": 63,
+    "timestamp": "2026-03-17 03:47:02.724195"
+  },
+  {
+    "role_id": "role-55",
+    "success": true,
+    "latency": 21.065577,
+    "tokens": 1122,
+    "timestamp": "2026-03-17 03:47:23.794642"
+  }
+]

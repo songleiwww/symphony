@@ -1,0 +1,1032 @@
+{
+  "logs": [
+    {
+      "timestamp": "2026-03-17T00:37:08.526784",
+      "user_id": "user_536015f9660d",
+      "data_id": "data_20260317003708_ffb96e",
+      "action": "takeover",
+      "metadata": {
+        "source": "openclaw"
+      }
+    },
+    {
+      "timestamp": "2026-03-17T00:37:55.544157",
+      "user_id": "user_ded423a03fb8",
+      "data_id": "data_20260317003755_4e345e",
+      "action": "takeover",
+      "metadata": {
+        "source": "test"
+      }
+    },
+    {
+      "timestamp": "2026-03-17T00:41:09.053988",
+      "user_id": "user_f5652f6c89f1",
+      "data_id": "data_20260317004109_6f0ab4",
+      "action": "takeover",
+      "metadata": {
+        "source": "feishu",
+        "channel": "feishu",
+        "timestamp": "2026-03-17T00:40:00"
+      }
+    },
+    {
+      "timestamp": "2026-03-17T00:41:20.562510",
+      "user_id": "user_f5652f6c89f1",
+      "data_id": "data_20260317004120_4dbf2c",
+      "action": "takeover",
+      "metadata": {
+        "source": "闭环测试"
+      }
+    },
+    {
+      "timestamp": "2026-03-17T00:43:49.688622",
+      "user_id": "user_f5652f6c89f1",
+      "data_id": "data_20260317004349_7ddb6e",
+      "action": "takeover",
+      "metadata": {
+        "source": "host_takeover",
+        "mode": "autonomous",
+        "timestamp": "2026-03-17T00:43:00"
+      }
+    },
+    {
+      "timestamp": "2026-03-17T00:44:01.129015",
+      "user_id": "user_f5652f6c89f1",
+      "data_id": "data_20260317004401_aeb27e",
+      "action": "takeover",
+      "metadata": {
+        "source": "host_takeover",
+        "mode": "autonomous",
+        "timestamp": "2026-03-17T00:44:00"
+      }
+    },
+    {
+      "timestamp": "2026-03-17T00:45:13.692535",
+      "user_id": "user_f5652f6c89f1",
+      "data_id": "data_20260317004513_085a7f",
+      "action": "takeover",
+      "metadata": {
+        "source": "host_takeover",
+        "timestamp": "2026-03-17T00:44:30"
+      }
+    },
+    {
+      "timestamp": "2026-03-17T00:47:43.257656",
+      "user_id": "user_f5652f6c89f1",
+      "data_id": "data_20260317004743_3fce1a",
+      "action": "takeover",
+      "metadata": {
+        "source": "scheduled_learning",
+        "timestamp": "2026-03-17T00:46:00"
+      }
+    },
+    {
+      "timestamp": "2026-03-17T00:48:46.404124",
+      "user_id": "user_f5652f6c89f1",
+      "data_id": "data_20260317004846_f8e222",
+      "action": "takeover",
+      "metadata": {
+        "source": "adaptive_process"
+      }
+    },
+    {
+      "timestamp": "2026-03-17T00:49:40.786597",
+      "user_id": "user_f5652f6c89f1",
+      "data_id": "data_20260317004940_ae470f",
+      "action": "takeover",
+      "metadata": {
+        "source": "adaptive_process"
+      }
+    },
+    {
+      "timestamp": "2026-03-17T00:50:06.627167",
+      "user_id": "user_f5652f6c89f1",
+      "data_id": "data_20260317005006_92fdcd",
+      "action": "takeover",
+      "metadata": {
+        "source": "adaptive_process"
+      }
+    },
+    {
+      "timestamp": "2026-03-17T00:50:23.087906",
+      "user_id": "user_f5652f6c89f1",
+      "data_id": "data_20260317005023_7f16f2",
+      "action": "takeover",
+      "metadata": {
+        "source": "adaptive_process"
+      }
+    },
+    {
+      "timestamp": "2026-03-17T01:00:25.305999",
+      "user_id": "user_f5652f6c89f1",
+      "data_id": "data_20260317010025_f72268",
+      "action": "takeover",
+      "metadata": {
+        "source": "host_takeover"
+      }
+    },
+    {
+      "timestamp": "2026-03-17T01:05:03.403847",
+      "user_id": "user_f5652f6c89f1",
+      "data_id": "data_20260317010503_94569b",
+      "action": "takeover",
+      "metadata": {
+        "source": "host_takeover"
+      }
+    },
+    {
+      "timestamp": "2026-03-17T01:05:03.406300",
+      "user_id": "user_f5652f6c89f1",
+      "data_id": "data_20260317010503_bcf1e2",
+      "action": "takeover",
+      "metadata": {
+        "source": "matrix"
+      }
+    },
+    {
+      "timestamp": "2026-03-17T01:05:04.814788",
+      "user_id": "user_f5652f6c89f1",
+      "data_id": "data_20260317010504_a419e0",
+      "action": "takeover",
+      "metadata": {
+        "source": "matrix"
+      }
+    },
+    {
+      "timestamp": "2026-03-17T01:05:20.296415",
+      "user_id": "user_f5652f6c89f1",
+      "data_id": "data_20260317010520_a5943f",
+      "action": "takeover",
+      "metadata": {
+        "source": "matrix"
+      }
+    },
+    {
+      "timestamp": "2026-03-17T01:07:10.627922",
+      "user_id": "user_f5652f6c89f1",
+      "data_id": "data_20260317010710_0c0472",
+      "action": "takeover",
+      "metadata": {
+        "source": "advanced"
+      }
+    },
+    {
+      "timestamp": "2026-03-17T01:07:52.138355",
+      "user_id": "user_f5652f6c89f1",
+      "data_id": "data_20260317010752_6cdeda",
+      "action": "takeover",
+      "metadata": {
+        "source": "advanced"
+      }
+    },
+    {
+      "timestamp": "2026-03-17T01:07:52.646444",
+      "user_id": "user_f5652f6c89f1",
+      "data_id": "data_20260317010752_d81caf",
+      "action": "takeover",
+      "metadata": {
+        "source": "advanced"
+      }
+    },
+    {
+      "timestamp": "2026-03-17T01:08:01.033020",
+      "user_id": "user_f5652f6c89f1",
+      "data_id": "data_20260317010801_dc8a0a",
+      "action": "takeover",
+      "metadata": {
+        "source": "advanced"
+      }
+    },
+    {
+      "timestamp": "2026-03-17T01:08:01.035845",
+      "user_id": "user_f5652f6c89f1",
+      "data_id": "data_20260317010801_1b4049",
+      "action": "takeover",
+      "metadata": {
+        "source": "advanced"
+      }
+    },
+    {
+      "timestamp": "2026-03-17T01:08:01.038459",
+      "user_id": "user_f5652f6c89f1",
+      "data_id": "data_20260317010801_a5eab8",
+      "action": "takeover",
+      "metadata": {
+        "source": "advanced"
+      }
+    },
+    {
+      "timestamp": "2026-03-17T01:08:01.041259",
+      "user_id": "user_f5652f6c89f1",
+      "data_id": "data_20260317010801_f9cb96",
+      "action": "takeover",
+      "metadata": {
+        "source": "advanced"
+      }
+    },
+    {
+      "timestamp": "2026-03-17T01:08:01.044223",
+      "user_id": "user_f5652f6c89f1",
+      "data_id": "data_20260317010801_0eae60",
+      "action": "takeover",
+      "metadata": {
+        "source": "advanced"
+      }
+    },
+    {
+      "timestamp": "2026-03-17T01:10:31.949906",
+      "user_id": "user_f5652f6c89f1",
+      "data_id": "data_20260317011031_6a8fe5",
+      "action": "takeover",
+      "metadata": {
+        "source": "complementary"
+      }
+    },
+    {
+      "timestamp": "2026-03-17T01:11:15.285547",
+      "user_id": "user_f5652f6c89f1",
+      "data_id": "data_20260317011115_083289",
+      "action": "takeover",
+      "metadata": {
+        "source": "complementary"
+      }
+    },
+    {
+      "timestamp": "2026-03-17T01:11:27.786615",
+      "user_id": "user_f5652f6c89f1",
+      "data_id": "data_20260317011127_378ed5",
+      "action": "takeover",
+      "metadata": {
+        "source": "complementary"
+      }
+    },
+    {
+      "timestamp": "2026-03-17T01:13:33.494471",
+      "user_id": "user_f5652f6c89f1",
+      "data_id": "data_20260317011333_c81ce8",
+      "action": "takeover",
+      "metadata": {
+        "source": "super_combo"
+      }
+    },
+    {
+      "timestamp": "2026-03-17T01:14:23.947093",
+      "user_id": "user_f5652f6c89f1",
+      "data_id": "data_20260317011423_a64675",
+      "action": "takeover",
+      "metadata": {
+        "source": "super_combo"
+      }
+    },
+    {
+      "timestamp": "2026-03-17T01:14:24.541411",
+      "user_id": "user_f5652f6c89f1",
+      "data_id": "data_20260317011424_87d11d",
+      "action": "takeover",
+      "metadata": {
+        "source": "super_combo"
+      }
+    },
+    {
+      "timestamp": "2026-03-17T01:14:40.784991",
+      "user_id": "user_f5652f6c89f1",
+      "data_id": "data_20260317011440_2b22d2",
+      "action": "takeover",
+      "metadata": {
+        "source": "test"
+      }
+    },
+    {
+      "timestamp": "2026-03-17T01:19:45.587065",
+      "user_id": "user_f5652f6c89f1",
+      "data_id": "data_20260317011945_871ca6",
+      "action": "takeover",
+      "metadata": {
+        "source": "kernel"
+      }
+    },
+    {
+      "timestamp": "2026-03-17T01:20:09.000113",
+      "user_id": "user_f5652f6c89f1",
+      "data_id": "data_20260317012008_e2a0f1",
+      "action": "takeover",
+      "metadata": {}
+    },
+    {
+      "timestamp": "2026-03-17T01:20:36.531355",
+      "user_id": "user_f5652f6c89f1",
+      "data_id": "data_20260317012036_3a1b2e",
+      "action": "takeover",
+      "metadata": {}
+    },
+    {
+      "timestamp": "2026-03-17T01:20:57.336935",
+      "user_id": "user_f5652f6c89f1",
+      "data_id": "data_20260317012057_30ad3a",
+      "action": "takeover",
+      "metadata": {
+        "source": "kernel"
+      }
+    },
+    {
+      "timestamp": "2026-03-17T01:21:29.198154",
+      "user_id": "user_f5652f6c89f1",
+      "data_id": "data_20260317012129_6b7fac",
+      "action": "takeover",
+      "metadata": {
+        "source": "kernel"
+      }
+    },
+    {
+      "timestamp": "2026-03-17T01:21:59.089578",
+      "user_id": "user_f5652f6c89f1",
+      "data_id": "data_20260317012159_b674e2",
+      "action": "takeover",
+      "metadata": {}
+    },
+    {
+      "timestamp": "2026-03-17T01:22:34.593139",
+      "user_id": "user_f5652f6c89f1",
+      "data_id": "data_20260317012234_aeba6b",
+      "action": "takeover",
+      "metadata": {}
+    },
+    {
+      "timestamp": "2026-03-17T01:22:58.268076",
+      "user_id": "user_f5652f6c89f1",
+      "data_id": "data_20260317012258_4243a5",
+      "action": "takeover",
+      "metadata": {}
+    },
+    {
+      "timestamp": "2026-03-17T01:22:58.270920",
+      "user_id": "user_f5652f6c89f1",
+      "data_id": "data_20260317012258_53c96f",
+      "action": "takeover",
+      "metadata": {
+        "source": "kernel"
+      }
+    },
+    {
+      "timestamp": "2026-03-17T01:23:19.083289",
+      "user_id": "user_f5652f6c89f1",
+      "data_id": "data_20260317012319_725bb0",
+      "action": "takeover",
+      "metadata": {}
+    },
+    {
+      "timestamp": "2026-03-17T01:24:02.268189",
+      "user_id": "user_f5652f6c89f1",
+      "data_id": "data_20260317012402_b48ec0",
+      "action": "takeover",
+      "metadata": {}
+    },
+    {
+      "timestamp": "2026-03-17T01:28:37.429029",
+      "user_id": "user_f5652f6c89f1",
+      "data_id": "data_20260317012837_d95f1f",
+      "action": "takeover",
+      "metadata": {
+        "source": "evolution"
+      }
+    },
+    {
+      "timestamp": "2026-03-17T01:28:37.432169",
+      "user_id": "user_f5652f6c89f1",
+      "data_id": "data_20260317012837_b00266",
+      "action": "takeover",
+      "metadata": {
+        "source": "kernel"
+      }
+    },
+    {
+      "timestamp": "2026-03-17T01:29:13.262540",
+      "user_id": "user_f5652f6c89f1",
+      "data_id": "data_20260317012913_78e74c",
+      "action": "takeover",
+      "metadata": {}
+    },
+    {
+      "timestamp": "2026-03-17T01:30:12.670397",
+      "user_id": "user_f5652f6c89f1",
+      "data_id": "data_20260317013012_973831",
+      "action": "takeover",
+      "metadata": {}
+    },
+    {
+      "timestamp": "2026-03-17T01:31:22.229669",
+      "user_id": "user_f5652f6c89f1",
+      "data_id": "data_20260317013122_353264",
+      "action": "takeover",
+      "metadata": {
+        "source": "evolution"
+      }
+    },
+    {
+      "timestamp": "2026-03-17T01:31:22.232569",
+      "user_id": "user_f5652f6c89f1",
+      "data_id": "data_20260317013122_b30190",
+      "action": "takeover",
+      "metadata": {}
+    },
+    {
+      "timestamp": "2026-03-17T01:31:22.235352",
+      "user_id": "user_f5652f6c89f1",
+      "data_id": "data_20260317013122_1ed4d0",
+      "action": "takeover",
+      "metadata": {
+        "source": "kernel"
+      }
+    },
+    {
+      "timestamp": "2026-03-17T01:31:55.722318",
+      "user_id": "user_f5652f6c89f1",
+      "data_id": "data_20260317013155_05fe5f",
+      "action": "takeover",
+      "metadata": {}
+    },
+    {
+      "timestamp": "2026-03-17T01:32:56.161454",
+      "user_id": "user_f5652f6c89f1",
+      "data_id": "data_20260317013256_f574e4",
+      "action": "takeover",
+      "metadata": {}
+    },
+    {
+      "timestamp": "2026-03-17T01:33:17.950896",
+      "user_id": "user_f5652f6c89f1",
+      "data_id": "data_20260317013317_9d0ecc",
+      "action": "takeover",
+      "metadata": {
+        "source": "kernel"
+      }
+    },
+    {
+      "timestamp": "2026-03-17T01:34:06.962154",
+      "user_id": "user_f5652f6c89f1",
+      "data_id": "data_20260317013406_1b1882",
+      "action": "takeover",
+      "metadata": {
+        "source": "enhancement"
+      }
+    },
+    {
+      "timestamp": "2026-03-17T01:34:06.965209",
+      "user_id": "user_f5652f6c89f1",
+      "data_id": "data_20260317013406_4ed36c",
+      "action": "takeover",
+      "metadata": {}
+    },
+    {
+      "timestamp": "2026-03-17T01:34:06.968332",
+      "user_id": "user_f5652f6c89f1",
+      "data_id": "data_20260317013406_f71410",
+      "action": "takeover",
+      "metadata": {
+        "source": "kernel"
+      }
+    },
+    {
+      "timestamp": "2026-03-17T01:34:10.935516",
+      "user_id": "user_f5652f6c89f1",
+      "data_id": "data_20260317013410_0d5361",
+      "action": "takeover",
+      "metadata": {}
+    },
+    {
+      "timestamp": "2026-03-17T01:34:51.949366",
+      "user_id": "user_f5652f6c89f1",
+      "data_id": "data_20260317013451_821093",
+      "action": "takeover",
+      "metadata": {}
+    },
+    {
+      "timestamp": "2026-03-17T01:35:16.393526",
+      "user_id": "user_f5652f6c89f1",
+      "data_id": "data_20260317013516_004e17",
+      "action": "takeover",
+      "metadata": {}
+    },
+    {
+      "timestamp": "2026-03-17T01:35:16.397902",
+      "user_id": "user_f5652f6c89f1",
+      "data_id": "data_20260317013516_7d0c55",
+      "action": "takeover",
+      "metadata": {
+        "source": "kernel"
+      }
+    },
+    {
+      "timestamp": "2026-03-17T01:35:48.662608",
+      "user_id": "user_f5652f6c89f1",
+      "data_id": "data_20260317013548_c79b68",
+      "action": "takeover",
+      "metadata": {}
+    },
+    {
+      "timestamp": "2026-03-17T01:36:48.152683",
+      "user_id": "user_f5652f6c89f1",
+      "data_id": "data_20260317013648_d21f76",
+      "action": "takeover",
+      "metadata": {}
+    },
+    {
+      "timestamp": "2026-03-17T01:37:17.460110",
+      "user_id": "user_f5652f6c89f1",
+      "data_id": "data_20260317013717_7a38bd",
+      "action": "takeover",
+      "metadata": {}
+    },
+    {
+      "timestamp": "2026-03-17T01:37:17.462917",
+      "user_id": "user_f5652f6c89f1",
+      "data_id": "data_20260317013717_6c7c1e",
+      "action": "takeover",
+      "metadata": {
+        "source": "kernel"
+      }
+    },
+    {
+      "timestamp": "2026-03-17T01:37:50.235267",
+      "user_id": "user_f5652f6c89f1",
+      "data_id": "data_20260317013750_69d07d",
+      "action": "takeover",
+      "metadata": {}
+    },
+    {
+      "timestamp": "2026-03-17T01:38:50.662256",
+      "user_id": "user_f5652f6c89f1",
+      "data_id": "data_20260317013850_36a5d5",
+      "action": "takeover",
+      "metadata": {}
+    },
+    {
+      "timestamp": "2026-03-17T01:39:25.674679",
+      "user_id": "user_f5652f6c89f1",
+      "data_id": "data_20260317013925_f95b83",
+      "action": "takeover",
+      "metadata": {
+        "source": "enhance"
+      }
+    },
+    {
+      "timestamp": "2026-03-17T01:39:25.677693",
+      "user_id": "user_f5652f6c89f1",
+      "data_id": "data_20260317013925_e3c640",
+      "action": "takeover",
+      "metadata": {}
+    },
+    {
+      "timestamp": "2026-03-17T01:40:59.749884",
+      "user_id": "user_f5652f6c89f1",
+      "data_id": "data_20260317014059_ae6d27",
+      "action": "takeover",
+      "metadata": {
+        "source": "protection"
+      }
+    },
+    {
+      "timestamp": "2026-03-17T01:40:59.752897",
+      "user_id": "user_f5652f6c89f1",
+      "data_id": "data_20260317014059_70f304",
+      "action": "takeover",
+      "metadata": {
+        "source": "protection"
+      }
+    },
+    {
+      "timestamp": "2026-03-17T01:41:48.667556",
+      "user_id": "user_f5652f6c89f1",
+      "data_id": "data_20260317014148_1890ff",
+      "action": "takeover",
+      "metadata": {
+        "source": "protection"
+      }
+    },
+    {
+      "timestamp": "2026-03-17T01:44:03.940514",
+      "user_id": "user_f5652f6c89f1",
+      "data_id": "data_20260317014403_dbf622",
+      "action": "takeover",
+      "metadata": {
+        "source": "long_output"
+      }
+    },
+    {
+      "timestamp": "2026-03-17T01:45:47.936867",
+      "user_id": "user_f5652f6c89f1",
+      "data_id": "data_20260317014547_c05d22",
+      "action": "takeover",
+      "metadata": {
+        "source": "adaptive"
+      }
+    },
+    {
+      "timestamp": "2026-03-17T01:45:56.148803",
+      "user_id": "user_f5652f6c89f1",
+      "data_id": "data_20260317014556_22124e",
+      "action": "takeover",
+      "metadata": {
+        "source": "adaptive"
+      }
+    },
+    {
+      "timestamp": "2026-03-17T01:46:07.439757",
+      "user_id": "user_f5652f6c89f1",
+      "data_id": "data_20260317014607_cd95b2",
+      "action": "takeover",
+      "metadata": {
+        "source": "adaptive"
+      }
+    },
+    {
+      "timestamp": "2026-03-17T01:46:55.194796",
+      "user_id": "user_f5652f6c89f1",
+      "data_id": "data_20260317014655_d055fe",
+      "action": "takeover",
+      "metadata": {
+        "source": "super_evolution"
+      }
+    },
+    {
+      "timestamp": "2026-03-17T01:50:51.919591",
+      "user_id": "user_f5652f6c89f1",
+      "data_id": "data_20260317015051_ddc77e",
+      "action": "takeover",
+      "metadata": {
+        "source": "demo"
+      }
+    },
+    {
+      "timestamp": "2026-03-17T01:52:44.063540",
+      "user_id": "user_f5652f6c89f1",
+      "data_id": "data_20260317015244_62ab21",
+      "action": "takeover",
+      "metadata": {
+        "source": "analysis"
+      }
+    },
+    {
+      "timestamp": "2026-03-17T01:53:52.636892",
+      "user_id": "user_f5652f6c89f1",
+      "data_id": "data_20260317015352_d017df",
+      "action": "takeover",
+      "metadata": {
+        "source": "analysis"
+      }
+    },
+    {
+      "timestamp": "2026-03-17T01:56:00.632112",
+      "user_id": "user_f5652f6c89f1",
+      "data_id": "data_20260317015600_03adfd",
+      "action": "takeover",
+      "metadata": {
+        "source": "test"
+      }
+    },
+    {
+      "timestamp": "2026-03-17T02:00:31.841812",
+      "user_id": "user_f5652f6c89f1",
+      "data_id": "data_20260317020031_8d55a9",
+      "action": "takeover",
+      "metadata": {
+        "source": "analysis"
+      }
+    },
+    {
+      "timestamp": "2026-03-17T02:02:01.303881",
+      "user_id": "user_f5652f6c89f1",
+      "data_id": "data_20260317020201_4fef00",
+      "action": "takeover",
+      "metadata": {
+        "source": "test"
+      }
+    },
+    {
+      "timestamp": "2026-03-17T02:04:14.809974",
+      "user_id": "user_f5652f6c89f1",
+      "data_id": "data_20260317020414_6b0aac",
+      "action": "takeover",
+      "metadata": {
+        "source": "optimization"
+      }
+    },
+    {
+      "timestamp": "2026-03-17T02:05:50.508205",
+      "user_id": "user_f5652f6c89f1",
+      "data_id": "data_20260317020550_6ace45",
+      "action": "takeover",
+      "metadata": {
+        "source": "test"
+      }
+    },
+    {
+      "timestamp": "2026-03-17T02:07:35.122015",
+      "user_id": "user_f5652f6c89f1",
+      "data_id": "data_20260317020735_7f12d6",
+      "action": "takeover",
+      "metadata": {
+        "source": "scheduled"
+      }
+    },
+    {
+      "timestamp": "2026-03-17T02:08:48.329855",
+      "user_id": "user_f5652f6c89f1",
+      "data_id": "data_20260317020848_14504e",
+      "action": "takeover",
+      "metadata": {
+        "source": "optimization"
+      }
+    },
+    {
+      "timestamp": "2026-03-17T02:09:53.162158",
+      "user_id": "user_f5652f6c89f1",
+      "data_id": "data_20260317020953_3cbbf1",
+      "action": "takeover",
+      "metadata": {
+        "source": "development"
+      }
+    },
+    {
+      "timestamp": "2026-03-17T02:11:45.754779",
+      "user_id": "user_f5652f6c89f1",
+      "data_id": "data_20260317021145_8a0e76",
+      "action": "takeover",
+      "metadata": {
+        "source": "test"
+      }
+    },
+    {
+      "timestamp": "2026-03-17T02:13:48.532020",
+      "user_id": "user_f5652f6c89f1",
+      "data_id": "data_20260317021348_bec65e",
+      "action": "takeover",
+      "metadata": {
+        "source": "evaluation"
+      }
+    },
+    {
+      "timestamp": "2026-03-17T02:14:57.801799",
+      "user_id": "user_f5652f6c89f1",
+      "data_id": "data_20260317021457_bf997d",
+      "action": "takeover",
+      "metadata": {
+        "source": "evaluation"
+      }
+    },
+    {
+      "timestamp": "2026-03-17T02:16:12.957852",
+      "user_id": "user_f5652f6c89f1",
+      "data_id": "data_20260317021612_533436",
+      "action": "takeover",
+      "metadata": {
+        "source": "upgrade"
+      }
+    },
+    {
+      "timestamp": "2026-03-17T02:16:51.644579",
+      "user_id": "user_f5652f6c89f1",
+      "data_id": "data_20260317021651_50977a",
+      "action": "takeover",
+      "metadata": {
+        "source": "perfection"
+      }
+    },
+    {
+      "timestamp": "2026-03-17T02:20:13.770980",
+      "user_id": "user_f5652f6c89f1",
+      "data_id": "data_20260317022013_83a95c",
+      "action": "takeover",
+      "metadata": {
+        "source": "upgrade"
+      }
+    },
+    {
+      "timestamp": "2026-03-17T02:21:27.650966",
+      "user_id": "user_f5652f6c89f1",
+      "data_id": "data_20260317022127_960119",
+      "action": "takeover",
+      "metadata": {
+        "source": "evaluation"
+      }
+    },
+    {
+      "timestamp": "2026-03-17T02:22:45.108071",
+      "user_id": "user_f5652f6c89f1",
+      "data_id": "data_20260317022245_4d98ea",
+      "action": "takeover",
+      "metadata": {
+        "source": "upgrade"
+      }
+    },
+    {
+      "timestamp": "2026-03-17T02:25:01.095997",
+      "user_id": "user_f5652f6c89f1",
+      "data_id": "data_20260317022501_f80478",
+      "action": "takeover",
+      "metadata": {
+        "source": "upgrade"
+      }
+    },
+    {
+      "timestamp": "2026-03-17T02:27:28.875538",
+      "user_id": "user_f5652f6c89f1",
+      "data_id": "data_20260317022728_c601f4",
+      "action": "takeover",
+      "metadata": {
+        "source": "scheduled"
+      }
+    },
+    {
+      "timestamp": "2026-03-17T02:28:27.769525",
+      "user_id": "user_f5652f6c89f1",
+      "data_id": "data_20260317022827_6d5f5a",
+      "action": "takeover",
+      "metadata": {
+        "source": "upgrade"
+      }
+    },
+    {
+      "timestamp": "2026-03-17T02:31:48.027216",
+      "user_id": "user_f5652f6c89f1",
+      "data_id": "data_20260317023148_be4521",
+      "action": "takeover",
+      "metadata": {
+        "source": "upgrade"
+      }
+    },
+    {
+      "timestamp": "2026-03-17T02:33:00.566268",
+      "user_id": "user_f5652f6c89f1",
+      "data_id": "data_20260317023300_9b00a8",
+      "action": "takeover",
+      "metadata": {
+        "source": "optimization"
+      }
+    },
+    {
+      "timestamp": "2026-03-17T02:35:21.675964",
+      "user_id": "user_f5652f6c89f1",
+      "data_id": "data_20260317023521_89f8bd",
+      "action": "takeover",
+      "metadata": {
+        "source": "upgrade"
+      }
+    },
+    {
+      "timestamp": "2026-03-17T02:37:41.431864",
+      "user_id": "user_f5652f6c89f1",
+      "data_id": "data_20260317023741_61597e",
+      "action": "takeover",
+      "metadata": {
+        "source": "upgrade"
+      }
+    },
+    {
+      "timestamp": "2026-03-17T02:38:53.654021",
+      "user_id": "user_f5652f6c89f1",
+      "data_id": "data_20260317023853_a8f242",
+      "action": "takeover",
+      "metadata": {
+        "source": "optimization"
+      }
+    },
+    {
+      "timestamp": "2026-03-17T02:40:14.566016",
+      "user_id": "user_f5652f6c89f1",
+      "data_id": "data_20260317024014_c088e6",
+      "action": "takeover",
+      "metadata": {
+        "source": "upgrade"
+      }
+    },
+    {
+      "timestamp": "2026-03-17T02:41:19.244991",
+      "user_id": "user_f5652f6c89f1",
+      "data_id": "data_20260317024119_ec2967",
+      "action": "takeover",
+      "metadata": {
+        "source": "optimization"
+      }
+    },
+    {
+      "timestamp": "2026-03-17T02:42:15.747708",
+      "user_id": "user_f5652f6c89f1",
+      "data_id": "data_20260317024215_1d1309",
+      "action": "takeover",
+      "metadata": {
+        "source": "evaluation"
+      }
+    },
+    {
+      "timestamp": "2026-03-17T02:43:18.635581",
+      "user_id": "user_f5652f6c89f1",
+      "data_id": "data_20260317024318_b07ec2",
+      "action": "takeover",
+      "metadata": {
+        "source": "integration"
+      }
+    },
+    {
+      "timestamp": "2026-03-17T02:44:33.615952",
+      "user_id": "user_f5652f6c89f1",
+      "data_id": "data_20260317024433_418a70",
+      "action": "takeover",
+      "metadata": {
+        "source": "evaluation"
+      }
+    },
+    {
+      "timestamp": "2026-03-17T02:46:49.685024",
+      "user_id": "user_f5652f6c89f1",
+      "data_id": "data_20260317024649_67cc42",
+      "action": "takeover",
+      "metadata": {
+        "source": "scheduled"
+      }
+    },
+    {
+      "timestamp": "2026-03-17T02:47:49.106199",
+      "user_id": "user_f5652f6c89f1",
+      "data_id": "data_20260317024749_7dc188",
+      "action": "takeover",
+      "metadata": {
+        "source": "release"
+      }
+    },
+    {
+      "timestamp": "2026-03-17T02:51:56.483073",
+      "user_id": "user_f5652f6c89f1",
+      "data_id": "data_20260317025156_aaf25c",
+      "action": "takeover",
+      "metadata": {
+        "source": "report"
+      }
+    },
+    {
+      "timestamp": "2026-03-17T02:55:31.172613",
+      "user_id": "user_f5652f6c89f1",
+      "data_id": "data_20260317025531_77b3d9",
+      "action": "takeover",
+      "metadata": {
+        "source": "design"
+      }
+    },
+    {
+      "timestamp": "2026-03-17T02:57:44.423765",
+      "user_id": "user_f5652f6c89f1",
+      "data_id": "data_20260317025744_1d77da",
+      "action": "takeover",
+      "metadata": {
+        "source": "optimization"
+      }
+    },
+    {
+      "timestamp": "2026-03-17T03:06:54.667086",
+      "user_id": "user_f5652f6c89f1",
+      "data_id": "data_20260317030654_a61539",
+      "action": "takeover",
+      "metadata": {
+        "source": "scheduled"
+      }
+    },
+    {
+      "timestamp": "2026-03-17T03:26:54.724056",
+      "user_id": "user_f5652f6c89f1",
+      "data_id": "data_20260317032654_7dbc7c",
+      "action": "takeover",
+      "metadata": {
+        "source": "scheduled"
+      }
+    },
+    {
+      "timestamp": "2026-03-17T03:46:58.704786",
+      "user_id": "user_f5652f6c89f1",
+      "data_id": "data_20260317034658_78a515",
+      "action": "takeover",
+      "metadata": {
+        "source": "scheduled"
+      }
+    },
+    {
+      "timestamp": "2026-03-17T04:10:25.909279",
+      "user_id": "user_9da1f8e0aecc",
+      "data_id": "data_20260317041025_2eca5c",
+      "action": "takeover",
+      "metadata": {
+        "source": "super_combo"
+      }
+    },
+    {
+      "timestamp": "2026-03-18T08:54:05.998841",
+      "user_id": "user_f5652f6c89f1",
+      "data_id": "data_20260318085405_27b9c0",
+      "action": "takeover",
+      "metadata": {
+        "action": "内核适配",
+        "models_updated": 9
+      }
+    }
+  ],
+  "created_at": "2026-03-17T00:37:08.523560"
+}

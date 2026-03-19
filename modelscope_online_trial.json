@@ -1,7 +1,0 @@
-[
-  {"model_id": "ZhipuAI/GLM-5", "name": "GLM-5", "type": "文本生成", "provider": "智谱.AI", "status": "OK", "online_trial": true},
-  {"model_id": "moonshotai/Kimi-K2.5", "name": "Kimi K2.5", "type": "视觉多模态理解", "provider": "Moonshot AI", "status": "OK", "online_trial": true},
-  {"model_id": "MiniMax/MiniMax-M2.5", "name": "MiniMax M2.5", "type": "文本生成", "provider": "MiniMax", "status": "OK", "online_trial": true},
-  {"model_id": "Qwen/Qwen3.5-397B-A17B", "name": "Qwen3.5 397B", "type": "视觉多模态理解", "provider": "通义千问", "status": "OK", "online_trial": true},
-  {"model_id": "ZhipuAI/GLM-4.7-Flash", "name": "GLM-4.7-Flash", "type": "文本生成", "provider": "智谱.AI", "status": "Rate Limited", "online_trial": true}
-]

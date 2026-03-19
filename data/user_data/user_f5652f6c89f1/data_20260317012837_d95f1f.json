@@ -1,0 +1,19 @@
+{
+  "data_id": "data_20260317012837_d95f1f",
+  "user_id": "user_f5652f6c89f1",
+  "data": {
+    "mode": "adaptive_evolution",
+    "learnings": [
+      "工作流编排技术",
+      "智能调度算法",
+      "失效转移机制",
+      "模型互补组合",
+      "超长上下文处理"
+    ],
+    "timestamp": "2026-03-17T01:27:00"
+  },
+  "metadata": {
+    "source": "evolution"
+  },
+  "created_at": "2026-03-17T01:28:37.428279"
+}

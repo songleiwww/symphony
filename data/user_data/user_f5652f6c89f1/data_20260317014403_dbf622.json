@@ -1,0 +1,13 @@
+{
+  "data_id": "data_20260317014403_dbf622",
+  "user_id": "user_f5652f6c89f1",
+  "data": {
+    "mode": "long_output",
+    "target": "用户超长信息输出",
+    "timestamp": "2026-03-17T01:43:00"
+  },
+  "metadata": {
+    "source": "long_output"
+  },
+  "created_at": "2026-03-17T01:44:03.939555"
+}

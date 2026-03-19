@@ -1,0 +1,17 @@
+{
+  "data_id": "data_20260317015352_d017df",
+  "user_id": "user_f5652f6c89f1",
+  "data": {
+    "mode": "misjudgment_analysis",
+    "case": {
+      "message": "陆念昭 使用 组合矩阵 开发 分析用户输入",
+      "detected": "analyze",
+      "confidence": 0.75
+    },
+    "timestamp": "2026-03-17T01:53:52.634474"
+  },
+  "metadata": {
+    "source": "analysis"
+  },
+  "created_at": "2026-03-17T01:53:52.636066"
+}

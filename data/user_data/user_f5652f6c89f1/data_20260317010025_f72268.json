@@ -1,0 +1,17 @@
+{
+  "data_id": "data_20260317010025_f72268",
+  "user_id": "user_f5652f6c89f1",
+  "data": {
+    "mode": "multi_engine_research",
+    "functions": [
+      "2_engine",
+      "3_engine",
+      "4_engine"
+    ],
+    "timestamp": "2026-03-17T01:00:00"
+  },
+  "metadata": {
+    "source": "host_takeover"
+  },
+  "created_at": "2026-03-17T01:00:25.305255"
+}
