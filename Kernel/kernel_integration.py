@@ -10,6 +10,20 @@ import os
 kernel_path = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, kernel_path)
 
+# 导入动态调度器
+try:
+    from dispatcher.dynamic_dispatcher import DynamicDispatcher
+    DYNAMIC_DISPATCHER_AVAILABLE = True
+except ImportError:
+    # 如果dynamic_dispatcher在上一级目录
+    sys.path.insert(0, os.path.join(kernel_path, '..'))
+    try:
+        from dynamic_dispatcher import DynamicDispatcher
+        DYNAMIC_DISPATCHER_AVAILABLE = True
+    except ImportError:
+        DYNAMIC_DISPATCHER_AVAILABLE = False
+        print('[内核] 动态调度器未找到')
+
 # 导入进度模块
 from progress.realtime_progress import (
     MultiModelExecutorWithProgress,
@@ -121,10 +135,15 @@ __all__ = [
     'EvolutionDispatcher',
     'AdaptiveDispatcher',
     
+    # 动态调度器
+    'DynamicDispatcher',
+    'DYNAMIC_DISPATCHER_AVAILABLE',
+    
     # 统一入口
     'get_kernel_executor',
     'get_evolution_executor',
     'create_executor_with_callback',
+    'get_dynamic_dispatcher',
     
     # 自我自适应
     'SelfAdaptiveRuleManager',
@@ -257,6 +276,44 @@ def get_evolution_executor(db_path: str):
         _evolution_dispatcher = EvolutionDispatcher(db_path)
 
     return _evolution_dispatcher
+
+
+# 动态调度器
+_dynamic_dispatcher = None
+
+def get_dynamic_dispatcher(db_path: str = None):
+    """
+    获取动态调度器(根据任务动态选择最佳模型)
+    
+    特性:
+    1. 任务分析 - 分析任务类型和复杂度
+    2. 动态评分 - 根据历史表现评分
+    3. 失败淘汰 - 失败3次自动降权
+    4. 智能路由 - 根据任务匹配最佳模型
+    
+    参数:
+        db_path: 数据库路径，默认使用symphony.db
+    
+    返回:
+        DynamicDispatcher实例
+    """
+    global _dynamic_dispatcher
+    
+    if db_path is None:
+        # 使用默认数据库路径
+        import os
+        db_path = os.path.join(
+            os.path.dirname(os.path.dirname(os.path.abspath(__file__))),
+            'data', 'symphony.db'
+        )
+    
+    if _dynamic_dispatcher is None:
+        if DYNAMIC_DISPATCHER_AVAILABLE:
+            _dynamic_dispatcher = DynamicDispatcher(db_path)
+        else:
+            raise ImportError('动态调度器未正确加载')
+    
+    return _dynamic_dispatcher
 
 
 def evolve_dispatcher(db_path: str):

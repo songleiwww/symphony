@@ -22,13 +22,48 @@ class XujingDispatcher:
         self.last_modified = 0
     
     def load_experts(self):
-        """从专家模型池加载可用模型"""
+        """从专家模型池加载可用模型
+        根据序境系统总则第22条规则实现去重:
+        - 相同服务商 + 相同API地址 + 相同模型标识符 = 重复
+        - 相同服务商 + 相同模型标识符 = 真重复
+        - 保留第一个，标记后续为重复
+        """
         conn = sqlite3.connect(self.db_path)
         c = conn.cursor()
         c.execute('SELECT 能力分类, 模型, 引擎, API地址, API密钥, 评分 FROM 专家模型池表 WHERE 状态="在线" ORDER BY 评分 DESC')
         experts = {}
+        
+        # 序境系统第22条 - 模型去重
+        # key1: (provider, url, identifier) -> full duplicate check
+        seen_full = set()
+        # key2: (provider, identifier) -> true duplicate check
+        seen_provider_model = set()
+        duplicate_count = 0
+        true_duplicate_count = 0
+        
         for r in c.fetchall():
             cat = r[0]
+            model_name = r[1]
+            provider = r[2]  # 引擎字段存储服务商
+            url = r[3]
+            
+            # 去重键
+            full_key = (provider, url, model_name)
+            provider_model_key = (provider, model_name)
+            
+            # 检查重复
+            if full_key in seen_full:
+                duplicate_count += 1
+                continue  # 跳过重复，保留第一个
+            
+            if provider_model_key in seen_provider_model:
+                true_duplicate_count += 1
+                continue  # 跳过真重复，保留第一个
+            
+            # 添加到已见集合
+            seen_full.add(full_key)
+            seen_provider_model.add(provider_model_key)
+            
             if cat not in experts:
                 experts[cat] = []
             experts[cat].append({
@@ -38,7 +73,12 @@ class XujingDispatcher:
                 'key': r[4],
                 'score': r[5]
             })
+        
         conn.close()
+        
+        if duplicate_count > 0 or true_duplicate_count > 0:
+            print(f"[XujingDispatcher][序境第22条] 专家池去重: {duplicate_count} 完全重复, {true_duplicate_count} 真重复 已移除")
+        
         return experts
     
     def load_config(self):

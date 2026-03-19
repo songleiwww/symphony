@@ -1,39 +1,45 @@
 # -*- coding: utf-8 -*-
 import sqlite3
 
-DB_PATH = r'C:\Users\Administrator\.openclaw\workspace\skills\symphony\data\symphony.db'
+db_path = r'C:\Users\Administrator\.openclaw\workspace\skills\symphony\data\symphony.db'
+conn = sqlite3.connect(db_path)
+conn.text_factory = str
+cur = conn.cursor()
 
-conn = sqlite3.connect(DB_PATH)
-c = conn.cursor()
+# Get current max ID
+cur.execute('SELECT MAX(id) FROM "系统规则表"')
+max_id = cur.fetchone()[0]
+print(f'Current max ID: {max_id}')
 
-# 添加新规则
-# 先检查当前最大ID
-c.execute("SELECT MAX(id) FROM 序境系统总则")
-max_id = c.fetchone()[0] or 0
-print(f"Current max ID: {max_id}")
-
-# 新规则列表
+# New rules to add
 new_rules = [
-    (28, "6.1", "模型配置完整读取原则", "每次配置模型要完全读取配置所有字段，本行记录的所有信息进行分析再决定处理解决方案", "完整读取: 必须读取本行记录的所有字段; 分析要求: 在决定解决方案前分析整行所有信息; 禁止行为: 禁止仅凭单个字段就做出判断"),
-    (29, "8.1", "API密钥问题排查规则", "相同服务商正确模型配置的key修复不正确的，如果一个模型key正确就排查其他原因", "同服务商密钥溯源: 同一服务商的多个模型共享同一API密钥; 正确密钥判定: 用该服务商任意一个模型测试API，成功返回200即证明密钥有效")
+    (28, '智能体规则优化建议规则', '优化建议需要评估影响，重大变更需用户确认后才能执行', '智能体优化建议规则', '遵循第31条批量修改确认规则'),
+    (29, '多模型调度规则', '同服务商顺序排队执行，不同服务商可并发执行', '多模型调度核心规则', '使用sessions_spawn并行调度'),
+    (30, '配置默认规则', '默认指向序境系统内核，非OpenClaw', '配置文件规则', '确保配置指向正确'),
+    (31, '数据库修改防范规则', '批量修改前必须确认、修改前备份、字段先行验证', '数据库安全规则', '遵循第12条模型配置表修改原则'),
+    (32, '记忆同步规则', '数据库优先，定期同步，禁止固化记忆', '记忆同步规则', '每次会话启动自动检测变化'),
+    (33, '多模型调度协作规则', '使用sessions_spawn调度，不同服务商并行，同服务商排队，角色分配，结果汇总', '多模型协作规则', '遵循第29条调度规则'),
 ]
 
-print("\n=== Syncing New Rules ===\n")
+# Check existing IDs
+cur.execute('SELECT id FROM "系统规则表"')
+existing_ids = [r[0] for r in cur.fetchall()]
+print(f'Existing IDs: {existing_ids}')
 
-for rule_id, rule_num, rule_title, rule_desc, strategy in new_rules:
-    c.execute("""
-        INSERT INTO 序境系统总则 (id, 规则编号, 规则说明, 更新时间, 相关策略)
-        VALUES (?, ?, ?, datetime('now'), ?)
-    """, (rule_id, rule_num, rule_title + " - " + rule_desc, strategy))
-    print(f"Inserted: {rule_num} - {rule_title}")
+# Insert new rules
+for rule in new_rules:
+    if rule[0] not in existing_ids:
+        cur.execute('INSERT INTO "系统规则表" (id, 规则名称, 规则内容, 规则说明, 遵循策略) VALUES (?, ?, ?, ?, ?)', rule)
+        print(f'Added rule {rule[0]}: {rule[1]}')
+    else:
+        print(f'Rule {rule[0]} already exists')
 
 conn.commit()
 
-# 验证
-print("\n=== Verification ===\n")
-c.execute("SELECT id, 规则编号, 规则说明 FROM 序境系统总则 WHERE id >= 28")
-for row in c.fetchall():
-    print(f"ID: {row[0]}, Num: {row[1]}, Desc: {row[2][:30]}...")
+# Verify
+cur.execute('SELECT id, 规则名称 FROM "系统规则表" ORDER BY id')
+print('\n=== Updated Rules ===')
+for r in cur.fetchall():
+    print(f'{r[0]}: {r[1]}')
 
 conn.close()
-print("\nDone!")

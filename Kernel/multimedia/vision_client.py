@@ -111,10 +111,15 @@ class VisionClient:
             
             if response.status_code == 200:
                 result = response.json()
+                # 提取Token使用 (总则第24条)
+                usage = result.get("usage", {})
                 return {
                     "success": True,
                     "content": result.get("choices", [{}])[0].get("message", {}).get("content", ""),
-                    "usage": result.get("usage", {})
+                    "usage": usage,
+                    "prompt_tokens": usage.get("prompt_tokens", 0),
+                    "completion_tokens": usage.get("completion_tokens", 0),
+                    "total_tokens": usage.get("total_tokens", 0)
                 }
             else:
                 return {

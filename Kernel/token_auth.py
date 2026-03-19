@@ -70,7 +70,7 @@ class TokenAuthManager:
         )
         ''')
         
-        # Token使用日志
+        # Token使用日志 (总则第24条 - 必须使用实际API返回的usage字段)
         cursor.execute('''
         CREATE TABLE IF NOT EXISTS Token使用日志表 (
             id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -79,6 +79,9 @@ class TokenAuthManager:
             endpoint TEXT,
             ip_address TEXT,
             success INTEGER,
+            prompt_tokens INTEGER DEFAULT 0,
+            completion_tokens INTEGER DEFAULT 0,
+            total_tokens INTEGER DEFAULT 0,
             FOREIGN KEY (token_id) REFERENCES Token认证表(token_id)
         )
         ''')
@@ -247,6 +250,28 @@ class TokenAuthManager:
         conn.close()
         
         return [dict(row) for row in rows]
+    
+    def log_usage(self, token_id: str, endpoint: str = None, ip_address: str = None, 
+                  success: int = 1, prompt_tokens: int = 0, 
+                  completion_tokens: int = 0, total_tokens: int = 0) -> bool:
+        """记录Token使用 (总则第24条)
+        
+        必须使用实际API返回的usage字段，记录prompt_tokens、completion_tokens、total_tokens
+        """
+        conn = sqlite3.connect(self.db_path)
+        cursor = conn.cursor()
+        
+        cursor.execute('''
+        INSERT INTO Token使用日志表 
+        (token_id, endpoint, ip_address, success, prompt_tokens, completion_tokens, total_tokens)
+        VALUES (?, ?, ?, ?, ?, ?, ?)
+        ''', (token_id, endpoint, ip_address, success, prompt_tokens, completion_tokens, total_tokens))
+        
+        success = cursor.rowcount > 0
+        conn.commit()
+        conn.close()
+        
+        return success
 
 
 # 便捷函数

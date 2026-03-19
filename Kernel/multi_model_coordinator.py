@@ -3,11 +3,13 @@
 """
 序境系统v3.3.0 - 多模型协调器
 MultiModelCoordinator: 检测在线 → 准备模型 → 调度执行
+遵循序境总则第32条: 数据库优先，定期同步，禁止固化记忆
 """
 import sqlite3
 import time
 import asyncio
 import json
+import threading
 from typing import List, Dict, Any, Optional, Callable
 from dataclasses import dataclass, field
 from datetime import datetime, timedelta
@@ -44,15 +46,24 @@ class CoordinatorConfig:
 
 
 class ModelOnlineDetector:
-    """模型在线检测器"""
+    """模型在线检测器
+    
+    遵循序境总则第32条:
+    1. 数据库优先 - 每次从数据库读取模型配置
+    2. 定期同步 - 状态缓存有TTL，过期自动刷新
+    3. 禁止固化 - 不长期固化配置，每次从数据库加载
+    """
     
     def __init__(self, db_path: str, config: CoordinatorConfig = None):
         self.db_path = db_path
         self.config = config or CoordinatorConfig()
+        # 状态缓存(仅用于状态，配置始终从数据库读取)
         self.status_cache: Dict[int, Dict] = {}
     
     def get_models_by_provider(self, provider: str) -> List[ModelInfo]:
-        """获取指定服务商的所有模型"""
+        """获取指定服务商的所有模型
+        数据库优先: 每次都从数据库重新读取，不缓存配置
+        """
         conn = sqlite3.connect(self.db_path)
         c = conn.cursor()
         
@@ -78,7 +89,7 @@ class ModelOnlineDetector:
     
     def check_model_online(self, model: ModelInfo) -> ModelInfo:
         """检测单个模型是否在线"""
-        # 检查缓存
+        # 检查状态缓存
         cache_key = model.id
         if cache_key in self.status_cache:
             cached = self.status_cache[cache_key]
@@ -126,7 +137,7 @@ class ModelOnlineDetector:
             model.status = ModelStatus.ERROR
             model.error_msg = str(e)
         
-        # 更新缓存
+        # 更新状态缓存(仅缓存状态，不缓存配置)
         self.status_cache[cache_key] = {
             'status': model.status,
             'last_check': model.last_check,
@@ -159,11 +170,18 @@ class ModelOnlineDetector:
 
 
 class ModelPreparer:
-    """模型准备器"""
+    """模型准备器
+    
+    遵循序境总则第32条:
+    - 不固化预热模型，每次调度重新验证
+    - 保留最近成功预热记录以优化性能
+    """
     
     def __init__(self, detector: ModelOnlineDetector):
         self.detector = detector
-        self.warmed_models: Dict[str, ModelInfo] = {}
+        # 仅缓存最近成功的预热记录，不保留完整配置
+        # 完整配置始终从数据库读取
+        self.warmed_cache: Dict[str, Dict] = {}
     
     def prepare_models(self, provider: str, count: int = 2) -> List[ModelInfo]:
         """准备模型 - 预热并验证"""
@@ -182,7 +200,12 @@ class ModelPreparer:
             warmed = self._warm_model(model)
             if warmed:
                 prepared.append(warmed)
-                self.warmed_models[f"{provider}_{model.id}"] = warmed
+                # 只缓存预热成功状态，配置仍然从数据库读取
+                self.warmed_cache[f"{provider}_{model.id}"] = {
+                    "model_id": model.id,
+                    "last_success": time.time(),
+                    "latency": model.latency
+                }
         
         return prepared
     
@@ -258,9 +281,39 @@ class ModelPreparer:
             return None
     
     def get_warmed_model(self, provider: str, model_id: int = None) -> Optional[ModelInfo]:
-        """获取已预热的模型"""
-        key = f"{provider}_{model_id}" if model_id else provider
-        return self.warmed_models.get(key)
+        """获取已预热的模型
+        
+        数据库优先: 即使有缓存，也从数据库重新读取配置
+        只使用缓存的状态信息优化检测顺序
+        """
+        if not model_id:
+            # 找该服务商最近成功的模型
+            candidates = [
+                (k, v) for k, v in self.warmed_cache.items()
+                if k.startswith(f"{provider}_")
+            ]
+            if not candidates:
+                return None
+            # 选最近成功的
+            candidates.sort(key=lambda x: x[1]["last_success"], reverse=True)
+            model_id = candidates[0][1]["model_id"]
+        
+        # 数据库优先: 从数据库重新读取配置
+        models = self.detector.get_models_by_provider(provider)
+        for model in models:
+            if model.id == model_id:
+                # 重新验证在线状态
+                checked = self.detector.check_model_online(model)
+                if checked.status == ModelStatus.ONLINE:
+                    return checked
+                else:
+                    # 从缓存移除失败的
+                    key = f"{provider}_{model_id}"
+                    if key in self.warmed_cache:
+                        del self.warmed_cache[key]
+                    return None
+        
+        return None
 
 
 class ModelScheduler:
@@ -280,8 +333,10 @@ class ModelScheduler:
         
         Returns:
             可用的模型信息
+        
+        遵循序境总则第32条: 数据库优先 - 每次从数据库重新读取
         """
-        # 获取同服务商所有在线模型
+        # 数据库优先: 获取同服务商所有在线模型，每次从数据库重新读取
         online_models = self.detector.detect_provider_models(provider)
         
         if not online_models:
@@ -300,7 +355,9 @@ class ModelScheduler:
         return sorted_models[0] if sorted_models else None
     
     def get_fallback_chain(self, provider: str, failed_model_id: int) -> List[ModelInfo]:
-        """获取fallback链 - 同服务商其他可用模型"""
+        """获取fallback链 - 同服务商其他可用模型
+        数据库优先: 每次从数据库重新读取模型列表
+        """
         online_models = self.detector.detect_provider_models(provider)
         
         # 排除失败模型，返回其他可用模型
@@ -308,7 +365,13 @@ class ModelScheduler:
 
 
 class MultiModelCoordinator:
-    """多模型协调器 - 主控制器"""
+    """多模型协调器 - 主控制器
+    
+    遵循序境总则第32条: 数据库优先，定期同步，禁止固化记忆
+    1. 数据库优先 - 每次获取模型配置都从数据库读取
+    2. 定期同步 - 后台线程定期清空过期缓存，强制从数据库重新加载
+    3. 禁止固化 - 不在内存中长期缓存完整配置，避免固化
+    """
     
     def __init__(self, db_path: str = None):
         if db_path is None:
@@ -321,17 +384,83 @@ class MultiModelCoordinator:
         self.detector = ModelOnlineDetector(db_path, self.config)
         self.preparer = ModelPreparer(self.detector)
         self.scheduler = ModelScheduler(self.detector, self.preparer)
+        
+        # 定期同步机制 - 后台线程定期清理缓存
+        self._sync_thread: Optional[threading.Thread] = None
+        self._stop_sync = threading.Event()
+        self._sync_interval = 300  # 定期同步间隔(秒)，默认5分钟
     
     def initialize(self):
         """初始化协调器"""
         print(f"[多模型协调器] 初始化完成")
         print(f"  数据库: {self.db_path}")
+        print(f"  遵循序境总则第32条: 数据库优先，定期同步，禁止固化记忆")
         
         # 列出所有服务商
         providers = self.detector.get_all_providers()
         print(f"  发现 {len(providers)} 个服务商")
         
+        # 启动定期同步后台线程
+        self._start_periodic_sync()
+        
         return self
+    
+    def _start_periodic_sync(self):
+        """启动定期同步"""
+        def sync_worker():
+            """后台同步工作线程"""
+            while not self._stop_sync.is_set():
+                # 等待间隔或停止信号
+                if self._stop_sync.wait(timeout=self._sync_interval):
+                    break
+                
+                # 定期同步: 清理过期缓存，强制下次从数据库加载
+                self._sync_from_database()
+        
+        self._sync_thread = threading.Thread(target=sync_worker, daemon=True)
+        self._sync_thread.start()
+        print(f"[多模型协调器] 定期同步已启动，间隔: {self._sync_interval}秒")
+    
+    def _sync_from_database(self):
+        """从数据库同步 - 清理过期缓存
+        
+        根据序境总则第32条:
+        - 定期清空过期缓存
+        - 强制下次访问从数据库重新加载
+        - 避免内存固化
+        """
+        # 清空状态缓存中过期的条目
+        expired_count = 0
+        current_time = time.time()
+        
+        # 清理检测器状态缓存
+        expired_keys = []
+        for key, cache in self.detector.status_cache.items():
+            if current_time - cache.get('timestamp', 0) > self.config.cache_ttl:
+                expired_keys.append(key)
+                expired_count += 1
+        
+        for key in expired_keys:
+            del self.detector.status_cache[key]
+        
+        # 清理预热缓存中超时的条目(超过1小时无访问)
+        expired_warm_keys = []
+        for key, cache in self.preparer.warmed_cache.items():
+            if current_time - cache.get('last_success', 0) > 3600:  # 1小时
+                expired_warm_keys.append(key)
+                expired_count += 1
+        
+        for key in expired_warm_keys:
+            del self.preparer.warmed_cache[key]
+        
+        if expired_count > 0:
+            print(f"[定期同步] 清理了 {expired_count} 个过期缓存条目，下次将从数据库重新加载")
+    
+    def stop_periodic_sync(self):
+        """停止定期同步"""
+        if self._sync_thread:
+            self._stop_sync.set()
+            self._sync_thread.join(timeout=1.0)
     
     async def prepare_for_task(self, provider: str, count: int = 2) -> List[ModelInfo]:
         """

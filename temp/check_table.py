@@ -1,29 +1,22 @@
+# Check model table structure
 import sqlite3
-c = sqlite3.connect('C:/Users/Administrator/.openclaw/workspace/skills/symphony/data/symphony.db')
-c.text_factory = str
+db = r'C:\Users\Administrator\.openclaw\workspace\skills\symphony\data\symphony.db'
+conn = sqlite3.connect(db)
+cur = conn.cursor()
 
-# Find the model config table
-tables = [r[0] for r in c.execute("SELECT name FROM sqlite_master WHERE type='table'").fetchall()]
-model_table = None
-for t in tables:
-    if '模型' in t and '配置' in t:
-        model_table = t
-        break
+# Get table columns
+cur.execute('PRAGMA table_info(模型配置表)')
+print('=== Model Config Table Columns ===')
+for row in cur.fetchall():
+    print(f'{row[1]} ({row[2]})')
 
-print(f"Model table: {model_table}")
+# Get all models
+print('\n=== All Models ===')
+cur.execute('SELECT * FROM 模型配置表 LIMIT 3')
+rows = cur.fetchall()
+if rows:
+    print(f'Found {len(rows)} models (sample):')
+    for r in rows:
+        print(r)
 
-if model_table:
-    # Get columns
-    cols = c.execute(f"PRAGMA table_info('{model_table}')").fetchall()
-    print("\nColumns:")
-    for col in cols:
-        print(f"  {col[1]}: {col[2]}")
-    
-    # Get data
-    rows = c.execute(f"SELECT * FROM '{model_table}'").fetchall()
-    print(f"\nTotal rows: {len(rows)}")
-    
-    # Show first 5
-    print("\nFirst 5 rows:")
-    for row in rows[:5]:
-        print(row)
+conn.close()

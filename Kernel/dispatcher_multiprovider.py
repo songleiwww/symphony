@@ -348,28 +348,54 @@ class MultiProviderDispatcher:
         return selected
     
     def _execute_parallel(self, models: List[Dict], prompt: str) -> List[Dict]:
-        """并行执行"""
+        """
+        按服务商分组执行：
+        - 同服务商内模型顺序排队执行
+        - 不同服务商组之间并发执行
+        """
         results = []
         
-        def call_model(model):
-            return self._call_api(model, prompt)
+        # 按服务商分组
+        models_by_provider = defaultdict(list)
+        for model in models:
+            provider = model.get('provider', 'unknown')
+            models_by_provider[provider].append(model)
         
-        with ThreadPoolExecutor(max_workers=len(models)) as executor:
-            futures = {executor.submit(call_model, m): m for m in models}
-            
-            for future in as_completed(futures):
-                model = futures[future]
+        def execute_provider_group(provider: str, provider_models: List[Dict]) -> List[Dict]:
+            """同一个服务商组内顺序执行"""
+            provider_results = []
+            for model in provider_models:
                 try:
-                    result = future.result()
+                    result = self._call_api(model, prompt)
                     result['model_name'] = model.get('name')
-                    result['provider'] = model.get('provider')
-                    results.append(result)
+                    result['provider'] = provider
+                    provider_results.append(result)
                 except Exception as e:
-                    results.append({
+                    provider_results.append({
                         'success': False,
                         'error': str(e),
                         'model_name': model.get('name'),
-                        'provider': model.get('provider')
+                        'provider': provider
+                    })
+            return provider_results
+        
+        # 不同服务商组之间并发执行
+        with ThreadPoolExecutor(max_workers=len(models_by_provider)) as executor:
+            futures = {
+                executor.submit(execute_provider_group, provider, provider_models): provider
+                for provider, provider_models in models_by_provider.items()
+            }
+            
+            for future in as_completed(futures):
+                try:
+                    provider_results = future.result()
+                    results.extend(provider_results)
+                except Exception as e:
+                    provider = futures[future]
+                    results.append({
+                        'success': False,
+                        'error': f'服务商组执行异常: {str(e)}',
+                        'provider': provider
                     })
         
         return results
@@ -388,11 +414,16 @@ class MultiProviderDispatcher:
             if r.status_code == 200:
                 data = r.json()
                 content = data.get('choices', [{}])[0].get('message', {}).get('content', '')
+                # 提取Token使用 (总则第24条)
+                usage = data.get('usage', {})
                 return {
                     'success': True,
                     'content': content,
                     'latency': elapsed,
-                    'tokens': data.get('usage', {}).get('total_tokens', 0)
+                    'prompt_tokens': usage.get('prompt_tokens', 0),
+                    'completion_tokens': usage.get('completion_tokens', 0),
+                    'total_tokens': usage.get('total_tokens', 0),
+                    'tokens': usage.get('total_tokens', 0)
                 }
             
             return {'success': False, 'error': f'HTTP {r.status_code}'}

@@ -1,0 +1,54 @@
+# -*- coding: utf-8 -*-
+import sqlite3
+
+db_path = r'C:\Users\Administrator\.openclaw\workspace\skills\symphony\data\symphony.db'
+conn = sqlite3.connect(db_path)
+cur = conn.cursor()
+
+print('=== 数据库问题分析 ===\n')
+
+# 1. 记忆表空值检查
+print('1. 记忆表空值检查')
+cur.execute('SELECT * FROM "记忆表" WHERE id IS NULL OR id = ""')
+null_rows = cur.fetchall()
+print(f'   空值记录: {len(null_rows)}条')
+if null_rows:
+    for r in null_rows[:3]:
+        print(f'   - {r}')
+
+# 2. 记忆表重复检查
+print('\n2. 记忆表重复检查')
+cur.execute('SELECT content, COUNT(*) FROM "记忆表" GROUP BY content HAVING COUNT(*) > 1')
+dup_rows = cur.fetchall()
+print(f'   重复记录: {len(dup_rows)}条')
+
+# 3. 调度历史分析
+print('\n3. 调度历史分析')
+cur.execute('SELECT 模型标识符, COUNT(*) FROM "调度历史表" GROUP BY 模型标识符')
+model_usage = cur.fetchall()
+print(f'   模型使用统计:')
+for m in model_usage[:5]:
+    print(f'   - {m[0]}: {m[1]}次')
+
+# 4. 序境系统总则规则冲突
+print('\n4. 序境系统总则规则冲突检查')
+cur.execute('SELECT * FROM "序境系统总则" WHERE "规则配置" LIKE "%缓存%" OR "规则配置" LIKE "%text_factory%"')
+cache_rules = cur.fetchall()
+print(f'   缓存相关规则: {len(cache_rules)}条')
+for r in cache_rules:
+    print(f'   - {r[0]}: {r[1]}')
+
+# 5. 模型配置表在线状态
+print('\n5. 模型配置表在线状态')
+cur.execute('SELECT 状态, COUNT(*) FROM "模型配置表" GROUP BY 状态')
+status_counts = cur.fetchall()
+for s in status_counts:
+    print(f'   - {s[0]}: {s[1]}个')
+
+# 6. 官署角色绑定检查
+print('\n6. 官署角色绑定检查')
+cur.execute('SELECT COUNT(*) FROM "官署角色表" WHERE "模型配置ID" IS NULL OR "模型配置ID" = ""')
+unbound = cur.fetchone()[0]
+print(f'   未绑定模型的官署角色: {unbound}个')
+
+conn.close()

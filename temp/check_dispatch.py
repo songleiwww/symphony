@@ -1,30 +1,28 @@
+# -*- coding: utf-8 -*-
 import sqlite3
 
 db_path = r'C:\Users\Administrator\.openclaw\workspace\skills\symphony\data\symphony.db'
 conn = sqlite3.connect(db_path)
-c = conn.cursor()
+cur = conn.cursor()
 
-# Check all tables
-c.execute("SELECT name FROM sqlite_master WHERE type='table'")
-tables = c.fetchall()
+print('=== 调度历史统计 ===\n')
 
-print("=== 数据库所有表 ===\n")
-for t in tables:
-    print(f"- {t[0]}")
+# 最近10条调度
+cur.execute('SELECT "调度时间", "使用模型", "服务商", "角色名称" FROM "调度历史表" ORDER BY "调度时间" DESC LIMIT 10')
+rows = cur.fetchall()
 
-# Check for any usage/history tables
-print("\n=== 检查调度相关表 ===")
-for t in tables:
-    table_name = t[0].lower()
-    if any(keyword in table_name for keyword in ['dispatch', 'usage', 'history', 'log', 'call']):
-        c.execute(f"SELECT COUNT(*) FROM {t[0]}")
-        count = c.fetchone()[0]
-        print(f"{t[0]}: {count}条记录")
+print('最近调度记录：')
+for r in rows:
+    print(f'  {r[3]} | {r[2]} | {r[1]}')
 
-# Get model info
-print("\n=== 模型配置表统计 ===")
-c.execute("SELECT 服务商, COUNT(*) FROM 模型配置表 GROUP BY 服务商")
-for row in c.fetchall():
-    print(f"{row[0]}: {row[1]}个")
+print('\n=== 模型使用统计 ===')
+cur.execute('SELECT "使用模型", COUNT(*) as cnt FROM "调度历史表" GROUP BY "使用模型" ORDER BY cnt DESC')
+for r in cur.fetchall():
+    print(f'  {r[0]}: {r[1]}次')
+
+print('\n=== 服务商使用统计 ===')
+cur.execute('SELECT "服务商", COUNT(*) as cnt FROM "调度历史表" GROUP BY "服务商" ORDER BY cnt DESC')
+for r in cur.fetchall():
+    print(f'  {r[0]}: {r[1]}次')
 
 conn.close()
