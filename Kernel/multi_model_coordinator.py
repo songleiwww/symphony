@@ -88,7 +88,7 @@ class ModelOnlineDetector:
         return models
     
     def check_model_online(self, model: ModelInfo) -> ModelInfo:
-        """检测单个模型是否在线"""
+        """检测单个模型在线状态"""
         # 检查状态缓存
         cache_key = model.id
         if cache_key in self.status_cache:

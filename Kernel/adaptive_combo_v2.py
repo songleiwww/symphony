@@ -32,7 +32,7 @@ class MultiProviderManager:
         cursor.execute('''
             SELECT m.服务商, m.API地址, m.API密钥, m.模型名称, m.id
             FROM 模型配置表 m
-            WHERE m.是否在线 = '正常'
+            WHERE m.在线状态 = '正常'
             ORDER BY m.服务商
         ''')
         

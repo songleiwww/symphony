@@ -1,128 +1,74 @@
-
-================================================================================
-                    序境系统自检报告
-================================================================================
-生成时间: 2026-03-18 08:05:15
-
-================================================================================
-一、功能冲突分析
-================================================================================
-
-1. 调度模块冲突 (4个文件)
----------------------------------------------------------------------------
-问题: 4个调度模块功能高度重叠
-
-详情:
-  - scheduler.py - 基础调度(222行)
-  - smart_dispatcher.py - 智能调度(365行)
-  - dispatch_manager.py - 调度管理(79行)
-  - adaptive_scheduler.py - 自适应调度(417行) - 最新最强
-
-建议: 保留adaptive_scheduler.py(最新最强)，标记其他3个为deprecated
-
-2. 组合模块冲突 (5个文件)
----------------------------------------------------------------------------
-问题: 5个组合模块功能重叠
-
-详情:
-  - combo_skill.py - 基础组合(252行)
-  - advanced_combiner.py - 高级组合(242行)
-  - complementary_combiner.py - 互补组合(174行)
-  - matrix_combiner.py - 矩阵组合(189行)
-  - super_combo_v3.py - 超级组合v3(237行) - 集成失效转移+流式输出
-
-建议: 保留super_combo_v3.py作为主组合引擎
-
-3. 优化模块冲突 (5个文件)
----------------------------------------------------------------------------
-问题: 5个优化/自适应模块功能重叠
-
-详情:
-  - optimize_system.py - 系统优化(43行)
-  - deep_optimize.py - 深度优化(48行)
-  - adaptive_combo.py - 自适应组合(191行)
-  - adaptive_combo_v2.py - 自适应组合v2(215行)
-  - adaptive_matrix.py - 自适应矩阵(166行)
-
-建议: 保留adaptive_combo_v2.py和adaptive_matrix.py
-
-================================================================================
-二、可标记deprecated的文件
-================================================================================
+序境内核冲突分析报告
+============================================================
+扫描时间: 2026-03-21 01:42
+扫描文件: 119个
 
 
-1. dispatch_manager.py
-   原因: 功能被adaptive_scheduler.py完全覆盖
-   状态: 可标记deprecated
+调度器: 13个
+  - C:/Users/Administrator/.openclaw/workspace/skills/symphony/Kernel\combo_scheduler.py
+  - C:/Users/Administrator/.openclaw/workspace/skills/symphony/Kernel\dispatcher_evolution.py
+  - C:/Users/Administrator/.openclaw/workspace/skills/symphony/Kernel\dispatcher_multiprovider.py
+  - C:/Users/Administrator/.openclaw/workspace/skills/symphony/Kernel\matrix_router.py
+  - C:/Users/Administrator/.openclaw/workspace/skills/symphony/Kernel\core\scheduler.py
+  - C:/Users/Administrator/.openclaw/workspace/skills/symphony/Kernel\core\unified_scheduler.py
+  - C:/Users/Administrator/.openclaw/workspace/skills/symphony/Kernel\dispatcher\adaptive_scheduler.py
+  - C:/Users/Administrator/.openclaw/workspace/skills/symphony/Kernel\dispatcher\batch_scheduler.py
+  - C:/Users/Administrator/.openclaw/workspace/skills/symphony/Kernel\dispatcher\__init__.py
+  - C:/Users/Administrator/.openclaw/workspace/skills/symphony/Kernel\dispatcher\legacy\dispatcher.py
+  - C:/Users/Administrator/.openclaw/workspace/skills/symphony/Kernel\dispatcher\legacy\dispatcher_unified.py
+  - C:/Users/Administrator/.openclaw/workspace/skills/symphony/Kernel\dispatcher\legacy\scheduler.py
+  - C:/Users/Administrator/.openclaw/workspace/skills/symphony/Kernel\dispatcher\legacy\smart_dispatcher.py
 
-2. optimize_system.py
-   原因: 功能被deep_optimize.py和adaptive_combo覆盖
-   状态: 可标记deprecated
+记忆系统: 5个
+  - C:/Users/Administrator/.openclaw/workspace/skills/symphony/Kernel\memory_cache.py
+  - C:/Users/Administrator/.openclaw/workspace/skills/symphony/Kernel\evolution\memory_system_v2.py
+  - C:/Users/Administrator/.openclaw/workspace/skills/symphony/Kernel\memory\shortterm_memory.py
+  - C:/Users/Administrator/.openclaw/workspace/skills/symphony/Kernel\memory\working_memory.py
+  - C:/Users/Administrator/.openclaw/workspace/skills/symphony/Kernel\memory\__init__.py
 
-3. deep_optimize.py
-   原因: 功能被adaptive_combo_v2.py覆盖
-   状态: 可标记deprecated
+接管功能: 5个
+  - C:/Users/Administrator/.openclaw/workspace/skills/symphony/Kernel\data_takeover.py
+  - C:/Users/Administrator/.openclaw/workspace/skills/symphony/Kernel\dialog_takeover.py
+  - C:/Users/Administrator/.openclaw/workspace/skills/symphony/Kernel\takeover_history.py
+  - C:/Users/Administrator/.openclaw/workspace/skills/symphony/Kernel\skills\takeover_skill.py
+  - C:/Users/Administrator/.openclaw/workspace/skills/symphony/Kernel\skills\takeover_skill_new.py
 
-4. complementary_combiner.py
-   原因: 功能被super_combo_v3.py集成
-   状态: 可标记deprecated
+进化功能: 19个
+  - C:/Users/Administrator/.openclaw/workspace/skills/symphony/Kernel\dispatcher_evolution.py
+  - C:/Users/Administrator/.openclaw/workspace/skills/symphony/Kernel\self_evolution.py
+  - C:/Users/Administrator/.openclaw/workspace/skills/symphony/Kernel\self_optimization.py
+  - C:/Users/Administrator/.openclaw/workspace/skills/symphony/Kernel\evolution\branch_executor.py
+  - C:/Users/Administrator/.openclaw/workspace/skills/symphony/Kernel\evolution\decision_logger.py
+  - C:/Users/Administrator/.openclaw/workspace/skills/symphony/Kernel\evolution\engine.py
+  - C:/Users/Administrator/.openclaw/workspace/skills/symphony/Kernel\evolution\evolution_trigger.py
+  - C:/Users/Administrator/.openclaw/workspace/skills/symphony/Kernel\evolution\feedback_loop.py
+  - C:/Users/Administrator/.openclaw/workspace/skills/symphony/Kernel\evolution\ipc_protocol.py
+  - C:/Users/Administrator/.openclaw/workspace/skills/symphony/Kernel\evolution\lifecycle_manager.py
+  - C:/Users/Administrator/.openclaw/workspace/skills/symphony/Kernel\evolution\memory_system_v2.py
+  - C:/Users/Administrator/.openclaw/workspace/skills/symphony/Kernel\evolution\nucleus_core.py
+  - C:/Users/Administrator/.openclaw/workspace/skills/symphony/Kernel\evolution\sandbox_isolation.py
+  - C:/Users/Administrator/.openclaw/workspace/skills/symphony/Kernel\evolution\self_evolver.py
+  - C:/Users/Administrator/.openclaw/workspace/skills/symphony/Kernel\evolution\team_selector.py
+  - C:/Users/Administrator/.openclaw/workspace/skills/symphony/Kernel\evolution\unit_registry.py
+  - C:/Users/Administrator/.openclaw/workspace/skills/symphony/Kernel\evolution\__init__.py
+  - C:/Users/Administrator/.openclaw/workspace/skills/symphony/Kernel\monitor\self_healer.py
+  - C:/Users/Administrator/.openclaw/workspace/skills/symphony/Kernel\rules\self_adaptive.py
 
-5. matrix_combiner.py
-   原因: 功能被super_combo_v3.py和adaptive_matrix.py覆盖
-   状态: 可标记deprecated
+1. 调度器整合
+   - 保留: core/scheduler.py (统一调度)
+   - 合并: adaptive_scheduler.py, batch_scheduler.py
+   - 归档: dispatcher/legacy/*
 
-================================================================================
-三、推荐保留的核心模块
-================================================================================
+2. 记忆系统整合
+   - 保留: memory/working_memory.py (工作记忆)
+   - 归档: memory_cache.py (已过时)
+   - 统一: evolution/memory_system_v2.py
 
-调度类:
-  - adaptive_scheduler.py (417行) - 自适应调度+任务分解+动态规划
+3. 接管功能整合
+   - 保留: skills/takeover_skill.py (最新版)
+   - 归档: data_takeover.py, dialog_takeover.py
+   - 删除: takeover_skill_new.py (重复)
 
-组合类:
-  - super_combo_v3.py (237行) - 失效转移+流式输出+动态多服务商
-
-记忆类:
-  - data_takeover.py - 数据接管
-  - continuous_dialogue.py - 连续对话
-  - self_evolution.py - 自进化系统(新增)
-
-优化类:
-  - adaptive_combo_v2.py (215行) - 自适应组合
-  - adaptive_matrix.py (166行) - 自适应矩阵
-
-执行类:
-  - flow_executor.py - 流水执行
-  - plan_before_execute.py - 先规划后执行
-
-安全类:
-  - security_manager.py - 安全管理
-  - disaster_recovery.py - 灾难恢复
-
-================================================================================
-四、自进化系统集成状态
-================================================================================
-
-self_evolution.py (新增):
-  - 细粒度感知与拆解: 独立模块，无冲突
-  - 自诊断与自我修正: 独立模块，无冲突  
-  - 自进化迭代机制: 独立模块，无冲突
-  - 极致细粒度输出控制: 独立模块，无冲突
-  - 长期记忆与持续优化: 独立模块，无冲突
-
-状态: 自进化系统为全新模块，与现有模块无冲突
-
-================================================================================
-五、总结
-================================================================================
-
-功能冲突: 3组 (14个文件)
-可deprecated: 5个文件
-建议保留核心: 12个文件
-
-建议操作:
-1. 创建deprecated目录，移动已废弃文件
-2. 更新super_kernel.py的导入引用
-3. 确保self_evolution.py被正确加载
-4. 更新版本号到v3.2.0
-
-================================================================================
+4. 进化功能整合
+   - 保留: evolution/self_evolver.py
+   - 归档: self_evolution.py, self_optimization.py

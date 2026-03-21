@@ -47,7 +47,7 @@ class SuperCombinerV3:
             SELECT r.id, r.姓名, m.模型名称, m.服务商, m.API地址
             FROM 官署角色表 r
             JOIN 模型配置表 m ON r.模型配置表_ID = m.id
-            WHERE m.是否在线 = '正常'
+            WHERE m.在线状态 = '正常'
             ORDER BY m.服务商
         ''')
         

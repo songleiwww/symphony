@@ -27,7 +27,7 @@ if r2.status_code == 200:
 # 3. 郭熙 - 英伟达
 print('\n【3】郭熙(左尚令) - 英伟达')
 url3 = 'https://integrate.api.nvidia.com/v1/chat/completions'
-h3 = {'Authorization': 'Bearer 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', 'Content-Type': 'application/json'}
+h3 = {'Authorization': 'Bearer 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', 'Content-Type': 'application/json'}
 d3 = {'model': 'nvidia/nemoguard-8b', 'messages': [{'role': 'user', 'content': '用一句话介绍你的官职'}], 'max_tokens': 50}
 r3 = requests.post(url3, headers=h3, json=d3, timeout=15)
 print(f'状态: {r3.status_code}')

@@ -12,7 +12,7 @@ for t in tables:
         break
 
 # New API key
-new_key = "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"
+new_key = "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"
 
 # Get count first
 c.execute(f"SELECT COUNT(*) FROM '{model_table}' WHERE 服务商 = '英伟达'")

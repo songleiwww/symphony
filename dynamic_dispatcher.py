@@ -199,7 +199,12 @@ class DynamicDispatcher:
         try:
             url = model.get("url") or model.get("API地址")
             key = model.get("key") or model.get("API密钥")
-            model_name = model.get("model") or model.get("模型名称") or model.get("identifier")
+            # 优先使用模型标识符，其次使用模型名称
+            model_name = model.get("identifier") or model.get("模型标识符") or model.get("model") or model.get("模型名称")
+            
+            # 修复: 如果URL不包含/chat/completions，自动添加
+            if "/chat/completions" not in url:
+                url = url.rstrip("/") + "/chat/completions"
             
             response = requests.post(
                 url,

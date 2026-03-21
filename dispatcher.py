@@ -168,8 +168,12 @@ class XujingDispatcher:
         
         # 调用模型
         try:
+            url = expert['url']
+            # 修复: 如果URL不包含/chat/completions，自动添加
+            if "/chat/completions" not in url:
+                url = url.rstrip("/") + "/chat/completions"
             r = requests.post(
-                expert['url'],
+                url,
                 json={
                     'model': expert['model'], 
                     'messages': [{'role': 'user', 'content': prompt}], 
@@ -195,8 +199,12 @@ class XujingDispatcher:
             if '逻辑推理' in self.experts and self.experts['逻辑推理']:
                 backup = self.experts['逻辑推理'][0]
                 try:
+                    url = backup['url']
+                    # 修复: 如果URL不包含/chat/completions，自动添加
+                    if "/chat/completions" not in url:
+                        url = url.rstrip("/") + "/chat/completions"
                     r = requests.post(
-                        backup['url'],
+                        url,
                         json={'model': backup['model'], 'messages': [{'role': 'user', 'content': prompt}], 'max_tokens': max_tokens},
                         headers={'Authorization': f'Bearer {backup["key"]}', 'Content-Type': 'application/json'},
                         timeout=60

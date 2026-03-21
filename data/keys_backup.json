@@ -1,0 +1,2184 @@
+{
+  "英伟达": [
+    {
+      "id": "1",
+      "name": "Llama 3.2 1B",
+      "key": "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"
+    },
+    {
+      "id": "2",
+      "name": "Llama 3.2 90B Vision",
+      "key": "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"
+    },
+    {
+      "id": "3",
+      "name": "Llama 3.3 70B",
+      "key": "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"
+    },
+    {
+      "id": "4",
+      "name": "Nemotron Super 49B",
+      "key": "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"
+    },
+    {
+      "id": "5",
+      "name": "Mistral Large 2",
+      "key": "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"
+    },
+    {
+      "id": "6",
+      "name": "Mistral Small 3.1",
+      "key": "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"
+    },
+    {
+      "id": "7",
+      "name": "Nemotron 70B",
+      "key": "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"
+    },
+    {
+      "id": "8",
+      "name": "Nemotron Hindi 4B",
+      "key": "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"
+    },
+    {
+      "id": "9",
+      "name": "Nemoguard 8B",
+      "key": "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"
+    },
+    {
+      "id": "10",
+      "name": "DeepSeek R1",
+      "key": "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"
+    },
+    {
+      "id": "11",
+      "name": "DeepSeek R1 Distill 8B",
+      "key": "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"
+    },
+    {
+      "id": "12",
+      "name": "DeepSeek R1 Distill 70B",
+      "key": "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"
+    },
+    {
+      "id": "13",
+      "name": "Nemotron Coding 70B",
+      "key": "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"
+    },
+    {
+      "id": "14",
+      "name": "Llama 3.1 70B",
+      "key": "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"
+    },
+    {
+      "id": "15",
+      "name": "Llama 3.1 8B",
+      "key": "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"
+    },
+    {
+      "id": "16",
+      "name": "Yi Large",
+      "key": "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"
+    },
+    {
+      "id": "17",
+      "name": "Jamba 1.5 Large",
+      "key": "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"
+    },
+    {
+      "id": "18",
+      "name": "Jamba 1.5 Mini",
+      "key": "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"
+    },
+    {
+      "id": "19",
+      "name": "StarCoder2 15B",
+      "key": "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"
+    },
+    {
+      "id": "20",
+      "name": "StarCoder2 7B",
+      "key": "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"
+    },
+    {
+      "id": "21",
+      "name": "DBRX Instruct",
+      "key": "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"
+    },
+    {
+      "id": "22",
+      "name": "DeepSeek Coder 6.7B",
+      "key": "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"
+    },
+    {
+      "id": "23",
+      "name": "DeepSeek R1 Distill Qwen 14B",
+      "key": "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"
+    },
+    {
+      "id": "24",
+      "name": "DeepSeek R1 Distill Qwen 7B",
+      "key": "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"
+    },
+    {
+      "id": "25",
+      "name": "DeepSeek V3.1",
+      "key": "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"
+    },
+    {
+      "id": "26",
+      "name": "Neva 22B",
+      "key": "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"
+    },
+    {
+      "id": "27",
+      "name": "CodeGemma 1.1 7B",
+      "key": "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"
+    },
+    {
+      "id": "28",
+      "name": "Gemma 2 2B",
+      "key": "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"
+    },
+    {
+      "id": "29",
+      "name": "Gemma 2 9B",
+      "key": "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"
+    },
+    {
+      "id": "30",
+      "name": "Gemma 2 27B",
+      "key": "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"
+    },
+    {
+      "id": "31",
+      "name": "Gemma 3 1B",
+      "key": "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"
+    },
+    {
+      "id": "32",
+      "name": "Gemma 3 4B",
+      "key": "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"
+    },
+    {
+      "id": "33",
+      "name": "Gemma 3 12B",
+      "key": "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"
+    },
+    {
+      "id": "34",
+      "name": "Phi-3 Medium 128K",
+      "key": "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"
+    },
+    {
+      "id": "35",
+      "name": "Phi-3 Mini 128K",
+      "key": "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"
+    },
+    {
+      "id": "36",
+      "name": "Riva Translate 1.6B",
+      "key": "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"
+    },
+    {
+      "id": "37",
+      "name": "Phi-3.5 Vision",
+      "key": "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"
+    },
+    {
+      "id": "38",
+      "name": "Mistral Medium 3",
+      "key": "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"
+    },
+    {
+      "id": "39",
+      "name": "Mistral Nemo Minitron 8B",
+      "key": "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"
+    },
+    {
+      "id": "40",
+      "name": "Phi-3 Mini 4K",
+      "key": "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"
+    },
+    {
+      "id": "41",
+      "name": "Phi-3.5 Mini",
+      "key": "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"
+    },
+    {
+      "id": "42",
+      "name": "Phi-3 Medium 4K",
+      "key": "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"
+    },
+    {
+      "id": "43",
+      "name": "Gemma 2 2B IT",
+      "key": "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"
+    },
+    {
+      "id": "44",
+      "name": "Gemma 2 9B IT",
+      "key": "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"
+    },
+    {
+      "id": "45",
+      "name": "Gemma 2 27B IT",
+      "key": "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"
+    },
+    {
+      "id": "46",
+      "name": "Mixtral 8x7B",
+      "key": "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"
+    },
+    {
+      "id": "47",
+      "name": "Mixtral 8x22B",
+      "key": "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"
+    },
+    {
+      "id": "48",
+      "name": "Nemotron Mini 4B",
+      "key": "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"
+    },
+    {
+      "id": "49",
+      "name": "Nemotron Nano 9B",
+      "key": "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"
+    },
+    {
+      "id": "50",
+      "name": "Qwen2.5 Coder 32B",
+      "key": "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"
+    }
+  ],
+  "火山引擎": [
+    {
+      "id": "51",
+      "name": "doubao-seed-2.0-code",
+      "key": "3b922877-3fbe-45d1-a298-53f2231c5224"
+    },
+    {
+      "id": "52",
+      "name": "ark-code-latest",
+      "key": "3b922877-3fbe-45d1-a298-53f2231c5224"
+    },
+    {
+      "id": "53",
+      "name": "doubao-seed-2.0-lite",
+      "key": "3b922877-3fbe-45d1-a298-53f2231c5224"
+    },
+    {
+      "id": "54",
+      "name": "doubao-seed-code",
+      "key": "3b922877-3fbe-45d1-a298-53f2231c5224"
+    },
+    {
+      "id": "55",
+      "name": "glm-4.7",
+      "key": "3b922877-3fbe-45d1-a298-53f2231c5224"
+    },
+    {
+      "id": "56",
+      "name": "deepseek-v3.2",
+      "key": "ms-eac6f154-3502-4721-a168-ce7caeaf1033"
+    },
+    {
+      "id": "431",
+      "name": "Doubao Seed 2.0 Pro",
+      "key": "1e58d43c-5a8b-4a1c-b25f-4bf65c9e4f1e"
+    },
+    {
+      "id": "432",
+      "name": "Minimax M2.5",
+      "key": "1e58d43c-5a8b-4a1c-b25f-4bf65c9e4f1e"
+    },
+    {
+      "id": "433",
+      "name": "Deepseek V3.2",
+      "key": "1e58d43c-5a8b-4a1c-b25f-4bf65c9e4f1e"
+    },
+    {
+      "id": "434",
+      "name": "Kimi K2.5",
+      "key": "1e58d43c-5a8b-4a1c-b25f-4bf65c9e4f1e"
+    }
+  ],
+  "硅基流动": [
+    {
+      "id": "57",
+      "name": "Qwen2.5 72B",
+      "key": "sk-uqcngebrjbdzmcowpfxelysxukwqqarhdzfakpxwkklfrlqc"
+    },
+    {
+      "id": "58",
+      "name": "GLM-4 9B",
+      "key": "sk-uqcngebrjbdzmcowpfxelysxukwqqarhdzfakpxwkklfrlqc"
+    },
+    {
+      "id": "59",
+      "name": "GLM-4 Vision",
+      "key": "sk-uqcngebrjbdzmcowpfxelysxukwqqarhdzfakpxwkklfrlqc"
+    },
+    {
+      "id": "60",
+      "name": "Llama 3.1 70B",
+      "key": "sk-uqcngebrjbdzmcowpfxelysxukwqqarhdzfakpxwkklfrlqc"
+    },
+    {
+      "id": "61",
+      "name": "Llama 3.1 8B",
+      "key": "sk-uqcngebrjbdzmcowpfxelysxukwqqarhdzfakpxwkklfrlqc"
+    },
+    {
+      "id": "62",
+      "name": "Mistral 7B",
+      "key": "sk-uqcngebrjbdzmcowpfxelysxukwqqarhdzfakpxwkklfrlqc"
+    },
+    {
+      "id": "63",
+      "name": "Qwen2.5 Coder",
+      "key": "sk-uqcngebrjbdzmcowpfxelysxukwqqarhdzfakpxwkklfrlqc"
+    },
+    {
+      "id": "304",
+      "name": "Qwen2.5 7B Instruct",
+      "key": "sk-uqcngebrjbdzmcowpfxelysxukwqqarhdzfakpxwkklfrlqc"
+    },
+    {
+      "id": "305",
+      "name": "DeepSeek R1 Distill Qwen 32B",
+      "key": "sk-uqcngebrjbdzmcowpfxelysxukwqqarhdzfakpxwkklfrlqc"
+    },
+    {
+      "id": "306",
+      "name": "MOSS TTSD v0.5",
+      "key": "sk-uqcngebrjbdzmcowpfxelysxukwqqarhdzfakpxwkklfrlqc"
+    },
+    {
+      "id": "307",
+      "name": "Qwen3 VL 235B A22B Thinking",
+      "key": "sk-uqcngebrjbdzmcowpfxelysxukwqqarhdzfakpxwkklfrlqc"
+    },
+    {
+      "id": "308",
+      "name": "Qwen3 VL 32B Thinking",
+      "key": "sk-uqcngebrjbdzmcowpfxelysxukwqqarhdzfakpxwkklfrlqc"
+    },
+    {
+      "id": "309",
+      "name": "glm 4 9b chat",
+      "key": "sk-uqcngebrjbdzmcowpfxelysxukwqqarhdzfakpxwkklfrlqc"
+    },
+    {
+      "id": "310",
+      "name": "FLUX.1 schnell",
+      "key": "sk-uqcngebrjbdzmcowpfxelysxukwqqarhdzfakpxwkklfrlqc"
+    },
+    {
+      "id": "311",
+      "name": "Qwen2.5 Coder 32B Instruct",
+      "key": "sk-uqcngebrjbdzmcowpfxelysxukwqqarhdzfakpxwkklfrlqc"
+    },
+    {
+      "id": "312",
+      "name": "Qwen2.5 7B Instruct",
+      "key": "sk-uqcngebrjbdzmcowpfxelysxukwqqarhdzfakpxwkklfrlqc"
+    },
+    {
+      "id": "313",
+      "name": "GPT SoVITS",
+      "key": "sk-uqcngebrjbdzmcowpfxelysxukwqqarhdzfakpxwkklfrlqc"
+    },
+    {
+      "id": "314",
+      "name": "Qwen2.5 14B Instruct",
+      "key": "sk-uqcngebrjbdzmcowpfxelysxukwqqarhdzfakpxwkklfrlqc"
+    },
+    {
+      "id": "315",
+      "name": "Qwen3 Reranker 8B",
+      "key": "sk-uqcngebrjbdzmcowpfxelysxukwqqarhdzfakpxwkklfrlqc"
+    },
+    {
+      "id": "316",
+      "name": "Qwen3 30B A3B Instruct 2507",
+      "key": "sk-uqcngebrjbdzmcowpfxelysxukwqqarhdzfakpxwkklfrlqc"
+    },
+    {
+      "id": "317",
+      "name": "Qwen3 Omni 30B A3B Instruct",
+      "key": "sk-uqcngebrjbdzmcowpfxelysxukwqqarhdzfakpxwkklfrlqc"
+    },
+    {
+      "id": "318",
+      "name": "Qwen2.5 7B Instruct",
+      "key": "sk-uqcngebrjbdzmcowpfxelysxukwqqarhdzfakpxwkklfrlqc"
+    },
+    {
+      "id": "319",
+      "name": "bge m3",
+      "key": "sk-uqcngebrjbdzmcowpfxelysxukwqqarhdzfakpxwkklfrlqc"
+    },
+    {
+      "id": "320",
+      "name": "DeepSeek R1 Distill Qwen 7B",
+      "key": "sk-uqcngebrjbdzmcowpfxelysxukwqqarhdzfakpxwkklfrlqc"
+    },
+    {
+      "id": "321",
+      "name": "GLM 4 32B 0414",
+      "key": "sk-uqcngebrjbdzmcowpfxelysxukwqqarhdzfakpxwkklfrlqc"
+    },
+    {
+      "id": "322",
+      "name": "GLM Z1 32B 0414",
+      "key": "sk-uqcngebrjbdzmcowpfxelysxukwqqarhdzfakpxwkklfrlqc"
+    },
+    {
+      "id": "323",
+      "name": "Qwen3 Reranker 0.6B",
+      "key": "sk-uqcngebrjbdzmcowpfxelysxukwqqarhdzfakpxwkklfrlqc"
+    },
+    {
+      "id": "324",
+      "name": "Kimi Dev 72B",
+      "key": "sk-uqcngebrjbdzmcowpfxelysxukwqqarhdzfakpxwkklfrlqc"
+    },
+    {
+      "id": "325",
+      "name": "TeleSpeechASR",
+      "key": "sk-uqcngebrjbdzmcowpfxelysxukwqqarhdzfakpxwkklfrlqc"
+    },
+    {
+      "id": "326",
+      "name": "Qwen2.5 32B Instruct",
+      "key": "sk-uqcngebrjbdzmcowpfxelysxukwqqarhdzfakpxwkklfrlqc"
+    },
+    {
+      "id": "327",
+      "name": "MiniMax M1 80k",
+      "key": "sk-uqcngebrjbdzmcowpfxelysxukwqqarhdzfakpxwkklfrlqc"
+    },
+    {
+      "id": "328",
+      "name": "Wan2.2 I2V A14B",
+      "key": "sk-uqcngebrjbdzmcowpfxelysxukwqqarhdzfakpxwkklfrlqc"
+    },
+    {
+      "id": "329",
+      "name": "Qwen3 Omni 30B A3B Thinking",
+      "key": "sk-uqcngebrjbdzmcowpfxelysxukwqqarhdzfakpxwkklfrlqc"
+    },
+    {
+      "id": "330",
+      "name": "Qwen3 VL 30B A3B Instruct",
+      "key": "sk-uqcngebrjbdzmcowpfxelysxukwqqarhdzfakpxwkklfrlqc"
+    },
+    {
+      "id": "331",
+      "name": "MiniMax M2",
+      "key": "sk-uqcngebrjbdzmcowpfxelysxukwqqarhdzfakpxwkklfrlqc"
+    },
+    {
+      "id": "332",
+      "name": "Qwen2 7B Instruct",
+      "key": "sk-uqcngebrjbdzmcowpfxelysxukwqqarhdzfakpxwkklfrlqc"
+    },
+    {
+      "id": "333",
+      "name": "Qwen2.5 Coder 7B Instruct",
+      "key": "sk-uqcngebrjbdzmcowpfxelysxukwqqarhdzfakpxwkklfrlqc"
+    },
+    {
+      "id": "334",
+      "name": "DeepSeek R1 Distill Qwen 7B",
+      "key": "sk-uqcngebrjbdzmcowpfxelysxukwqqarhdzfakpxwkklfrlqc"
+    },
+    {
+      "id": "335",
+      "name": "Qwen3 Embedding 0.6B",
+      "key": "sk-uqcngebrjbdzmcowpfxelysxukwqqarhdzfakpxwkklfrlqc"
+    },
+    {
+      "id": "336",
+      "name": "glm 4.1V 9B Thinking",
+      "key": "sk-uqcngebrjbdzmcowpfxelysxukwqqarhdzfakpxwkklfrlqc"
+    },
+    {
+      "id": "337",
+      "name": "Qwen3 Next 80B A3B Instruct",
+      "key": "sk-uqcngebrjbdzmcowpfxelysxukwqqarhdzfakpxwkklfrlqc"
+    },
+    {
+      "id": "338",
+      "name": "DeepSeek R1",
+      "key": "sk-uqcngebrjbdzmcowpfxelysxukwqqarhdzfakpxwkklfrlqc"
+    },
+    {
+      "id": "339",
+      "name": "Qwen3 VL 30B A3B Thinking",
+      "key": "sk-uqcngebrjbdzmcowpfxelysxukwqqarhdzfakpxwkklfrlqc"
+    },
+    {
+      "id": "340",
+      "name": "Qwen2.5 72B Instruct",
+      "key": "sk-uqcngebrjbdzmcowpfxelysxukwqqarhdzfakpxwkklfrlqc"
+    },
+    {
+      "id": "341",
+      "name": "pangu pro moe",
+      "key": "sk-uqcngebrjbdzmcowpfxelysxukwqqarhdzfakpxwkklfrlqc"
+    },
+    {
+      "id": "342",
+      "name": "step3",
+      "key": "sk-uqcngebrjbdzmcowpfxelysxukwqqarhdzfakpxwkklfrlqc"
+    },
+    {
+      "id": "343",
+      "name": "GLM 4.5V",
+      "key": "sk-uqcngebrjbdzmcowpfxelysxukwqqarhdzfakpxwkklfrlqc"
+    },
+    {
+      "id": "344",
+      "name": "Qwen Image",
+      "key": "sk-uqcngebrjbdzmcowpfxelysxukwqqarhdzfakpxwkklfrlqc"
+    },
+    {
+      "id": "345",
+      "name": "bge reranker v2 m3",
+      "key": "sk-uqcngebrjbdzmcowpfxelysxukwqqarhdzfakpxwkklfrlqc"
+    },
+    {
+      "id": "346",
+      "name": "GLM Z1 9B 0414",
+      "key": "sk-uqcngebrjbdzmcowpfxelysxukwqqarhdzfakpxwkklfrlqc"
+    },
+    {
+      "id": "347",
+      "name": "Qwen3 Embedding 4B",
+      "key": "sk-uqcngebrjbdzmcowpfxelysxukwqqarhdzfakpxwkklfrlqc"
+    },
+    {
+      "id": "348",
+      "name": "ERNIE 4.5 VL 424B A47B Paddle",
+      "key": "sk-uqcngebrjbdzmcowpfxelysxukwqqarhdzfakpxwkklfrlqc"
+    },
+    {
+      "id": "349",
+      "name": "Wan2.2 T2V A14B",
+      "key": "sk-uqcngebrjbdzmcowpfxelysxukwqqarhdzfakpxwkklfrlqc"
+    },
+    {
+      "id": "350",
+      "name": "DeepSeek V3",
+      "key": "sk-uqcngebrjbdzmcowpfxelysxukwqqarhdzfakpxwkklfrlqc"
+    },
+    {
+      "id": "351",
+      "name": "Qwen3 VL 8B Instruct",
+      "key": "sk-uqcngebrjbdzmcowpfxelysxukwqqarhdzfakpxwkklfrlqc"
+    },
+    {
+      "id": "352",
+      "name": "GLM 4.6V",
+      "key": "sk-uqcngebrjbdzmcowpfxelysxukwqqarhdzfakpxwkklfrlqc"
+    },
+    {
+      "id": "353",
+      "name": "DeepSeek V2.5",
+      "key": "sk-uqcngebrjbdzmcowpfxelysxukwqqarhdzfakpxwkklfrlqc"
+    },
+    {
+      "id": "354",
+      "name": "Qwen3 32B",
+      "key": "sk-uqcngebrjbdzmcowpfxelysxukwqqarhdzfakpxwkklfrlqc"
+    },
+    {
+      "id": "355",
+      "name": "ERNIE 4.5 21B A3B Paddle",
+      "key": "sk-uqcngebrjbdzmcowpfxelysxukwqqarhdzfakpxwkklfrlqc"
+    },
+    {
+      "id": "356",
+      "name": "glm 4.1V 9B Thinking",
+      "key": "sk-uqcngebrjbdzmcowpfxelysxukwqqarhdzfakpxwkklfrlqc"
+    },
+    {
+      "id": "357",
+      "name": "GLM 4.5",
+      "key": "sk-uqcngebrjbdzmcowpfxelysxukwqqarhdzfakpxwkklfrlqc"
+    },
+    {
+      "id": "358",
+      "name": "GLM 4.6",
+      "key": "sk-uqcngebrjbdzmcowpfxelysxukwqqarhdzfakpxwkklfrlqc"
+    },
+    {
+      "id": "359",
+      "name": "internlm2_5 7b chat",
+      "key": "sk-uqcngebrjbdzmcowpfxelysxukwqqarhdzfakpxwkklfrlqc"
+    },
+    {
+      "id": "360",
+      "name": "Qwen2.5 32B Instruct",
+      "key": "sk-uqcngebrjbdzmcowpfxelysxukwqqarhdzfakpxwkklfrlqc"
+    },
+    {
+      "id": "361",
+      "name": "QVQ 72B Preview",
+      "key": "sk-uqcngebrjbdzmcowpfxelysxukwqqarhdzfakpxwkklfrlqc"
+    },
+    {
+      "id": "362",
+      "name": "Qwen3 30B A3B Thinking 2507",
+      "key": "sk-uqcngebrjbdzmcowpfxelysxukwqqarhdzfakpxwkklfrlqc"
+    },
+    {
+      "id": "363",
+      "name": "Qwen3 Coder 30B A3B Instruct",
+      "key": "sk-uqcngebrjbdzmcowpfxelysxukwqqarhdzfakpxwkklfrlqc"
+    },
+    {
+      "id": "364",
+      "name": "QwQ 32B",
+      "key": "sk-uqcngebrjbdzmcowpfxelysxukwqqarhdzfakpxwkklfrlqc"
+    },
+    {
+      "id": "365",
+      "name": "ERNIE 4.5 300B A47B",
+      "key": "sk-uqcngebrjbdzmcowpfxelysxukwqqarhdzfakpxwkklfrlqc"
+    },
+    {
+      "id": "366",
+      "name": "Seed OSS 36B Instruct",
+      "key": "sk-uqcngebrjbdzmcowpfxelysxukwqqarhdzfakpxwkklfrlqc"
+    },
+    {
+      "id": "367",
+      "name": "KAT Dev",
+      "key": "sk-uqcngebrjbdzmcowpfxelysxukwqqarhdzfakpxwkklfrlqc"
+    },
+    {
+      "id": "368",
+      "name": "CosyVoice2 0.5B",
+      "key": "sk-uqcngebrjbdzmcowpfxelysxukwqqarhdzfakpxwkklfrlqc"
+    },
+    {
+      "id": "369",
+      "name": "bce reranker base_v1",
+      "key": "sk-uqcngebrjbdzmcowpfxelysxukwqqarhdzfakpxwkklfrlqc"
+    },
+    {
+      "id": "370",
+      "name": "Qwen2.5 72B Instruct 128K",
+      "key": "sk-uqcngebrjbdzmcowpfxelysxukwqqarhdzfakpxwkklfrlqc"
+    },
+    {
+      "id": "371",
+      "name": "FLUX.1 schnell",
+      "key": "sk-uqcngebrjbdzmcowpfxelysxukwqqarhdzfakpxwkklfrlqc"
+    },
+    {
+      "id": "372",
+      "name": "GLM 4.5 Air",
+      "key": "sk-uqcngebrjbdzmcowpfxelysxukwqqarhdzfakpxwkklfrlqc"
+    },
+    {
+      "id": "373",
+      "name": "Qwen Image Edit",
+      "key": "sk-uqcngebrjbdzmcowpfxelysxukwqqarhdzfakpxwkklfrlqc"
+    },
+    {
+      "id": "374",
+      "name": "Qwen3 VL 8B Thinking",
+      "key": "sk-uqcngebrjbdzmcowpfxelysxukwqqarhdzfakpxwkklfrlqc"
+    },
+    {
+      "id": "375",
+      "name": "Qwen2.5 VL 72B Instruct",
+      "key": "sk-uqcngebrjbdzmcowpfxelysxukwqqarhdzfakpxwkklfrlqc"
+    },
+    {
+      "id": "376",
+      "name": "Seed Rice 7B",
+      "key": "sk-uqcngebrjbdzmcowpfxelysxukwqqarhdzfakpxwkklfrlqc"
+    },
+    {
+      "id": "377",
+      "name": "DeepSeek OCR",
+      "key": "sk-uqcngebrjbdzmcowpfxelysxukwqqarhdzfakpxwkklfrlqc"
+    },
+    {
+      "id": "378",
+      "name": "Qwen2 VL 72B Instruct",
+      "key": "sk-uqcngebrjbdzmcowpfxelysxukwqqarhdzfakpxwkklfrlqc"
+    },
+    {
+      "id": "379",
+      "name": "DeepSeek R1 0528 Qwen3 8B",
+      "key": "sk-uqcngebrjbdzmcowpfxelysxukwqqarhdzfakpxwkklfrlqc"
+    },
+    {
+      "id": "380",
+      "name": "DeepSeek R1 Distill Qwen 14B",
+      "key": "sk-uqcngebrjbdzmcowpfxelysxukwqqarhdzfakpxwkklfrlqc"
+    },
+    {
+      "id": "381",
+      "name": "QwenLong L1 32B",
+      "key": "sk-uqcngebrjbdzmcowpfxelysxukwqqarhdzfakpxwkklfrlqc"
+    },
+    {
+      "id": "382",
+      "name": "Ling mini 2.0",
+      "key": "sk-uqcngebrjbdzmcowpfxelysxukwqqarhdzfakpxwkklfrlqc"
+    },
+    {
+      "id": "383",
+      "name": "Qwen3 VL 235B A22B Instruct",
+      "key": "sk-uqcngebrjbdzmcowpfxelysxukwqqarhdzfakpxwkklfrlqc"
+    },
+    {
+      "id": "384",
+      "name": "Qwen3 Omni 30B A3B Captioner",
+      "key": "sk-uqcngebrjbdzmcowpfxelysxukwqqarhdzfakpxwkklfrlqc"
+    },
+    {
+      "id": "385",
+      "name": "bce embedding base_v1",
+      "key": "sk-uqcngebrjbdzmcowpfxelysxukwqqarhdzfakpxwkklfrlqc"
+    },
+    {
+      "id": "386",
+      "name": "Qwen2.5 VL 7B Instruct",
+      "key": "sk-uqcngebrjbdzmcowpfxelysxukwqqarhdzfakpxwkklfrlqc"
+    },
+    {
+      "id": "387",
+      "name": "Qwen3 235B A22B",
+      "key": "sk-uqcngebrjbdzmcowpfxelysxukwqqarhdzfakpxwkklfrlqc"
+    },
+    {
+      "id": "388",
+      "name": "deepseek vl2",
+      "key": "sk-uqcngebrjbdzmcowpfxelysxukwqqarhdzfakpxwkklfrlqc"
+    },
+    {
+      "id": "389",
+      "name": "Qwen2.5 VL 32B Instruct",
+      "key": "sk-uqcngebrjbdzmcowpfxelysxukwqqarhdzfakpxwkklfrlqc"
+    },
+    {
+      "id": "390",
+      "name": "ERNIE 4.5 VL 28B A3B Paddle",
+      "key": "sk-uqcngebrjbdzmcowpfxelysxukwqqarhdzfakpxwkklfrlqc"
+    },
+    {
+      "id": "391",
+      "name": "glm 4 9b chat",
+      "key": "sk-uqcngebrjbdzmcowpfxelysxukwqqarhdzfakpxwkklfrlqc"
+    },
+    {
+      "id": "392",
+      "name": "Qwen3 14B",
+      "key": "sk-uqcngebrjbdzmcowpfxelysxukwqqarhdzfakpxwkklfrlqc"
+    },
+    {
+      "id": "393",
+      "name": "Qwen3 Embedding 8B",
+      "key": "sk-uqcngebrjbdzmcowpfxelysxukwqqarhdzfakpxwkklfrlqc"
+    },
+    {
+      "id": "394",
+      "name": "Qwen3 Reranker 4B",
+      "key": "sk-uqcngebrjbdzmcowpfxelysxukwqqarhdzfakpxwkklfrlqc"
+    },
+    {
+      "id": "395",
+      "name": "Hunyuan MT 7B",
+      "key": "sk-uqcngebrjbdzmcowpfxelysxukwqqarhdzfakpxwkklfrlqc"
+    },
+    {
+      "id": "396",
+      "name": "Qwen2.5 14B Instruct",
+      "key": "sk-uqcngebrjbdzmcowpfxelysxukwqqarhdzfakpxwkklfrlqc"
+    },
+    {
+      "id": "397",
+      "name": "bge reranker v2 m3",
+      "key": "sk-uqcngebrjbdzmcowpfxelysxukwqqarhdzfakpxwkklfrlqc"
+    },
+    {
+      "id": "398",
+      "name": "Qwen3 235B A22B Thinking 2507",
+      "key": "sk-uqcngebrjbdzmcowpfxelysxukwqqarhdzfakpxwkklfrlqc"
+    },
+    {
+      "id": "399",
+      "name": "Ling flash 2.0",
+      "key": "sk-uqcngebrjbdzmcowpfxelysxukwqqarhdzfakpxwkklfrlqc"
+    },
+    {
+      "id": "400",
+      "name": "Kimi K2 Instruct 0905",
+      "key": "sk-uqcngebrjbdzmcowpfxelysxukwqqarhdzfakpxwkklfrlqc"
+    },
+    {
+      "id": "401",
+      "name": "DeepSeek V3.1 Terminus",
+      "key": "sk-uqcngebrjbdzmcowpfxelysxukwqqarhdzfakpxwkklfrlqc"
+    },
+    {
+      "id": "402",
+      "name": "Kimi K2 Thinking",
+      "key": "sk-uqcngebrjbdzmcowpfxelysxukwqqarhdzfakpxwkklfrlqc"
+    },
+    {
+      "id": "403",
+      "name": "GLM Z1 Rumination 32B 0414",
+      "key": "sk-uqcngebrjbdzmcowpfxelysxukwqqarhdzfakpxwkklfrlqc"
+    },
+    {
+      "id": "404",
+      "name": "Qwen3 Next 80B A3B Thinking",
+      "key": "sk-uqcngebrjbdzmcowpfxelysxukwqqarhdzfakpxwkklfrlqc"
+    },
+    {
+      "id": "405",
+      "name": "Qwen Image Edit 2509",
+      "key": "sk-uqcngebrjbdzmcowpfxelysxukwqqarhdzfakpxwkklfrlqc"
+    },
+    {
+      "id": "406",
+      "name": "IndexTTS 2",
+      "key": "sk-uqcngebrjbdzmcowpfxelysxukwqqarhdzfakpxwkklfrlqc"
+    },
+    {
+      "id": "407",
+      "name": "Qwen3 VL 32B Instruct",
+      "key": "sk-uqcngebrjbdzmcowpfxelysxukwqqarhdzfakpxwkklfrlqc"
+    },
+    {
+      "id": "408",
+      "name": "Qwen2 7B Instruct",
+      "key": "sk-uqcngebrjbdzmcowpfxelysxukwqqarhdzfakpxwkklfrlqc"
+    },
+    {
+      "id": "409",
+      "name": "FLUX.1 dev",
+      "key": "sk-uqcngebrjbdzmcowpfxelysxukwqqarhdzfakpxwkklfrlqc"
+    },
+    {
+      "id": "410",
+      "name": "bge m3",
+      "key": "sk-uqcngebrjbdzmcowpfxelysxukwqqarhdzfakpxwkklfrlqc"
+    },
+    {
+      "id": "411",
+      "name": "Kolors",
+      "key": "sk-uqcngebrjbdzmcowpfxelysxukwqqarhdzfakpxwkklfrlqc"
+    },
+    {
+      "id": "412",
+      "name": "GLM 4 9B 0414",
+      "key": "sk-uqcngebrjbdzmcowpfxelysxukwqqarhdzfakpxwkklfrlqc"
+    },
+    {
+      "id": "413",
+      "name": "Qwen3 30B A3B",
+      "key": "sk-uqcngebrjbdzmcowpfxelysxukwqqarhdzfakpxwkklfrlqc"
+    },
+    {
+      "id": "414",
+      "name": "Hunyuan A13B Instruct",
+      "key": "sk-uqcngebrjbdzmcowpfxelysxukwqqarhdzfakpxwkklfrlqc"
+    },
+    {
+      "id": "415",
+      "name": "Qwen3 235B A22B Instruct 2507",
+      "key": "sk-uqcngebrjbdzmcowpfxelysxukwqqarhdzfakpxwkklfrlqc"
+    },
+    {
+      "id": "416",
+      "name": "Ring flash 2.0",
+      "key": "sk-uqcngebrjbdzmcowpfxelysxukwqqarhdzfakpxwkklfrlqc"
+    },
+    {
+      "id": "417",
+      "name": "Qwen3 8B",
+      "key": "sk-uqcngebrjbdzmcowpfxelysxukwqqarhdzfakpxwkklfrlqc"
+    },
+    {
+      "id": "418",
+      "name": "SenseVoiceSmall",
+      "key": "sk-uqcngebrjbdzmcowpfxelysxukwqqarhdzfakpxwkklfrlqc"
+    }
+  ],
+  "魔搭": [
+    {
+      "id": "64",
+      "name": "Kimi K2.5",
+      "key": "ms-eac6f154-3502-4721-a168-ce7caeaf1033"
+    },
+    {
+      "id": "65",
+      "name": "minimax-m2.5",
+      "key": "ms-eac6f154-3502-4721-a168-ce7caeaf1033"
+    },
+    {
+      "id": "66",
+      "name": "GLM-5",
+      "key": "ms-eac6f154-3502-4721-a168-ce7caeaf1033"
+    },
+    {
+      "id": "67",
+      "name": "DeepSeek V3.2",
+      "key": "ms-eac6f154-3502-4721-a168-ce7caeaf1033"
+    },
+    {
+      "id": "68",
+      "name": "DeepSeek R1 0528",
+      "key": "ms-eac6f154-3502-4721-a168-ce7caeaf1033"
+    },
+    {
+      "id": "69",
+      "name": "Qwen3.5 122B A10B",
+      "key": "ms-eac6f154-3502-4721-a168-ce7caeaf1033"
+    },
+    {
+      "id": "70",
+      "name": "Qwen3 Coder 480B A35B",
+      "key": "ms-eac6f154-3502-4721-a168-ce7caeaf1033"
+    }
+  ],
+  "智谱": [
+    {
+      "id": "71",
+      "name": "GLM-4.7-Flash",
+      "key": "282d8bf19da048f2a46c7652c1c10b51.siE1OsYO1K8tfvhh"
+    },
+    {
+      "id": "72",
+      "name": "GLM-4-Flash-250414",
+      "key": "282d8bf19da048f2a46c7652c1c10b51.siE1OsYO1K8tfvhh"
+    },
+    {
+      "id": "73",
+      "name": "GLM-Z1-Flash",
+      "key": "282d8bf19da048f2a46c7652c1c10b51.siE1OsYO1K8tfvhh"
+    },
+    {
+      "id": "74",
+      "name": "GLM-4.6V-Flash",
+      "key": "282d8bf19da048f2a46c7652c1c10b51.siE1OsYO1K8tfvhh"
+    },
+    {
+      "id": "75",
+      "name": "GLM-4V-Flash",
+      "key": "282d8bf19da048f2a46c7652c1c10b51.siE1OsYO1K8tfvhh"
+    },
+    {
+      "id": "76",
+      "name": "GLM-4.1V-Thinking-Flash",
+      "key": "282d8bf19da048f2a46c7652c1c10b51.siE1OsYO1K8tfvhh"
+    },
+    {
+      "id": "77",
+      "name": "CogView-3-Flash",
+      "key": "282d8bf19da048f2a46c7652c1c10b51.siE1OsYO1K8tfvhh"
+    },
+    {
+      "id": "78",
+      "name": "CogVideoX-Flash",
+      "key": "282d8bf19da048f2a46c7652c1c10b51.siE1OsYO1K8tfvhh"
+    },
+    {
+      "id": "419",
+      "name": "GLM-4",
+      "key": "282d8bf19da048f2a46c7652c1c10b51.siE1OsYO1K8tfvhh"
+    },
+    {
+      "id": "420",
+      "name": "GLM-4 Flash",
+      "key": "282d8bf19da048f2a46c7652c1c10b51.siE1OsYO1K8tfvhh"
+    },
+    {
+      "id": "421",
+      "name": "GLM-4 Plus",
+      "key": "282d8bf19da048f2a46c7652c1c10b51.siE1OsYO1K8tfvhh"
+    },
+    {
+      "id": "422",
+      "name": "GLM-4V Flash",
+      "key": "282d8bf19da048f2a46c7652c1c10b51.siE1OsYO1K8tfvhh"
+    },
+    {
+      "id": "423",
+      "name": "GLM-4V Plus",
+      "key": "282d8bf19da048f2a46c7652c1c10b51.siE1OsYO1K8tfvhh"
+    },
+    {
+      "id": "424",
+      "name": "GLM-3 Turbo",
+      "key": "282d8bf19da048f2a46c7652c1c10b51.siE1OsYO1K8tfvhh"
+    },
+    {
+      "id": "425",
+      "name": "CogView 3",
+      "key": "282d8bf19da048f2a46c7652c1c10b51.siE1OsYO1K8tfvhh"
+    },
+    {
+      "id": "426",
+      "name": "CogView 3 Plus",
+      "key": "282d8bf19da048f2a46c7652c1c10b51.siE1OsYO1K8tfvhh"
+    },
+    {
+      "id": "427",
+      "name": "GLM-4 Flash X",
+      "key": "282d8bf19da048f2a46c7652c1c10b51.siE1OsYO1K8tfvhh"
+    },
+    {
+      "id": "428",
+      "name": "GLM-4 All Tools",
+      "key": "282d8bf19da048f2a46c7652c1c10b51.siE1OsYO1K8tfvhh"
+    },
+    {
+      "id": "429",
+      "name": "GLM-Z1 Flash",
+      "key": "282d8bf19da048f2a46c7652c1c10b51.siE1OsYO1K8tfvhh"
+    },
+    {
+      "id": "430",
+      "name": "GLM-Z1 8K",
+      "key": "282d8bf19da048f2a46c7652c1c10b51.siE1OsYO1K8tfvhh"
+    }
+  ],
+  "魔力方舟": [
+    {
+      "id": "79",
+      "name": "Qwen3.5-122B-A10B",
+      "key": "OT5T3KPXNCZJB3IJLLLBDEM9KTCN2XNEBUVJ9LYA"
+    },
+    {
+      "id": "80",
+      "name": "GLM-5-Turbo",
+      "key": "OT5T3KPXNCZJB3IJLLLBDEM9KTCN2XNEBUVJ9LYA"
+    },
+    {
+      "id": "81",
+      "name": "Qwen3.5-27B",
+      "key": "OT5T3KPXNCZJB3IJLLLBDEM9KTCN2XNEBUVJ9LYA"
+    },
+    {
+      "id": "82",
+      "name": "Qwen3.5-35B-A3B",
+      "key": "OT5T3KPXNCZJB3IJLLLBDEM9KTCN2XNEBUVJ9LYA"
+    },
+    {
+      "id": "83",
+      "name": "MiniMax-M2.5",
+      "key": "OT5T3KPXNCZJB3IJLLLBDEM9KTCN2XNEBUVJ9LYA"
+    },
+    {
+      "id": "84",
+      "name": "Qwen3-ASR-1.7B",
+      "key": "OT5T3KPXNCZJB3IJLLLBDEM9KTCN2XNEBUVJ9LYA"
+    },
+    {
+      "id": "85",
+      "name": "Qwen3-Coder-Next",
+      "key": "OT5T3KPXNCZJB3IJLLLBDEM9KTCN2XNEBUVJ9LYA"
+    },
+    {
+      "id": "86",
+      "name": "Z-Image",
+      "key": "OT5T3KPXNCZJB3IJLLLBDEM9KTCN2XNEBUVJ9LYA"
+    },
+    {
+      "id": "87",
+      "name": "FLUX.2-klein-4B",
+      "key": "OT5T3KPXNCZJB3IJLLLBDEM9KTCN2XNEBUVJ9LYA"
+    },
+    {
+      "id": "88",
+      "name": "Qwen3-TTS",
+      "key": "OT5T3KPXNCZJB3IJLLLBDEM9KTCN2XNEBUVJ9LYA"
+    },
+    {
+      "id": "89",
+      "name": "LegalOne-8B",
+      "key": "OT5T3KPXNCZJB3IJLLLBDEM9KTCN2XNEBUVJ9LYA"
+    },
+    {
+      "id": "90",
+      "name": "DeepSeek-OCR-2",
+      "key": "OT5T3KPXNCZJB3IJLLLBDEM9KTCN2XNEBUVJ9LYA"
+    },
+    {
+      "id": "91",
+      "name": "PaddleOCR-VL-1.5",
+      "key": "OT5T3KPXNCZJB3IJLLLBDEM9KTCN2XNEBUVJ9LYA"
+    },
+    {
+      "id": "92",
+      "name": "Kimi-K2.5",
+      "key": "OT5T3KPXNCZJB3IJLLLBDEM9KTCN2XNEBUVJ9LYA"
+    },
+    {
+      "id": "93",
+      "name": "Qwen-Image-Layered",
+      "key": "OT5T3KPXNCZJB3IJLLLBDEM9KTCN2XNEBUVJ9LYA"
+    },
+    {
+      "id": "94",
+      "name": "Qwen3-VL-Reranker-2B",
+      "key": "OT5T3KPXNCZJB3IJLLLBDEM9KTCN2XNEBUVJ9LYA"
+    },
+    {
+      "id": "95",
+      "name": "LTX-2",
+      "key": "OT5T3KPXNCZJB3IJLLLBDEM9KTCN2XNEBUVJ9LYA"
+    },
+    {
+      "id": "96",
+      "name": "Qwen3-VL-Embedding-2B",
+      "key": "OT5T3KPXNCZJB3IJLLLBDEM9KTCN2XNEBUVJ9LYA"
+    },
+    {
+      "id": "97",
+      "name": "FLUX.2-klein-9B",
+      "key": "OT5T3KPXNCZJB3IJLLLBDEM9KTCN2XNEBUVJ9LYA"
+    },
+    {
+      "id": "98",
+      "name": "Qwen3-VL-Reranker-8B",
+      "key": "OT5T3KPXNCZJB3IJLLLBDEM9KTCN2XNEBUVJ9LYA"
+    },
+    {
+      "id": "99",
+      "name": "Qwen3-VL-Embedding-8B",
+      "key": "OT5T3KPXNCZJB3IJLLLBDEM9KTCN2XNEBUVJ9LYA"
+    },
+    {
+      "id": "100",
+      "name": "GLM-Image",
+      "key": "OT5T3KPXNCZJB3IJLLLBDEM9KTCN2XNEBUVJ9LYA"
+    },
+    {
+      "id": "101",
+      "name": "MAI-UI-8B",
+      "key": "OT5T3KPXNCZJB3IJLLLBDEM9KTCN2XNEBUVJ9LYA"
+    },
+    {
+      "id": "102",
+      "name": "Qwen-Image-2512",
+      "key": "OT5T3KPXNCZJB3IJLLLBDEM9KTCN2XNEBUVJ9LYA"
+    },
+    {
+      "id": "103",
+      "name": "Sinong1.0-32B",
+      "key": "OT5T3KPXNCZJB3IJLLLBDEM9KTCN2XNEBUVJ9LYA"
+    },
+    {
+      "id": "104",
+      "name": "HY-MT1.5-7B",
+      "key": "OT5T3KPXNCZJB3IJLLLBDEM9KTCN2XNEBUVJ9LYA"
+    },
+    {
+      "id": "105",
+      "name": "VajraV1",
+      "key": "OT5T3KPXNCZJB3IJLLLBDEM9KTCN2XNEBUVJ9LYA"
+    },
+    {
+      "id": "106",
+      "name": "CosyVoice3",
+      "key": "OT5T3KPXNCZJB3IJLLLBDEM9KTCN2XNEBUVJ9LYA"
+    },
+    {
+      "id": "107",
+      "name": "sam3",
+      "key": "OT5T3KPXNCZJB3IJLLLBDEM9KTCN2XNEBUVJ9LYA"
+    },
+    {
+      "id": "108",
+      "name": "Fun-ASR-Nano-2512",
+      "key": "OT5T3KPXNCZJB3IJLLLBDEM9KTCN2XNEBUVJ9LYA"
+    },
+    {
+      "id": "109",
+      "name": "Qwen-Image-Edit-2511",
+      "key": "OT5T3KPXNCZJB3IJLLLBDEM9KTCN2XNEBUVJ9LYA"
+    },
+    {
+      "id": "110",
+      "name": "MiniMax-M2.1",
+      "key": "OT5T3KPXNCZJB3IJLLLBDEM9KTCN2XNEBUVJ9LYA"
+    },
+    {
+      "id": "111",
+      "name": "GLM-4.7",
+      "key": "OT5T3KPXNCZJB3IJLLLBDEM9KTCN2XNEBUVJ9LYA"
+    },
+    {
+      "id": "112",
+      "name": "FLUX.2-dev",
+      "key": "OT5T3KPXNCZJB3IJLLLBDEM9KTCN2XNEBUVJ9LYA"
+    },
+    {
+      "id": "113",
+      "name": "GLM-TTS",
+      "key": "OT5T3KPXNCZJB3IJLLLBDEM9KTCN2XNEBUVJ9LYA"
+    },
+    {
+      "id": "114",
+      "name": "InfiniteTalk",
+      "key": "OT5T3KPXNCZJB3IJLLLBDEM9KTCN2XNEBUVJ9LYA"
+    },
+    {
+      "id": "115",
+      "name": "KAT-Dev",
+      "key": "OT5T3KPXNCZJB3IJLLLBDEM9KTCN2XNEBUVJ9LYA"
+    },
+    {
+      "id": "116",
+      "name": "AutoGLM-Phone-9B-Multilingual",
+      "key": "OT5T3KPXNCZJB3IJLLLBDEM9KTCN2XNEBUVJ9LYA"
+    },
+    {
+      "id": "117",
+      "name": "GLM-ASR",
+      "key": "OT5T3KPXNCZJB3IJLLLBDEM9KTCN2XNEBUVJ9LYA"
+    },
+    {
+      "id": "118",
+      "name": "GLM-4.6V",
+      "key": "OT5T3KPXNCZJB3IJLLLBDEM9KTCN2XNEBUVJ9LYA"
+    },
+    {
+      "id": "119",
+      "name": "LongCat-Image-Edit",
+      "key": "OT5T3KPXNCZJB3IJLLLBDEM9KTCN2XNEBUVJ9LYA"
+    },
+    {
+      "id": "120",
+      "name": "LongCat-Image",
+      "key": "OT5T3KPXNCZJB3IJLLLBDEM9KTCN2XNEBUVJ9LYA"
+    },
+    {
+      "id": "121",
+      "name": "Hulu-Med-14B",
+      "key": "OT5T3KPXNCZJB3IJLLLBDEM9KTCN2XNEBUVJ9LYA"
+    },
+    {
+      "id": "122",
+      "name": "LongCat-Video",
+      "key": "OT5T3KPXNCZJB3IJLLLBDEM9KTCN2XNEBUVJ9LYA"
+    },
+    {
+      "id": "123",
+      "name": "HunyuanOCR",
+      "key": "OT5T3KPXNCZJB3IJLLLBDEM9KTCN2XNEBUVJ9LYA"
+    },
+    {
+      "id": "124",
+      "name": "DeepSeek-V3.2",
+      "key": "OT5T3KPXNCZJB3IJLLLBDEM9KTCN2XNEBUVJ9LYA"
+    },
+    {
+      "id": "125",
+      "name": "z-image-turbo",
+      "key": "OT5T3KPXNCZJB3IJLLLBDEM9KTCN2XNEBUVJ9LYA"
+    },
+    {
+      "id": "126",
+      "name": "ERNIE-5.0-Thinking",
+      "key": "OT5T3KPXNCZJB3IJLLLBDEM9KTCN2XNEBUVJ9LYA"
+    },
+    {
+      "id": "127",
+      "name": "Qwen3-Coder-30B-A3B-Instruct",
+      "key": "OT5T3KPXNCZJB3IJLLLBDEM9KTCN2XNEBUVJ9LYA"
+    },
+    {
+      "id": "128",
+      "name": "HuatuoGPT-o1-7B",
+      "key": "OT5T3KPXNCZJB3IJLLLBDEM9KTCN2XNEBUVJ9LYA"
+    },
+    {
+      "id": "129",
+      "name": "HunyuanVideo-1.5",
+      "key": "OT5T3KPXNCZJB3IJLLLBDEM9KTCN2XNEBUVJ9LYA"
+    },
+    {
+      "id": "130",
+      "name": "search",
+      "key": "OT5T3KPXNCZJB3IJLLLBDEM9KTCN2XNEBUVJ9LYA"
+    },
+    {
+      "id": "131",
+      "name": "SeedVR2-3B",
+      "key": "OT5T3KPXNCZJB3IJLLLBDEM9KTCN2XNEBUVJ9LYA"
+    },
+    {
+      "id": "132",
+      "name": "comfyui",
+      "key": "OT5T3KPXNCZJB3IJLLLBDEM9KTCN2XNEBUVJ9LYA"
+    },
+    {
+      "id": "133",
+      "name": "Kimi-K2-Thinking",
+      "key": "OT5T3KPXNCZJB3IJLLLBDEM9KTCN2XNEBUVJ9LYA"
+    },
+    {
+      "id": "134",
+      "name": "MiniMax-M2",
+      "key": "OT5T3KPXNCZJB3IJLLLBDEM9KTCN2XNEBUVJ9LYA"
+    },
+    {
+      "id": "135",
+      "name": "DeepSeek-OCR",
+      "key": "OT5T3KPXNCZJB3IJLLLBDEM9KTCN2XNEBUVJ9LYA"
+    },
+    {
+      "id": "136",
+      "name": "PaddleOCR-VL",
+      "key": "OT5T3KPXNCZJB3IJLLLBDEM9KTCN2XNEBUVJ9LYA"
+    },
+    {
+      "id": "137",
+      "name": "AudioFly",
+      "key": "OT5T3KPXNCZJB3IJLLLBDEM9KTCN2XNEBUVJ9LYA"
+    },
+    {
+      "id": "138",
+      "name": "Qwen3Guard-Gen-0.6B",
+      "key": "OT5T3KPXNCZJB3IJLLLBDEM9KTCN2XNEBUVJ9LYA"
+    },
+    {
+      "id": "139",
+      "name": "Qwen3Guard-Gen-4B",
+      "key": "OT5T3KPXNCZJB3IJLLLBDEM9KTCN2XNEBUVJ9LYA"
+    },
+    {
+      "id": "140",
+      "name": "Qwen3Guard-Gen-8B",
+      "key": "OT5T3KPXNCZJB3IJLLLBDEM9KTCN2XNEBUVJ9LYA"
+    },
+    {
+      "id": "141",
+      "name": "Qwen3-VL-30B-A3B-Instruct",
+      "key": "OT5T3KPXNCZJB3IJLLLBDEM9KTCN2XNEBUVJ9LYA"
+    },
+    {
+      "id": "142",
+      "name": "Qwen3-VL-4B-Instruct",
+      "key": "OT5T3KPXNCZJB3IJLLLBDEM9KTCN2XNEBUVJ9LYA"
+    },
+    {
+      "id": "143",
+      "name": "Qwen3-VL-8B-Instruct",
+      "key": "OT5T3KPXNCZJB3IJLLLBDEM9KTCN2XNEBUVJ9LYA"
+    },
+    {
+      "id": "144",
+      "name": "Youtu-Embedding",
+      "key": "OT5T3KPXNCZJB3IJLLLBDEM9KTCN2XNEBUVJ9LYA"
+    },
+    {
+      "id": "145",
+      "name": "DeepSeek-V3.2-Exp",
+      "key": "OT5T3KPXNCZJB3IJLLLBDEM9KTCN2XNEBUVJ9LYA"
+    },
+    {
+      "id": "146",
+      "name": "GLM-4.6",
+      "key": "OT5T3KPXNCZJB3IJLLLBDEM9KTCN2XNEBUVJ9LYA"
+    },
+    {
+      "id": "147",
+      "name": "MinerU2.5",
+      "key": "OT5T3KPXNCZJB3IJLLLBDEM9KTCN2XNEBUVJ9LYA"
+    },
+    {
+      "id": "148",
+      "name": "DeepSeek-V3_1-Terminus",
+      "key": "OT5T3KPXNCZJB3IJLLLBDEM9KTCN2XNEBUVJ9LYA"
+    },
+    {
+      "id": "149",
+      "name": "Qwen3-Next-80B-A3B-Thinking",
+      "key": "OT5T3KPXNCZJB3IJLLLBDEM9KTCN2XNEBUVJ9LYA"
+    },
+    {
+      "id": "150",
+      "name": "Qwen3-Next-80B-A3B-Instruct",
+      "key": "OT5T3KPXNCZJB3IJLLLBDEM9KTCN2XNEBUVJ9LYA"
+    },
+    {
+      "id": "151",
+      "name": "IndexTTS-2",
+      "key": "OT5T3KPXNCZJB3IJLLLBDEM9KTCN2XNEBUVJ9LYA"
+    },
+    {
+      "id": "152",
+      "name": "VibeVoice-Large",
+      "key": "OT5T3KPXNCZJB3IJLLLBDEM9KTCN2XNEBUVJ9LYA"
+    },
+    {
+      "id": "153",
+      "name": "Hunyuan-MT-Chimera-7B",
+      "key": "OT5T3KPXNCZJB3IJLLLBDEM9KTCN2XNEBUVJ9LYA"
+    },
+    {
+      "id": "154",
+      "name": "DeepSeek-V3_1",
+      "key": "OT5T3KPXNCZJB3IJLLLBDEM9KTCN2XNEBUVJ9LYA"
+    },
+    {
+      "id": "155",
+      "name": "Qwen-Image-Edit",
+      "key": "OT5T3KPXNCZJB3IJLLLBDEM9KTCN2XNEBUVJ9LYA"
+    },
+    {
+      "id": "156",
+      "name": "Baichuan-M2-32B",
+      "key": "OT5T3KPXNCZJB3IJLLLBDEM9KTCN2XNEBUVJ9LYA"
+    },
+    {
+      "id": "157",
+      "name": "codesage-large-v2",
+      "key": "OT5T3KPXNCZJB3IJLLLBDEM9KTCN2XNEBUVJ9LYA"
+    },
+    {
+      "id": "158",
+      "name": "GLM-4_5V",
+      "key": "OT5T3KPXNCZJB3IJLLLBDEM9KTCN2XNEBUVJ9LYA"
+    },
+    {
+      "id": "159",
+      "name": "gpt-oss-120b",
+      "key": "OT5T3KPXNCZJB3IJLLLBDEM9KTCN2XNEBUVJ9LYA"
+    },
+    {
+      "id": "160",
+      "name": "gpt-oss-20b",
+      "key": "OT5T3KPXNCZJB3IJLLLBDEM9KTCN2XNEBUVJ9LYA"
+    },
+    {
+      "id": "161",
+      "name": "nonescape-v0",
+      "key": "OT5T3KPXNCZJB3IJLLLBDEM9KTCN2XNEBUVJ9LYA"
+    },
+    {
+      "id": "162",
+      "name": "Qwen-Image",
+      "key": "OT5T3KPXNCZJB3IJLLLBDEM9KTCN2XNEBUVJ9LYA"
+    },
+    {
+      "id": "163",
+      "name": "MOSS-TTSD-v0.5",
+      "key": "OT5T3KPXNCZJB3IJLLLBDEM9KTCN2XNEBUVJ9LYA"
+    },
+    {
+      "id": "164",
+      "name": "Qwen3-30B-A3B-Instruct-2507",
+      "key": "OT5T3KPXNCZJB3IJLLLBDEM9KTCN2XNEBUVJ9LYA"
+    },
+    {
+      "id": "165",
+      "name": "FLUX_1-Krea-dev",
+      "key": "OT5T3KPXNCZJB3IJLLLBDEM9KTCN2XNEBUVJ9LYA"
+    },
+    {
+      "id": "166",
+      "name": "Wan2_2-I2V-A14B",
+      "key": "OT5T3KPXNCZJB3IJLLLBDEM9KTCN2XNEBUVJ9LYA"
+    },
+    {
+      "id": "167",
+      "name": "step3",
+      "key": "OT5T3KPXNCZJB3IJLLLBDEM9KTCN2XNEBUVJ9LYA"
+    },
+    {
+      "id": "168",
+      "name": "CogView4_6B",
+      "key": "OT5T3KPXNCZJB3IJLLLBDEM9KTCN2XNEBUVJ9LYA"
+    },
+    {
+      "id": "169",
+      "name": "GLM-4_5-Air",
+      "key": "OT5T3KPXNCZJB3IJLLLBDEM9KTCN2XNEBUVJ9LYA"
+    },
+    {
+      "id": "170",
+      "name": "GLM-4_5",
+      "key": "OT5T3KPXNCZJB3IJLLLBDEM9KTCN2XNEBUVJ9LYA"
+    },
+    {
+      "id": "171",
+      "name": "Qwen3-235B-A22B-Instruct-2507",
+      "key": "OT5T3KPXNCZJB3IJLLLBDEM9KTCN2XNEBUVJ9LYA"
+    },
+    {
+      "id": "172",
+      "name": "Seed-X-PPO-7B",
+      "key": "OT5T3KPXNCZJB3IJLLLBDEM9KTCN2XNEBUVJ9LYA"
+    },
+    {
+      "id": "173",
+      "name": "qwen3-coder-480b-a35b-instruct",
+      "key": "OT5T3KPXNCZJB3IJLLLBDEM9KTCN2XNEBUVJ9LYA"
+    },
+    {
+      "id": "174",
+      "name": "F5-TTS",
+      "key": "OT5T3KPXNCZJB3IJLLLBDEM9KTCN2XNEBUVJ9LYA"
+    },
+    {
+      "id": "175",
+      "name": "kimi-k2-instruct",
+      "key": "OT5T3KPXNCZJB3IJLLLBDEM9KTCN2XNEBUVJ9LYA"
+    },
+    {
+      "id": "176",
+      "name": "bge-reranker-large",
+      "key": "OT5T3KPXNCZJB3IJLLLBDEM9KTCN2XNEBUVJ9LYA"
+    },
+    {
+      "id": "177",
+      "name": "Qwen2.5-VL-7B-Instruct",
+      "key": "OT5T3KPXNCZJB3IJLLLBDEM9KTCN2XNEBUVJ9LYA"
+    },
+    {
+      "id": "178",
+      "name": "Qwen3-14B",
+      "key": "OT5T3KPXNCZJB3IJLLLBDEM9KTCN2XNEBUVJ9LYA"
+    },
+    {
+      "id": "179",
+      "name": "clip-vit",
+      "key": "OT5T3KPXNCZJB3IJLLLBDEM9KTCN2XNEBUVJ9LYA"
+    },
+    {
+      "id": "180",
+      "name": "resnet-50",
+      "key": "OT5T3KPXNCZJB3IJLLLBDEM9KTCN2XNEBUVJ9LYA"
+    },
+    {
+      "id": "181",
+      "name": "FLUX.1-Kontext-dev",
+      "key": "OT5T3KPXNCZJB3IJLLLBDEM9KTCN2XNEBUVJ9LYA"
+    },
+    {
+      "id": "182",
+      "name": "FunASR",
+      "key": "OT5T3KPXNCZJB3IJLLLBDEM9KTCN2XNEBUVJ9LYA"
+    },
+    {
+      "id": "183",
+      "name": "YOLOv8",
+      "key": "OT5T3KPXNCZJB3IJLLLBDEM9KTCN2XNEBUVJ9LYA"
+    },
+    {
+      "id": "184",
+      "name": "stable-diffusion-3.5-large",
+      "key": "OT5T3KPXNCZJB3IJLLLBDEM9KTCN2XNEBUVJ9LYA"
+    },
+    {
+      "id": "185",
+      "name": "CogVideoX-5b",
+      "key": "OT5T3KPXNCZJB3IJLLLBDEM9KTCN2XNEBUVJ9LYA"
+    },
+    {
+      "id": "186",
+      "name": "jina-embeddings-v4",
+      "key": "OT5T3KPXNCZJB3IJLLLBDEM9KTCN2XNEBUVJ9LYA"
+    },
+    {
+      "id": "187",
+      "name": "AnimeSharp",
+      "key": "OT5T3KPXNCZJB3IJLLLBDEM9KTCN2XNEBUVJ9LYA"
+    },
+    {
+      "id": "188",
+      "name": "Duix.Heygem",
+      "key": "OT5T3KPXNCZJB3IJLLLBDEM9KTCN2XNEBUVJ9LYA"
+    },
+    {
+      "id": "189",
+      "name": "ERNIE-4.5-Turbo",
+      "key": "OT5T3KPXNCZJB3IJLLLBDEM9KTCN2XNEBUVJ9LYA"
+    },
+    {
+      "id": "190",
+      "name": "ERNIE-4.5-Turbo-VL",
+      "key": "OT5T3KPXNCZJB3IJLLLBDEM9KTCN2XNEBUVJ9LYA"
+    },
+    {
+      "id": "191",
+      "name": "ERNIE-X1-Turbo",
+      "key": "OT5T3KPXNCZJB3IJLLLBDEM9KTCN2XNEBUVJ9LYA"
+    },
+    {
+      "id": "192",
+      "name": "IndexTTS-1.5",
+      "key": "OT5T3KPXNCZJB3IJLLLBDEM9KTCN2XNEBUVJ9LYA"
+    },
+    {
+      "id": "193",
+      "name": "Lingshu-32B",
+      "key": "OT5T3KPXNCZJB3IJLLLBDEM9KTCN2XNEBUVJ9LYA"
+    },
+    {
+      "id": "194",
+      "name": "HelloMeme",
+      "key": "OT5T3KPXNCZJB3IJLLLBDEM9KTCN2XNEBUVJ9LYA"
+    },
+    {
+      "id": "195",
+      "name": "InstantCharacter",
+      "key": "OT5T3KPXNCZJB3IJLLLBDEM9KTCN2XNEBUVJ9LYA"
+    },
+    {
+      "id": "196",
+      "name": "Qwen3-Reranker-8B",
+      "key": "OT5T3KPXNCZJB3IJLLLBDEM9KTCN2XNEBUVJ9LYA"
+    },
+    {
+      "id": "197",
+      "name": "Qwen3-Reranker-4B",
+      "key": "OT5T3KPXNCZJB3IJLLLBDEM9KTCN2XNEBUVJ9LYA"
+    },
+    {
+      "id": "198",
+      "name": "Qwen3-Reranker-0.6B",
+      "key": "OT5T3KPXNCZJB3IJLLLBDEM9KTCN2XNEBUVJ9LYA"
+    },
+    {
+      "id": "199",
+      "name": "Qwen3-Embedding-8B",
+      "key": "OT5T3KPXNCZJB3IJLLLBDEM9KTCN2XNEBUVJ9LYA"
+    },
+    {
+      "id": "200",
+      "name": "Qwen3-Embedding-4B",
+      "key": "OT5T3KPXNCZJB3IJLLLBDEM9KTCN2XNEBUVJ9LYA"
+    },
+    {
+      "id": "201",
+      "name": "Qwen3-Embedding-0.6B",
+      "key": "OT5T3KPXNCZJB3IJLLLBDEM9KTCN2XNEBUVJ9LYA"
+    },
+    {
+      "id": "202",
+      "name": "OmniConsistency",
+      "key": "OT5T3KPXNCZJB3IJLLLBDEM9KTCN2XNEBUVJ9LYA"
+    },
+    {
+      "id": "203",
+      "name": "Real-ESRGAN",
+      "key": "OT5T3KPXNCZJB3IJLLLBDEM9KTCN2XNEBUVJ9LYA"
+    },
+    {
+      "id": "204",
+      "name": "medgemma-4b-it",
+      "key": "OT5T3KPXNCZJB3IJLLLBDEM9KTCN2XNEBUVJ9LYA"
+    },
+    {
+      "id": "205",
+      "name": "DreamO",
+      "key": "OT5T3KPXNCZJB3IJLLLBDEM9KTCN2XNEBUVJ9LYA"
+    },
+    {
+      "id": "206",
+      "name": "Step1X-3D",
+      "key": "OT5T3KPXNCZJB3IJLLLBDEM9KTCN2XNEBUVJ9LYA"
+    },
+    {
+      "id": "207",
+      "name": "Qwen3-235B-A22B",
+      "key": "OT5T3KPXNCZJB3IJLLLBDEM9KTCN2XNEBUVJ9LYA"
+    },
+    {
+      "id": "208",
+      "name": "FLUX.1-dev",
+      "key": "OT5T3KPXNCZJB3IJLLLBDEM9KTCN2XNEBUVJ9LYA"
+    },
+    {
+      "id": "209",
+      "name": "GLM-4-9B-0414",
+      "key": "OT5T3KPXNCZJB3IJLLLBDEM9KTCN2XNEBUVJ9LYA"
+    },
+    {
+      "id": "210",
+      "name": "ACE-Step-v1-3.5B",
+      "key": "OT5T3KPXNCZJB3IJLLLBDEM9KTCN2XNEBUVJ9LYA"
+    },
+    {
+      "id": "211",
+      "name": "HiDream-E1-Full",
+      "key": "OT5T3KPXNCZJB3IJLLLBDEM9KTCN2XNEBUVJ9LYA"
+    },
+    {
+      "id": "212",
+      "name": "Hi3DGen",
+      "key": "OT5T3KPXNCZJB3IJLLLBDEM9KTCN2XNEBUVJ9LYA"
+    },
+    {
+      "id": "213",
+      "name": "DeepSeek-Prover-V2-7B",
+      "key": "OT5T3KPXNCZJB3IJLLLBDEM9KTCN2XNEBUVJ9LYA"
+    },
+    {
+      "id": "214",
+      "name": "HiDream-I1-Full",
+      "key": "OT5T3KPXNCZJB3IJLLLBDEM9KTCN2XNEBUVJ9LYA"
+    },
+    {
+      "id": "215",
+      "name": "Qwen3-4B",
+      "key": "OT5T3KPXNCZJB3IJLLLBDEM9KTCN2XNEBUVJ9LYA"
+    },
+    {
+      "id": "216",
+      "name": "Qwen3-32B",
+      "key": "OT5T3KPXNCZJB3IJLLLBDEM9KTCN2XNEBUVJ9LYA"
+    },
+    {
+      "id": "217",
+      "name": "Qwen3-0.6B",
+      "key": "OT5T3KPXNCZJB3IJLLLBDEM9KTCN2XNEBUVJ9LYA"
+    },
+    {
+      "id": "218",
+      "name": "Qwen3-8B",
+      "key": "OT5T3KPXNCZJB3IJLLLBDEM9KTCN2XNEBUVJ9LYA"
+    },
+    {
+      "id": "219",
+      "name": "Qwen3-30B-A3B",
+      "key": "OT5T3KPXNCZJB3IJLLLBDEM9KTCN2XNEBUVJ9LYA"
+    },
+    {
+      "id": "220",
+      "name": "stable-diffusion-v1-5",
+      "key": "OT5T3KPXNCZJB3IJLLLBDEM9KTCN2XNEBUVJ9LYA"
+    },
+    {
+      "id": "221",
+      "name": "HealthGPT-L14",
+      "key": "OT5T3KPXNCZJB3IJLLLBDEM9KTCN2XNEBUVJ9LYA"
+    },
+    {
+      "id": "222",
+      "name": "DianJin-R1-32B",
+      "key": "OT5T3KPXNCZJB3IJLLLBDEM9KTCN2XNEBUVJ9LYA"
+    },
+    {
+      "id": "223",
+      "name": "all-mpnet-base-v2",
+      "key": "OT5T3KPXNCZJB3IJLLLBDEM9KTCN2XNEBUVJ9LYA"
+    },
+    {
+      "id": "224",
+      "name": "InternVL3-38B",
+      "key": "OT5T3KPXNCZJB3IJLLLBDEM9KTCN2XNEBUVJ9LYA"
+    },
+    {
+      "id": "225",
+      "name": "InternVL3-78B",
+      "key": "OT5T3KPXNCZJB3IJLLLBDEM9KTCN2XNEBUVJ9LYA"
+    },
+    {
+      "id": "226",
+      "name": "GLM-4-32B",
+      "key": "OT5T3KPXNCZJB3IJLLLBDEM9KTCN2XNEBUVJ9LYA"
+    },
+    {
+      "id": "227",
+      "name": "nomic-embed-code",
+      "key": "OT5T3KPXNCZJB3IJLLLBDEM9KTCN2XNEBUVJ9LYA"
+    },
+    {
+      "id": "228",
+      "name": "Spark-TTS-0.5B",
+      "key": "OT5T3KPXNCZJB3IJLLLBDEM9KTCN2XNEBUVJ9LYA"
+    },
+    {
+      "id": "229",
+      "name": "jina-reranker-m0",
+      "key": "OT5T3KPXNCZJB3IJLLLBDEM9KTCN2XNEBUVJ9LYA"
+    },
+    {
+      "id": "230",
+      "name": "moark-text-moderation",
+      "key": "OT5T3KPXNCZJB3IJLLLBDEM9KTCN2XNEBUVJ9LYA"
+    },
+    {
+      "id": "231",
+      "name": "MegaTTS3",
+      "key": "OT5T3KPXNCZJB3IJLLLBDEM9KTCN2XNEBUVJ9LYA"
+    },
+    {
+      "id": "232",
+      "name": "Hunyuan3D-2",
+      "key": "OT5T3KPXNCZJB3IJLLLBDEM9KTCN2XNEBUVJ9LYA"
+    },
+    {
+      "id": "233",
+      "name": "moark-m1",
+      "key": "OT5T3KPXNCZJB3IJLLLBDEM9KTCN2XNEBUVJ9LYA"
+    },
+    {
+      "id": "234",
+      "name": "Qwen2.5-VL-32B-Instruct",
+      "key": "OT5T3KPXNCZJB3IJLLLBDEM9KTCN2XNEBUVJ9LYA"
+    },
+    {
+      "id": "235",
+      "name": "Fin-R1",
+      "key": "OT5T3KPXNCZJB3IJLLLBDEM9KTCN2XNEBUVJ9LYA"
+    },
+    {
+      "id": "236",
+      "name": "whisper-large-v3",
+      "key": "OT5T3KPXNCZJB3IJLLLBDEM9KTCN2XNEBUVJ9LYA"
+    },
+    {
+      "id": "237",
+      "name": "PDF-Extract-Kit-1.0",
+      "key": "OT5T3KPXNCZJB3IJLLLBDEM9KTCN2XNEBUVJ9LYA"
+    },
+    {
+      "id": "238",
+      "name": "internlm3-8b-instruct",
+      "key": "OT5T3KPXNCZJB3IJLLLBDEM9KTCN2XNEBUVJ9LYA"
+    },
+    {
+      "id": "239",
+      "name": "gemma-3-27b-it",
+      "key": "OT5T3KPXNCZJB3IJLLLBDEM9KTCN2XNEBUVJ9LYA"
+    },
+    {
+      "id": "240",
+      "name": "Wan2.1-I2V-14B-480P",
+      "key": "OT5T3KPXNCZJB3IJLLLBDEM9KTCN2XNEBUVJ9LYA"
+    },
+    {
+      "id": "241",
+      "name": "Qwen2-Audio-7B-Instruct",
+      "key": "OT5T3KPXNCZJB3IJLLLBDEM9KTCN2XNEBUVJ9LYA"
+    },
+    {
+      "id": "242",
+      "name": "Wan2.1-I2V-14B-720P",
+      "key": "OT5T3KPXNCZJB3IJLLLBDEM9KTCN2XNEBUVJ9LYA"
+    },
+    {
+      "id": "243",
+      "name": "QwQ-32B",
+      "key": "OT5T3KPXNCZJB3IJLLLBDEM9KTCN2XNEBUVJ9LYA"
+    },
+    {
+      "id": "244",
+      "name": "Wan2.1-T2V-1.3B",
+      "key": "OT5T3KPXNCZJB3IJLLLBDEM9KTCN2XNEBUVJ9LYA"
+    },
+    {
+      "id": "245",
+      "name": "Wan2.1-T2V-14B",
+      "key": "OT5T3KPXNCZJB3IJLLLBDEM9KTCN2XNEBUVJ9LYA"
+    },
+    {
+      "id": "246",
+      "name": "Step-Audio-TTS-3B",
+      "key": "OT5T3KPXNCZJB3IJLLLBDEM9KTCN2XNEBUVJ9LYA"
+    },
+    {
+      "id": "247",
+      "name": "stepvideo-t2v",
+      "key": "OT5T3KPXNCZJB3IJLLLBDEM9KTCN2XNEBUVJ9LYA"
+    },
+    {
+      "id": "248",
+      "name": "Align-DS-V",
+      "key": "OT5T3KPXNCZJB3IJLLLBDEM9KTCN2XNEBUVJ9LYA"
+    },
+    {
+      "id": "249",
+      "name": "DeepSeek-R1",
+      "key": "OT5T3KPXNCZJB3IJLLLBDEM9KTCN2XNEBUVJ9LYA"
+    },
+    {
+      "id": "250",
+      "name": "DeepSeek-V3",
+      "key": "OT5T3KPXNCZJB3IJLLLBDEM9KTCN2XNEBUVJ9LYA"
+    },
+    {
+      "id": "251",
+      "name": "DeepSeek-R1-Distill-Qwen-7B",
+      "key": "OT5T3KPXNCZJB3IJLLLBDEM9KTCN2XNEBUVJ9LYA"
+    },
+    {
+      "id": "252",
+      "name": "DeepSeek-R1-Distill-Qwen-14B",
+      "key": "OT5T3KPXNCZJB3IJLLLBDEM9KTCN2XNEBUVJ9LYA"
+    },
+    {
+      "id": "253",
+      "name": "DeepSeek-R1-Distill-Qwen-1.5B",
+      "key": "OT5T3KPXNCZJB3IJLLLBDEM9KTCN2XNEBUVJ9LYA"
+    },
+    {
+      "id": "254",
+      "name": "DeepSeek-R1-Distill-Qwen-32B",
+      "key": "OT5T3KPXNCZJB3IJLLLBDEM9KTCN2XNEBUVJ9LYA"
+    },
+    {
+      "id": "255",
+      "name": "Florence-2-large",
+      "key": "OT5T3KPXNCZJB3IJLLLBDEM9KTCN2XNEBUVJ9LYA"
+    },
+    {
+      "id": "256",
+      "name": "bce-reranker-base_v1",
+      "key": "OT5T3KPXNCZJB3IJLLLBDEM9KTCN2XNEBUVJ9LYA"
+    },
+    {
+      "id": "257",
+      "name": "bce-embedding-base_v1",
+      "key": "OT5T3KPXNCZJB3IJLLLBDEM9KTCN2XNEBUVJ9LYA"
+    },
+    {
+      "id": "258",
+      "name": "QwQ-32B-Preview",
+      "key": "OT5T3KPXNCZJB3IJLLLBDEM9KTCN2XNEBUVJ9LYA"
+    },
+    {
+      "id": "259",
+      "name": "Security-semantic-filtering",
+      "key": "OT5T3KPXNCZJB3IJLLLBDEM9KTCN2XNEBUVJ9LYA"
+    },
+    {
+      "id": "260",
+      "name": "SenseVoiceSmall",
+      "key": "OT5T3KPXNCZJB3IJLLLBDEM9KTCN2XNEBUVJ9LYA"
+    },
+    {
+      "id": "261",
+      "name": "nsfw-classifier",
+      "key": "OT5T3KPXNCZJB3IJLLLBDEM9KTCN2XNEBUVJ9LYA"
+    },
+    {
+      "id": "262",
+      "name": "GOT-OCR2_0",
+      "key": "OT5T3KPXNCZJB3IJLLLBDEM9KTCN2XNEBUVJ9LYA"
+    },
+    {
+      "id": "263",
+      "name": "InternVL2.5-78B",
+      "key": "OT5T3KPXNCZJB3IJLLLBDEM9KTCN2XNEBUVJ9LYA"
+    },
+    {
+      "id": "264",
+      "name": "UVDoc",
+      "key": "OT5T3KPXNCZJB3IJLLLBDEM9KTCN2XNEBUVJ9LYA"
+    },
+    {
+      "id": "265",
+      "name": "CosyVoice2",
+      "key": "OT5T3KPXNCZJB3IJLLLBDEM9KTCN2XNEBUVJ9LYA"
+    },
+    {
+      "id": "266",
+      "name": "HunyuanDiT-v1.2-Diffusers-Distilled",
+      "key": "OT5T3KPXNCZJB3IJLLLBDEM9KTCN2XNEBUVJ9LYA"
+    },
+    {
+      "id": "267",
+      "name": "whisper-large-v3-turbo",
+      "key": "OT5T3KPXNCZJB3IJLLLBDEM9KTCN2XNEBUVJ9LYA"
+    },
+    {
+      "id": "268",
+      "name": "Qwen2.5-Coder-14B-Instruct",
+      "key": "OT5T3KPXNCZJB3IJLLLBDEM9KTCN2XNEBUVJ9LYA"
+    },
+    {
+      "id": "269",
+      "name": "fish-speech-1.5",
+      "key": "OT5T3KPXNCZJB3IJLLLBDEM9KTCN2XNEBUVJ9LYA"
+    },
+    {
+      "id": "270",
+      "name": "RMBG-2.0",
+      "key": "OT5T3KPXNCZJB3IJLLLBDEM9KTCN2XNEBUVJ9LYA"
+    },
+    {
+      "id": "271",
+      "name": "Qwen2-VL-72B",
+      "key": "OT5T3KPXNCZJB3IJLLLBDEM9KTCN2XNEBUVJ9LYA"
+    },
+    {
+      "id": "272",
+      "name": "InternVL2.5-26B",
+      "key": "OT5T3KPXNCZJB3IJLLLBDEM9KTCN2XNEBUVJ9LYA"
+    },
+    {
+      "id": "273",
+      "name": "jina-clip-v2",
+      "key": "OT5T3KPXNCZJB3IJLLLBDEM9KTCN2XNEBUVJ9LYA"
+    },
+    {
+      "id": "274",
+      "name": "InternVL2-8B",
+      "key": "OT5T3KPXNCZJB3IJLLLBDEM9KTCN2XNEBUVJ9LYA"
+    },
+    {
+      "id": "275",
+      "name": "Qwen2.5-14B-Instruct",
+      "key": "OT5T3KPXNCZJB3IJLLLBDEM9KTCN2XNEBUVJ9LYA"
+    },
+    {
+      "id": "276",
+      "name": "Qwen2.5-32B-Instruct",
+      "key": "OT5T3KPXNCZJB3IJLLLBDEM9KTCN2XNEBUVJ9LYA"
+    },
+    {
+      "id": "277",
+      "name": "stable-diffusion-3.5-large-turbo",
+      "key": "OT5T3KPXNCZJB3IJLLLBDEM9KTCN2XNEBUVJ9LYA"
+    },
+    {
+      "id": "278",
+      "name": "Qwen2.5-7B-Instruct",
+      "key": "OT5T3KPXNCZJB3IJLLLBDEM9KTCN2XNEBUVJ9LYA"
+    },
+    {
+      "id": "279",
+      "name": "Qwen2.5-Coder-32B-Instruct",
+      "key": "OT5T3KPXNCZJB3IJLLLBDEM9KTCN2XNEBUVJ9LYA"
+    },
+    {
+      "id": "280",
+      "name": "Qwen2.5-72B-Instruct",
+      "key": "OT5T3KPXNCZJB3IJLLLBDEM9KTCN2XNEBUVJ9LYA"
+    },
+    {
+      "id": "281",
+      "name": "jina-clip-v1",
+      "key": "OT5T3KPXNCZJB3IJLLLBDEM9KTCN2XNEBUVJ9LYA"
+    },
+    {
+      "id": "282",
+      "name": "stable-diffusion-v1-4",
+      "key": "OT5T3KPXNCZJB3IJLLLBDEM9KTCN2XNEBUVJ9LYA"
+    },
+    {
+      "id": "283",
+      "name": "flux-1-schnell",
+      "key": "OT5T3KPXNCZJB3IJLLLBDEM9KTCN2XNEBUVJ9LYA"
+    },
+    {
+      "id": "284",
+      "name": "bge-m3",
+      "key": "OT5T3KPXNCZJB3IJLLLBDEM9KTCN2XNEBUVJ9LYA"
+    },
+    {
+      "id": "285",
+      "name": "bge-reranker-v2-m3",
+      "key": "OT5T3KPXNCZJB3IJLLLBDEM9KTCN2XNEBUVJ9LYA"
+    },
+    {
+      "id": "286",
+      "name": "fish-speech-1.2-sft",
+      "key": "OT5T3KPXNCZJB3IJLLLBDEM9KTCN2XNEBUVJ9LYA"
+    },
+    {
+      "id": "287",
+      "name": "glm-4-9b-chat",
+      "key": "OT5T3KPXNCZJB3IJLLLBDEM9KTCN2XNEBUVJ9LYA"
+    },
+    {
+      "id": "288",
+      "name": "Yi-34B-Chat",
+      "key": "OT5T3KPXNCZJB3IJLLLBDEM9KTCN2XNEBUVJ9LYA"
+    },
+    {
+      "id": "289",
+      "name": "FunAudioLLM-CosyVoice-300M",
+      "key": "OT5T3KPXNCZJB3IJLLLBDEM9KTCN2XNEBUVJ9LYA"
+    },
+    {
+      "id": "290",
+      "name": "code-raccoon-v1",
+      "key": "OT5T3KPXNCZJB3IJLLLBDEM9KTCN2XNEBUVJ9LYA"
+    },
+    {
+      "id": "291",
+      "name": "codegeex4-all-9b",
+      "key": "OT5T3KPXNCZJB3IJLLLBDEM9KTCN2XNEBUVJ9LYA"
+    },
+    {
+      "id": "292",
+      "name": "Kolors",
+      "key": "OT5T3KPXNCZJB3IJLLLBDEM9KTCN2XNEBUVJ9LYA"
+    },
+    {
+      "id": "293",
+      "name": "deepseek-coder-33B-instruct",
+      "key": "OT5T3KPXNCZJB3IJLLLBDEM9KTCN2XNEBUVJ9LYA"
+    },
+    {
+      "id": "294",
+      "name": "Qwen2-72B-Instruct",
+      "key": "OT5T3KPXNCZJB3IJLLLBDEM9KTCN2XNEBUVJ9LYA"
+    },
+    {
+      "id": "295",
+      "name": "stable-diffusion-3-medium",
+      "key": "OT5T3KPXNCZJB3IJLLLBDEM9KTCN2XNEBUVJ9LYA"
+    },
+    {
+      "id": "296",
+      "name": "Qwen2-7B-Instruct",
+      "key": "OT5T3KPXNCZJB3IJLLLBDEM9KTCN2XNEBUVJ9LYA"
+    },
+    {
+      "id": "297",
+      "name": "ChatTTS",
+      "key": "OT5T3KPXNCZJB3IJLLLBDEM9KTCN2XNEBUVJ9LYA"
+    },
+    {
+      "id": "298",
+      "name": "bge-small-zh-v1.5",
+      "key": "OT5T3KPXNCZJB3IJLLLBDEM9KTCN2XNEBUVJ9LYA"
+    },
+    {
+      "id": "299",
+      "name": "bge-large-zh-v1.5",
+      "key": "OT5T3KPXNCZJB3IJLLLBDEM9KTCN2XNEBUVJ9LYA"
+    },
+    {
+      "id": "300",
+      "name": "whisper-large",
+      "key": "OT5T3KPXNCZJB3IJLLLBDEM9KTCN2XNEBUVJ9LYA"
+    },
+    {
+      "id": "301",
+      "name": "speecht5_tts",
+      "key": "OT5T3KPXNCZJB3IJLLLBDEM9KTCN2XNEBUVJ9LYA"
+    },
+    {
+      "id": "302",
+      "name": "whisper-base",
+      "key": "OT5T3KPXNCZJB3IJLLLBDEM9KTCN2XNEBUVJ9LYA"
+    },
+    {
+      "id": "303",
+      "name": "stable-diffusion-xl-base-1.0",
+      "key": "OT5T3KPXNCZJB3IJLLLBDEM9KTCN2XNEBUVJ9LYA"
+    }
+  ]
+}

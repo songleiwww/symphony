@@ -2,61 +2,74 @@
 """
 序境系统 - 多模型协同测试
 测试多模型合作能力、规则检查、执行汇报
+从数据库模型配置表动态读取配置
 """
 
 import sys
 import os
 import json
 import time
+import sqlite3
 
 kernel_path = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 sys.path.insert(0, kernel_path)
 
-# 模型配置 (从数据库/配置读取)
-MODELS = {
-    "ark-code-latest": {
-        "name": "ark-code-latest",
-        "provider": "火山引擎",
-        "api_url": "https://ark.cn-beijing.volces.com/api/coding/v3/chat/completions",
-        "api_key": "3b922877-3fbe-45d1-a298-53f2231c5224",
-        "max_tokens": 200000
-    },
-    "deepseek-v3.2": {
-        "name": "deepseek-v3.2",
-        "provider": "火山引擎",
-        "api_url": "https://ark.cn-beijing.volces.com/api/coding/v3/chat/completions",
-        "api_key": "3b922877-3fbe-45d1-a298-53f2231c5224",
-        "max_tokens": 64000
-    },
-    "glm-4-flash": {
-        "name": "glm-4-flash",
-        "provider": "智谱",
-        "api_url": "https://open.bigmodel.cn/api/paas/v4/",
-        "api_key": "a2afbc521cb24dfca766928d9fbb11be",
-        "max_tokens": 128000
-    },
-    "Qwen2.5-72B": {
-        "name": "Qwen2.5-72B",
-        "provider": "硅基流动",
-        "api_url": "https://api.siliconflow.cn/v1",
-        "api_key": "sk-uqcngebrjbdzmcowpfxelysxukwqqarhdzfakpxwkklfrlqc",
-        "max_tokens": 32000
-    },
-    "Llama 3.1 70B": {
-        "name": "Llama 3.1 70B",
-        "provider": "英伟达",
-        "api_url": "https://integrate.api.nvidia.com/v1/chat/completions",
-        "api_key": "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",
-        "max_tokens": 128000
-    },
-    "Llama 3.3 70B": {
-        "name": "Llama 3.3 70B",
-        "provider": "英伟达",
-        "api_url": "https://integrate.api.nvidia.com/v1/chat/completions",
-        "api_key": "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",
-        "max_tokens": 128000
-    }
-}
+# 数据库路径
+DB_PATH = os.path.join(os.path.dirname(__file__), 'data', 'symphony.db')
+
+
+def get_models_from_db(provider: str = None) -> dict:
+    """从数据库模型配置表动态读取配置"""
+    conn = sqlite3.connect(DB_PATH)
+    conn.text_factory = str
+    c = conn.cursor()
+    
+    # 使用参数化查询避免中文编码问题
+    # 字段: id, 模型名称, 模型标识符, 服务商, API地址, API密钥
+    if provider:
+        c.execute("""
+            SELECT id, 模型名称, 模型标识符, 服务商, API地址, API密钥
+            FROM 模型配置表
+            WHERE 服务商 = ? AND 在线状态 = 'online'
+            ORDER BY id
+        """, (provider,))
+    else:
+        c.execute("""
+            SELECT id, 模型名称, 模型标识符, 服务商, API地址, API密钥
+            FROM 模型配置表
+            WHERE 在线状态 = 'online'
+            ORDER BY 服务商, id
+        """)
+    
+    models = {}
+    for row in c.fetchall():
+        model_id, name, identifier, provider_name, api_addr, api_key = row
+        # 构建模型配置
+        models[identifier] = {
+            "name": identifier,
+            "display_name": name,
+            "provider": provider_name,
+            "api_url": api_addr,
+            "api_key": api_key,
+            "max_tokens": 128000
+        }
+    
+    conn.close()
+    return models
+
+
+def get_all_providers() -> list:
+    """获取所有服务商"""
+    conn = sqlite3.connect(DB_PATH)
+    c = conn.cursor()
+    c.execute("SELECT DISTINCT 服务商 FROM 模型配置表 WHERE 在线状态 = 'online'")
+    providers = [row[0] for row in c.fetchall()]
+    conn.close()
+    return providers
+
+
+# 动态加载模型配置
+MODELS = get_models_from_db()
 
 
 def call_model(model_config: dict, prompt: str) -> dict:
@@ -78,54 +91,51 @@ def call_model(model_config: dict, prompt: str) -> dict:
         data = {
             "model": model_config["name"],
             "messages": [{"role": "user", "content": prompt}],
-            "max_tokens": model_config["max_tokens"]  # 不限制输出
+            "max_tokens": model_config.get("max_tokens", 128000)
         }
     elif "siliconflow" in url:
         data = {
             "model": model_config["name"],
             "messages": [{"role": "user", "content": prompt}],
-            "max_tokens": model_config["max_tokens"]
+            "max_tokens": model_config.get("max_tokens", 32000)
         }
     elif "nvidia" in url:
         data = {
             "model": model_config["name"],
             "messages": [{"role": "user", "content": prompt}],
-            "max_tokens": model_config["max_tokens"]
+            "max_tokens": model_config.get("max_tokens", 128000)
         }
     elif "bigmodel" in url:
         data = {
             "model": model_config["name"],
             "messages": [{"role": "user", "content": prompt}],
-            "max_tokens": model_config["max_tokens"]
+            "max_tokens": model_config.get("max_tokens", 128000)
+        }
+    elif "modelscope" in url:
+        data = {
+            "model": model_config["name"],
+            "messages": [{"role": "user", "content": prompt}],
+            "max_tokens": model_config.get("max_tokens", 32000)
         }
     else:
         data = {
             "model": model_config["name"],
-            "messages": [{"role": "user", "content": prompt}]
+            "messages": [{"role": "user", "content": prompt}],
+            "max_tokens": model_config.get("max_tokens", 32000)
         }
     
-    start_time = time.time()
+    start = time.time()
     try:
         resp = requests.post(url, headers=headers, json=data, timeout=30)
-        latency = time.time() - start_time
+        latency = time.time() - start
         
         if resp.status_code == 200:
             result = resp.json()
-            # 计算 tokens
-            usage = result.get("usage", {})
-            total_tokens = usage.get("total_tokens", len(prompt) // 4)
-            
-            # 提取回复
-            if "choices" in result and result["choices"]:
-                content = result["choices"][0]["message"].get("content", "")
-            else:
-                content = str(result)
-            
             return {
                 "success": True,
-                "response": content[:500],  # 截断显示
-                "tokens": total_tokens,
-                "latency": round(latency, 2),
+                "response": result.get("choices", [{}])[0].get("message", {}).get("content", ""),
+                "tokens": result.get("usage", {}).get("total_tokens", 0),
+                "latency": latency,
                 "error": None
             }
         else:
@@ -133,151 +143,83 @@ def call_model(model_config: dict, prompt: str) -> dict:
                 "success": False,
                 "response": None,
                 "tokens": 0,
-                "latency": round(latency, 2),
-                "error": f"HTTP {resp.status_code}: {resp.text[:100]}"
+                "latency": latency,
+                "error": f"HTTP {resp.status_code}: {resp.text[:200]}"
             }
     except Exception as e:
-        latency = time.time() - start_time
         return {
             "success": False,
             "response": None,
             "tokens": 0,
-            "latency": round(latency, 2),
+            "latency": time.time() - start,
             "error": str(e)
         }
 
 
-def test_multi_model_coop(prompts: list = None) -> dict:
-    """
-    测试多模型协同
+def test_model(model_key: str, prompt: str = "你好") -> dict:
+    """测试单个模型"""
+    if model_key not in MODELS:
+        return {"success": False, "error": f"模型 {model_key} 不在配置中"}
     
-    Args:
-        prompts: 测试提示词列表
-    
-    Returns:
-        测试结果报告
-    """
-    if prompts is None:
-        prompts = [
-            "你好，请用一句话介绍自己",
-            "分析序境系统的架构优势",
-            "给出3条系统优化建议"
-        ]
-    
-    results = {
-        "test_time": time.strftime("%Y-%m-%d %H:%M:%S"),
-        "models": [],
-        "total_tokens": 0,
-        "success_count": 0,
-        "fail_count": 0
-    }
-    
-    # 测试每个模型
-    for model_id, config in MODELS.items():
-        print(f"\n=== 测试模型: {model_id} ({config['provider']}) ===")
-        
-        model_result = {
-            "model_id": model_id,
-            "model_name": config["name"],
-            "provider": config["provider"],
-            "api_url": config["api_url"],
-            "max_tokens": config["max_tokens"],
-            "calls": []
-        }
-        
-        for i, prompt in enumerate(prompts):
-            print(f"  Prompt {i+1}: {prompt[:30]}...")
-            call_result = call_model(config, prompt)
-            
-            model_result["calls"].append({
-                "prompt_num": i + 1,
-                "prompt": prompt[:50],
-                "success": call_result["success"],
-                "tokens": call_result["tokens"],
-                "latency": call_result["latency"],
-                "error": call_result["error"]
-            })
-            
-            if call_result["success"]:
-                results["success_count"] += 1
-                print(f"    [OK] tokens: {call_result['tokens']} | latency: {call_result['latency']}s")
-            else:
-                results["fail_count"] += 1
-                print(f"    [FAIL] {call_result['error']}")
-        
-        # 统计
-        model_tokens = sum(c["tokens"] for c in model_result["calls"])
-        model_result["total_tokens"] = model_tokens
-        results["total_tokens"] += model_tokens
-        
-        results["models"].append(model_result)
-    
+    return call_model(MODELS[model_key], prompt)
+
+
+def test_provider(provider: str, prompt: str = "你好") -> list:
+    """测试指定服务商的所有模型"""
+    results = []
+    for name, config in MODELS.items():
+        if config["provider"] == provider:
+            result = call_model(config, prompt)
+            result["model"] = name
+            result["provider"] = provider
+            results.append(result)
     return results
 
 
-def generate_report(results: dict) -> str:
-    """生成汇报报告"""
-    report = f"""
-============================================================
-           序境系统 - 多模型协同测试报告
-============================================================
+def test_all_models(prompt: str = "你好") -> dict:
+    """测试所有模型"""
+    results = {}
+    for name, config in MODELS.items():
+        result = call_model(config, prompt)
+        results[name] = result
+    return results
 
-测试时间: {results['test_time']}
 
-------------------------------------------------------------
-一、总体统计
-------------------------------------------------------------
-总模型数:     {len(results['models'])} 个
-成功调用:     {results['success_count']} 次
-失败调用:     {results['fail_count']} 次
-总Tokens:     {results['total_tokens']:,}
+def reload_models():
+    """重新从数据库加载模型配置"""
+    global MODELS
+    MODELS = get_models_from_db()
+    print(f"已重新从数据库加载 {len(MODELS)} 个模型配置")
 
-"""
+
+if __name__ == "__main__":
+    print("=== 序境系统 - 多模型协同测试 ===")
+    print(f"数据库路径: {DB_PATH}")
     
-    for m in results["models"]:
-        provider = m["provider"]
-        model_name = m["model_name"]
-        total_tokens = m["total_tokens"]
-        
-        success_calls = sum(1 for c in m["calls"] if c["success"])
-        total_calls = len(m["calls"])
-        
-        avg_latency = sum(c["latency"] for c in m["calls"]) / max(len(m["calls"]), 1)
-        
-        report += f"""
-------------------------------------------------------------
-模型: {model_name}
-服务商: {provider}
-------------------------------------------------------------
-调用次数: {success_calls}/{total_calls} | 总Tokens: {total_tokens}
-平均延迟: {avg_latency:.2f}s | 最大输出: {m['max_tokens']:,} tokens
-
-"""
+    # 重新加载模型
+    reload_models()
     
-    report += """
-------------------------------------------------------------
-二、规则检查
-------------------------------------------------------------
-[OK] 未绕过规则 - 所有调用使用配置表中的模型
-[OK] 未限制输出 - max_tokens 设为模型支持的最大值
-[OK] 记录完整 - 所有调用记录 tokens 和延迟
-
-"""
-
-    return report
-
-
-if __name__ == '__main__':
-    print("=== 序境系统 多模型协同测试 ===\n")
+    print(f"\n可用模型数: {len(MODELS)}")
+    print(f"可用服务商: {get_all_providers()}")
     
-    results = test_multi_model_coop()
-    report = generate_report(results)
-    print(report)
-    
-    # 保存结果
-    output_file = os.path.join(kernel_path, 'data', 'multi_model_test.json')
-    os.makedirs(os.path.dirname(output_file), exist_ok=True)
-    with open(output_file, 'w', encoding='utf-8') as f:
-        json.dump(results, f, ensure_ascii=False, indent=2)
-    
-    print(f"\n结果已保存到: {output_file}")
+    # 测试所有模型
+    if len(sys.argv) > 1:
+        if sys.argv[1] == "--provider":
+            provider = sys.argv[2] if len(sys.argv) > 2 else "英伟达"
+            print(f"\n=== 测试服务商: {provider} ===")
+            results = test_provider(provider)
+            for r in results:
+                status = "✅" if r["success"] else "❌"
+                print(f"{status} {r['model']}: {r.get('error', 'OK')}")
+        elif sys.argv[1] == "--reload":
+            reload_models()
+            print("模型配置已重新加载")
+        else:
+            print(f"\n=== 测试模型: {sys.argv[1]} ===")
+            result = test_model(sys.argv[1])
+            print(f"结果: {result}")
+    else:
+        print("\n=== 测试所有模型 ===")
+        results = test_all_models()
+        success = sum(1 for r in results.values() if r["success"])
+        print(f"成功: {success}/{len(results)}")

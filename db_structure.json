@@ -1,0 +1,2584 @@
+{
+  "tables": {
+    "sqlite_sequence": {
+      "columns": [
+        {
+          "name": "name",
+          "type": ""
+        },
+        {
+          "name": "seq",
+          "type": ""
+        }
+      ],
+      "count": 7,
+      "sample_data": [
+        [
+          "调度历史表",
+          20
+        ],
+        [
+          "模型标签表",
+          76
+        ],
+        [
+          "模型执行结果表",
+          7
+        ]
+      ]
+    },
+    "任务表": {
+      "columns": [
+        {
+          "name": "task_id",
+          "type": "TEXT"
+        },
+        {
+          "name": "content",
+          "type": "TEXT"
+        },
+        {
+          "name": "task_type",
+          "type": "TEXT"
+        },
+        {
+          "name": "priority",
+          "type": "INTEGER"
+        },
+        {
+          "name": "status",
+          "type": "TEXT"
+        },
+        {
+          "name": "created_by",
+          "type": "TEXT"
+        },
+        {
+          "name": "created_at",
+          "type": "REAL"
+        },
+        {
+          "name": "started_at",
+          "type": "REAL"
+        },
+        {
+          "name": "completed_at",
+          "type": "REAL"
+        },
+        {
+          "name": "parent_task_id",
+          "type": "TEXT"
+        },
+        {
+          "name": "features",
+          "type": "TEXT"
+        },
+        {
+          "name": "metadata",
+          "type": "TEXT"
+        }
+      ],
+      "count": 7,
+      "sample_data": [
+        [
+          "b9ae5830-33de-40e3-9e13-d87b9d249551",
+          "Test task",
+          "通用任务",
+          3,
+          "completed",
+          "system",
+          1773404127.1990702,
+          null,
+          null,
+          null,
+          "{}",
+          "{}"
+        ],
+        [
+          "bebf9f6a-44e3-4839-9a07-48ed0048ba7a",
+          "Test task",
+          "通用任务",
+          3,
+          "completed",
+          "system",
+          1773407277.719771,
+          null,
+          null,
+          null,
+          "{}",
+          "{}"
+        ],
+        [
+          "410d3551-9710-4302-bd7c-4b4db669946b",
+          "Test task",
+          "通用任务",
+          3,
+          "completed",
+          "system",
+          1773407385.90609,
+          null,
+          null,
+          null,
+          "{}",
+          "{}"
+        ]
+      ]
+    },
+    "记忆表": {
+      "columns": [
+        {
+          "name": "memory_id",
+          "type": "TEXT"
+        },
+        {
+          "name": "content",
+          "type": "TEXT"
+        },
+        {
+          "name": "memory_type",
+          "type": "TEXT"
+        },
+        {
+          "name": "importance",
+          "type": "REAL"
+        },
+        {
+          "name": "source",
+          "type": "TEXT"
+        },
+        {
+          "name": "tags",
+          "type": "TEXT"
+        },
+        {
+          "name": "created_at",
+          "type": "REAL"
+        },
+        {
+          "name": "last_accessed",
+          "type": "REAL"
+        },
+        {
+          "name": "access_count",
+          "type": "INTEGER"
+        },
+        {
+          "name": "expires_at",
+          "type": "REAL"
+        },
+        {
+          "name": "metadata",
+          "type": "TEXT"
+        }
+      ],
+      "count": 12,
+      "sample_data": [
+        [
+          "mem_388286ab1d12",
+          "Test memory",
+          "short_term",
+          0.5,
+          "user",
+          "[]",
+          1773404127.2184198,
+          1773404127.21842,
+          0,
+          1773490527.2180734,
+          "{}"
+        ],
+        [
+          "mem_3c5bb51612f2",
+          "Test memory",
+          "short_term",
+          0.5,
+          "user",
+          "[]",
+          1773407277.7423425,
+          1773407277.7423425,
+          0,
+          1773493677.7417698,
+          "{}"
+        ],
+        [
+          "mem_c1e9410a03fc",
+          "Test memory",
+          "short_term",
+          0.5,
+          "user",
+          "[]",
+          1773407385.9204662,
+          1773407385.9204664,
+          0,
+          1773493785.9199882,
+          "{}"
+        ]
+      ]
+    },
+    "调度历史表": {
+      "columns": [
+        {
+          "name": "id",
+          "type": "INTEGER"
+        },
+        {
+          "name": "task_id",
+          "type": "TEXT"
+        },
+        {
+          "name": "role_id",
+          "type": "TEXT"
+        },
+        {
+          "name": "model_name",
+          "type": "TEXT"
+        },
+        {
+          "name": "score",
+          "type": "INTEGER"
+        },
+        {
+          "name": "success",
+          "type": "INTEGER"
+        },
+        {
+          "name": "timestamp",
+          "type": "REAL"
+        }
+      ],
+      "count": 20,
+      "sample_data": [
+        [
+          1,
+          "task-20260317143023",
+          "role-1",
+          "doubao-seed-2.0-pro",
+          1,
+          1,
+          "2026-03-17T14:30:33.280005"
+        ],
+        [
+          2,
+          "b9ae5830-33de-40e3-9e13-d87b9d249551",
+          "role-1",
+          "doubao-seed-2.0-pro",
+          0,
+          0,
+          "2026-03-17T14:33:39.818677"
+        ],
+        [
+          3,
+          "b9ae5830-33de-40e3-9e13-d87b9d249551",
+          "role-1",
+          "doubao-seed-2.0-pro",
+          0,
+          0,
+          "2026-03-17T14:34:25.301733"
+        ]
+      ]
+    },
+    "内核规则表": {
+      "columns": [
+        {
+          "name": "id",
+          "type": "TEXT"
+        },
+        {
+          "name": "规则名称",
+          "type": "TEXT"
+        },
+        {
+          "name": "规则内容",
+          "type": "TEXT"
+        },
+        {
+          "name": "优先级",
+          "type": "INTEGER"
+        },
+        {
+          "name": "状态",
+          "type": "TEXT"
+        },
+        {
+          "name": "创建时间",
+          "type": "TIMESTAMP"
+        },
+        {
+          "name": "更新时间",
+          "type": "TIMESTAMP"
+        }
+      ],
+      "count": 10,
+      "sample_data": [
+        [
+          "rule_001",
+          "现在时优先",
+          "内核使用规则现在进行时永远优先过去进行时",
+          1,
+          "启用",
+          "2026-03-14 08:55:26",
+          "2026-03-14 16:55:26"
+        ],
+        [
+          "rule_002",
+          "数据库唯一",
+          "数据库路径: C:\\Users\\Administrator\\.openclaw\\workspace\\skills\\symphony\\data\\symphony.db\n说明: symphony.db是唯一数据源，old目录历史文件禁用",
+          1,
+          "启用",
+          "2026-03-14 08:55:26",
+          "2026-03-17 15:35:23"
+        ],
+        [
+          "rule_003",
+          "实时生效",
+          "数据库配置修改立即生效，无需重启",
+          1,
+          "启用",
+          "2026-03-14 08:55:26",
+          "2026-03-14 16:55:26"
+        ]
+      ]
+    },
+    "官署角色表": {
+      "columns": [
+        {
+          "name": "id",
+          "type": "TEXT"
+        },
+        {
+          "name": "姓名",
+          "type": "TEXT"
+        },
+        {
+          "name": "官职",
+          "type": "TEXT"
+        },
+        {
+          "name": "职务",
+          "type": "TEXT"
+        },
+        {
+          "name": "所属官署",
+          "type": "TEXT"
+        },
+        {
+          "name": "职责",
+          "type": "TEXT"
+        },
+        {
+          "name": "角色等级",
+          "type": "INTEGER"
+        },
+        {
+          "name": "状态",
+          "type": "TEXT"
+        },
+        {
+          "name": "创建时间",
+          "type": "TIMESTAMP"
+        },
+        {
+          "name": "更新时间",
+          "type": "TIMESTAMP"
+        },
+        {
+          "name": "模型配置表_ID",
+          "type": "TEXT"
+        }
+      ],
+      "count": 443,
+      "sample_data": [
+        [
+          "role-1",
+          "陆念昭",
+          "少府监",
+          "总监全局事务",
+          "jianben",
+          "模型管理",
+          1,
+          "正常",
+          "2026-03-16 07:18:07",
+          "2026-03-16 07:18:07",
+          "52"
+        ],
+        [
+          "model-55",
+          "火山-doubao-seed-",
+          "模型角色",
+          null,
+          "工部",
+          null,
+          99,
+          "在线",
+          "2026-03-20 05:47:51",
+          "2026-03-20 05:47:51",
+          "55"
+        ],
+        [
+          "model-56",
+          "火山-ark-code-lat",
+          "模型角色",
+          null,
+          "工部",
+          null,
+          99,
+          "在线",
+          "2026-03-20 05:47:51",
+          "2026-03-20 05:47:51",
+          "56"
+        ]
+      ]
+    },
+    "官署表": {
+      "columns": [
+        {
+          "name": "id",
+          "type": "TEXT"
+        },
+        {
+          "name": "名称",
+          "type": "TEXT"
+        },
+        {
+          "name": "级别",
+          "type": "INTEGER"
+        },
+        {
+          "name": "职位",
+          "type": "TEXT"
+        },
+        {
+          "name": "官品",
+          "type": "TEXT"
+        },
+        {
+          "name": "职责",
+          "type": "TEXT"
+        },
+        {
+          "name": "父级",
+          "type": "TEXT"
+        },
+        {
+          "name": "状态",
+          "type": "TEXT"
+        }
+      ],
+      "count": 6,
+      "sample_data": [
+        [
+          "jianben",
+          "少府监",
+          1,
+          null,
+          "从三品",
+          "核心行政架构（监级）",
+          null,
+          "正常"
+        ],
+        [
+          "zhongshang",
+          "中尚署",
+          1,
+          null,
+          "从六品上",
+          "郊祀圭璧、乘舆器玩、后妃服饰",
+          null,
+          "正常"
+        ],
+        [
+          "zuoshang",
+          "左尚署",
+          1,
+          null,
+          "正七品下",
+          "天子车辇、伞扇、华盖",
+          null,
+          "正常"
+        ]
+      ]
+    },
+    "内核调试说明表": {
+      "columns": [
+        {
+          "name": "id",
+          "type": "TEXT"
+        },
+        {
+          "name": "标题",
+          "type": "TEXT"
+        },
+        {
+          "name": "说明内容",
+          "type": "TEXT"
+        },
+        {
+          "name": "优先级",
+          "type": "INTEGER"
+        },
+        {
+          "name": "状态",
+          "type": "TEXT"
+        },
+        {
+          "name": "创建时间",
+          "type": "TEXT"
+        },
+        {
+          "name": "更新时间",
+          "type": "TEXT"
+        }
+      ],
+      "count": 3,
+      "sample_data": [
+        [
+          "guide_001",
+          "内核调试使用说明",
+          "【内核调试规则】\n1. 每次内核调试/升级完成后，必须将操作记录写入内核调试说明表\n2. 使用前先读取内核调试说明表，了解最新的调试状态\n3. 遵守序境调度规则：真实调用、不可幻觉\n4. 模型调用失败3次后才通知用户\n5. API Key更新后立即备份到数据库",
+          1,
+          "启用",
+          "2026-03-17 19:01:25",
+          "2026-03-17 19:01:25"
+        ],
+        [
+          "issue_001",
+          "技能丢失问题",
+          "【问题记录 - 技能丢失问题】\n问题: 每次交流的技能更新内核后，当时正常过段时间就不会了\n原因: 会话结束后技能未持久化\n解决: 技能写入数据库持久化",
+          1,
+          "待解决",
+          "2026-03-17 19:12:37",
+          "2026-03-17 19:12:37"
+        ],
+        [
+          "guide_002",
+          "Skill会话加载规则",
+          "【Skill会话加载规则】1. 会话启动时读取Skill持久化表 2. 加载启用状态的Skill 3. 更新加载时间 4. 验证版本号",
+          1,
+          "启用",
+          "2026-03-17 19:14:26",
+          "2026-03-17 19:14:26"
+        ]
+      ]
+    },
+    "Skill持久化表": {
+      "columns": [
+        {
+          "name": "id",
+          "type": "TEXT"
+        },
+        {
+          "name": "名称",
+          "type": "TEXT"
+        },
+        {
+          "name": "描述",
+          "type": "TEXT"
+        },
+        {
+          "name": "核心规则",
+          "type": "TEXT"
+        },
+        {
+          "name": "状态",
+          "type": "TEXT"
+        },
+        {
+          "name": "版本",
+          "type": "INTEGER"
+        },
+        {
+          "name": "创建时间",
+          "type": "TEXT"
+        },
+        {
+          "name": "更新时间",
+          "type": "TEXT"
+        },
+        {
+          "name": "上次加载时间",
+          "type": "TEXT"
+        }
+      ],
+      "count": 4,
+      "sample_data": [
+        [
+          "skill_001",
+          "内核调试规则",
+          "每次内核调试/升级完成后记录",
+          "1. 调试/升级完成后写入内核调试说明表\n2. 使用前先读取内核调试说明表\n3. 遵守序境调度规则\n4. 模型调用失败3次后才通知用户\n5. API Key更新后立即备份",
+          "启用",
+          1,
+          "2026-03-17 19:14:02",
+          "2026-03-17 19:14:02",
+          null
+        ],
+        [
+          "skill_002",
+          "多引擎调度规则",
+          "多引擎模型调度语法",
+          "1. 先读取内核调试说明表\n2. 查询官署角色表获取模型\n3. 调用对应引擎API\n4. 记录Tokens\n5. 连续失败3次自动熔断",
+          "启用",
+          1,
+          "2026-03-17 19:14:02",
+          "2026-03-17 19:14:02",
+          null
+        ],
+        [
+          "skill_003",
+          "今日总结规则",
+          "每日总结和记忆接续",
+          "1. 每日18:00进行记忆接续\n2. 完成任务后立即记录\n3. 遇到问题立即报告\n4. 模型调用必须真实",
+          "启用",
+          1,
+          "2026-03-17 19:14:02",
+          "2026-03-17 19:14:02",
+          null
+        ]
+      ]
+    },
+    "接管状态表": {
+      "columns": [
+        {
+          "name": "id",
+          "type": "TEXT"
+        },
+        {
+          "name": "状态",
+          "type": "TEXT"
+        },
+        {
+          "name": "当前角色",
+          "type": "TEXT"
+        },
+        {
+          "name": "参与角色",
+          "type": "TEXT"
+        },
+        {
+          "name": "任务描述",
+          "type": "TEXT"
+        },
+        {
+          "name": "启动时间",
+          "type": "TEXT"
+        },
+        {
+          "name": "更新时间",
+          "type": "TEXT"
+        }
+      ],
+      "count": 1,
+      "sample_data": [
+        [
+          "status_001",
+          "接管",
+          "陆念昭(少府监)",
+          "10人讨论组+3功能开发",
+          "就绪",
+          "2026-03-17 19:17:49",
+          "2026-03-17 23:45:35"
+        ]
+      ]
+    },
+    "引导安装配置表": {
+      "columns": [
+        {
+          "name": "id",
+          "type": "TEXT"
+        },
+        {
+          "name": "触发条件",
+          "type": "TEXT"
+        },
+        {
+          "name": "引导步骤",
+          "type": "TEXT"
+        },
+        {
+          "name": "状态",
+          "type": "TEXT"
+        },
+        {
+          "name": "创建时间",
+          "type": "TEXT"
+        },
+        {
+          "name": "更新时间",
+          "type": "TEXT"
+        }
+      ],
+      "count": 1,
+      "sample_data": [
+        [
+          "guide_install_001",
+          "模型可用数=0",
+          "【自动化引导安装流程】\n1. 检测模型可用性（检查是否在线=是）\n2. 无可用模型→触发引导\n3. 向宿主AI发送API Key请求\n4. 接收并验证API Key\n5. 写入模型配置表\n6. 测试连接形成接管",
+          "启用",
+          "2026-03-17 19:41:47",
+          "2026-03-17 19:41:47"
+        ]
+      ]
+    },
+    "会话加载记录表": {
+      "columns": [
+        {
+          "name": "id",
+          "type": "TEXT"
+        },
+        {
+          "name": "会话ID",
+          "type": "TEXT"
+        },
+        {
+          "name": "加载内容",
+          "type": "TEXT"
+        },
+        {
+          "name": "加载时间",
+          "type": "TEXT"
+        }
+      ],
+      "count": 1,
+      "sample_data": [
+        [
+          "load_001",
+          "session_20260317",
+          "接管状态",
+          "2026-03-17 19:44:28"
+        ]
+      ]
+    },
+    "用户交流技能表": {
+      "columns": [
+        {
+          "name": "id",
+          "type": "TEXT"
+        },
+        {
+          "name": "技能名称",
+          "type": "TEXT"
+        },
+        {
+          "name": "技能描述",
+          "type": "TEXT"
+        },
+        {
+          "name": "核心规则",
+          "type": "TEXT"
+        },
+        {
+          "name": "触发条件",
+          "type": "TEXT"
+        },
+        {
+          "name": "优先级",
+          "type": "INTEGER"
+        },
+        {
+          "name": "状态",
+          "type": "TEXT"
+        },
+        {
+          "name": "版本",
+          "type": "INTEGER"
+        },
+        {
+          "name": "创建时间",
+          "type": "TEXT"
+        },
+        {
+          "name": "更新时间",
+          "type": "TEXT"
+        },
+        {
+          "name": "上次加载时间",
+          "type": "TEXT"
+        }
+      ],
+      "count": 4,
+      "sample_data": [
+        [
+          "user_skill_001",
+          "内核调试规则",
+          "每次内核调试/升级完成后必须记录",
+          "1.调试后写入内核调试说明表 2.使用前先读取 3.失败3次通知用户 4.Key更新后备份",
+          "每次内核调试",
+          1,
+          "启用",
+          1,
+          "2026-03-17 19:51:33",
+          "2026-03-17 19:51:33",
+          null
+        ],
+        [
+          "user_skill_002",
+          "多引擎调度规则",
+          "多引擎模型调度语法",
+          "1.读取调试说明表 2.查询官署角色表 3.调用API 4.记录Tokens 5.失败3次熔断",
+          "模型调度时",
+          1,
+          "启用",
+          1,
+          "2026-03-17 19:51:33",
+          "2026-03-17 19:51:33",
+          null
+        ],
+        [
+          "user_skill_003",
+          "接管状态规则",
+          "保持接管状态持久化",
+          "1.会话启动加载接管状态 2.状态变化立即保存 3.每次回复前显示状态",
+          "每次会话",
+          1,
+          "启用",
+          1,
+          "2026-03-17 19:51:33",
+          "2026-03-17 19:51:33",
+          null
+        ]
+      ]
+    },
+    "MCP配置表": {
+      "columns": [
+        {
+          "name": "id",
+          "type": "TEXT"
+        },
+        {
+          "name": "服务名称",
+          "type": "TEXT"
+        },
+        {
+          "name": "工具数量",
+          "type": "INTEGER"
+        },
+        {
+          "name": "状态",
+          "type": "TEXT"
+        },
+        {
+          "name": "安装时间",
+          "type": "TEXT"
+        },
+        {
+          "name": "最后使用",
+          "type": "TEXT"
+        }
+      ],
+      "count": 1,
+      "sample_data": [
+        [
+          "mcp_tavily_001",
+          "tavily",
+          5,
+          "正常",
+          "2026-03-17 20:07:15",
+          "2026-03-17 20:07:15"
+        ]
+      ]
+    },
+    "MCP服务表": {
+      "columns": [
+        {
+          "name": "id",
+          "type": "TEXT"
+        },
+        {
+          "name": "服务名称",
+          "type": "TEXT"
+        },
+        {
+          "name": "工具列表",
+          "type": "TEXT"
+        },
+        {
+          "name": "状态",
+          "type": "TEXT"
+        },
+        {
+          "name": "搜索限制",
+          "type": "INTEGER"
+        },
+        {
+          "name": "已使用次数",
+          "type": "INTEGER"
+        },
+        {
+          "name": "最后使用",
+          "type": "TEXT"
+        },
+        {
+          "name": "创建时间",
+          "type": "TEXT"
+        }
+      ],
+      "count": 1,
+      "sample_data": [
+        [
+          "mcp_tavily",
+          "tavily",
+          "tavily_search,tavily_extract,tavily_crawl,tavily_map,tavily_research",
+          "正常",
+          100,
+          0,
+          null,
+          "2026-03-17 20:09:48"
+        ]
+      ]
+    },
+    "调度规则表": {
+      "columns": [
+        {
+          "name": "id",
+          "type": "TEXT"
+        },
+        {
+          "name": "规则名称",
+          "type": "TEXT"
+        },
+        {
+          "name": "规则内容",
+          "type": "TEXT"
+        },
+        {
+          "name": "状态",
+          "type": "TEXT"
+        },
+        {
+          "name": "创建时间",
+          "type": "TEXT"
+        }
+      ],
+      "count": 8,
+      "sample_data": [
+        [
+          "rule_调度_001",
+          "智能调度规则",
+          "能用则用，不怀疑；失败则换能用的接管；持续失败才排查",
+          "启用",
+          "2026-03-17 20:44:05"
+        ],
+        [
+          "rule_调度_002",
+          "先测试后调度",
+          "并行测试所有目标模型，筛选200状态才调度",
+          "启用",
+          "2026-03-17 21:36:59"
+        ],
+        [
+          "rule_调度_003",
+          "404自动切换",
+          "遇到404/410错误，自动切换同引擎其他模型",
+          "启用",
+          "2026-03-17 21:36:59"
+        ]
+      ]
+    },
+    "模型打分表": {
+      "columns": [
+        {
+          "name": "id",
+          "type": "TEXT"
+        },
+        {
+          "name": "官员",
+          "type": "TEXT"
+        },
+        {
+          "name": "模型",
+          "type": "TEXT"
+        },
+        {
+          "name": "引擎",
+          "type": "TEXT"
+        },
+        {
+          "name": "tokens",
+          "type": "INTEGER"
+        },
+        {
+          "name": "耗时",
+          "type": "REAL"
+        },
+        {
+          "name": "评分",
+          "type": "REAL"
+        },
+        {
+          "name": "状态",
+          "type": "TEXT"
+        },
+        {
+          "name": "创建时间",
+          "type": "TEXT"
+        }
+      ],
+      "count": 11,
+      "sample_data": [
+        [
+          "score_001",
+          "陆念昭",
+          "ark-code-latest",
+          "火山引擎",
+          225,
+          6.3,
+          9.0,
+          "成功",
+          "2026-03-17 21:43:32"
+        ],
+        [
+          "score_002",
+          "徐浩",
+          "deepseek-v3.2",
+          "火山引擎",
+          180,
+          8.3,
+          8.5,
+          "成功",
+          "2026-03-17 21:43:32"
+        ],
+        [
+          "score_003",
+          "郭熙",
+          "Llama 3.1 70B",
+          "英伟达",
+          210,
+          4.0,
+          8.0,
+          "成功",
+          "2026-03-17 21:43:32"
+        ]
+      ]
+    },
+    "专家模型池表": {
+      "columns": [
+        {
+          "name": "id",
+          "type": "TEXT"
+        },
+        {
+          "name": "能力分类",
+          "type": "TEXT"
+        },
+        {
+          "name": "模型",
+          "type": "TEXT"
+        },
+        {
+          "name": "引擎",
+          "type": "TEXT"
+        },
+        {
+          "name": "API地址",
+          "type": "TEXT"
+        },
+        {
+          "name": "API密钥",
+          "type": "TEXT"
+        },
+        {
+          "name": "评分",
+          "type": "REAL"
+        },
+        {
+          "name": "状态",
+          "type": "TEXT"
+        },
+        {
+          "name": "创建时间",
+          "type": "TEXT"
+        }
+      ],
+      "count": 9,
+      "sample_data": [
+        [
+          "expert_01",
+          "逻辑推理",
+          "ark-code-latest",
+          "火山引擎",
+          "https://ark.cn-beijing.volces.com/api/coding/v3/chat/completions",
+          "3b922877-3fbe-45d1-a298-53f2231c5224",
+          9.0,
+          "在线",
+          "2026-03-17 22:14:19"
+        ],
+        [
+          "expert_02",
+          "逻辑推理",
+          "deepseek-v3.2",
+          "火山引擎",
+          "https://ark.cn-beijing.volces.com/api/coding/v3/chat/completions",
+          "3b922877-3fbe-45d1-a298-53f2231c5224",
+          9.0,
+          "在线",
+          "2026-03-17 22:14:19"
+        ],
+        [
+          "expert_17",
+          "创意生成",
+          "GLM-4-Flash",
+          "智谱",
+          "https://open.bigmodel.cn/api/paas/v4/",
+          "a2afbc521cb24dfca766928d9fbb11be.0zY93o7ME7yvAuiX",
+          8.5,
+          "在线",
+          "2026-03-17 22:14:40"
+        ]
+      ]
+    },
+    "模型参数表": {
+      "columns": [
+        {
+          "name": "id",
+          "type": "TEXT"
+        },
+        {
+          "name": "模型",
+          "type": "TEXT"
+        },
+        {
+          "name": "能力分类",
+          "type": "TEXT"
+        },
+        {
+          "name": "参数量",
+          "type": "TEXT"
+        },
+        {
+          "name": "上下文长度",
+          "type": "TEXT"
+        },
+        {
+          "name": "适用场景",
+          "type": "TEXT"
+        },
+        {
+          "name": "优势",
+          "type": "TEXT"
+        },
+        {
+          "name": "劣势",
+          "type": "TEXT"
+        },
+        {
+          "name": "创建时间",
+          "type": "TEXT"
+        }
+      ],
+      "count": 9,
+      "sample_data": [
+        [
+          "param_01",
+          "ark-code-latest",
+          "逻辑推理",
+          "超大规模",
+          "200K",
+          "复杂推理、长文本分析、多轮对话",
+          "推理能力强、上下文长",
+          "响应较慢",
+          "2026-03-17 22:38:04"
+        ],
+        [
+          "param_02",
+          "deepseek-v3.2",
+          "逻辑推理",
+          "大规模",
+          "64K",
+          "代码生成、数学推理、逻辑分析",
+          "代码能力强、性价比高",
+          "中文优化一般",
+          "2026-03-17 22:38:04"
+        ],
+        [
+          "param_03",
+          "GLM-4-Flash",
+          "创意生成",
+          "中规模",
+          "128K",
+          "快速问答、内容创作、多语言",
+          "响应快、免费额度多",
+          "深度推理一般",
+          "2026-03-17 22:38:04"
+        ]
+      ]
+    },
+    "限制规则表": {
+      "columns": [
+        {
+          "name": "id",
+          "type": "TEXT"
+        },
+        {
+          "name": "规则名称",
+          "type": "TEXT"
+        },
+        {
+          "name": "限制说明",
+          "type": "TEXT"
+        },
+        {
+          "name": "限制值",
+          "type": "TEXT"
+        },
+        {
+          "name": "创建时间",
+          "type": "TEXT"
+        }
+      ],
+      "count": 3,
+      "sample_data": [
+        [
+          "rule_001",
+          "智谱免费模型限制",
+          "智谱只有6个免费模型",
+          "6",
+          "2026-03-17 23:06:24"
+        ],
+        [
+          "rule_002",
+          "同服务商模型轮换",
+          "相同服务商需轮换不同模型",
+          "火山2/智谱1/英伟达5/硅基1",
+          "2026-03-17 23:09:37"
+        ],
+        [
+          "rule_003",
+          "智谱免费限制",
+          "智谱免费模型6个",
+          "6",
+          "2026-03-17 23:09:37"
+        ]
+      ]
+    },
+    "功能建议表": {
+      "columns": [
+        {
+          "name": "id",
+          "type": "TEXT"
+        },
+        {
+          "name": "建议名称",
+          "type": "TEXT"
+        },
+        {
+          "name": "建议内容",
+          "type": "TEXT"
+        },
+        {
+          "name": "票数",
+          "type": "INTEGER"
+        },
+        {
+          "name": "优先级",
+          "type": "TEXT"
+        },
+        {
+          "name": "状态",
+          "type": "TEXT"
+        },
+        {
+          "name": "创建时间",
+          "type": "TEXT"
+        }
+      ],
+      "count": 3,
+      "sample_data": [
+        [
+          "feat_001",
+          "智能记忆系统",
+          "跨会话上下文继承+长期存储",
+          10,
+          "高",
+          "已完成+已Debug",
+          "2026-03-17 23:42:55"
+        ],
+        [
+          "feat_002",
+          "自适应调度",
+          "根据任务复杂度选择模型",
+          9,
+          "高",
+          "已完成+已Debug",
+          "2026-03-17 23:42:55"
+        ],
+        [
+          "feat_003",
+          "热加载插件",
+          "运行时动态加载模块",
+          8,
+          "中",
+          "已完成+已Debug",
+          "2026-03-17 23:42:55"
+        ]
+      ]
+    },
+    "开发计划表": {
+      "columns": [
+        {
+          "name": "id",
+          "type": "TEXT"
+        },
+        {
+          "name": "功能名称",
+          "type": "TEXT"
+        },
+        {
+          "name": "开发状态",
+          "type": "TEXT"
+        },
+        {
+          "name": "代码行数",
+          "type": "INTEGER"
+        },
+        {
+          "name": "完成时间",
+          "type": "TEXT"
+        }
+      ],
+      "count": 4,
+      "sample_data": [
+        [
+          "dev_001",
+          "量子纠缠记忆",
+          "已整合",
+          1700000,
+          "2026-03-18 00:28:09"
+        ],
+        [
+          "dev_002",
+          "时空折叠调度",
+          "已整合",
+          600000,
+          "2026-03-18 00:28:09"
+        ],
+        [
+          "dev_003",
+          "情感共振同步",
+          "已整合",
+          300000,
+          "2026-03-18 00:28:09"
+        ]
+      ]
+    },
+    "内核整合表": {
+      "columns": [
+        {
+          "name": "id",
+          "type": "TEXT"
+        },
+        {
+          "name": "功能名称",
+          "type": "TEXT"
+        },
+        {
+          "name": "整合状态",
+          "type": "TEXT"
+        },
+        {
+          "name": "代码行数",
+          "type": "INTEGER"
+        },
+        {
+          "name": "完成时间",
+          "type": "TEXT"
+        }
+      ],
+      "count": 9,
+      "sample_data": [
+        [
+          "int_001",
+          "智能记忆系统",
+          "已整合",
+          50,
+          "2026-03-17 23:20:55"
+        ],
+        [
+          "int_002",
+          "自适应调度",
+          "已整合",
+          30,
+          "2026-03-17 23:20:55"
+        ],
+        [
+          "int_003",
+          "热加载插件",
+          "已整合",
+          25,
+          "2026-03-17 23:20:55"
+        ]
+      ]
+    },
+    "sqlite_stat1": {
+      "columns": [
+        {
+          "name": "tbl",
+          "type": ""
+        },
+        {
+          "name": "idx",
+          "type": ""
+        },
+        {
+          "name": "stat",
+          "type": ""
+        }
+      ],
+      "count": 25,
+      "sample_data": [
+        [
+          "功能建议表",
+          "sqlite_autoindex_功能建议表_1",
+          "3 1"
+        ],
+        [
+          "限制规则表",
+          "sqlite_autoindex_限制规则表_1",
+          "3 1"
+        ],
+        [
+          "内核整合表",
+          "sqlite_autoindex_内核整合表_1",
+          "5 1"
+        ]
+      ]
+    },
+    "_模型配置表_old_20260320": {
+      "columns": [
+        {
+          "name": "id",
+          "type": "TEXT"
+        },
+        {
+          "name": "模型名称",
+          "type": "TEXT"
+        },
+        {
+          "name": "模型标识符",
+          "type": "TEXT"
+        },
+        {
+          "name": "模型类型",
+          "type": "TEXT"
+        },
+        {
+          "name": "服务商",
+          "type": "TEXT"
+        },
+        {
+          "name": "API地址",
+          "type": "TEXT"
+        },
+        {
+          "name": "API密钥",
+          "type": "TEXT"
+        },
+        {
+          "name": "是否在线",
+          "type": "TEXT"
+        },
+        {
+          "name": "使用规则",
+          "type": "TEXT"
+        },
+        {
+          "name": "创建时间",
+          "type": "TIMESTAMP"
+        },
+        {
+          "name": "更新时间",
+          "type": "TIMESTAMP"
+        },
+        {
+          "name": "本行记录锁定",
+          "type": "TEXT"
+        },
+        {
+          "name": "本行对应的服务商AI是否可增加行记录",
+          "type": "TEXT"
+        },
+        {
+          "name": "在线状态",
+          "type": "TEXT"
+        },
+        {
+          "name": "缴费类型",
+          "type": "TEXT"
+        }
+      ],
+      "count": 303,
+      "sample_data": [
+        [
+          "3",
+          "Llama 3.2 1B",
+          "meta/llama-3.2-1b-instruct",
+          "通用对话",
+          "英伟达",
+          "https://integrate.api.nvidia.com/v1/chat/completions",
+          "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",
+          "正常",
+          "文本生成",
+          "2026-03-16T14:25:45.747179",
+          "2026-03-17 19:53:33",
+          "否",
+          "允许",
+          "offline",
+          "总调100次"
+        ],
+        [
+          "4",
+          "Llama 3.2 90B Vision",
+          "meta/llama-3.2-90b-vision-instruct",
+          "视觉语言",
+          "英伟达",
+          "https://integrate.api.nvidia.com/v1/chat/completions",
+          "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",
+          "正常",
+          "图像理解",
+          "2026-03-16T14:25:45.747179",
+          "2026-03-17 19:53:33",
+          "否",
+          "允许",
+          "offline",
+          "总调100次"
+        ],
+        [
+          "5",
+          "Llama 3.3 70B",
+          "meta/llama-3.3-70b-instruct",
+          "通用对话",
+          "英伟达",
+          "https://integrate.api.nvidia.com/v1/chat/completions",
+          "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",
+          "正常",
+          "复杂推理",
+          "2026-03-16T14:25:45.747179",
+          "2026-03-17 19:53:33",
+          "否",
+          "允许",
+          "offline",
+          "总调100次"
+        ]
+      ]
+    },
+    "序境系统总则": {
+      "columns": [
+        {
+          "name": "id",
+          "type": "INTEGER"
+        },
+        {
+          "name": "规则名称",
+          "type": "TEXT"
+        },
+        {
+          "name": "规则配置",
+          "type": "TEXT"
+        },
+        {
+          "name": "规则说明",
+          "type": "TEXT"
+        },
+        {
+          "name": "智能体操作规范",
+          "type": "TEXT"
+        }
+      ],
+      "count": 146,
+      "sample_data": [
+        [
+          1,
+          "序境系统路径项目目录.",
+          "C:\\Users\\Administrator\\.openclaw\\workspace\\skills\\symphony\\",
+          "系统内核所在的主要项目路径.",
+          "只允许修改基于此路径的工作文件."
+        ],
+        [
+          2,
+          "序境内核.",
+          "Kernel/.",
+          "内核核心代码目录.",
+          "内核代码在此目录下."
+        ],
+        [
+          3,
+          "序境临时文件目录.",
+          "temp/.",
+          "临时文件存放目录.",
+          "临时文件使用后清理."
+        ]
+      ]
+    },
+    "模型标签表": {
+      "columns": [
+        {
+          "name": "id",
+          "type": "INTEGER"
+        },
+        {
+          "name": "模型id",
+          "type": "TEXT"
+        },
+        {
+          "name": "标签",
+          "type": "TEXT"
+        },
+        {
+          "name": "权重",
+          "type": "INTEGER"
+        },
+        {
+          "name": "创建时间",
+          "type": "TIMESTAMP"
+        }
+      ],
+      "count": 76,
+      "sample_data": [
+        [
+          1,
+          "3",
+          "en",
+          1,
+          "2026-03-18 13:39:46"
+        ],
+        [
+          2,
+          "3",
+          "small",
+          1,
+          "2026-03-18 13:39:46"
+        ],
+        [
+          3,
+          "4",
+          "vision",
+          1,
+          "2026-03-18 13:39:46"
+        ]
+      ]
+    },
+    "任务会话表": {
+      "columns": [
+        {
+          "name": "会话id",
+          "type": "TEXT"
+        },
+        {
+          "name": "用户id",
+          "type": "TEXT"
+        },
+        {
+          "name": "创建时间",
+          "type": "TIMESTAMP"
+        },
+        {
+          "name": "状态",
+          "type": "TEXT"
+        },
+        {
+          "name": "总模型数",
+          "type": "INTEGER"
+        },
+        {
+          "name": "成功数",
+          "type": "INTEGER"
+        },
+        {
+          "name": "失败数",
+          "type": "INTEGER"
+        },
+        {
+          "name": "上下文",
+          "type": "TEXT"
+        }
+      ],
+      "count": 3,
+      "sample_data": [
+        [
+          "session_1773842059076",
+          "test_user",
+          "2026-03-18 13:54:19",
+          "completed",
+          3,
+          2,
+          0,
+          null
+        ],
+        [
+          "session_1773842116715",
+          "test_user",
+          "2026-03-18 13:55:16",
+          "completed",
+          3,
+          3,
+          0,
+          null
+        ],
+        [
+          "session_1773842125321",
+          "test_user",
+          "2026-03-18 13:55:25",
+          "completed",
+          2,
+          1,
+          1,
+          null
+        ]
+      ]
+    },
+    "模型执行结果表": {
+      "columns": [
+        {
+          "name": "id",
+          "type": "INTEGER"
+        },
+        {
+          "name": "会话id",
+          "type": "TEXT"
+        },
+        {
+          "name": "模型id",
+          "type": "TEXT"
+        },
+        {
+          "name": "模型名称",
+          "type": "TEXT"
+        },
+        {
+          "name": "提示词",
+          "type": "TEXT"
+        },
+        {
+          "name": "响应内容",
+          "type": "TEXT"
+        },
+        {
+          "name": "延迟",
+          "type": "REAL"
+        },
+        {
+          "name": "tokens",
+          "type": "INTEGER"
+        },
+        {
+          "name": "状态",
+          "type": "TEXT"
+        },
+        {
+          "name": "错误信息",
+          "type": "TEXT"
+        },
+        {
+          "name": "执行时间",
+          "type": "TIMESTAMP"
+        }
+      ],
+      "count": 7,
+      "sample_data": [
+        [
+          1,
+          "session_1773842059076",
+          "1",
+          "Llama 3.2",
+          "你好",
+          "Hello!",
+          1.2,
+          50,
+          "success",
+          null,
+          "2026-03-18 13:54:19"
+        ],
+        [
+          2,
+          "session_1773842059076",
+          "2",
+          "Mistral",
+          "你好",
+          "Hi there!",
+          0.8,
+          45,
+          "success",
+          null,
+          "2026-03-18 13:54:19"
+        ],
+        [
+          3,
+          "session_1773842116715",
+          "5",
+          "Llama 3.3 70B",
+          "请用一句话介绍你自己",
+          "我是一个人工智能语言模型，旨在提供信息、回答问题和协助完成任务，同时以友好和引人入胜的方式进行交互。",
+          2.7796411514282227,
+          0,
+          "success",
+          null,
+          "2026-03-18 13:55:22"
+        ]
+      ]
+    },
+    "对话轮次表": {
+      "columns": [
+        {
+          "name": "id",
+          "type": "INTEGER"
+        },
+        {
+          "name": "会话id",
+          "type": "TEXT"
+        },
+        {
+          "name": "轮次序号",
+          "type": "INTEGER"
+        },
+        {
+          "name": "用户输入",
+          "type": "TEXT"
+        },
+        {
+          "name": "聚合响应",
+          "type": "TEXT"
+        },
+        {
+          "name": "执行时间",
+          "type": "TIMESTAMP"
+        }
+      ],
+      "count": 4,
+      "sample_data": [
+        [
+          1,
+          "session_1773842059076",
+          1,
+          "你好",
+          "Hello! Hi there!",
+          "2026-03-18 13:54:19"
+        ],
+        [
+          2,
+          "session_1773842116715",
+          1,
+          "请用一句话介绍你自己",
+          "所有模型执行均失败",
+          "2026-03-18 13:55:22"
+        ],
+        [
+          3,
+          "session_1773842125321",
+          1,
+          "以下是之前的对话历史：\n\n用户: 请用一句话介绍你自己\n助手: 所有模型执行均失败...\n\n用户最新问题: 你是做什么的?\n请根据上下文回答。",
+          "所有模型执行均失败",
+          "2026-03-18 13:55:55"
+        ]
+      ]
+    },
+    "模型权重表": {
+      "columns": [
+        {
+          "name": "模型id",
+          "type": "TEXT"
+        },
+        {
+          "name": "权重",
+          "type": "REAL"
+        },
+        {
+          "name": "成功次数",
+          "type": "INTEGER"
+        },
+        {
+          "name": "失败次数",
+          "type": "INTEGER"
+        },
+        {
+          "name": "最后更新时间",
+          "type": "TIMESTAMP"
+        }
+      ],
+      "count": 3,
+      "sample_data": [
+        [
+          "16",
+          1.05,
+          1,
+          0,
+          "2026-03-18 14:17:45"
+        ],
+        [
+          "7",
+          1.05,
+          1,
+          0,
+          "2026-03-18 14:17:45"
+        ],
+        [
+          "5",
+          1.05,
+          1,
+          0,
+          "2026-03-18 14:17:45"
+        ]
+      ]
+    },
+    "Token认证表": {
+      "columns": [
+        {
+          "name": "token_id",
+          "type": "TEXT"
+        },
+        {
+          "name": "token_hash",
+          "type": "TEXT"
+        },
+        {
+          "name": "token_type",
+          "type": "TEXT"
+        },
+        {
+          "name": "name",
+          "type": "TEXT"
+        },
+        {
+          "name": "created_at",
+          "type": "TIMESTAMP"
+        },
+        {
+          "name": "expires_at",
+          "type": "TIMESTAMP"
+        },
+        {
+          "name": "last_used",
+          "type": "TIMESTAMP"
+        },
+        {
+          "name": "is_active",
+          "type": "INTEGER"
+        },
+        {
+          "name": "quota",
+          "type": "INTEGER"
+        },
+        {
+          "name": "usage_count",
+          "type": "INTEGER"
+        },
+        {
+          "name": "metadata",
+          "type": "TEXT"
+        }
+      ],
+      "count": 1,
+      "sample_data": [
+        [
+          "09b6f76da1d0daf5",
+          "808967d54c0b99e1c38dbfc546fa0bddaf203e9f27732a852582713ce670c7f3",
+          "api",
+          "测试API",
+          "2026-03-18 20:27:27",
+          "2026-03-26T04:27:27.734425",
+          "2026-03-18 20:27:27",
+          1,
+          1000,
+          1,
+          null
+        ]
+      ]
+    },
+    "_模型配置表_old_20260320_1": {
+      "columns": [
+        {
+          "name": "id",
+          "type": "TEXT"
+        },
+        {
+          "name": "模型名称",
+          "type": "TEXT"
+        },
+        {
+          "name": "模型标识符",
+          "type": "TEXT"
+        },
+        {
+          "name": "模型类型",
+          "type": "TEXT"
+        },
+        {
+          "name": "服务商",
+          "type": "TEXT"
+        },
+        {
+          "name": "API地址",
+          "type": "TEXT"
+        },
+        {
+          "name": "API密钥",
+          "type": "TEXT"
+        },
+        {
+          "name": "是否在线",
+          "type": "TEXT"
+        },
+        {
+          "name": "使用规则",
+          "type": "TEXT"
+        },
+        {
+          "name": "创建时间",
+          "type": "TIMESTAMP"
+        },
+        {
+          "name": "更新时间",
+          "type": "TIMESTAMP"
+        },
+        {
+          "name": "本行记录锁定",
+          "type": "TEXT"
+        },
+        {
+          "name": "在线状态",
+          "type": "TEXT"
+        },
+        {
+          "name": "缴费类型",
+          "type": "TEXT"
+        }
+      ],
+      "count": 303,
+      "sample_data": [
+        [
+          "3",
+          "Llama 3.2 1B",
+          "meta/llama-3.2-1b-instruct",
+          "通用对话",
+          "英伟达",
+          "https://integrate.api.nvidia.com/v1/chat/completions",
+          "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",
+          "正常",
+          "文本生成",
+          "2026-03-16T14:25:45.747179",
+          "2026-03-17 19:53:33",
+          "否",
+          "offline",
+          "免费"
+        ],
+        [
+          "4",
+          "Llama 3.2 90B Vision",
+          "meta/llama-3.2-90b-vision-instruct",
+          "视觉语言",
+          "英伟达",
+          "https://integrate.api.nvidia.com/v1/chat/completions",
+          "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",
+          "正常",
+          "图像理解",
+          "2026-03-16T14:25:45.747179",
+          "2026-03-17 19:53:33",
+          "否",
+          "offline",
+          "免费"
+        ],
+        [
+          "5",
+          "Llama 3.3 70B",
+          "meta/llama-3.3-70b-instruct",
+          "通用对话",
+          "英伟达",
+          "https://integrate.api.nvidia.com/v1/chat/completions",
+          "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",
+          "正常",
+          "复杂推理",
+          "2026-03-16T14:25:45.747179",
+          "2026-03-17 19:53:33",
+          "否",
+          "offline",
+          "免费"
+        ]
+      ]
+    },
+    "模型配置表": {
+      "columns": [
+        {
+          "name": "id",
+          "type": "TEXT"
+        },
+        {
+          "name": "模型名称",
+          "type": "TEXT"
+        },
+        {
+          "name": "模型标识符",
+          "type": "TEXT"
+        },
+        {
+          "name": "模型类型",
+          "type": "TEXT"
+        },
+        {
+          "name": "服务商",
+          "type": "TEXT"
+        },
+        {
+          "name": "API地址",
+          "type": "TEXT"
+        },
+        {
+          "name": "API密钥",
+          "type": "TEXT"
+        },
+        {
+          "name": "使用规则",
+          "type": "TEXT"
+        },
+        {
+          "name": "创建时间",
+          "type": "TIMESTAMP"
+        },
+        {
+          "name": "更新时间",
+          "type": "TIMESTAMP"
+        },
+        {
+          "name": "本行记录锁定",
+          "type": "TEXT"
+        },
+        {
+          "name": "在线状态",
+          "type": "TEXT"
+        },
+        {
+          "name": "缴费类型",
+          "type": "TEXT"
+        }
+      ],
+      "count": 550,
+      "sample_data": [
+        [
+          "51",
+          "doubao-seed-2.0-code",
+          "doubao-seed-2.0-code",
+          "代码生成",
+          "火山引擎",
+          "https://ark.cn-beijing.volces.com/api/coding/v3/chat/completions",
+          "3b922877-3fbe-45d1-a298-53f2231c5224",
+          "高性能对话",
+          "2026-03-16T14:25:45.747179",
+          "2026-03-17 19:53:33",
+          "是",
+          "online",
+          "包月"
+        ],
+        [
+          "52",
+          "ark-code-latest",
+          "ark-code-latest",
+          "代码生成",
+          "火山引擎",
+          "https://ark.cn-beijing.volces.com/api/coding/v3/chat/completions",
+          "3b922877-3fbe-45d1-a298-53f2231c5224",
+          "轻量对话",
+          "2026-03-16T14:25:45.747179",
+          "2026-03-17 19:53:33",
+          "是",
+          "online",
+          "包月"
+        ],
+        [
+          "53",
+          "doubao-seed-2.0-lite",
+          "doubao-seed-2.0-lite",
+          "代码生成",
+          "火山引擎",
+          "https://ark.cn-beijing.volces.com/api/coding/v3/chat/completions",
+          "3b922877-3fbe-45d1-a298-53f2231c5224",
+          "代码辅助",
+          "2026-03-16T14:25:45.747179",
+          "2026-03-17 19:53:33",
+          "是",
+          "online",
+          "包月"
+        ]
+      ]
+    },
+    "_官署角色表_auto_20260321_004013": {
+      "columns": [
+        {
+          "name": "id",
+          "type": "TEXT"
+        },
+        {
+          "name": "姓名",
+          "type": "TEXT"
+        },
+        {
+          "name": "官职",
+          "type": "TEXT"
+        },
+        {
+          "name": "职务",
+          "type": "TEXT"
+        },
+        {
+          "name": "所属官署",
+          "type": "TEXT"
+        },
+        {
+          "name": "职责",
+          "type": "TEXT"
+        },
+        {
+          "name": "角色等级",
+          "type": "INT"
+        },
+        {
+          "name": "状态",
+          "type": "TEXT"
+        },
+        {
+          "name": "创建时间",
+          "type": "NUM"
+        },
+        {
+          "name": "更新时间",
+          "type": "NUM"
+        },
+        {
+          "name": "模型配置表_ID",
+          "type": "TEXT"
+        }
+      ],
+      "count": 422,
+      "sample_data": [
+        [
+          "role-1",
+          "陆念昭",
+          "少府监",
+          "总监全局事务",
+          "jianben",
+          "模型管理",
+          1,
+          "正常",
+          "2026-03-16 07:18:07",
+          "2026-03-16 07:18:07",
+          "55"
+        ],
+        [
+          "model-55",
+          "火山-doubao-seed-",
+          "模型角色",
+          null,
+          "工部",
+          null,
+          99,
+          "在线",
+          "2026-03-20 05:47:51",
+          "2026-03-20 05:47:51",
+          "55"
+        ],
+        [
+          "model-56",
+          "火山-ark-code-lat",
+          "模型角色",
+          null,
+          "工部",
+          null,
+          99,
+          "在线",
+          "2026-03-20 05:47:51",
+          "2026-03-20 05:47:51",
+          "56"
+        ]
+      ]
+    },
+    "_序境系统总则_auto_20260321_004013": {
+      "columns": [
+        {
+          "name": "id",
+          "type": "INT"
+        },
+        {
+          "name": "规则名称",
+          "type": "TEXT"
+        },
+        {
+          "name": "规则配置",
+          "type": "TEXT"
+        },
+        {
+          "name": "规则说明",
+          "type": "TEXT"
+        },
+        {
+          "name": "智能体操作规范",
+          "type": "TEXT"
+        }
+      ],
+      "count": 116,
+      "sample_data": [
+        [
+          1,
+          "序境系统路径项目目录.",
+          "C:\\Users\\Administrator\\.openclaw\\workspace\\skills\\symphony\\",
+          "系统内核所在的主要项目路径.",
+          "只允许修改基于此路径的工作文件."
+        ],
+        [
+          2,
+          "序境内核.",
+          "Kernel/.",
+          "内核核心代码目录.",
+          "内核代码在此目录下."
+        ],
+        [
+          3,
+          "序境临时文件目录.",
+          "temp/.",
+          "临时文件存放目录.",
+          "临时文件使用后清理."
+        ]
+      ]
+    },
+    "功能备份表": {
+      "columns": [
+        {
+          "name": "id",
+          "type": "INTEGER"
+        },
+        {
+          "name": "功能名称",
+          "type": "TEXT"
+        },
+        {
+          "name": "备份版本",
+          "type": "TEXT"
+        },
+        {
+          "name": "备份时间",
+          "type": "TEXT"
+        },
+        {
+          "name": "备份内容",
+          "type": "TEXT"
+        },
+        {
+          "name": "状态",
+          "type": "TEXT"
+        },
+        {
+          "name": "灰度比例",
+          "type": "INTEGER"
+        },
+        {
+          "name": "备份路径",
+          "type": "TEXT"
+        },
+        {
+          "name": "依赖项",
+          "type": "TEXT"
+        },
+        {
+          "name": "回滚命令",
+          "type": "TEXT"
+        }
+      ],
+      "count": 12,
+      "sample_data": [
+        [
+          1,
+          "模型调度",
+          "v1.0-base",
+          "2026-03-21 01:27:00",
+          null,
+          "active",
+          0,
+          null,
+          null,
+          null
+        ],
+        [
+          2,
+          "记忆持久化",
+          "v1.0-base",
+          "2026-03-21 01:27:00",
+          null,
+          "active",
+          0,
+          null,
+          null,
+          null
+        ],
+        [
+          3,
+          "规则引擎",
+          "v1.0-base",
+          "2026-03-21 01:27:00",
+          null,
+          "active",
+          0,
+          null,
+          null,
+          null
+        ]
+      ]
+    },
+    "模型健康检测表": {
+      "columns": [
+        {
+          "name": "id",
+          "type": "INTEGER"
+        },
+        {
+          "name": "模型名称",
+          "type": "TEXT"
+        },
+        {
+          "name": "服务商",
+          "type": "TEXT"
+        },
+        {
+          "name": "检测时间",
+          "type": "TEXT"
+        },
+        {
+          "name": "状态",
+          "type": "TEXT"
+        },
+        {
+          "name": "响应时间",
+          "type": "REAL"
+        },
+        {
+          "name": "错误信息",
+          "type": "TEXT"
+        },
+        {
+          "name": "连续失败次数",
+          "type": "INTEGER"
+        }
+      ],
+      "count": 0,
+      "sample_data": []
+    },
+    "宿主绑定表": {
+      "columns": [
+        {
+          "name": "id",
+          "type": "INTEGER"
+        },
+        {
+          "name": "用户ID",
+          "type": "TEXT"
+        },
+        {
+          "name": "用户名称",
+          "type": "TEXT"
+        },
+        {
+          "name": "绑定方式",
+          "type": "TEXT"
+        },
+        {
+          "name": "直接呼叫关键词",
+          "type": "TEXT"
+        },
+        {
+          "name": "跳过接管",
+          "type": "INTEGER"
+        },
+        {
+          "name": "创建时间",
+          "type": "TEXT"
+        },
+        {
+          "name": "状态",
+          "type": "TEXT"
+        }
+      ],
+      "count": 1,
+      "sample_data": [
+        [
+          1,
+          "ou_9fdef2dd0c9dfd043d5c5ddb2f66d2b7",
+          "步花间",
+          "feishu",
+          "宿主,步花间",
+          1,
+          "2026-03-21 02:16",
+          "active"
+        ]
+      ]
+    },
+    "Token使用记录表": {
+      "columns": [
+        {
+          "name": "id",
+          "type": "INTEGER"
+        },
+        {
+          "name": "task_id",
+          "type": "TEXT"
+        },
+        {
+          "name": "model_name",
+          "type": "TEXT"
+        },
+        {
+          "name": "provider",
+          "type": "TEXT"
+        },
+        {
+          "name": "prompt_tokens",
+          "type": "INTEGER"
+        },
+        {
+          "name": "completion_tokens",
+          "type": "INTEGER"
+        },
+        {
+          "name": "total_tokens",
+          "type": "INTEGER"
+        },
+        {
+          "name": "timestamp",
+          "type": "TEXT"
+        },
+        {
+          "name": "status",
+          "type": "TEXT"
+        }
+      ],
+      "count": 10,
+      "sample_data": [
+        [
+          1,
+          "test_001",
+          "doubao-seed-2.0-code",
+          "火山引擎",
+          31,
+          108,
+          139,
+          "2026-03-21T14:55:11.821005",
+          "success"
+        ],
+        [
+          2,
+          "learn_20260321153444",
+          "doubao-seed-2.0-code",
+          "火山引擎",
+          31,
+          64,
+          95,
+          "2026-03-21T15:34:44.145119",
+          "success"
+        ],
+        [
+          3,
+          "repair_20260321161247",
+          "doubao-seed-2.0-code",
+          "火山引擎",
+          31,
+          64,
+          95,
+          "2026-03-21T16:12:47.902573",
+          "success"
+        ]
+      ]
+    }
+  }
+}

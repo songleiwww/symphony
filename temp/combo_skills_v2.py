@@ -21,7 +21,7 @@ ROLES = {
     '高益': {
         'api': 'https://integrate.api.nvidia.com/v1/chat/completions',
         'model': 'deepseek-ai/deepseek-r1',
-        'key': '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'
+        'key': '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'
     }
 }
 

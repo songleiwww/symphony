@@ -75,7 +75,11 @@ class XujingKernel:
         results = []
         for e in self.experts:
             try:
-                r = requests.post(e['url'], json={'model': e['model'], 'messages': [{'role': 'user', 'content': 'hi'}], 'max_tokens': 3}, headers={'Authorization': 'Bearer ' + e['key'], 'Content-Type': 'application/json'}, timeout=10)
+                url = e['url']
+                # 修复: 如果URL不包含/chat/completions，自动添加
+                if "/chat/completions" not in url:
+                    url = url.rstrip("/") + "/chat/completions"
+                r = requests.post(url, json={'model': e['model'], 'messages': [{'role': 'user', 'content': 'hi'}], 'max_tokens': 3}, headers={'Authorization': 'Bearer ' + e['key'], 'Content-Type': 'application/json'}, timeout=10)
                 results.append({'model': e['model'], 'status': r.status_code, 'online': r.status_code == 200})
             except:
                 results.append({'model': e['model'], 'status': 'Error', 'online': False})

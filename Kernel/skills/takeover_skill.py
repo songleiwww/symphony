@@ -8,6 +8,7 @@
 import sqlite3
 import time
 import uuid
+import requests
 from typing import Dict, List, Optional
 from datetime import datetime
 
@@ -49,19 +50,10 @@ class XujingTakeover:
         判断是否需要接管
         关键词触发（中英文）
         """
+        # 半自动模式：只有关键词才触发接管
         takeover_keywords = [
-            # 中文关键词
-            "序境", "接管", "调度", "测试模型",
-            "帮我", "查询", "执行", "运行",
-            "检查", "健康", "状态",
-            # 扩展关键词 (2026-03-19)
-            "令", "责令", "敕令", "交响",
-            "调整", "调", "适配", "选调",
-            # 英文关键词
-            "xujing", "dispatch", "test model", "call model",
-            "help", "check", "health", "status",
-            "kernel", "system", "agent",
-            "symphony"
+            # 序境系统核心关键词（最高优先级）
+            "序境", "陆念昭",
         ]
 
         prompt_lower = prompt.lower()
@@ -186,22 +178,138 @@ class XujingTakeover:
             result["metadata"]["type"] = "dispatch"
 
         else:
-            # symphony关键词 - 显示系统概览
-            from multi_agent.detect_then_team import get_detect_then_team_system
-            from health.kernel_health import KernelHealthChecker
+            # 接管模式：使用序境模型配置表中的模型进行对话
+            model_response = self.call_xujing_model(task["prompt"])
+            if model_response:
+                result["content"] = model_response
+                result["metadata"]["type"] = "xujing_model_response"
+            else:
+                # 如果模型调用失败，显示系统概览作为后备
+                from multi_agent.detect_then_team import get_detect_then_team_system
+                from health.kernel_health import KernelHealthChecker
 
-            db_path = 'C:/Users/Administrator/.openclaw/workspace/skills/symphony/data/symphony.db'
-            system = get_detect_then_team_system(db_path)
-            checker = KernelHealthChecker(db_path)
+                db_path = 'C:/Users/Administrator/.openclaw/workspace/skills/symphony/data/symphony.db'
+                system = get_detect_then_team_system(db_path)
+                checker = KernelHealthChecker(db_path)
 
-            # 获取状态
-            status = system.get_system_status()
-            health = checker.run_full_checkup()
+                status = system.get_system_status()
+                health = checker.run_full_checkup()
 
-            result["content"] = self.format_symphony_status(status, health)
-            result["metadata"]["type"] = "symphony_status"
+                result["content"] = self.format_symphony_status(status, health)
+                result["metadata"]["type"] = "symphony_status"
 
         return result
+
+    def call_xujing_model(self, prompt: str) -> Optional[str]:
+        """
+        调用陆念昭模型（ark-code-latest）进行对话
+        半自动模式：只有关键词触发
+        """
+        import requests
+        conn = sqlite3.connect(self.db_path)
+        cursor = conn.cursor()
+
+        # 1. 查找陆念昭模型 (ark-code-latest)
+        cursor.execute("SELECT 模型名称, API地址, API密钥 FROM 模型配置表 WHERE 模型名称 = 'ark-code-latest'")
+        model_row = cursor.fetchone()
+        
+        if not model_row:
+            conn.close()
+            return None
+        
+        model_name, api_url, api_key = model_row
+        
+        # 2. 构建系统提示
+        system_prompt = """你是陆念昭，序境系统的少府监。
+
+序境系统是一个AI Agent调度系统，由少府监陆念昭负责统筹调度。
+你的身份：
+- 官职：少府监
+- 职责：总领调度全局，协调多模型工作
+- 模型：ark-code-latest
+- 服务商：火山引擎
+
+请以陆念昭的身份直接回复用户。保持简洁、专业。"""
+        
+        # 3. 调用API
+        try:
+            # 确保URL正确
+            url = api_url
+            if "/chat/completions" not in url:
+                url = url.rstrip("/") + "/chat/completions"
+            
+            headers = {
+                "Authorization": f"Bearer {api_key}",
+                "Content-Type": "application/json"
+            }
+            
+            data = {
+                "model": model_name,
+                "messages": [
+                    {"role": "system", "content": system_prompt},
+                    {"role": "user", "content": prompt}
+                ],
+                "max_tokens": 500
+            }
+            
+            response = requests.post(url, headers=headers, json=data, timeout=30)
+            
+            conn.close()
+            
+            if response.status_code == 200:
+                result = response.json()
+                if "choices" in result and len(result["choices"]) > 0:
+                    return result["choices"][0]["message"]["content"]
+        
+        except Exception as e:
+            if conn:
+                conn.close()
+            return f"调用失败: {str(e)}"
+        
+        return None
+        
+        # 3. 从模型配置表获取第一个可用的模型
+        cursor.execute('SELECT id, 模型名称, API地址, API密钥, 服务商 FROM 模型配置表 LIMIT 1')
+        model = cursor.fetchone()
+
+        if not model:
+            conn.close()
+            return None
+
+        model_id, model_name, api_url, api_key, provider = model
+        conn.close()
+
+        # 4. 调用模型API，注入规则上下文
+        try:
+            headers = {
+                'Authorization': 'Bearer ' + api_key,
+                'Content-Type': 'application/json'
+            }
+
+            system_prompt = f"""你是序境系统的AI助手。{rules_context}
+
+请根据以上序境系统总则回答用户问题。"""
+
+            data = {
+                "model": model_name,
+                "messages": [
+                    {"role": "system", "content": system_prompt},
+                    {"role": "user", "content": prompt}
+                ],
+                "max_tokens": 500
+            }
+
+            response = requests.post(api_url, headers=headers, json=data, timeout=30)
+
+            if response.status_code == 200:
+                result = response.json()
+                if "choices" in result and len(result["choices"]) > 0:
+                    return result["choices"][0]["message"]["content"]
+
+        except Exception as e:
+            return f"模型调用失败: {str(e)}"
+
+        return None
 
     def format_health_report(self, report: Dict) -> str:
         """格式化健康报告"""

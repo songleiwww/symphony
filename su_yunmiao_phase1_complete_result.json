@@ -1,0 +1,99 @@
+{
+  "已完成": [
+    "任务1：统一抽象层设计",
+    "任务2：模型治理模块"
+  ],
+  "进行中": [],
+  "任务详情": {
+    "任务1：统一抽象层设计": [
+      "定义标准化模块接口规范",
+      "实现服务商接入标准化"
+    ],
+    "任务2：模型治理模块": [
+      "从symphony.db读取模型配置表",
+      "统计各服务商模型在线状态"
+    ]
+  },
+  "系统状态": {
+    "abstraction_layer": "active",
+    "model_governance": "active",
+    "provider_registry": "active",
+    "summary": {
+      "total_models": 550,
+      "online_count": 402,
+      "offline_count": 97,
+      "error_count": 51,
+      "providers": [
+        "火山引擎",
+        "硅基流动",
+        "英伟达",
+        "魔搭",
+        "魔力方舟",
+        "智谱"
+      ],
+      "detailed_stats": {
+        "智谱": {
+          "online": 8
+        },
+        "火山引擎": {
+          "online": 9
+        },
+        "硅基流动": {
+          "online": 60,
+          "失控": 51
+        },
+        "英伟达": {
+          "offline": 81,
+          "online": 110
+        },
+        "魔力方舟": {
+          "offline": 16,
+          "online": 209
+        },
+        "魔搭": {
+          "online": 6
+        }
+      },
+      "online_rate": 73.09
+    }
+  },
+  "数据库路径": "C:\\Users\\Administrator\\.openclaw\\workspace\\skills\\symphony\\data\\symphony.db",
+  "模型摘要": {
+    "total_models": 550,
+    "online_count": 402,
+    "offline_count": 97,
+    "error_count": 51,
+    "providers": [
+      "火山引擎",
+      "硅基流动",
+      "英伟达",
+      "魔搭",
+      "魔力方舟",
+      "智谱"
+    ],
+    "detailed_stats": {
+      "智谱": {
+        "online": 8
+      },
+      "火山引擎": {
+        "online": 9
+      },
+      "硅基流动": {
+        "online": 60,
+        "失控": 51
+      },
+      "英伟达": {
+        "offline": 81,
+        "online": 110
+      },
+      "魔力方舟": {
+        "offline": 16,
+        "online": 209
+      },
+      "魔搭": {
+        "online": 6
+      }
+    },
+    "online_rate": 73.09
+  }
+}
