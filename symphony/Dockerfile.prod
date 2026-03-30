@@ -1,0 +1,19 @@
+FROM node:20-alpine
+
+WORKDIR /app
+
+# 安装pnpm
+RUN npm install -g pnpm
+
+# 复制依赖文件
+COPY package.json pnpm-lock.yaml ./
+
+# 安装依赖（生产模式只安装生产依赖）
+RUN pnpm install --frozen-lockfile --prod
+
+# 复制源码和构建产物
+COPY . .
+COPY dist ./dist
+
+# 启动生产模式
+CMD ["pnpm", "start:prod"]

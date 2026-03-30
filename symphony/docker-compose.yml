@@ -1,0 +1,32 @@
+version: '3.8'
+
+# 序境Symphony AI Kernel - Docker Compose
+# 用于容器化部署，自动化开发和生产环境
+
+services:
+  symphony-dev:
+    build:
+      context: .
+      dockerfile: Dockerfile.dev
+    container_name: symphony-dev
+    ports:
+      - "18901:18901"
+    volumes:
+      - ./src:/app/src
+      - ./dist:/app/dist
+    environment:
+      - NODE_ENV=development
+      - PORT=18901
+    restart: unless-stopped
+
+  symphony-prod:
+    build:
+      context: .
+      dockerfile: Dockerfile.prod
+    container_name: symphony-prod
+    ports:
+      - "18789:18789"
+    environment:
+      - NODE_ENV=production
+      - PORT=18789
+    restart: always
