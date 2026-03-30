@@ -23,16 +23,16 @@ export class GatewayServer {
 
   private setupRoutes(): express.Application {
     const app = express();
-    
+
     app.use(cors());
     app.use(express.json());
 
     // 健康检查
     app.get('/health', (req, res) => {
-      res.json({ 
-        status: 'ok', 
+      res.json({
+        status: 'ok',
         timestamp: new Date().toISOString(),
-        environment: process.env.NODE_ENV || 'development'
+        environment: process.env.NODE_ENV || 'development',
       });
     });
 
@@ -54,7 +54,7 @@ export class GatewayServer {
     // 文本补全
     app.post('/completion', async (req, res) => {
       const request: CompletionRequest = req.body;
-      
+
       const model = this.scheduler.selectModel(request);
       if (!model) {
         return res.status(503).json({ error: 'No available model' });
@@ -98,7 +98,7 @@ export class GatewayServer {
 
   async start(port: number): Promise<void> {
     this.logger.debug(`启动API网关，端口: ${port}`);
-    
+
     return new Promise((resolve) => {
       this.server = this.app.listen(port, () => {
         this.logger.info(`API网关已启动: http://localhost:${port}`);

@@ -59,5 +59,5 @@ export function seedTestModels(scheduler: ModelScheduler): void {
     },
   ];
 
-  testModels.forEach(model => scheduler.registerModel(model));
+  testModels.forEach((model) => scheduler.registerModel(model));
 }

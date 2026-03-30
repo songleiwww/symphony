@@ -20,12 +20,12 @@ export class SymphonyKernel {
     }
 
     this.logger.debug('初始化序境核心内核');
-    
+
     // 这里初始化核心服务:
     // - 配置加载
     // - 内存系统初始化
     // - 插件系统初始化
-    
+
     this.initialized = true;
     this.logger.debug('序境核心内核初始化完成');
   }
@@ -36,9 +36,9 @@ export class SymphonyKernel {
     }
 
     this.logger.debug('关闭序境核心内核');
-    
+
     // 优雅关闭所有核心服务
-    
+
     this.initialized = false;
     this.logger.debug('序境核心内核已关闭');
   }

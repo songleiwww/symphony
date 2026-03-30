@@ -17,7 +17,7 @@ export class Logger {
 
   constructor() {
     const level = process.env.LOG_LEVEL || 'info';
-    
+
     this.logger = winston.createLogger({
       level,
       levels: logLevels,
@@ -28,9 +28,7 @@ export class Logger {
           return `[${timestamp}] ${level}: ${message}`;
         })
       ),
-      transports: [
-        new winston.transports.Console(),
-      ],
+      transports: [new winston.transports.Console()],
     });
   }
 

@@ -22,10 +22,10 @@ export class ModelScheduler {
     }
 
     this.logger.debug('初始化多模型调度器');
-    
+
     // 从配置加载所有模型
     // 这里预留扩展点，后续从配置文件/数据库加载
-    
+
     this.initialized = true;
     this.logger.debug(`多模型调度器初始化完成，已加载 ${this.models.size} 个模型`);
   }
@@ -51,7 +51,7 @@ export class ModelScheduler {
    * 获取所有可用模型
    */
   getAvailableModels(): ModelConfig[] {
-    return Array.from(this.models.values()).filter(m => m.enabled);
+    return Array.from(this.models.values()).filter((m) => m.enabled);
   }
 
   /**
@@ -60,7 +60,7 @@ export class ModelScheduler {
    */
   getModelsForCurrentEnvironment(): ModelConfig[] {
     const isProd = process.env.NODE_ENV === 'production';
-    return this.getAvailableModels().filter(m => m.isProduction === isProd);
+    return this.getAvailableModels().filter((m) => m.isProduction === isProd);
   }
 
   /**
@@ -85,7 +85,7 @@ export class ModelScheduler {
    * 获取所有模型状态
    */
   getAllModelStatus(): ModelStatus[] {
-    return Array.from(this.models.keys()).map(id => this.getModelStatus(id)!);
+    return Array.from(this.models.keys()).map((id) => this.getModelStatus(id)!);
   }
 
   /**
@@ -94,7 +94,7 @@ export class ModelScheduler {
    */
   selectModel(request: CompletionRequest): ModelConfig | null {
     const available = this.getModelsForCurrentEnvironment();
-    
+
     if (request.modelId) {
       return this.models.get(request.modelId) || null;
     }
@@ -109,7 +109,7 @@ export class ModelScheduler {
 
   async shutdown(): Promise<void> {
     if (!this.initialized) return;
-    
+
     this.logger.debug('关闭模型调度器');
     this.initialized = false;
     this.logger.debug('模型调度器已关闭');
