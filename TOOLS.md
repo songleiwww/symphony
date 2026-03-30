@@ -2,34 +2,25 @@
 
 Skills define _how_ tools work. This file is for _your_ specifics — the stuff that's unique to your setup.
 
-## What Goes Here
+## Environment
 
-Things like:
+- **OS**: Windows 11 (x64)
+- **Shell**: PowerShell
+- **Node.js**: v25.2.1
+- **OpenClaw**: 2026.3.28 (f9b1079)
+- **Default Model**: volcengine-plan/ark-code-latest
+- **Channel**: Feishu (pairs with WeChat)
+- **Timezone**: Asia/Shanghai
 
-- Camera names and locations
-- SSH hosts and aliases
-- Preferred voices for TTS
-- Speaker/room names
-- Device nicknames
-- Anything environment-specific
+## Projects
 
-## Examples
+- **openclaw**: C:\Users\Administrator\.openclaw\workspace\openclaw - OpenClaw core source
+- **symphony**: C:\Users\Administrator\.openclaw\workspace\symphony - 序境Symphony AI kernel
 
-```markdown
-### Cameras
+## Feishu Integration
 
-- living-room → Main area, 180° wide angle
-- front-door → Entrance, motion-triggered
-
-### SSH
-
-- home-server → 192.168.1.100, user: admin
-
-### TTS
-
-- Preferred voice: "Nova" (warm, slightly British)
-- Default speaker: Kitchen HomePod
-```
+- Current integration works for automation via robot
+- Bitable/doc/wiki operations available
 
 ## Why Separate?
 
