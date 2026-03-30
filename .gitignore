@@ -1,0 +1,49 @@
+# OpenClaw specific
+.openclaw/runtime
+.openclaw/temp
+
+# OS files
+Thumbs.db
+.DS_Store
+*.tmp
+*.temp
+
+# Logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Node modules
+node_modules/
+
+# Build output
+dist/
+build/
+*.tsbuildinfo
+
+# Media (keep important media but ignore large generated media
+*.mp4
+*.mov
+*.avi
+*.mkv
+*.iso
+*.dmg
+*.pkg
+
+# Memory daily files (keep only curated MEMORY.md in repo, daily logs can stay local
+memory/
+!memory/.gitkeep
+
+# Environment secrets
+.env
+.env.local
+.env.*.local
+
+# Editor
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.\#*
