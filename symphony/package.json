@@ -1,0 +1,33 @@
+{
+  "name": "symphony-ai-kernel",
+  "version": "0.1.0",
+  "description": "序境Symphony AI 内核 - 下一代人工智能协同操作系统",
+  "main": "dist/index.js",
+  "scripts": {
+    "dev": "node scripts/dev-start.js",
+    "start:prod": "node scripts/prod-start.js",
+    "build": "tsc",
+    "watch": "tsc -w"
+  },
+  "keywords": [
+    "ai",
+    "kernel",
+    "symphony",
+    "multi-model",
+    "scheduler"
+  ],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.5",
+    "express": "^4.18.2",
+    "winston": "^3.13.0"
+  },
+  "devDependencies": {
+    "@types/cors": "^2.8.19",
+    "@types/express": "^4.17.21",
+    "@types/node": "^20.12.7",
+    "typescript": "^5.4.5"
+  }
+}
