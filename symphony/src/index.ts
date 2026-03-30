@@ -20,7 +20,7 @@ export class Symphony {
     this.kernel = new SymphonyKernel(this.logger);
     this.scheduler = new ModelScheduler(this.logger);
     this.gateway = new GatewayServer(this.scheduler, this.logger);
-    
+
     // 开发模式加载测试模型（多脑合作测试）
     if (process.env.NODE_ENV === 'development') {
       seedTestModels(this.scheduler);
@@ -54,7 +54,7 @@ export default Symphony;
 if (require.main === module) {
   const port = parseInt(process.env.PORT || '18901', 10);
   const symphony = new Symphony();
-  symphony.start(port).catch(err => {
+  symphony.start(port).catch((err) => {
     console.error('内核启动失败:', err);
     process.exit(1);
   });
