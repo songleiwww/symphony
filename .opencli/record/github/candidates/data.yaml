@@ -1,0 +1,28 @@
+site: github
+name: data
+description: github data (recorded)
+domain: github.com
+strategy: cookie
+browser: true
+args:
+  limit:
+    type: int
+    default: 20
+    description: Number of items
+pipeline:
+  - navigate: https://github.com/songleiwww/symphony/releases/tag/v4.3.0
+  - evaluate: |-
+      (async () => {
+        const res = await fetch("/_side-panels/user.json", { credentials: 'include' });
+        const data = await res.json();
+        return (data?.userStatus?.expirationIntervals || []).map(item => ({
+                time: item?.time
+              }));
+      })()
+  - map:
+      rank: ${{ index + 1 }}
+      time: ${{ item.time }}
+  - limit: ${{ args.limit | default(20) }}
+columns:
+  - rank
+  - time

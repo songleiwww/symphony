@@ -1,0 +1,16 @@
+{
+  "site": "chat",
+  "target_url": "https://chat.deepseek.com",
+  "final_url": "https://chat.deepseek.com/",
+  "title": "DeepSeek - 探索未至之境",
+  "framework": {
+    "nextjs": false,
+    "nuxt": false,
+    "react": false,
+    "vue2": false,
+    "vue3": false
+  },
+  "stores": [],
+  "top_strategy": "public",
+  "explored_at": "2026-04-03T17:18:38.249Z"
+}

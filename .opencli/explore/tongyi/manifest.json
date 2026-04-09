@@ -1,0 +1,16 @@
+{
+  "site": "tongyi",
+  "target_url": "https://tongyi.aliyun.com/",
+  "final_url": "https://tongyi.aliyun.com/",
+  "title": "通义实验室",
+  "framework": {
+    "nextjs": false,
+    "nuxt": false,
+    "react": false,
+    "vue2": false,
+    "vue3": false
+  },
+  "stores": [],
+  "top_strategy": "public",
+  "explored_at": "2026-04-03T17:35:35.302Z"
+}

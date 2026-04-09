@@ -1,0 +1,72 @@
+# 免费代理模型配置（协调调度专用，优先使用，避免消耗主模型Token）
+# 总原则：所有协调类/轻量调度/普通查询任务优先使用以下免费模型，主模型仅处理高复杂度核心任务
+version: "v4.5.0"
+update_time: "2026-04-05"
+
+## 优先级排序：从上到下，优先使用排在前面的免费模型
+free_proxy_models:
+  - id: "glm-4.7-flash"
+    name: "智谱清言GLM-4.7-Flash"
+    provider: "zhipuai"
+    api_url: "https://open.bigmodel.cn/api/paas/v4/"
+    api_key: "7165f8ffad664d06bac6f9be04b48e26.ovDm4h1vaajj8N3w"
+    model_type: "llm"
+    status: "active"
+    priority: 1
+    cost_per_token: 0  # 完全免费
+    capabilities: ["coordination", "scheduling", "light_query", "code_review"]
+    limits: {"qps": 2, "max_tokens": 128000}
+    description: "智谱官方永久免费模型，协调调度首选，速度快，支持长上下文"
+
+  - id: "qwen-plus-free"
+    name: "通义千问Qwen-Plus 免费配额"
+    provider: "aliyun"
+    api_url: "https://dashscope.aliyuncs.com/compatible-mode/v1"
+    api_key: "sk-fee678dbf4d84f9a910356821c95c0d5"
+    model_type: "llm"
+    status: "active"
+    priority: 2
+    cost_per_token: 0  # 免费额度内零成本
+    capabilities: ["coordination", "analysis", "code_generation"]
+    limits: {"qps": 5, "max_tokens": 32000}
+    description: "阿里云百炼免费配额，中文能力优秀，适合中文场景协调"
+
+  - id: "deepseek-r1-free"
+    name: "DeepSeek-R1 ModelScope免费"
+    provider: "modelscope"
+    api_url: "https://api-inference.modelscope.cn/v1"
+    api_key: "ms-eac6f154-3502-4721-a168-ce7caeaf1033"
+    model_type: "llm"
+    status: "active"
+    priority: 3
+    cost_per_token: 0  # 每日500次免费调用
+    capabilities: ["reasoning", "complex_coordination", "algorithm_design"]
+    limits: {"qps": 1, "max_tokens": 8192}
+    description: "ModelScope免费DeepSeek-R1，推理能力强，适合复杂协调场景"
+
+
+
+## 任务路由规则（强制执行）
+routing_rules:
+  # 优先使用免费代理的任务类型
+  use_free_proxy_for:
+    - "coordination": 跨模型协调、任务分发、结果汇总
+    - "scheduling": 任务调度、优先级分配、资源编排
+    - "light_query": 普通查询、信息整理、格式转换
+    - "code_review": 代码检查、语法校验、文档生成
+    - "pre_analysis": 前置分析、问题分类、复杂度评估
+
+  # 仅允许使用主模型的任务类型（高复杂度，免费模型无法胜任）
+  use_main_model_only:
+    - "core_architecture_design": 核心架构设计、复杂算法研发
+    - "deep_reasoning": 深度推理、数学/逻辑难题求解
+    - "security_audit": 安全审计、漏洞挖掘、敏感数据处理
+    - "production_deployment": 生产环境部署、核心配置修改
+
+## 统计规则
+token_tracking:
+  # 每日统计免费模型节省的Token数量
+  enable_tracking: true
+  log_path: "logs/free_proxy_token_savings.log"
+  # 当免费模型不可用时，最多降级使用1次主模型，然后立即告警
+  main_model_fallback_limit: 1

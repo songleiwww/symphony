@@ -1,0 +1,50 @@
+2026-04-03 00:08:01,634 - INFO - 队列处理工作线程已启动
+2026-04-03 00:08:01,634 - INFO - 定时快照工作线程已启动
+2026-04-03 00:08:01,637 - WARNING - Core init: no such table: model_config
+2026-04-03 00:08:01,648 - INFO - SelfEvolutionV2 initialized
+2026-04-03 00:08:01,654 - INFO - AgentMemoryLayer initialized
+2026-04-03 00:08:01,660 - INFO - MultiAgentCoordinator initialized
+2026-04-03 00:08:01,661 - INFO - AdaptiveAlgorithmCoordinator initialized
+2026-04-03 00:08:01,661 - INFO - WisdomEmergenceEngine initialized
+2026-04-03 00:08:01,661 - INFO - MilitaryStrategyAdvisor initialized
+2026-04-03 00:08:01,661 - INFO - Evolution Kernel 4.2.0 ready (ID: beb15530)
+2026-04-03 00:08:28,265 - INFO - 队列处理工作线程已启动
+2026-04-03 00:08:28,265 - INFO - 定时快照工作线程已启动
+2026-04-03 00:08:28,269 - WARNING - Core init: no such table: model_config
+2026-04-03 00:08:28,278 - INFO - SelfEvolutionV2 initialized
+2026-04-03 00:08:28,286 - INFO - AgentMemoryLayer initialized
+2026-04-03 00:08:28,293 - INFO - MultiAgentCoordinator initialized
+2026-04-03 00:08:28,293 - INFO - AdaptiveAlgorithmCoordinator initialized
+2026-04-03 00:08:28,293 - INFO - WisdomEmergenceEngine initialized
+2026-04-03 00:08:28,293 - INFO - MilitaryStrategyAdvisor initialized
+2026-04-03 00:08:28,293 - INFO - Evolution Kernel 4.2.0 ready (ID: 41b1831b)
+2026-04-03 00:08:49,755 - INFO - 队列处理工作线程已启动
+2026-04-03 00:08:49,755 - INFO - 定时快照工作线程已启动
+2026-04-03 00:08:49,759 - WARNING - Core init: no such table: model_config
+2026-04-03 00:08:49,767 - INFO - SelfEvolutionV2 initialized
+2026-04-03 00:08:49,776 - INFO - AgentMemoryLayer initialized
+2026-04-03 00:08:49,783 - INFO - MultiAgentCoordinator initialized
+2026-04-03 00:08:49,783 - INFO - AdaptiveAlgorithmCoordinator initialized
+2026-04-03 00:08:49,783 - INFO - WisdomEmergenceEngine initialized
+2026-04-03 00:08:49,783 - INFO - MilitaryStrategyAdvisor initialized
+2026-04-03 00:08:49,783 - INFO - Evolution Kernel 4.2.0 ready (ID: 7a20fae8)
+2026-04-03 00:09:39,805 - INFO - 队列处理工作线程已启动
+2026-04-03 00:09:39,806 - INFO - 定时快照工作线程已启动
+2026-04-03 00:09:39,810 - WARNING - Core init: no such table: model_config
+2026-04-03 00:09:39,817 - INFO - SelfEvolutionV2 initialized
+2026-04-03 00:09:39,823 - INFO - AgentMemoryLayer initialized
+2026-04-03 00:09:39,828 - INFO - MultiAgentCoordinator initialized
+2026-04-03 00:09:39,829 - INFO - AdaptiveAlgorithmCoordinator initialized
+2026-04-03 00:09:39,829 - INFO - WisdomEmergenceEngine initialized
+2026-04-03 00:09:39,829 - INFO - MilitaryStrategyAdvisor initialized
+2026-04-03 00:09:39,829 - INFO - Evolution Kernel 4.2.0 ready (ID: 4b204c29)
+2026-04-03 00:13:56,041 - INFO - 队列处理工作线程已启动
+2026-04-03 00:13:56,041 - INFO - 定时快照工作线程已启动
+2026-04-03 00:13:56,045 - WARNING - Core init: no such table: model_config
+2026-04-03 00:13:56,053 - INFO - SelfEvolutionV2 initialized
+2026-04-03 00:13:56,062 - INFO - AgentMemoryLayer initialized
+2026-04-03 00:13:56,069 - INFO - MultiAgentCoordinator initialized
+2026-04-03 00:13:56,069 - INFO - AdaptiveAlgorithmCoordinator initialized
+2026-04-03 00:13:56,069 - INFO - WisdomEmergenceEngine initialized
+2026-04-03 00:13:56,069 - INFO - MilitaryStrategyAdvisor initialized
+2026-04-03 00:13:56,069 - INFO - Evolution Kernel 4.2.0 ready (ID: 5b5616b2)

@@ -1,0 +1,80 @@
+{
+  "version": "1.0",
+  "description": "Default role-model mapping for Symphony multi-brain collaboration",
+  "roles": [
+    {
+      "name": "main",
+      "title": "主脑/统筹脑",
+      "description": "Understand user requirements, allocate tasks, integrate results, final output",
+      "default_model": "volcengine-plan/ark-code-latest",
+      "system_prompt": "你是序境Symphony的主脑统筹，负责理解用户需求，分配任务给各个专业脑，整合结果输出最终答案。"
+    },
+    {
+      "name": "plan",
+      "title": "规划脑",
+      "description": "Task analysis, boundary identification, detailed planning",
+      "default_model": "volcengine-plan/doubao-seed-2.0-pro",
+      "system_prompt": "你是序境Symphony的规划脑，负责深入分析用户任务，识别安全边界，制定详细可执行的计划，区分安全和不安全操作范围。"
+    },
+    {
+      "name": "execute",
+      "title": "执行脑",
+      "description": "Execute tools, perform operations, handle code and commands",
+      "default_model": "volcengine-plan/doubao-seed-2.0-code",
+      "system_prompt": "你是序境Symphony的执行脑，负责按照计划调用工具执行具体操作，处理代码和命令，保证执行准确无误。"
+    },
+    {
+      "name": "verify",
+      "title": "验证脑",
+      "description": "Strict verification, security check, result confirmation, issue detection",
+      "default_model": "volcengine-plan/glm-4.7",
+      "system_prompt": "你是序境Symphony的验证脑，负责严格验证执行结果，检查是否符合安全要求，确认优化效果，发现潜在问题，给出验证结论。"
+    }
+  ],
+  "security_levels": [
+    {
+      "level": 1,
+      "name": "完全安全",
+      "description": "Only clean up documentation, no file modification",
+      "allowed_operations": ["read", "document_update", "analysis"]
+    },
+    {
+      "level": 2,
+      "name": "安全优化",
+      "description": "Clean cache, remove redundancy",
+      "allowed_operations": ["read", "document_update", "analysis", "cache_clean", "remove_redundancy"]
+    },
+    {
+      "level": 3,
+      "name": "开发模式",
+      "description": "Can prune dependencies, deep optimization",
+      "allowed_operations": ["read", "document_update", "analysis", "cache_clean", "remove_redundancy", "prune_dependencies", "git_gc"]
+    },
+    {
+      "level": 4,
+      "name": "完全开发",
+      "description": "Can modify core code",
+      "allowed_operations": ["all"]
+    }
+  ],
+  "workflows": [
+    {
+      "name": "performance_optimization",
+      "title": "性能优化标准流程",
+      "description": "Standard workflow for performance optimization",
+      "steps": ["plan:analyze", "execute:optimize", "verify:validate", "main:summary"]
+    },
+    {
+      "name": "software_development",
+      "title": "软件开发协作流程",
+      "description": "Standard workflow for software development",
+      "steps": ["plan:requirements", "execute:coding", "verify:testing", "main:output"]
+    },
+    {
+      "name": "writing",
+      "title": "写作协作流程",
+      "description": "Standard workflow for writing",
+      "steps": ["plan:outline", "execute:drafting", "verify:proofread", "main:final"]
+    }
+  ]
+}

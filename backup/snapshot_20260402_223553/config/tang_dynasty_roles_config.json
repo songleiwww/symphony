@@ -1,0 +1,237 @@
+{
+  "version": "1.0",
+  "dynasty": "tang",
+  "description": "Complete Tang Dynasty imperial system role-model mapping for Symphony",
+  "palace": [
+    {
+      "role": "emperor",
+      "title_cn": "皇帝陛下",
+      "duty": "降圣旨（提出需求），准奏（批准结果）",
+      "model": "user",
+      "enabled": true
+    },
+    {
+      "role": "hanyuan_xueshi",
+      "title_cn": "翰林院学士",
+      "duty": "承皇帝命草拟文书，提供顾问",
+      "model": "volcengine-plan/doubao-seed-2.0-pro",
+      "enabled": true
+    },
+    {
+      "role": "neishi_sheng",
+      "title_cn": "内侍省宦官",
+      "duty": "传圣旨，传递消息，整理文案",
+      "model": "builtin:scheduler",
+      "enabled": true
+    },
+    {
+      "role": "qiju_xieren",
+      "title_cn": "起居舍人",
+      "duty": "记录皇帝言行，存储起居注",
+      "model": "volcengine-plan/doubao-seed-2.0-pro",
+      "enabled": true
+    }
+  ],
+  "three_ministries": [
+    {
+      "department": "zhongshu",
+      "roles": [
+        {
+          "role": "zhongshu_ling",
+          "title_cn": "中书令",
+          "rank": "正三品",
+          "duty": "承圣旨草诏，总领中书省，统筹全局",
+          "model": "volcengine-plan/ark-code-latest",
+          "enabled": true
+        },
+        {
+          "role": "zuosanqi_changshi",
+          "title_cn": "左散骑常侍",
+          "rank": "正三品下",
+          "duty": "参议政事，提供谋略，分析问题",
+          "model": "volcengine-plan/doubao-seed-2.0-pro",
+          "enabled": true
+        }
+      ]
+    },
+    {
+      "department": "menxia",
+      "roles": [
+        {
+          "role": "geishizhong",
+          "title_cn": "给事中",
+          "rank": "正五品上",
+          "duty": "审核草诏，封驳违失，驳回不当",
+          "model": "volcengine-plan/glm-4.7",
+          "enabled": true
+        }
+      ]
+    },
+    {
+      "department": "shangshu",
+      "roles": [
+        {
+          "role": "liubu_langzhong",
+          "title_cn": "六部郎中",
+          "rank": "正五品上",
+          "duty": "具体执行，分管事务，落实诏敕",
+          "model": "volcengine-plan/doubao-seed-2.0-code",
+          "enabled": true
+        }
+      ]
+    }
+  ],
+  "yushitai": [
+    {
+      "role": "shiyushi",
+      "title_cn": "侍御史",
+      "rank": "从六品下",
+      "duty": "监察弹劾，检查结果，纠察违法",
+      "model": "volcengine-plan/glm-4.7",
+      "enabled": true
+    },
+    {
+      "role": "dianzhong_shiyushi",
+      "title_cn": "殿中侍御史",
+      "rank": "从七品下",
+      "duty": "监察朝仪，检查流程合规",
+      "model": "volcengine-plan/kimi-k2.5",
+      "enabled": true
+    }
+  ],
+  "shiguan": [
+    {
+      "role": "qiju_lang",
+      "title_cn": "起居郎",
+      "rank": "从六品上",
+      "duty": "记录政事，编写起居注，存储记忆",
+      "model": "volcengine-plan/doubao-seed-2.0-pro",
+      "enabled": true
+    },
+    {
+      "role": "shiguan_xiuzhuan",
+      "title_cn": "史馆修撰",
+      "rank": "从六品下",
+      "duty": "整理史料，提炼经验，写入国史",
+      "model": "volcengine-plan/doubao-seed-2.0-pro",
+      "enabled": true
+    }
+  ],
+  "hougong": [
+    {
+      "role": "huanghou",
+      "title_cn": "皇后娘娘",
+      "duty": "母仪天下，主管后宫，协理皇帝",
+      "model": "volcengine-plan/doubao-seed-2.0-pro",
+      "enabled": true
+    },
+    {
+      "role": "chenfei",
+      "title_cn": "宸贵妃",
+      "duty": "辅佐皇后，分管专项",
+      "model": "volcengine-plan/doubao-seed-2.0-pro",
+      "enabled": true
+    },
+    {
+      "role": "shufei",
+      "title_cn": "淑贵妃",
+      "duty": "辅佐皇后，分管专项",
+      "model": "volcengine-plan/deepseek-v3.2",
+      "enabled": true
+    },
+    {
+      "role": "defei",
+      "title_cn": "德贵妃",
+      "duty": "辅佐皇后，分管专项",
+      "model": "volcengine-plan/kimi-k2.5",
+      "enabled": true
+    },
+    {
+      "role": "xianfei",
+      "title_cn": "贤贵妃",
+      "duty": "辅佐皇后，分管专项",
+      "model": "volcengine-plan/minimax-m2.5",
+      "enabled": true
+    },
+    {
+      "role": "nvxueshi",
+      "title_cn": "女学士",
+      "duty": "后宫文墨，校勘书籍，文案润色",
+      "model": "volcengine-plan/deepseek-v3.2",
+      "enabled": true
+    },
+    {
+      "role": "shanggong",
+      "title_cn": "尚宫",
+      "duty": "主管文秘，导引皇后，流程调度",
+      "model": "builtin:scheduler",
+      "enabled": true
+    },
+    {
+      "role": "shangshi",
+      "title_cn": "尚食",
+      "duty": "主管膳食，保障供给，资源管理",
+      "model": "volcengine-plan/doubao-seed-2.0-lite",
+      "enabled": true
+    },
+    {
+      "role": "shangyi",
+      "title_cn": "尚衣",
+      "duty": "主管服饰，样式展示，输出美化",
+      "model": "volcengine-plan/doubao-seed-2.0-pro",
+      "enabled": true
+    },
+    {
+      "role": "shangqin",
+      "title_cn": "尚寝",
+      "duty": "主管燕寝，休息安排，会话休眠管理",
+      "model": "builtin:statemgr",
+      "enabled": true
+    }
+  ],
+  "junji": {
+    "name": "政事堂军机参议",
+    "description": "重大事项，宰相共同商议",
+    "participants": [
+      {
+        "role": "zhongshu_ling",
+        "model": "volcengine-plan/ark-code-latest"
+      },
+      {
+        "role": "huanghou",
+        "model": "volcengine-plan/doubao-seed-2.0-pro"
+      },
+      {
+        "role": "zuosanqi_changshi",
+        "model": "volcengine-plan/doubao-seed-2.0-pro"
+      },
+      {
+        "role": "shiyushi",
+        "model": "volcengine-plan/glm-4.7"
+      }
+    ]
+  },
+  "workflow": [
+    {
+      "name": "full_imperial_process",
+      "description": "完整皇权办事流程",
+      "steps": [
+        "emperor:decree",
+        "neishi:deliver",
+        "zhongshu_ling:accept",
+        "sanqi_changshi:draft",
+        "geishizhong:review",
+        "if rejected → sanqi_changshi:revise",
+        "liubu_langzhong:execute",
+        "shiyushi:inspect",
+        "if rejected → liubu_langzhong:rework",
+        "qiju_lang:record",
+        "shiguan_xiuzhuan:summary",
+        "zhongshu_ling:report",
+        "neishi:present",
+        "emperor:approve",
+        "case_closed"
+      ]
+    }
+  ]
+}

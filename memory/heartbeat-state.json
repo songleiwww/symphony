@@ -1,0 +1,10 @@
+{
+  "lastChecks": {
+    "gateway_prod": 1712362400,
+    "gateway_dev": null,
+    "memory_size": null,
+    "cron_status": null,
+    "session_ctx": null,
+    "symphony_db": null
+  }
+}

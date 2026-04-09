@@ -1,0 +1,41 @@
+{
+  "version": 1,
+  "skills": {
+    "weather": {
+      "version": "1.0.0",
+      "installedAt": 1775027831429
+    },
+    "agent-browser-clawdbot": {
+      "version": "0.1.0",
+      "installedAt": 1775196897014
+    },
+    "desearch-web-search": {
+      "version": "1.0.1",
+      "installedAt": 1775662385572
+    },
+    "bailian-web-search": {
+      "version": "1.0.4",
+      "installedAt": 1775662388889
+    },
+    "local-web-search-skill": {
+      "version": "0.1.0",
+      "installedAt": 1775662395927
+    },
+    "explain-code": {
+      "version": "1.0.0",
+      "installedAt": 1775662441242
+    },
+    "code-review-fix": {
+      "version": "1.0.0",
+      "installedAt": 1775662447254
+    },
+    "automation-workflows": {
+      "version": "0.1.0",
+      "installedAt": 1775662574201
+    },
+    "code": {
+      "version": "1.0.4",
+      "installedAt": 1775663040436
+    }
+  }
+}

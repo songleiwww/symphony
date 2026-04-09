@@ -1,0 +1,61 @@
+{
+  "mcpServers": {
+    "brightdata": {
+      "command": "npx",
+      "args": [
+        "@brightdata/mcp"
+      ],
+      "env": {
+        "API_TOKEN": "<FILL_IN_BRIGHTDATA_API_TOKEN>",
+        "WEB_UNLOCKER_ZONE": "<FILL_IN_WEB_UNLOCKER_ZONE>",
+        "BROWSER_AUTH": "<FILL_IN_BROWSER_AUTH>"
+      }
+    },
+    "a2asearch": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "a2asearch-mcp"
+      ]
+    },
+    "astronomy-oracle": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "astronomy-oracle"
+      ]
+    },
+    "myinstants": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "myinstants-mcp"
+      ]
+    },
+    "photopea": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "photopea-mcp-server"
+      ]
+    },
+    "filesystem": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "@modelcontextprotocol/server-filesystem",
+        "."
+      ]
+    },
+    "tavily": {
+      "baseUrl": "https://mcp.tavily.com/mcp/?tavilyApiKey=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"
+    },
+    "openclaw-dev": {
+      "baseUrl": "http://127.0.0.1:19001/mcp"
+    },
+    "openclaw-main": {
+      "baseUrl": "http://127.0.0.1:18789/mcp"
+    }
+  },
+  "imports": []
+}

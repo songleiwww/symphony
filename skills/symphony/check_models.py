@@ -1,0 +1,10 @@
+import sqlite3
+conn = sqlite3.connect(r'C:\Users\Administrator\.openclaw\workspace\skills\symphony\data\symphony.db')
+cursor = conn.cursor()
+cursor.execute("SELECT provider, model_id, model_type, context_window FROM model_config WHERE model_type = 'text' AND is_enabled = 1 LIMIT 10")
+rows = cursor.fetchall()
+print("Text models:", rows)
+cursor.execute("SELECT provider, model_id, model_type, context_window FROM model_config WHERE model_type = 'chat' AND is_enabled = 1 LIMIT 10")
+rows = cursor.fetchall()
+print("Chat models:", rows)
+conn.close()

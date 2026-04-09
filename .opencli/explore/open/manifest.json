@@ -1,0 +1,16 @@
+{
+  "site": "open",
+  "target_url": "https://open.bigmodel.cn/",
+  "final_url": "https://open.bigmodel.cn/",
+  "title": "智谱AI开放平台",
+  "framework": {
+    "nextjs": false,
+    "nuxt": false,
+    "react": false,
+    "vue2": true,
+    "vue3": false
+  },
+  "stores": [],
+  "top_strategy": "public",
+  "explored_at": "2026-04-04T07:43:17.194Z"
+}

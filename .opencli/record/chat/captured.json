@@ -1,0 +1,164 @@
+{
+  "site": "chat",
+  "url": "https://chat.deepseek.com",
+  "capturedAt": "2026-04-03T17:23:43.977Z",
+  "requests": [
+    {
+      "body": {
+        "code": 0,
+        "data": {
+          "biz_code": 0,
+          "biz_data": {
+            "challenge": {
+              "algorithm": "DeepSeekHashV1",
+              "challenge": "a83067ff61d115d63242f9926de890eb6c25ce9f4227a60696e97b7004b217b1",
+              "difficulty": 144000,
+              "expire_after": 300000,
+              "expire_at": 1775237322715,
+              "salt": "ef7554d8d1ec8b552f61",
+              "signature": "2bc6108ab56d33c15cc885a9fbafd156ad37aa2c224f43a0672b664905e5594e",
+              "target_path": "/api/v0/chat/completion"
+            }
+          },
+          "biz_msg": ""
+        },
+        "msg": ""
+      },
+      "method": "POST",
+      "status": null,
+      "ts": 1775237014114,
+      "url": "/api/v0/chat/create_pow_challenge"
+    },
+    {
+      "body": {
+        "code": 0,
+        "data": {
+          "biz_code": 0,
+          "biz_data": {
+            "chat_session": {
+              "agent": "chat",
+              "current_message_id": null,
+              "id": "db34a8ac-ee75-4a4a-af86-945ec6c9f0c5",
+              "inserted_at": 1775237022.718,
+              "model_type": "default",
+              "pinned": false,
+              "seq_id": 197400222,
+              "title": null,
+              "title_type": "WIP",
+              "updated_at": 1775237022.718,
+              "version": 0
+            },
+            "ttl_seconds": 259200
+          },
+          "biz_msg": ""
+        },
+        "msg": ""
+      },
+      "method": "POST",
+      "status": null,
+      "ts": 1775237014124,
+      "url": "/api/v0/chat_session/create"
+    },
+    {
+      "body": {
+        "Type": "Web/Mp(MiniProgram)",
+        "e": 0,
+        "message": "success",
+        "sc": 1,
+        "server_time": 1775237022,
+        "tc": 1
+      },
+      "method": "POST",
+      "status": null,
+      "ts": 1775237014177,
+      "url": "https://gator.volces.com/list"
+    },
+    {
+      "body": {
+        "Type": "Web/Mp(MiniProgram)",
+        "e": 0,
+        "message": "success",
+        "sc": 1,
+        "server_time": 1775237022,
+        "tc": 1
+      },
+      "method": "POST",
+      "status": null,
+      "ts": 1775237014208,
+      "url": "https://gator.volces.com/list"
+    },
+    {
+      "body": {
+        "code": 0,
+        "data": {
+          "biz_code": 0,
+          "biz_data": {
+            "value": "yiHy19wVo519ll+toC0xDps0Kfd1p30B0Z8l6Oi80vVR8XMmj3egJiQ=.bD8di3k9d/Q5mcBB"
+          },
+          "biz_msg": ""
+        },
+        "msg": ""
+      },
+      "method": "GET",
+      "status": null,
+      "ts": 1775237014221,
+      "url": "https://hif-leim.deepseek.com/query"
+    },
+    {
+      "body": {
+        "Type": "Web/Mp(MiniProgram)",
+        "e": 0,
+        "message": "success",
+        "sc": 1,
+        "server_time": 1775237022,
+        "tc": 1
+      },
+      "method": "POST",
+      "status": null,
+      "ts": 1775237014270,
+      "url": "https://gator.volces.com/list"
+    },
+    {
+      "body": {
+        "Type": "Web/Mp(MiniProgram)",
+        "e": 0,
+        "message": "success",
+        "sc": 1,
+        "server_time": 1775237023,
+        "tc": 1
+      },
+      "method": "POST",
+      "status": null,
+      "ts": 1775237015190,
+      "url": "https://gator.volces.com/list"
+    },
+    {
+      "body": {
+        "Type": "Web/Mp(MiniProgram)",
+        "e": 0,
+        "message": "success",
+        "sc": 1,
+        "server_time": 1775237025,
+        "tc": 1
+      },
+      "method": "POST",
+      "status": null,
+      "ts": 1775237017218,
+      "url": "https://gator.volces.com/list"
+    },
+    {
+      "body": {
+        "Type": "Web/Mp(MiniProgram)",
+        "e": 0,
+        "message": "success",
+        "sc": 1,
+        "server_time": 1775237029,
+        "tc": 1
+      },
+      "method": "POST",
+      "status": null,
+      "ts": 1775237021293,
+      "url": "https://gator.volces.com/list"
+    }
+  ]
+}

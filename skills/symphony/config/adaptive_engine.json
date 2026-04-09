@@ -1,0 +1,12 @@
+{
+  "trigger_threshold": 0.85,
+  "enable_active_sensing": true,
+  "active_sensing_interval": 15,
+  "max_concurrent_tasks": 15,
+  "qps_limit": 2,
+  "cost_priority": true,
+  "enable_logging": true,
+  "default_timeout": 300,
+  "min_brain_size": 1,
+  "max_brain_size": 15
+}

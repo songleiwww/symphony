@@ -1,0 +1,2775 @@
+{
+  "total_models": 613,
+  "providers": {
+    "zhipu": {
+      "provider": "zhipu",
+      "total_models": 8,
+      "tested": [
+        {
+          "model_id": "charglm-3",
+          "model_name": "CharGLM-3 角色对话模型",
+          "model_type": "chat",
+          "context_window": 32000,
+          "success": false,
+          "error": "HTTP 400"
+        },
+        {
+          "model_id": "glm-3-turbo-free",
+          "model_name": "GLM-3 Turbo 免费版",
+          "model_type": "chat",
+          "context_window": 128000,
+          "success": false,
+          "error": "HTTP 400"
+        },
+        {
+          "model_id": "glm-4-flash",
+          "model_name": "GLM-4 Flash 免费版",
+          "model_type": "chat",
+          "context_window": 128000,
+          "success": true,
+          "response": "OK",
+          "latency_ms": 593.6
+        },
+        {
+          "model_id": "glm-4-flash-search",
+          "model_name": "GLM-4 Flash 搜索版",
+          "model_type": "chat",
+          "context_window": 128000,
+          "success": false,
+          "error": "HTTP 400"
+        },
+        {
+          "model_id": "glm-4-long-free",
+          "model_name": "GLM-4 长文本免费体验版",
+          "model_type": "chat",
+          "context_window": 1024000,
+          "success": false,
+          "error": "HTTP 400"
+        },
+        {
+          "model_id": "glm-4v-flash",
+          "model_name": "GLM-4V Flash 多模态免费版",
+          "model_type": "multimodal",
+          "context_window": 8000,
+          "success": true,
+          "response": "OK",
+          "latency_ms": 572.3
+        },
+        {
+          "model_id": "codegeex-2",
+          "model_name": "CodeGeeX2 代码模型",
+          "model_type": "code",
+          "context_window": 32000,
+          "success": false,
+          "error": "HTTP 400"
+        }
+      ],
+      "success_count": 2,
+      "fail_count": 5,
+      "by_type": {
+        "chat": {
+          "total": 5,
+          "success": 1,
+          "fail": 4
+        },
+        "multimodal": {
+          "total": 1,
+          "success": 1,
+          "fail": 0
+        },
+        "code": {
+          "total": 1,
+          "success": 0,
+          "fail": 1
+        }
+      },
+      "best_by_type": {
+        "chat": {
+          "model_id": "glm-4-flash",
+          "latency_ms": 593.6
+        },
+        "multimodal": {
+          "model_id": "glm-4v-flash",
+          "latency_ms": 572.3
+        }
+      }
+    },
+    "minimax": {
+      "provider": "minimax",
+      "total_models": 16,
+      "tested": [
+        {
+          "model_id": "MiniMax-M2",
+          "model_name": "MiniMax M2 高效编码模型",
+          "model_type": "chat",
+          "context_window": 204800,
+          "success": true,
+          "response": "<think>\nThe user: \"Reply with exactly '\n</think>",
+          "latency_ms": 2257.6
+        },
+        {
+          "model_id": "MiniMax-M2.1",
+          "model_name": "MiniMax M2.1 编程模型",
+          "model_type": "chat",
+          "context_window": 204800,
+          "success": true,
+          "response": "<think>The problem is short: \"Reply with exactly '",
+          "latency_ms": 1444.8
+        },
+        {
+          "model_id": "MiniMax-M2.1-highspeed",
+          "model_name": "MiniMax M2.1 极速编程版",
+          "model_type": "chat",
+          "context_window": 204800,
+          "success": false,
+          "error": "HTTP 500"
+        },
+        {
+          "model_id": "MiniMax-M2.5",
+          "model_name": "MiniMax M2.5 高性能模型",
+          "model_type": "chat",
+          "context_window": 204800,
+          "success": true,
+          "response": "The user asks: \"Reply with exactly 'OK",
+          "latency_ms": 2535.2
+        },
+        {
+          "model_id": "MiniMax-M2.5-highspeed",
+          "model_name": "MiniMax M2.5 极速版",
+          "model_type": "chat",
+          "context_window": 204800,
+          "success": true,
+          "response": "<think>\nThe user says: \"Reply with exactly\n</think",
+          "latency_ms": 1450.5
+        },
+        {
+          "model_id": "MiniMax-M2.7",
+          "model_name": "MiniMax M2.7 旗舰模型",
+          "model_type": "chat",
+          "context_window": 204800,
+          "success": true,
+          "response": "<think>\nThe user says: \"Reply with exactly\n</think",
+          "latency_ms": 2066.0
+        },
+        {
+          "model_id": "MiniMax-M2.7-highspeed",
+          "model_name": "MiniMax M2.7 极速版",
+          "model_type": "chat",
+          "context_window": 204800,
+          "success": false,
+          "error": "HTTP 500"
+        }
+      ],
+      "success_count": 5,
+      "fail_count": 2,
+      "by_type": {
+        "chat": {
+          "total": 7,
+          "success": 5,
+          "fail": 2
+        }
+      },
+      "best_by_type": {
+        "chat": {
+          "model_id": "MiniMax-M2.1",
+          "latency_ms": 1444.8
+        }
+      }
+    },
+    "aliyun": {
+      "provider": "aliyun",
+      "total_models": 389,
+      "tested": [
+        {
+          "model_id": "MiniMax-M2.1",
+          "model_name": "MiniMax M2.1 模型",
+          "model_type": "chat",
+          "context_window": 204800,
+          "success": true,
+          "response": "OK",
+          "latency_ms": 1580.1
+        },
+        {
+          "model_id": "MiniMax-M2.5",
+          "model_name": "MiniMax M2.5 模型",
+          "model_type": "chat",
+          "context_window": 204800,
+          "success": true,
+          "response": "OK",
+          "latency_ms": 1663.0
+        },
+        {
+          "model_id": "Moonshot-Kimi-K2-Instruct",
+          "model_name": "Moonshot Kimi K2 模型",
+          "model_type": "chat",
+          "context_window": 204800,
+          "success": true,
+          "response": "OK",
+          "latency_ms": 814.1
+        },
+        {
+          "model_id": "deepseek-r1",
+          "model_name": "DeepSeek R1 完整推理模型",
+          "model_type": "chat",
+          "context_window": 131072,
+          "success": true,
+          "response": "OK",
+          "latency_ms": 3921.0
+        },
+        {
+          "model_id": "deepseek-r1-0528",
+          "model_name": "DeepSeek R1 2025版 推理模型",
+          "model_type": "chat",
+          "context_window": 131072,
+          "success": true,
+          "response": "OK",
+          "latency_ms": 5709.9
+        },
+        {
+          "model_id": "deepseek-r1-distill-qwen-14b",
+          "model_name": "DeepSeek R1 蒸馏版 14B",
+          "model_type": "chat",
+          "context_window": 131072,
+          "success": true,
+          "response": "OK",
+          "latency_ms": 9269.2
+        },
+        {
+          "model_id": "deepseek-r1-distill-qwen-32b",
+          "model_name": "DeepSeek R1 蒸馏版 32B",
+          "model_type": "chat",
+          "context_window": 131072,
+          "success": true,
+          "response": "",
+          "latency_ms": 2056.6
+        },
+        {
+          "model_id": "deepseek-r1-distill-qwen-7b",
+          "model_name": "DeepSeek R1 蒸馏版 7B",
+          "model_type": "chat",
+          "context_window": 131072,
+          "success": true,
+          "response": "",
+          "latency_ms": 675.6
+        },
+        {
+          "model_id": "deepseek-v3",
+          "model_name": "DeepSeek V3 通用模型",
+          "model_type": "chat",
+          "context_window": 131072,
+          "success": true,
+          "response": "OK",
+          "latency_ms": 750.6
+        },
+        {
+          "model_id": "deepseek-v3.1",
+          "model_name": "DeepSeek V3.1 通用模型",
+          "model_type": "chat",
+          "context_window": 131072,
+          "success": true,
+          "response": "OK",
+          "latency_ms": 798.5
+        },
+        {
+          "model_id": "deepseek-v3.2",
+          "model_name": "DeepSeek V3.2 通用模型",
+          "model_type": "chat",
+          "context_window": 131072,
+          "success": true,
+          "response": "OK",
+          "latency_ms": 2345.7
+        },
+        {
+          "model_id": "deepseek-v3.2-exp",
+          "model_name": "DeepSeek V3.2 实验版 通用模型",
+          "model_type": "chat",
+          "context_window": 131072,
+          "success": true,
+          "response": "OK",
+          "latency_ms": 812.8
+        },
+        {
+          "model_id": "glm-4.5",
+          "model_name": "智谱 GLM-4.5 模型",
+          "model_type": "chat",
+          "context_window": 131072,
+          "success": false,
+          "error": "HTTP 400"
+        },
+        {
+          "model_id": "glm-4.5-air",
+          "model_name": "智谱 GLM-4.5 Air 模型",
+          "model_type": "chat",
+          "context_window": 131072,
+          "success": false,
+          "error": "HTTP 400"
+        },
+        {
+          "model_id": "glm-4.6",
+          "model_name": "智谱 GLM-4.6 模型",
+          "model_type": "chat",
+          "context_window": 131072,
+          "success": true,
+          "response": "OK",
+          "latency_ms": 9132.0
+        },
+        {
+          "model_id": "glm-4.7",
+          "model_name": "智谱 GLM-4.7 最新模型",
+          "model_type": "chat",
+          "context_window": 131072,
+          "success": true,
+          "response": "OK",
+          "latency_ms": 1324.7
+        },
+        {
+          "model_id": "glm-5",
+          "model_name": "智谱 GLM-5 模型",
+          "model_type": "chat",
+          "context_window": 131072,
+          "success": true,
+          "response": "OK",
+          "latency_ms": 4332.8
+        },
+        {
+          "model_id": "gui-plus",
+          "model_name": "通义千问 GUI Plus 界面生成模型",
+          "model_type": "chat",
+          "context_window": 131072,
+          "success": true,
+          "response": "OK",
+          "latency_ms": 489.6
+        },
+        {
+          "model_id": "gui-plus-2026-02-26",
+          "model_name": "通义千问 GUI Plus 2026版 界面生成模型",
+          "model_type": "chat",
+          "context_window": 131072,
+          "success": true,
+          "response": "OK",
+          "latency_ms": 565.0
+        },
+        {
+          "model_id": "kimi-k2-thinking",
+          "model_name": "Kimi K2 思考版 推理模型",
+          "model_type": "chat",
+          "context_window": 204800,
+          "success": true,
+          "response": "OK",
+          "latency_ms": 3155.7
+        },
+        {
+          "model_id": "kimi-k2.5",
+          "model_name": "Kimi K2.5 模型",
+          "model_type": "chat",
+          "context_window": 204800,
+          "success": true,
+          "response": "OK",
+          "latency_ms": 989.2
+        },
+        {
+          "model_id": "qvq-max-2025-03-25",
+          "model_name": "通义千问 QVQ Max 2025",
+          "model_type": "chat",
+          "context_window": 131072,
+          "success": false,
+          "error": "HTTP 400"
+        },
+        {
+          "model_id": "qwen-flash",
+          "model_name": "通义千问 Flash 极速模型",
+          "model_type": "chat",
+          "context_window": 131072,
+          "success": true,
+          "response": "OK",
+          "latency_ms": 519.9
+        },
+        {
+          "model_id": "qwen-flash-2025-07-28",
+          "model_name": "通义千问 Flash 2025版 极速模型",
+          "model_type": "chat",
+          "context_window": 131072,
+          "success": true,
+          "response": "OK",
+          "latency_ms": 2582.4
+        },
+        {
+          "model_id": "qwen-flash-character",
+          "model_name": "通义千问 Flash 角色扮演极速版",
+          "model_type": "chat",
+          "context_window": 131072,
+          "success": true,
+          "response": "OK",
+          "latency_ms": 539.1
+        },
+        {
+          "model_id": "qwen-flash-character-2026-02-26",
+          "model_name": "通义千问 Flash 角色扮演2026版",
+          "model_type": "chat",
+          "context_window": 131072,
+          "success": true,
+          "response": "OK",
+          "latency_ms": 583.6
+        },
+        {
+          "model_id": "qwen-long",
+          "model_name": "通义千问 Long 长上下文模型",
+          "model_type": "chat",
+          "context_window": 1000000,
+          "success": true,
+          "response": "OK",
+          "latency_ms": 646.2
+        },
+        {
+          "model_id": "qwen-long-2025-01-25",
+          "model_name": "通义千问 Long 2025初版 长上下文模型",
+          "model_type": "chat",
+          "context_window": 1000000,
+          "success": true,
+          "response": "OK",
+          "latency_ms": 698.4
+        },
+        {
+          "model_id": "qwen-long-latest",
+          "model_name": "通义千问 Long 最新长上下文模型",
+          "model_type": "chat",
+          "context_window": 1000000,
+          "success": true,
+          "response": "OK",
+          "latency_ms": 735.9
+        },
+        {
+          "model_id": "qwen-math-plus",
+          "model_name": "通义千问 Math Plus 数学模型",
+          "model_type": "chat",
+          "context_window": 131072,
+          "success": true,
+          "response": "OK",
+          "latency_ms": 622.7
+        },
+        {
+          "model_id": "qwen-math-plus-0816",
+          "model_name": "通义千问 Math Plus 2024版 数学模型",
+          "model_type": "chat",
+          "context_window": 131072,
+          "success": true,
+          "response": "OK",
+          "latency_ms": 700.4
+        },
+        {
+          "model_id": "qwen-math-plus-0919",
+          "model_name": "通义千问 Math Plus 2025版 数学模型",
+          "model_type": "chat",
+          "context_window": 131072,
+          "success": true,
+          "response": "OK",
+          "latency_ms": 648.1
+        },
+        {
+          "model_id": "qwen-math-plus-latest",
+          "model_name": "通义千问 Math Plus 最新版 数学模型",
+          "model_type": "chat",
+          "context_window": 131072,
+          "success": true,
+          "response": "OK",
+          "latency_ms": 686.3
+        },
+        {
+          "model_id": "qwen-math-turbo",
+          "model_name": "通义千问 Math Turbo 数学模型",
+          "model_type": "chat",
+          "context_window": 131072,
+          "success": true,
+          "response": "OK\n\nThis is a simple response that indicates agree",
+          "latency_ms": 809.7
+        },
+        {
+          "model_id": "qwen-math-turbo-0919",
+          "model_name": "通义千问 Math Turbo 2025版 数学模型",
+          "model_type": "chat",
+          "context_window": 131072,
+          "success": true,
+          "response": "OK\n\nThis is a simple response that indicates agree",
+          "latency_ms": 806.1
+        },
+        {
+          "model_id": "qwen-math-turbo-latest",
+          "model_name": "通义千问 Math Turbo 最新版 数学模型",
+          "model_type": "chat",
+          "context_window": 131072,
+          "success": true,
+          "response": "OK\n\nThis is a simple response that indicates agree",
+          "latency_ms": 762.8
+        },
+        {
+          "model_id": "qwen-max",
+          "model_name": "通义千问 Max 旗舰模型",
+          "model_type": "chat",
+          "context_window": 131072,
+          "success": true,
+          "response": "OK",
+          "latency_ms": 1437.1
+        },
+        {
+          "model_id": "qwen-max-0428",
+          "model_name": "通义千问 Max 2024版 旗舰模型",
+          "model_type": "chat",
+          "context_window": 131072,
+          "success": true,
+          "response": "OK",
+          "latency_ms": 644.3
+        },
+        {
+          "model_id": "qwen-max-0919",
+          "model_name": "通义千问 Max 2024版 旗舰模型",
+          "model_type": "chat",
+          "context_window": 131072,
+          "success": true,
+          "response": "OK",
+          "latency_ms": 905.9
+        },
+        {
+          "model_id": "qwen-max-2025-01-25",
+          "model_name": "通义千问 Max 2025 旗舰模型",
+          "model_type": "chat",
+          "context_window": 131072,
+          "success": true,
+          "response": "OK",
+          "latency_ms": 535.1
+        },
+        {
+          "model_id": "qwen-max-latest",
+          "model_name": "通义千问 Max 最新版 旗舰模型",
+          "model_type": "chat",
+          "context_window": 131072,
+          "success": true,
+          "response": "OK",
+          "latency_ms": 596.4
+        },
+        {
+          "model_id": "qwen-mt-flash",
+          "model_name": "通义千问 MT Flash 翻译模型",
+          "model_type": "chat",
+          "context_window": 131072,
+          "success": true,
+          "response": "OK",
+          "latency_ms": 438.6
+        },
+        {
+          "model_id": "qwen-mt-lite",
+          "model_name": "通义千问 MT Lite 轻量翻译模型",
+          "model_type": "chat",
+          "context_window": 131072,
+          "success": true,
+          "response": "OK",
+          "latency_ms": 509.2
+        },
+        {
+          "model_id": "qwen-mt-plus",
+          "model_name": "通义千问 MT Plus 专业翻译模型",
+          "model_type": "chat",
+          "context_window": 131072,
+          "success": true,
+          "response": "OK",
+          "latency_ms": 421.6
+        },
+        {
+          "model_id": "qwen-mt-turbo",
+          "model_name": "通义千问 MT Turbo 极速翻译模型",
+          "model_type": "chat",
+          "context_window": 131072,
+          "success": true,
+          "response": "OK",
+          "latency_ms": 500.8
+        },
+        {
+          "model_id": "qwen-plus",
+          "model_name": "通义千问 Plus 通用模型",
+          "model_type": "chat",
+          "context_window": 131072,
+          "success": true,
+          "response": "OK",
+          "latency_ms": 743.6
+        },
+        {
+          "model_id": "qwen-plus-0112",
+          "model_name": "通义千问 Plus 2025初版",
+          "model_type": "chat",
+          "context_window": 131072,
+          "success": true,
+          "response": "OK",
+          "latency_ms": 671.1
+        },
+        {
+          "model_id": "qwen-plus-1220",
+          "model_name": "通义千问 Plus 2024末版",
+          "model_type": "chat",
+          "context_window": 131072,
+          "success": true,
+          "response": "OK",
+          "latency_ms": 683.5
+        },
+        {
+          "model_id": "qwen-plus-2025-01-25",
+          "model_name": "通义千问 Plus 2025初版 通用模型",
+          "model_type": "chat",
+          "context_window": 131072,
+          "success": true,
+          "response": "OK",
+          "latency_ms": 849.4
+        },
+        {
+          "model_id": "qwen-plus-2025-04-28",
+          "model_name": "通义千问 Plus 2025初版 通用模型",
+          "model_type": "chat",
+          "context_window": 131072,
+          "success": true,
+          "response": "OK",
+          "latency_ms": 658.5
+        },
+        {
+          "model_id": "qwen-plus-2025-07-14",
+          "model_name": "通义千问 Plus 2025中版 通用模型",
+          "model_type": "chat",
+          "context_window": 131072,
+          "success": true,
+          "response": "OK",
+          "latency_ms": 634.5
+        },
+        {
+          "model_id": "qwen-plus-2025-07-28",
+          "model_name": "通义千问 Plus 2025 通用模型",
+          "model_type": "chat",
+          "context_window": 131072,
+          "success": true,
+          "response": "OK",
+          "latency_ms": 621.9
+        },
+        {
+          "model_id": "qwen-plus-2025-09-11",
+          "model_name": "通义千问 Plus 2025中版 通用模型",
+          "model_type": "chat",
+          "context_window": 131072,
+          "success": true,
+          "response": "OK",
+          "latency_ms": 735.5
+        },
+        {
+          "model_id": "qwen-plus-2025-12-01",
+          "model_name": "通义千问 Plus 2025末版",
+          "model_type": "chat",
+          "context_window": 131072,
+          "success": true,
+          "response": "OK",
+          "latency_ms": 589.6
+        },
+        {
+          "model_id": "qwen-plus-character",
+          "model_name": "通义千问 Plus 角色扮演版",
+          "model_type": "chat",
+          "context_window": 131072,
+          "success": true,
+          "response": "OK",
+          "latency_ms": 571.5
+        },
+        {
+          "model_id": "qwen-plus-latest",
+          "model_name": "通义千问 Plus 最新版 通用模型",
+          "model_type": "chat",
+          "context_window": 131072,
+          "success": true,
+          "response": "OK",
+          "latency_ms": 809.6
+        },
+        {
+          "model_id": "qwen-turbo",
+          "model_name": "通义千问 Turbo 极速模型",
+          "model_type": "chat",
+          "context_window": 131072,
+          "success": true,
+          "response": "OK",
+          "latency_ms": 551.1
+        },
+        {
+          "model_id": "qwen-turbo-1101",
+          "model_name": "通义千问 Turbo 2024版 极速模型",
+          "model_type": "chat",
+          "context_window": 131072,
+          "success": true,
+          "response": "OK",
+          "latency_ms": 589.4
+        },
+        {
+          "model_id": "qwen-turbo-2025-02-11",
+          "model_name": "通义千问 Turbo 2025初版 极速模型",
+          "model_type": "chat",
+          "context_window": 131072,
+          "success": true,
+          "response": "OK",
+          "latency_ms": 707.0
+        },
+        {
+          "model_id": "qwen-turbo-2025-04-28",
+          "model_name": "通义千问 Turbo 2025中版 极速模型",
+          "model_type": "chat",
+          "context_window": 131072,
+          "success": true,
+          "response": "OK",
+          "latency_ms": 554.9
+        },
+        {
+          "model_id": "qwen-turbo-2025-07-15",
+          "model_name": "通义千问 Turbo 2025中版 极速模型",
+          "model_type": "chat",
+          "context_window": 131072,
+          "success": true,
+          "response": "OK",
+          "latency_ms": 486.9
+        },
+        {
+          "model_id": "qwen-turbo-latest",
+          "model_name": "通义千问 Turbo 最新版 极速模型",
+          "model_type": "chat",
+          "context_window": 131072,
+          "success": true,
+          "response": "OK",
+          "latency_ms": 492.1
+        },
+        {
+          "model_id": "qwen2.5-14b-instruct",
+          "model_name": "通义千问2.5 14B 通用模型",
+          "model_type": "chat",
+          "context_window": 131072,
+          "success": true,
+          "response": "OK",
+          "latency_ms": 571.3
+        },
+        {
+          "model_id": "qwen2.5-14b-instruct-1m",
+          "model_name": "通义千问2.5 14B 长上下文模型",
+          "model_type": "chat",
+          "context_window": 1048576,
+          "success": true,
+          "response": "OK",
+          "latency_ms": 730.9
+        },
+        {
+          "model_id": "qwen2.5-32b-instruct",
+          "model_name": "通义千问2.5 32B 通用模型",
+          "model_type": "chat",
+          "context_window": 131072,
+          "success": true,
+          "response": "OK",
+          "latency_ms": 517.1
+        },
+        {
+          "model_id": "qwen2.5-3b-instruct",
+          "model_name": "通义千问2.5 3B 通用模型",
+          "model_type": "chat",
+          "context_window": 131072,
+          "success": true,
+          "response": "OK",
+          "latency_ms": 811.1
+        },
+        {
+          "model_id": "qwen2.5-72b-instruct",
+          "model_name": "通义千问2.5 72B 通用模型",
+          "model_type": "chat",
+          "context_window": 131072,
+          "success": true,
+          "response": "OK",
+          "latency_ms": 5485.7
+        },
+        {
+          "model_id": "qwen2.5-7b-instruct",
+          "model_name": "通义千问2.5 7B 通用模型",
+          "model_type": "chat",
+          "context_window": 131072,
+          "success": true,
+          "response": "OK",
+          "latency_ms": 529.0
+        },
+        {
+          "model_id": "qwen2.5-7b-instruct-1m",
+          "model_name": "通义千问2.5 7B 长上下文模型",
+          "model_type": "chat",
+          "context_window": 1048576,
+          "success": true,
+          "response": "OK",
+          "latency_ms": 594.0
+        },
+        {
+          "model_id": "qwen2.5-math-72b-instruct",
+          "model_name": "通义千问2.5 Math 72B 数学模型",
+          "model_type": "chat",
+          "context_window": 131072,
+          "success": true,
+          "response": "OK",
+          "latency_ms": 735.8
+        },
+        {
+          "model_id": "qwen2.5-math-7b-instruct",
+          "model_name": "通义千问2.5 Math 7B 数学模型",
+          "model_type": "chat",
+          "context_window": 131072,
+          "success": true,
+          "response": "OK\n\nThis is a simple response that indicates agree",
+          "latency_ms": 801.3
+        },
+        {
+          "model_id": "qwen3-0.6b",
+          "model_name": "通义千问3 0.6B 轻量模型",
+          "model_type": "chat",
+          "context_window": 131072,
+          "success": false,
+          "error": "HTTP 400"
+        },
+        {
+          "model_id": "qwen3-1.7b",
+          "model_name": "通义千问3 1.7B 超轻量模型",
+          "model_type": "chat",
+          "context_window": 131072,
+          "success": false,
+          "error": "HTTP 400"
+        },
+        {
+          "model_id": "qwen3-14b",
+          "model_name": "通义千问3 14B 通用模型",
+          "model_type": "chat",
+          "context_window": 131072,
+          "success": false,
+          "error": "HTTP 400"
+        },
+        {
+          "model_id": "qwen3-235b-a22b",
+          "model_name": "通义千问3 235B 旗舰通用模型",
+          "model_type": "chat",
+          "context_window": 131072,
+          "success": true,
+          "response": "OK",
+          "latency_ms": 4030.1
+        },
+        {
+          "model_id": "qwen3-235b-a22b-instruct-2507",
+          "model_name": "通义千问3 235B 2025旗舰版",
+          "model_type": "chat",
+          "context_window": 131072,
+          "success": true,
+          "response": "OK",
+          "latency_ms": 636.1
+        },
+        {
+          "model_id": "qwen3-235b-a22b-thinking-2507",
+          "model_name": "通义千问3 235B 思考版 2025",
+          "model_type": "chat",
+          "context_window": 131072,
+          "success": true,
+          "response": "OK",
+          "latency_ms": 1109.9
+        },
+        {
+          "model_id": "qwen3-30b-a3b",
+          "model_name": "通义千问3 30B 通用模型",
+          "model_type": "chat",
+          "context_window": 131072,
+          "success": false,
+          "error": "HTTP 400"
+        },
+        {
+          "model_id": "qwen3-30b-a3b-instruct-2507",
+          "model_name": "通义千问3 30B 2025版",
+          "model_type": "chat",
+          "context_window": 131072,
+          "success": true,
+          "response": "OK",
+          "latency_ms": 521.6
+        },
+        {
+          "model_id": "qwen3-30b-a3b-thinking-2507",
+          "model_name": "通义千问3 30B 2025思考版",
+          "model_type": "chat",
+          "context_window": 131072,
+          "success": true,
+          "response": "OK",
+          "latency_ms": 2137.8
+        },
+        {
+          "model_id": "qwen3-32b",
+          "model_name": "通义千问3 32B 通用模型",
+          "model_type": "chat",
+          "context_window": 131072,
+          "success": false,
+          "error": "HTTP 400"
+        },
+        {
+          "model_id": "qwen3-4b",
+          "model_name": "通义千问3 4B 轻量模型",
+          "model_type": "chat",
+          "context_window": 131072,
+          "success": false,
+          "error": "HTTP 400"
+        },
+        {
+          "model_id": "qwen3-8b",
+          "model_name": "通义千问3 8B 通用模型",
+          "model_type": "chat",
+          "context_window": 131072,
+          "success": false,
+          "error": "HTTP 400"
+        },
+        {
+          "model_id": "qwen3-max",
+          "model_name": "通义千问3 Max 旗舰模型",
+          "model_type": "chat",
+          "context_window": 131072,
+          "success": true,
+          "response": "OK",
+          "latency_ms": 976.5
+        },
+        {
+          "model_id": "qwen3-max-2025-09-23",
+          "model_name": "通义千问3 Max 2025版 旗舰模型",
+          "model_type": "chat",
+          "context_window": 131072,
+          "success": true,
+          "response": "OK",
+          "latency_ms": 1387.9
+        },
+        {
+          "model_id": "qwen3-max-2026-01-23",
+          "model_name": "通义千问3 Max 2026初版 旗舰模型",
+          "model_type": "chat",
+          "context_window": 131072,
+          "success": true,
+          "response": "OK",
+          "latency_ms": 1740.1
+        },
+        {
+          "model_id": "qwen3-max-preview",
+          "model_name": "通义千问3 Max 预览版 旗舰模型",
+          "model_type": "chat",
+          "context_window": 131072,
+          "success": true,
+          "response": "OK",
+          "latency_ms": 655.2
+        },
+        {
+          "model_id": "qwen3-next-80b-a3b-instruct",
+          "model_name": "通义千问3 Next 80B 通用模型",
+          "model_type": "chat",
+          "context_window": 131072,
+          "success": true,
+          "response": "OK",
+          "latency_ms": 688.0
+        },
+        {
+          "model_id": "qwen3-next-80b-a3b-thinking",
+          "model_name": "通义千问3 Next 80B 思考版",
+          "model_type": "chat",
+          "context_window": 131072,
+          "success": true,
+          "response": "OK",
+          "latency_ms": 1352.0
+        },
+        {
+          "model_id": "qwen3.5-122b-a10b",
+          "model_name": "通义千问3.5 122B 旗舰通用模型",
+          "model_type": "chat",
+          "context_window": 131072,
+          "success": true,
+          "response": "OK",
+          "latency_ms": 2457.0
+        },
+        {
+          "model_id": "qwen3.5-27b",
+          "model_name": "通义千问3.5 27B 通用模型",
+          "model_type": "chat",
+          "context_window": 131072,
+          "success": true,
+          "response": "OK",
+          "latency_ms": 1718.2
+        },
+        {
+          "model_id": "qwen3.5-35b-a3b",
+          "model_name": "通义千问3.5 35B 通用模型",
+          "model_type": "chat",
+          "context_window": 131072,
+          "success": true,
+          "response": "OK",
+          "latency_ms": 1949.2
+        },
+        {
+          "model_id": "qwen3.5-397b-a17b",
+          "model_name": "通义千问3.5 397B 旗舰通用模型",
+          "model_type": "chat",
+          "context_window": 131072,
+          "success": true,
+          "response": "OK",
+          "latency_ms": 6237.7
+        },
+        {
+          "model_id": "qwen3.5-flash",
+          "model_name": "通义千问3.5 Flash 极速模型",
+          "model_type": "chat",
+          "context_window": 131072,
+          "success": true,
+          "response": "OK",
+          "latency_ms": 1209.0
+        },
+        {
+          "model_id": "qwen3.5-flash-2026-02-23",
+          "model_name": "通义千问3.5 Flash 极速模型",
+          "model_type": "chat",
+          "context_window": 131072,
+          "success": true,
+          "response": "OK",
+          "latency_ms": 1612.8
+        },
+        {
+          "model_id": "qwen3.5-plus-2026-02-15",
+          "model_name": "通义千问3.5 Plus 2026初版",
+          "model_type": "chat",
+          "context_window": 131072,
+          "success": true,
+          "response": "OK",
+          "latency_ms": 5388.6
+        },
+        {
+          "model_id": "qwen3.6-plus",
+          "model_name": "通义千问3.6 Plus 最新通用模型",
+          "model_type": "chat",
+          "context_window": 131072,
+          "success": true,
+          "response": "OK",
+          "latency_ms": 2982.5
+        },
+        {
+          "model_id": "qwen3.6-plus-2026-04-02",
+          "model_name": "通义千问3.6 Plus 2026中版 通用模型",
+          "model_type": "chat",
+          "context_window": 131072,
+          "success": true,
+          "response": "OK",
+          "latency_ms": 3070.8
+        },
+        {
+          "model_id": "qwq-32b",
+          "model_name": "通义千问 QWQ 32B 推理模型",
+          "model_type": "chat",
+          "context_window": 131072,
+          "success": false,
+          "error": "HTTP 400"
+        },
+        {
+          "model_id": "qwq-32b-preview",
+          "model_name": "通义千问 QWQ 32B 推理预览版",
+          "model_type": "chat",
+          "context_window": 131072,
+          "success": true,
+          "response": "OK",
+          "latency_ms": 624.8
+        },
+        {
+          "model_id": "qwq-plus",
+          "model_name": "通义千问 QWQ Plus 推理模型",
+          "model_type": "chat",
+          "context_window": 131072,
+          "success": false,
+          "error": "HTTP 400"
+        },
+        {
+          "model_id": "qwq-plus-2025-03-05",
+          "model_name": "通义千问 QWQ Plus 2025版 推理模型",
+          "model_type": "chat",
+          "context_window": 131072,
+          "success": false,
+          "error": "HTTP 400"
+        },
+        {
+          "model_id": "qwq-plus-latest",
+          "model_name": "通义千问 QWQ Plus 最新版 推理",
+          "model_type": "chat",
+          "context_window": 131072,
+          "success": false,
+          "error": "HTTP 400"
+        },
+        {
+          "model_id": "tongyi-xiaomi-analysis-flash",
+          "model_name": "通义小米分析极速版",
+          "model_type": "chat",
+          "context_window": 131072,
+          "success": true,
+          "response": "OK",
+          "latency_ms": 468.4
+        },
+        {
+          "model_id": "tongyi-xiaomi-analysis-pro",
+          "model_name": "通义小米分析专业版",
+          "model_type": "chat",
+          "context_window": 131072,
+          "success": true,
+          "response": "OK",
+          "latency_ms": 566.9
+        },
+        {
+          "model_id": "qvq-72b-preview",
+          "model_name": "通义千问 QVQ 72B 视频理解预览版",
+          "model_type": "multimodal",
+          "context_window": 131072,
+          "success": true,
+          "response": "OK",
+          "latency_ms": 627.1
+        },
+        {
+          "model_id": "qvq-max",
+          "model_name": "通义千问 QVQ Max 视频理解模型",
+          "model_type": "multimodal",
+          "context_window": 131072,
+          "success": false,
+          "error": "HTTP 400"
+        },
+        {
+          "model_id": "qvq-max-2025-05-15",
+          "model_name": "通义千问 QVQ Max 2025版 视频理解",
+          "model_type": "multimodal",
+          "context_window": 131072,
+          "success": true,
+          "response": "",
+          "latency_ms": 3402.9
+        },
+        {
+          "model_id": "qvq-max-latest",
+          "model_name": "通义千问 QVQ Max 最新版 视频理解",
+          "model_type": "multimodal",
+          "context_window": 131072,
+          "success": false,
+          "error": "HTTP 400"
+        },
+        {
+          "model_id": "qvq-plus",
+          "model_name": "通义千问 QVQ Plus 视频理解模型",
+          "model_type": "multimodal",
+          "context_window": 131072,
+          "success": true,
+          "response": "",
+          "latency_ms": 3059.5
+        },
+        {
+          "model_id": "qvq-plus-2025-05-15",
+          "model_name": "通义千问 QVQ Plus 2025版 视频理解",
+          "model_type": "multimodal",
+          "context_window": 131072,
+          "success": true,
+          "response": "",
+          "latency_ms": 3043.4
+        },
+        {
+          "model_id": "qvq-plus-latest",
+          "model_name": "通义千问 QVQ Plus 最新版 视频理解",
+          "model_type": "multimodal",
+          "context_window": 131072,
+          "success": true,
+          "response": "",
+          "latency_ms": 3040.7
+        },
+        {
+          "model_id": "qwen-mt-image",
+          "model_name": "通义千问 图像翻译模型",
+          "model_type": "multimodal",
+          "context_window": 4096,
+          "success": false,
+          "error": "HTTP 404"
+        },
+        {
+          "model_id": "qwen-omni-turbo",
+          "model_name": "通义千问 全模态基础版",
+          "model_type": "multimodal",
+          "context_window": 16384,
+          "success": true,
+          "response": "OK",
+          "latency_ms": 444.9
+        },
+        {
+          "model_id": "qwen-omni-turbo-2025-01-19",
+          "model_name": "通义千问 全模态2025初版",
+          "model_type": "multimodal",
+          "context_window": 16384,
+          "success": true,
+          "response": "OK",
+          "latency_ms": 525.1
+        },
+        {
+          "model_id": "qwen-omni-turbo-2025-03-26",
+          "model_name": "通义千问 全模态2025初版",
+          "model_type": "multimodal",
+          "context_window": 16384,
+          "success": true,
+          "response": "OK",
+          "latency_ms": 499.1
+        },
+        {
+          "model_id": "qwen-omni-turbo-latest",
+          "model_name": "通义千问 全模态最新版",
+          "model_type": "multimodal",
+          "context_window": 16384,
+          "success": true,
+          "response": "OK",
+          "latency_ms": 519.8
+        },
+        {
+          "model_id": "qwen-omni-turbo-realtime",
+          "model_name": "通义千问 全模态实时版",
+          "model_type": "multimodal",
+          "context_window": 16384,
+          "success": false,
+          "error": "HTTP 404"
+        },
+        {
+          "model_id": "qwen-omni-turbo-realtime-2025-05-08",
+          "model_name": "通义千问 全模态实时版2025",
+          "model_type": "multimodal",
+          "context_window": 16384,
+          "success": false,
+          "error": "HTTP 404"
+        },
+        {
+          "model_id": "qwen-omni-turbo-realtime-latest",
+          "model_name": "通义千问 全模态实时最新版",
+          "model_type": "multimodal",
+          "context_window": 16384,
+          "success": false,
+          "error": "HTTP 404"
+        },
+        {
+          "model_id": "qwen-vl-max",
+          "model_name": "通义千问 VL Max 多模态模型",
+          "model_type": "multimodal",
+          "context_window": 131072,
+          "success": true,
+          "response": "OK",
+          "latency_ms": 680.6
+        },
+        {
+          "model_id": "qwen-vl-max-1119",
+          "model_name": "通义千问 VL Max 2024末版 多模态",
+          "model_type": "multimodal",
+          "context_window": 131072,
+          "success": true,
+          "response": "OK",
+          "latency_ms": 589.6
+        },
+        {
+          "model_id": "qwen-vl-max-1230",
+          "model_name": "通义千问 VL Max 2024末版 多模态",
+          "model_type": "multimodal",
+          "context_window": 131072,
+          "success": true,
+          "response": "OK",
+          "latency_ms": 634.4
+        },
+        {
+          "model_id": "qwen-vl-max-2025-01-25",
+          "model_name": "通义千问 VL Max 2025初版 多模态",
+          "model_type": "multimodal",
+          "context_window": 131072,
+          "success": true,
+          "response": "OK",
+          "latency_ms": 620.6
+        },
+        {
+          "model_id": "qwen-vl-max-2025-04-02",
+          "model_name": "通义千问 VL Max 2025初版 多模态",
+          "model_type": "multimodal",
+          "context_window": 131072,
+          "success": true,
+          "response": "OK",
+          "latency_ms": 542.9
+        },
+        {
+          "model_id": "qwen-vl-max-2025-04-08",
+          "model_name": "通义千问 VL Max 2025中版 多模态",
+          "model_type": "multimodal",
+          "context_window": 131072,
+          "success": true,
+          "response": "OK",
+          "latency_ms": 569.3
+        },
+        {
+          "model_id": "qwen-vl-max-2025-08-13",
+          "model_name": "通义千问 VL Max 2025 多模态",
+          "model_type": "multimodal",
+          "context_window": 131072,
+          "success": true,
+          "response": "OK",
+          "latency_ms": 776.6
+        },
+        {
+          "model_id": "qwen-vl-max-latest",
+          "model_name": "通义千问 VL Max 最新版 多模态",
+          "model_type": "multimodal",
+          "context_window": 131072,
+          "success": true,
+          "response": "OK",
+          "latency_ms": 570.3
+        },
+        {
+          "model_id": "qwen-vl-plus",
+          "model_name": "通义千问 VL Plus 多模态",
+          "model_type": "multimodal",
+          "context_window": 131072,
+          "success": true,
+          "response": "OK",
+          "latency_ms": 482.7
+        },
+        {
+          "model_id": "qwen-vl-plus-0102",
+          "model_name": "通义千问 VL Plus 2025初版 多模态",
+          "model_type": "multimodal",
+          "context_window": 131072,
+          "success": true,
+          "response": "OK",
+          "latency_ms": 505.7
+        },
+        {
+          "model_id": "qwen-vl-plus-2025-01-25",
+          "model_name": "通义千问 VL Plus 2025初版 多模态",
+          "model_type": "multimodal",
+          "context_window": 131072,
+          "success": true,
+          "response": "OK",
+          "latency_ms": 525.1
+        },
+        {
+          "model_id": "qwen-vl-plus-2025-05-07",
+          "model_name": "通义千问 VL Plus 2025 多模态",
+          "model_type": "multimodal",
+          "context_window": 131072,
+          "success": true,
+          "response": "OK",
+          "latency_ms": 508.8
+        },
+        {
+          "model_id": "qwen-vl-plus-2025-08-15",
+          "model_name": "通义千问 VL Plus 2025中版 多模态",
+          "model_type": "multimodal",
+          "context_window": 131072,
+          "success": true,
+          "response": "OK",
+          "latency_ms": 479.7
+        },
+        {
+          "model_id": "qwen-vl-plus-latest",
+          "model_name": "通义千问 VL Plus 最新版 多模态",
+          "model_type": "multimodal",
+          "context_window": 131072,
+          "success": true,
+          "response": "OK",
+          "latency_ms": 469.1
+        },
+        {
+          "model_id": "qwen2.5-omni-7b",
+          "model_name": "通义千问2.5 全模态7B版",
+          "model_type": "multimodal",
+          "context_window": 8192,
+          "success": true,
+          "response": "OK",
+          "latency_ms": 534.4
+        },
+        {
+          "model_id": "qwen2.5-vl-32b-instruct",
+          "model_name": "通义千问2.5 VL 32B 多模态模型",
+          "model_type": "multimodal",
+          "context_window": 131072,
+          "success": true,
+          "response": "OK",
+          "latency_ms": 529.2
+        },
+        {
+          "model_id": "qwen2.5-vl-3b-instruct",
+          "model_name": "通义千问2.5 VL 3B 多模态",
+          "model_type": "multimodal",
+          "context_window": 131072,
+          "success": true,
+          "response": "OK",
+          "latency_ms": 459.5
+        },
+        {
+          "model_id": "qwen2.5-vl-72b-instruct",
+          "model_name": "通义千问2.5 VL 72B 多模态",
+          "model_type": "multimodal",
+          "context_window": 131072,
+          "success": true,
+          "response": "OK",
+          "latency_ms": 670.6
+        },
+        {
+          "model_id": "qwen2.5-vl-7b-instruct",
+          "model_name": "通义千问2.5 VL 7B 多模态",
+          "model_type": "multimodal",
+          "context_window": 131072,
+          "success": true,
+          "response": "OK",
+          "latency_ms": 480.9
+        },
+        {
+          "model_id": "qwen3-omni-30b-a3b-captioner",
+          "model_name": "通义千问3 多模态30B 字幕生成",
+          "model_type": "multimodal",
+          "context_window": 4096,
+          "success": false,
+          "error": "HTTP 400"
+        },
+        {
+          "model_id": "qwen3-omni-flash",
+          "model_name": "通义千问3 全模态极速版",
+          "model_type": "multimodal",
+          "context_window": 16384,
+          "success": true,
+          "response": "OK",
+          "latency_ms": 415.0
+        },
+        {
+          "model_id": "qwen3-omni-flash-2025-09-15",
+          "model_name": "通义千问3 全模态极速版2025初",
+          "model_type": "multimodal",
+          "context_window": 16384,
+          "success": true,
+          "response": "OK",
+          "latency_ms": 516.4
+        },
+        {
+          "model_id": "qwen3-omni-flash-2025-12-01",
+          "model_name": "通义千问3 全模态极速版2025",
+          "model_type": "multimodal",
+          "context_window": 16384,
+          "success": true,
+          "response": "OK",
+          "latency_ms": 471.9
+        },
+        {
+          "model_id": "qwen3-omni-flash-realtime",
+          "model_name": "通义千问3 全模态实时极速版",
+          "model_type": "multimodal",
+          "context_window": 16384,
+          "success": false,
+          "error": "HTTP 500"
+        },
+        {
+          "model_id": "qwen3-omni-flash-realtime-2025-09-15",
+          "model_name": "通义千问3 全模态实时极速版2025",
+          "model_type": "multimodal",
+          "context_window": 16384,
+          "success": false,
+          "error": "HTTP 500"
+        },
+        {
+          "model_id": "qwen3-omni-flash-realtime-2025-12-01",
+          "model_name": "通义千问3 全模态实时极速版2025末",
+          "model_type": "multimodal",
+          "context_window": 16384,
+          "success": false,
+          "error": "HTTP 500"
+        },
+        {
+          "model_id": "qwen3-vl-235b-a22b-instruct",
+          "model_name": "通义千问3 VL 235B 旗舰多模态模型",
+          "model_type": "multimodal",
+          "context_window": 131072,
+          "success": true,
+          "response": "OK",
+          "latency_ms": 863.6
+        },
+        {
+          "model_id": "qwen3-vl-235b-a22b-thinking",
+          "model_name": "通义千问3 VL 235B 多模态思考版",
+          "model_type": "multimodal",
+          "context_window": 131072,
+          "success": true,
+          "response": "OK",
+          "latency_ms": 2779.5
+        },
+        {
+          "model_id": "qwen3-vl-30b-a3b-instruct",
+          "model_name": "通义千问3 VL 30B 多模态模型",
+          "model_type": "multimodal",
+          "context_window": 131072,
+          "success": true,
+          "response": "OK",
+          "latency_ms": 519.9
+        },
+        {
+          "model_id": "qwen3-vl-30b-a3b-thinking",
+          "model_name": "通义千问3 VL 30B 多模态思考版",
+          "model_type": "multimodal",
+          "context_window": 131072,
+          "success": true,
+          "response": "OK",
+          "latency_ms": 2029.4
+        },
+        {
+          "model_id": "qwen3-vl-32b-instruct",
+          "model_name": "通义千问3 VL 32B 多模态模型",
+          "model_type": "multimodal",
+          "context_window": 131072,
+          "success": true,
+          "response": "OK",
+          "latency_ms": 693.2
+        },
+        {
+          "model_id": "qwen3-vl-32b-thinking",
+          "model_name": "通义千问3 VL 32B 多模态思考版",
+          "model_type": "multimodal",
+          "context_window": 131072,
+          "success": true,
+          "response": "OK",
+          "latency_ms": 4577.8
+        },
+        {
+          "model_id": "qwen3-vl-8b-instruct",
+          "model_name": "通义千问3 VL 8B 多模态模型",
+          "model_type": "multimodal",
+          "context_window": 131072,
+          "success": true,
+          "response": "OK",
+          "latency_ms": 482.2
+        },
+        {
+          "model_id": "qwen3-vl-8b-thinking",
+          "model_name": "通义千问3 VL 8B 多模态思考版",
+          "model_type": "multimodal",
+          "context_window": 131072,
+          "success": true,
+          "response": "OK",
+          "latency_ms": 4300.2
+        },
+        {
+          "model_id": "qwen3-vl-flash",
+          "model_name": "通义千问3 VL Flash 极速多模态",
+          "model_type": "multimodal",
+          "context_window": 131072,
+          "success": true,
+          "response": "OK",
+          "latency_ms": 885.6
+        },
+        {
+          "model_id": "qwen3-vl-flash-2025-10-15",
+          "model_name": "通义千问3 VL Flash 2025 极速多模态",
+          "model_type": "multimodal",
+          "context_window": 131072,
+          "success": true,
+          "response": "OK",
+          "latency_ms": 764.7
+        },
+        {
+          "model_id": "qwen3-vl-flash-2026-01-22",
+          "model_name": "通义千问3 VL Flash 2026初版 极速多模态",
+          "model_type": "multimodal",
+          "context_window": 131072,
+          "success": true,
+          "response": "OK",
+          "latency_ms": 670.4
+        },
+        {
+          "model_id": "qwen3-vl-plus",
+          "model_name": "通义千问3 VL Plus 多模态模型",
+          "model_type": "multimodal",
+          "context_window": 131072,
+          "success": true,
+          "response": "OK",
+          "latency_ms": 1681.3
+        },
+        {
+          "model_id": "qwen3-vl-plus-2025-09-23",
+          "model_name": "通义千问3 VL Plus 2025版 多模态",
+          "model_type": "multimodal",
+          "context_window": 131072,
+          "success": true,
+          "response": "OK",
+          "latency_ms": 700.1
+        },
+        {
+          "model_id": "qwen3-vl-plus-2025-12-19",
+          "model_name": "通义千问3 VL Plus 2025末版 多模态",
+          "model_type": "multimodal",
+          "context_window": 131072,
+          "success": true,
+          "response": "OK",
+          "latency_ms": 605.6
+        },
+        {
+          "model_id": "qwen3.5-omni-flash",
+          "model_name": "通义千问3.5 全模态极速版",
+          "model_type": "multimodal",
+          "context_window": 16384,
+          "success": false,
+          "error": "HTTP 403"
+        },
+        {
+          "model_id": "qwen3.5-omni-flash-2026-03-15",
+          "model_name": "通义千问3.5 全模态极速版2026",
+          "model_type": "multimodal",
+          "context_window": 16384,
+          "success": false,
+          "error": "HTTP 403"
+        },
+        {
+          "model_id": "qwen3.5-omni-flash-realtime",
+          "model_name": "通义千问3.5 全模态实时极速版",
+          "model_type": "multimodal",
+          "context_window": 16384,
+          "success": false,
+          "error": "HTTP 403"
+        },
+        {
+          "model_id": "qwen3.5-omni-flash-realtime-2026-03-15",
+          "model_name": "通义千问3.5 全模态实时极速版2026",
+          "model_type": "multimodal",
+          "context_window": 16384,
+          "success": false,
+          "error": "HTTP 403"
+        },
+        {
+          "model_id": "qwen3.5-omni-plus",
+          "model_name": "通义千问3.5 全模态增强版",
+          "model_type": "multimodal",
+          "context_window": 32768,
+          "success": false,
+          "error": "HTTP 403"
+        },
+        {
+          "model_id": "qwen3.5-omni-plus-2026-03-15",
+          "model_name": "通义千问3.5 全模态增强版2026",
+          "model_type": "multimodal",
+          "context_window": 32768,
+          "success": false,
+          "error": "HTTP 403"
+        },
+        {
+          "model_id": "qwen3.5-omni-plus-realtime",
+          "model_name": "通义千问3.5 全模态实时增强版",
+          "model_type": "multimodal",
+          "context_window": 32768,
+          "success": false,
+          "error": "HTTP 403"
+        },
+        {
+          "model_id": "qwen3.5-omni-plus-realtime-2026-03-15",
+          "model_name": "通义千问3.5 全模态实时增强版2026",
+          "model_type": "multimodal",
+          "context_window": 32768,
+          "success": false,
+          "error": "HTTP 403"
+        },
+        {
+          "model_id": "qwen-coder-plus",
+          "model_name": "通义千问 Coder Plus 代码模型",
+          "model_type": "code",
+          "context_window": 131072,
+          "success": true,
+          "response": "OK",
+          "latency_ms": 622.2
+        },
+        {
+          "model_id": "qwen-coder-plus-1106",
+          "model_name": "通义千问 Coder Plus 2024版 代码模型",
+          "model_type": "code",
+          "context_window": 131072,
+          "success": true,
+          "response": "OK",
+          "latency_ms": 613.4
+        },
+        {
+          "model_id": "qwen-coder-plus-latest",
+          "model_name": "通义千问 Coder Plus 最新版 代码模型",
+          "model_type": "code",
+          "context_window": 131072,
+          "success": true,
+          "response": "OK",
+          "latency_ms": 610.4
+        },
+        {
+          "model_id": "qwen-coder-turbo",
+          "model_name": "通义千问 Coder Turbo 代码模型",
+          "model_type": "code",
+          "context_window": 131072,
+          "success": true,
+          "response": "OK",
+          "latency_ms": 626.4
+        },
+        {
+          "model_id": "qwen-coder-turbo-0919",
+          "model_name": "通义千问 Coder Turbo 代码模型",
+          "model_type": "code",
+          "context_window": 131072,
+          "success": true,
+          "response": "OK",
+          "latency_ms": 608.2
+        },
+        {
+          "model_id": "qwen-coder-turbo-latest",
+          "model_name": "通义千问 Coder Turbo 最新版 代码模型",
+          "model_type": "code",
+          "context_window": 131072,
+          "success": true,
+          "response": "OK",
+          "latency_ms": 628.0
+        },
+        {
+          "model_id": "qwen2.5-coder-14b-instruct",
+          "model_name": "通义千问2.5 Coder 14B 代码模型",
+          "model_type": "code",
+          "context_window": 131072,
+          "success": true,
+          "response": "OK",
+          "latency_ms": 533.7
+        },
+        {
+          "model_id": "qwen2.5-coder-32b-instruct",
+          "model_name": "通义千问2.5 Coder 32B 代码模型",
+          "model_type": "code",
+          "context_window": 131072,
+          "success": true,
+          "response": "OK",
+          "latency_ms": 524.2
+        },
+        {
+          "model_id": "qwen2.5-coder-7b-instruct",
+          "model_name": "通义千问2.5 Coder 7B 代码模型",
+          "model_type": "code",
+          "context_window": 131072,
+          "success": true,
+          "response": "OK",
+          "latency_ms": 620.1
+        },
+        {
+          "model_id": "qwen3-coder-30b-a3b-instruct",
+          "model_name": "通义千问3 Coder 30B 代码模型",
+          "model_type": "code",
+          "context_window": 131072,
+          "success": true,
+          "response": "OK",
+          "latency_ms": 622.3
+        },
+        {
+          "model_id": "qwen3-coder-480b-a35b-instruct",
+          "model_name": "通义千问3 Coder 480B 旗舰代码模型",
+          "model_type": "code",
+          "context_window": 131072,
+          "success": true,
+          "response": "OK",
+          "latency_ms": 583.6
+        },
+        {
+          "model_id": "qwen3-coder-flash",
+          "model_name": "通义千问3 Coder Flash 极速代码模型",
+          "model_type": "code",
+          "context_window": 131072,
+          "success": true,
+          "response": "OK",
+          "latency_ms": 475.6
+        },
+        {
+          "model_id": "qwen3-coder-flash-2025-07-28",
+          "model_name": "通义千问3 Coder Flash 2025版 极速代码模型",
+          "model_type": "code",
+          "context_window": 131072,
+          "success": true,
+          "response": "OK",
+          "latency_ms": 553.0
+        },
+        {
+          "model_id": "qwen3-coder-next",
+          "model_name": "通义千问3 Coder Next 下一代代码模型",
+          "model_type": "code",
+          "context_window": 131072,
+          "success": true,
+          "response": "OK",
+          "latency_ms": 556.5
+        },
+        {
+          "model_id": "qwen3-coder-plus",
+          "model_name": "通义千问3 Coder Plus 代码模型",
+          "model_type": "code",
+          "context_window": 131072,
+          "success": true,
+          "response": "OK",
+          "latency_ms": 724.9
+        },
+        {
+          "model_id": "qwen3-coder-plus-2025-07-22",
+          "model_name": "通义千问3 Coder Plus 2025版 代码模型",
+          "model_type": "code",
+          "context_window": 131072,
+          "success": true,
+          "response": "OK",
+          "latency_ms": 587.1
+        },
+        {
+          "model_id": "qwen3-coder-plus-2025-09-23",
+          "model_name": "通义千问3 Coder Plus 2025中版 代码模型",
+          "model_type": "code",
+          "context_window": 131072,
+          "success": true,
+          "response": "OK",
+          "latency_ms": 912.7
+        }
+      ],
+      "success_count": 153,
+      "fail_count": 32,
+      "by_type": {
+        "chat": {
+          "total": 105,
+          "success": 91,
+          "fail": 14
+        },
+        "multimodal": {
+          "total": 63,
+          "success": 45,
+          "fail": 18
+        },
+        "code": {
+          "total": 17,
+          "success": 17,
+          "fail": 0
+        }
+      },
+      "best_by_type": {
+        "chat": {
+          "model_id": "qwen-mt-plus",
+          "latency_ms": 421.6
+        },
+        "multimodal": {
+          "model_id": "qwen3-omni-flash",
+          "latency_ms": 415.0
+        },
+        "code": {
+          "model_id": "qwen3-coder-flash",
+          "latency_ms": 475.6
+        }
+      }
+    },
+    "nvidia": {
+      "provider": "nvidia",
+      "total_models": 200,
+      "tested": [
+        {
+          "model_id": "abacusai/dracarys-llama-3.1-70b-instruct",
+          "model_name": "Dracarys Llama 3.1 70B Instruct",
+          "model_type": "text",
+          "context_window": 131072,
+          "success": true,
+          "response": "OK",
+          "latency_ms": 1090.8
+        },
+        {
+          "model_id": "ai21labs/jamba-1.5-mini-instruct",
+          "model_name": "Jamba 1.5 Mini Instruct",
+          "model_type": "text",
+          "context_window": 131072,
+          "success": true,
+          "response": "OK.",
+          "latency_ms": 812.4
+        },
+        {
+          "model_id": "baichuan-inc/baichuan2-13b-chat",
+          "model_name": "Baichuan2 13B Chat",
+          "model_type": "text",
+          "context_window": 131072,
+          "success": true,
+          "response": "OK",
+          "latency_ms": 1867.7
+        },
+        {
+          "model_id": "bigcode/starcoder2-7b",
+          "model_name": "StarCoder2 7B",
+          "model_type": "text",
+          "context_window": 131072,
+          "success": false,
+          "error": "HTTP 404"
+        },
+        {
+          "model_id": "bytedance/seed-oss-36b-instruct",
+          "model_name": "Seed OSS 36B Instruct",
+          "model_type": "text",
+          "context_window": 131072,
+          "success": false,
+          "error": "'NoneType' object has no attribute 'strip'"
+        },
+        {
+          "model_id": "deepseek-ai/deepseek-r1-distill-llama-8b",
+          "model_name": "DeepSeek R1 Distill Llama 8B",
+          "model_type": "text",
+          "context_window": 131072,
+          "success": true,
+          "response": "<think>\nAlright, so I need to figure out",
+          "latency_ms": 1616.5
+        },
+        {
+          "model_id": "deepseek-ai/deepseek-r1-distill-qwen-14b",
+          "model_name": "DeepSeek R1 Distill Qwen 14B",
+          "model_type": "text",
+          "context_window": 131072,
+          "success": false,
+          "error": "HTTP 500"
+        },
+        {
+          "model_id": "deepseek-ai/deepseek-r1-distill-qwen-32b",
+          "model_name": "DeepSeek R1 Distill Qwen 32B",
+          "model_type": "text",
+          "context_window": 131072,
+          "success": false,
+          "error": "HTTP 500"
+        },
+        {
+          "model_id": "deepseek-ai/deepseek-r1-distill-qwen-7b",
+          "model_name": "DeepSeek R1 Distill Qwen 7B",
+          "model_type": "text",
+          "context_window": 131072,
+          "success": false,
+          "error": "HTTP 500"
+        },
+        {
+          "model_id": "deepseek-ai/deepseek-v3_1",
+          "model_name": "DeepSeek V3.1",
+          "model_type": "text",
+          "context_window": 131072,
+          "success": false,
+          "error": "HTTP 404"
+        },
+        {
+          "model_id": "deepseek-ai/deepseek-v3_1-terminus",
+          "model_name": "DeepSeek V3.1 Terminus",
+          "model_type": "text",
+          "context_window": 131072,
+          "success": false,
+          "error": "HTTP 404"
+        },
+        {
+          "model_id": "deepseek-ai/deepseek-v3_2",
+          "model_name": "DeepSeek V3.2",
+          "model_type": "text",
+          "context_window": 131072,
+          "success": false,
+          "error": "HTTP 404"
+        },
+        {
+          "model_id": "google/gemma-2-27b-it",
+          "model_name": "Gemma 2 27B Instruct",
+          "model_type": "text",
+          "context_window": 131072,
+          "success": true,
+          "response": "OK",
+          "latency_ms": 785.9
+        },
+        {
+          "model_id": "google/gemma-2-2b-it",
+          "model_name": "Gemma 2 2B Instruct",
+          "model_type": "text",
+          "context_window": 131072,
+          "success": true,
+          "response": "OK",
+          "latency_ms": 1535.1
+        },
+        {
+          "model_id": "google/gemma-2-9b-it",
+          "model_name": "Gemma 2 9B Instruct",
+          "model_type": "text",
+          "context_window": 131072,
+          "success": true,
+          "response": "OK",
+          "latency_ms": 921.9
+        },
+        {
+          "model_id": "google/gemma-3-1b-it",
+          "model_name": "Gemma 3 1B Instruct",
+          "model_type": "text",
+          "context_window": 131072,
+          "success": true,
+          "response": "OK",
+          "latency_ms": 1401.0
+        },
+        {
+          "model_id": "google/gemma-4-31b-it",
+          "model_name": "Gemma 4 31B Instruct",
+          "model_type": "text",
+          "context_window": 131072,
+          "success": true,
+          "response": "OK",
+          "latency_ms": 3271.7
+        },
+        {
+          "model_id": "gotocompany/gemma-2-9b-cpt-sahabatai-instruct",
+          "model_name": "Gemma 2 9B Sahabatai Instruct",
+          "model_type": "text",
+          "context_window": 131072,
+          "success": true,
+          "response": "OK",
+          "latency_ms": 8490.4
+        },
+        {
+          "model_id": "ibm/granite-3_3-8b-instruct",
+          "model_name": "Granite 3.3 8B Instruct",
+          "model_type": "text",
+          "context_window": 131072,
+          "success": false,
+          "error": "HTTP 404"
+        },
+        {
+          "model_id": "igenius/colosseum_355b_instruct_16k",
+          "model_name": "Colosseum 355B Instruct 16K",
+          "model_type": "text",
+          "context_window": 16384,
+          "success": false,
+          "error": "HTTPSConnectionPool(host='integrate.api.nvidia.com', port=443): Read timed out. "
+        },
+        {
+          "model_id": "igenius/italia_10b_instruct_16k",
+          "model_name": "Italia 10B Instruct 16K",
+          "model_type": "text",
+          "context_window": 16384,
+          "success": true,
+          "response": "OK",
+          "latency_ms": 1492.4
+        },
+        {
+          "model_id": "institute-of-science-tokyo/llama-3.1-swallow-70b-instruct-v0.1",
+          "model_name": "Llama 3.1 Swallow 70B Instruct v0.1",
+          "model_type": "text",
+          "context_window": 131072,
+          "success": true,
+          "response": "OK",
+          "latency_ms": 1531.9
+        },
+        {
+          "model_id": "institute-of-science-tokyo/llama-3.1-swallow-8b-instruct-v0.1",
+          "model_name": "Llama 3.1 Swallow 8B Instruct v0.1",
+          "model_type": "text",
+          "context_window": 131072,
+          "success": true,
+          "response": "OK",
+          "latency_ms": 1539.8
+        },
+        {
+          "model_id": "marin/marin-8b-instruct",
+          "model_name": "Marin 8B Instruct",
+          "model_type": "text",
+          "context_window": 131072,
+          "success": true,
+          "response": "OK",
+          "latency_ms": 1474.9
+        },
+        {
+          "model_id": "meta/llama-3.1-405b-instruct",
+          "model_name": "Llama 3.1 405B Instruct",
+          "model_type": "text",
+          "context_window": 131072,
+          "success": true,
+          "response": "OK",
+          "latency_ms": 513.1
+        },
+        {
+          "model_id": "meta/llama-3.1-70b-instruct",
+          "model_name": "Llama 3.1 70B Instruct",
+          "model_type": "text",
+          "context_window": 131072,
+          "success": true,
+          "response": "OK",
+          "latency_ms": 901.0
+        },
+        {
+          "model_id": "meta/llama-3.1-8b-instruct",
+          "model_name": "Llama 3.1 8B Instruct",
+          "model_type": "text",
+          "context_window": 131072,
+          "success": true,
+          "response": "OK",
+          "latency_ms": 543.9
+        },
+        {
+          "model_id": "meta/llama-3.2-1b-instruct",
+          "model_name": "Llama 3.2 1B Instruct",
+          "model_type": "text",
+          "context_window": 131072,
+          "success": true,
+          "response": "OK",
+          "latency_ms": 1451.9
+        },
+        {
+          "model_id": "meta/llama-3.2-3b-instruct",
+          "model_name": "Llama 3.2 3B Instruct",
+          "model_type": "text",
+          "context_window": 131072,
+          "success": true,
+          "response": "OK",
+          "latency_ms": 1856.0
+        },
+        {
+          "model_id": "meta/llama-3.3-70b-instruct",
+          "model_name": "Llama 3.3 70B Instruct",
+          "model_type": "text",
+          "context_window": 131072,
+          "success": true,
+          "response": "OK",
+          "latency_ms": 13229.2
+        },
+        {
+          "model_id": "microsoft/phi-3-medium-128k-instruct",
+          "model_name": "Phi 3 Medium 128K Instruct",
+          "model_type": "text",
+          "context_window": 131072,
+          "success": true,
+          "response": "OK",
+          "latency_ms": 1458.3
+        },
+        {
+          "model_id": "microsoft/phi-3.5-mini-instruct",
+          "model_name": "Phi 3.5 Mini Instruct",
+          "model_type": "text",
+          "context_window": 131072,
+          "success": false,
+          "error": "HTTPSConnectionPool(host='integrate.api.nvidia.com', port=443): Read timed out. "
+        },
+        {
+          "model_id": "microsoft/phi-4-mini-flash-reasoning",
+          "model_name": "Phi 4 Mini Flash Reasoning",
+          "model_type": "text",
+          "context_window": 131072,
+          "success": true,
+          "response": "<think>\nOkay, let's see. The user",
+          "latency_ms": 848.9
+        },
+        {
+          "model_id": "microsoft/phi-4-mini-instruct",
+          "model_name": "Phi 4 Mini Instruct",
+          "model_type": "text",
+          "context_window": 131072,
+          "success": true,
+          "response": "OK",
+          "latency_ms": 712.1
+        },
+        {
+          "model_id": "minimaxai/minimax-m2.5",
+          "model_name": "MiniMax M2.5",
+          "model_type": "text",
+          "context_window": 131072,
+          "success": false,
+          "error": "HTTPSConnectionPool(host='integrate.api.nvidia.com', port=443): Read timed out. "
+        },
+        {
+          "model_id": "mistralai/devstral-2-123b-instruct-2512",
+          "model_name": "DevStral 2 123B",
+          "model_type": "text",
+          "context_window": 262144,
+          "success": true,
+          "response": "OK",
+          "latency_ms": 15719.3
+        },
+        {
+          "model_id": "mistralai/magistral-small-2506",
+          "model_name": "Magistral Small 2506",
+          "model_type": "text",
+          "context_window": 131072,
+          "success": false,
+          "error": "'NoneType' object has no attribute 'strip'"
+        },
+        {
+          "model_id": "mistralai/mamba-codestral-7b-v0.1",
+          "model_name": "Mamba Codestral 7B v0.1",
+          "model_type": "text",
+          "context_window": 131072,
+          "success": true,
+          "response": "OK",
+          "latency_ms": 1515.0
+        },
+        {
+          "model_id": "mistralai/ministral-14b-instruct-2512",
+          "model_name": "Ministral 14B",
+          "model_type": "text",
+          "context_window": 262144,
+          "success": true,
+          "response": "OK",
+          "latency_ms": 1455.9
+        },
+        {
+          "model_id": "mistralai/mistral-7b-instruct-v0.3",
+          "model_name": "Mistral 7B Instruct v0.3",
+          "model_type": "text",
+          "context_window": 131072,
+          "success": true,
+          "response": "OK",
+          "latency_ms": 1554.5
+        },
+        {
+          "model_id": "mistralai/mistral-large-3-675b-instruct-2512",
+          "model_name": "Mistral Large 3 675B",
+          "model_type": "text",
+          "context_window": 262144,
+          "success": true,
+          "response": "OK",
+          "latency_ms": 955.9
+        },
+        {
+          "model_id": "mistralai/mistral-nemotron",
+          "model_name": "Mistral Nemotron",
+          "model_type": "text",
+          "context_window": 131072,
+          "success": true,
+          "response": "OK",
+          "latency_ms": 680.5
+        },
+        {
+          "model_id": "mistralai/mistral-small-24b-instruct",
+          "model_name": "Mistral Small 24B Instruct",
+          "model_type": "text",
+          "context_window": 131072,
+          "success": true,
+          "response": "OK",
+          "latency_ms": 732.2
+        },
+        {
+          "model_id": "moonshotai/kimi-k2-instruct",
+          "model_name": "Kimi K2 Instruct",
+          "model_type": "text",
+          "context_window": 131072,
+          "success": true,
+          "response": "OK",
+          "latency_ms": 1102.0
+        },
+        {
+          "model_id": "moonshotai/kimi-k2-instruct-0905",
+          "model_name": "Kimi K2 Instruct 0905",
+          "model_type": "text",
+          "context_window": 262144,
+          "success": true,
+          "response": "OK",
+          "latency_ms": 873.6
+        },
+        {
+          "model_id": "moonshotai/kimi-k2-thinking",
+          "model_name": "Kimi K2 Thinking",
+          "model_type": "text",
+          "context_window": 262144,
+          "success": false,
+          "error": "'NoneType' object has no attribute 'strip'"
+        },
+        {
+          "model_id": "nvidia/llama-3.1-nemotron-nano-8b-v1",
+          "model_name": "Llama 3.1 Nemotron Nano 8B v1",
+          "model_type": "text",
+          "context_window": 131072,
+          "success": false,
+          "error": "HTTPSConnectionPool(host='integrate.api.nvidia.com', port=443): Read timed out. "
+        },
+        {
+          "model_id": "nvidia/llama-3.3-nemotron-super-49b-v1",
+          "model_name": "Llama 3.3 Nemotron Super 49B v1",
+          "model_type": "text",
+          "context_window": 131072,
+          "success": true,
+          "response": "OK",
+          "latency_ms": 1240.7
+        },
+        {
+          "model_id": "nvidia/llama-3_1-nemotron-nano-4b-v1_1",
+          "model_name": "Llama Nemotron Nano 4B v1.1",
+          "model_type": "text",
+          "context_window": 131072,
+          "success": false,
+          "error": "HTTP 404"
+        },
+        {
+          "model_id": "nvidia/llama-3_1-nemotron-ultra-253b-v1",
+          "model_name": "Llama Nemotron Ultra 253B v1",
+          "model_type": "text",
+          "context_window": 131072,
+          "success": false,
+          "error": "HTTP 404"
+        },
+        {
+          "model_id": "nvidia/llama-3_3-nemotron-super-49b-v1_5",
+          "model_name": "Llama Nemotron Super 49B v1.5",
+          "model_type": "text",
+          "context_window": 131072,
+          "success": false,
+          "error": "HTTP 404"
+        },
+        {
+          "model_id": "nvidia/llama3-chatqa-1.5-8b",
+          "model_name": "Llama3 ChatQA 1.5 8B",
+          "model_type": "text",
+          "context_window": 131072,
+          "success": true,
+          "response": "OK",
+          "latency_ms": 1543.3
+        },
+        {
+          "model_id": "nvidia/mistral-nemo-minitron-8b-base",
+          "model_name": "Mistral Nemo Minitron 8B Base",
+          "model_type": "text",
+          "context_window": 131072,
+          "success": false,
+          "error": "HTTP 404"
+        },
+        {
+          "model_id": "nvidia/nemotron-3-nano-30b-a3b",
+          "model_name": "Nemotron 3 Nano 30B",
+          "model_type": "text",
+          "context_window": 1048576,
+          "success": false,
+          "error": "'NoneType' object has no attribute 'strip'"
+        },
+        {
+          "model_id": "nvidia/nemotron-3-super-120b-a12b",
+          "model_name": "Nemotron 3 Super 120B",
+          "model_type": "text",
+          "context_window": 1048576,
+          "success": true,
+          "response": ".",
+          "latency_ms": 8957.5
+        },
+        {
+          "model_id": "nvidia/nemotron-4-mini-hindi-4b-instruct",
+          "model_name": "Nemotron 4 Mini Hindi 4B Instruct",
+          "model_type": "text",
+          "context_window": 131072,
+          "success": true,
+          "response": "OK",
+          "latency_ms": 1478.3
+        },
+        {
+          "model_id": "nvidia/nemotron-mini-4b-instruct",
+          "model_name": "Nemotron Mini 4B Instruct",
+          "model_type": "text",
+          "context_window": 131072,
+          "success": false,
+          "error": "HTTPSConnectionPool(host='integrate.api.nvidia.com', port=443): Read timed out. "
+        },
+        {
+          "model_id": "nvidia/nvidia-nemotron-nano-9b-v2",
+          "model_name": "Nemotron Nano 9B v2",
+          "model_type": "text",
+          "context_window": 131072,
+          "success": false,
+          "error": "'NoneType' object has no attribute 'strip'"
+        },
+        {
+          "model_id": "nvidia/usdcode",
+          "model_name": "USDCode",
+          "model_type": "text",
+          "context_window": 8192,
+          "success": false,
+          "error": "HTTP 404"
+        },
+        {
+          "model_id": "openai/gpt-oss-120b",
+          "model_name": "GPT OSS 120B",
+          "model_type": "text",
+          "context_window": 131072,
+          "success": false,
+          "error": "'NoneType' object has no attribute 'strip'"
+        },
+        {
+          "model_id": "openai/gpt-oss-20b",
+          "model_name": "GPT OSS 20B",
+          "model_type": "text",
+          "context_window": 131072,
+          "success": false,
+          "error": "'NoneType' object has no attribute 'strip'"
+        },
+        {
+          "model_id": "opengpt-x/teuken-7b-instruct-commercial-v0_4",
+          "model_name": "Teuken 7B Instruct",
+          "model_type": "text",
+          "context_window": 131072,
+          "success": false,
+          "error": "HTTP 404"
+        },
+        {
+          "model_id": "qwen/qwen2-7b-instruct",
+          "model_name": "Qwen 2 7B Instruct",
+          "model_type": "text",
+          "context_window": 131072,
+          "success": true,
+          "response": "OK",
+          "latency_ms": 7321.3
+        },
+        {
+          "model_id": "qwen/qwen2.5-7b-instruct",
+          "model_name": "Qwen 2.5 7B Instruct",
+          "model_type": "text",
+          "context_window": 131072,
+          "success": true,
+          "response": "OK",
+          "latency_ms": 756.0
+        },
+        {
+          "model_id": "qwen/qwen2.5-coder-32b-instruct",
+          "model_name": "Qwen 2.5 Coder 32B Instruct",
+          "model_type": "text",
+          "context_window": 131072,
+          "success": true,
+          "response": "OK",
+          "latency_ms": 488.3
+        },
+        {
+          "model_id": "qwen/qwen2.5-coder-7b-instruct",
+          "model_name": "Qwen 2.5 Coder 7B Instruct",
+          "model_type": "text",
+          "context_window": 32768,
+          "success": true,
+          "response": "OK",
+          "latency_ms": 1449.3
+        },
+        {
+          "model_id": "qwen/qwen3-coder-480b-a35b-instruct",
+          "model_name": "Qwen3 Coder 480B",
+          "model_type": "text",
+          "context_window": 262144,
+          "success": true,
+          "response": "OK",
+          "latency_ms": 1182.6
+        },
+        {
+          "model_id": "qwen/qwen3-next-80b-a3b-instruct",
+          "model_name": "Qwen3 Next 80B Instruct",
+          "model_type": "text",
+          "context_window": 131072,
+          "success": true,
+          "response": "OK",
+          "latency_ms": 538.3
+        },
+        {
+          "model_id": "qwen/qwen3-next-80b-a3b-thinking",
+          "model_name": "Qwen3 Next 80B Thinking",
+          "model_type": "text",
+          "context_window": 131072,
+          "success": true,
+          "response": "Okay, the user said \"Reply with exactly '",
+          "latency_ms": 672.3
+        },
+        {
+          "model_id": "rakuten/rakutenai-7b-chat",
+          "model_name": "RakutenAI 7B Chat",
+          "model_type": "text",
+          "context_window": 131072,
+          "success": true,
+          "response": "OK",
+          "latency_ms": 1475.4
+        },
+        {
+          "model_id": "rakuten/rakutenai-7b-instruct",
+          "model_name": "RakutenAI 7B Instruct",
+          "model_type": "text",
+          "context_window": 131072,
+          "success": true,
+          "response": "OK",
+          "latency_ms": 1537.8
+        },
+        {
+          "model_id": "sarvamai/sarvam-m",
+          "model_name": "Sarvam M",
+          "model_type": "text",
+          "context_window": 131072,
+          "success": true,
+          "response": "Okay, the user wants me to reply with exactly",
+          "latency_ms": 1855.2
+        },
+        {
+          "model_id": "speakleash/bielik-11b-v2_6-instruct",
+          "model_name": "Bielik 11B v2.6 Instruct",
+          "model_type": "text",
+          "context_window": 131072,
+          "success": false,
+          "error": "HTTP 404"
+        },
+        {
+          "model_id": "stepfun-ai/step-3.5-flash",
+          "model_name": "Step 3.5 Flash",
+          "model_type": "text",
+          "context_window": 131072,
+          "success": false,
+          "error": "'NoneType' object has no attribute 'strip'"
+        },
+        {
+          "model_id": "stockmark/stockmark-2-100b-instruct",
+          "model_name": "Stockmark 2 100B",
+          "model_type": "text",
+          "context_window": 131072,
+          "success": true,
+          "response": "OK",
+          "latency_ms": 1523.7
+        },
+        {
+          "model_id": "thudm/chatglm3-6b",
+          "model_name": "ChatGLM3 6B",
+          "model_type": "text",
+          "context_window": 131072,
+          "success": true,
+          "response": "'\n OK",
+          "latency_ms": 1584.3
+        },
+        {
+          "model_id": "tiiuae/falcon3-7b-instruct",
+          "model_name": "Falcon 3 7B Instruct",
+          "model_type": "text",
+          "context_window": 131072,
+          "success": true,
+          "response": "OK",
+          "latency_ms": 1444.6
+        },
+        {
+          "model_id": "tokyotech-llm/llama-3-swallow-70b-instruct-v0.1",
+          "model_name": "Llama 3 Swallow 70B Instruct v0.1",
+          "model_type": "text",
+          "context_window": 131072,
+          "success": true,
+          "response": "OK",
+          "latency_ms": 1512.8
+        },
+        {
+          "model_id": "utter-project/eurollm-9b-instruct",
+          "model_name": "EuroLLM 9B Instruct",
+          "model_type": "text",
+          "context_window": 131072,
+          "success": true,
+          "response": "OK",
+          "latency_ms": 1376.2
+        },
+        {
+          "model_id": "yentinglin/llama-3-taiwan-70b-instruct",
+          "model_name": "Llama 3 Taiwan 70B Instruct",
+          "model_type": "text",
+          "context_window": 131072,
+          "success": true,
+          "response": "OK",
+          "latency_ms": 1462.2
+        },
+        {
+          "model_id": "z-ai/glm4_7",
+          "model_name": "GLM-4.7",
+          "model_type": "text",
+          "context_window": 131072,
+          "success": false,
+          "error": "HTTP 404"
+        },
+        {
+          "model_id": "z-ai/glm5",
+          "model_name": "GLM-5",
+          "model_type": "text",
+          "context_window": 131072,
+          "success": false,
+          "error": "HTTPSConnectionPool(host='integrate.api.nvidia.com', port=443): Read timed out. "
+        },
+        {
+          "model_id": "google/gemma-3-27b-it",
+          "model_name": "Gemma 3 27B Instruct",
+          "model_type": "multimodal",
+          "context_window": 131072,
+          "success": true,
+          "response": "OK",
+          "latency_ms": 555.8
+        },
+        {
+          "model_id": "google/gemma-3n-e2b-it",
+          "model_name": "Gemma 3N E2B Instruct",
+          "model_type": "multimodal",
+          "context_window": 131072,
+          "success": true,
+          "response": "OK",
+          "latency_ms": 812.4
+        },
+        {
+          "model_id": "google/gemma-3n-e4b-it",
+          "model_name": "Gemma 3N E4B Instruct",
+          "model_type": "multimodal",
+          "context_window": 131072,
+          "success": true,
+          "response": "OK",
+          "latency_ms": 834.6
+        },
+        {
+          "model_id": "meta/llama-3.2-11b-vision-instruct",
+          "model_name": "Llama 3.2 11B Vision Instruct",
+          "model_type": "multimodal",
+          "context_window": 131072,
+          "success": true,
+          "response": "OK",
+          "latency_ms": 757.5
+        },
+        {
+          "model_id": "meta/llama-3.2-90b-vision-instruct",
+          "model_name": "Llama 3.2 90B Vision Instruct",
+          "model_type": "multimodal",
+          "context_window": 131072,
+          "success": true,
+          "response": "OK",
+          "latency_ms": 793.5
+        },
+        {
+          "model_id": "meta/llama-4-maverick-17b-128e-instruct",
+          "model_name": "Llama 4 Maverick 17B",
+          "model_type": "multimodal",
+          "context_window": 131072,
+          "success": true,
+          "response": "OK",
+          "latency_ms": 477.8
+        },
+        {
+          "model_id": "meta/llama-4-scout-17b-16e-instruct",
+          "model_name": "Llama 4 Scout 17B",
+          "model_type": "multimodal",
+          "context_window": 131072,
+          "success": false,
+          "error": "HTTP 404"
+        },
+        {
+          "model_id": "microsoft/phi-3.5-vision-instruct",
+          "model_name": "Phi 3.5 Vision Instruct",
+          "model_type": "multimodal",
+          "context_window": 131072,
+          "success": true,
+          "response": "OK",
+          "latency_ms": 1468.5
+        },
+        {
+          "model_id": "microsoft/phi-4-multimodal-instruct",
+          "model_name": "Phi 4 Multimodal Instruct",
+          "model_type": "multimodal",
+          "context_window": 131072,
+          "success": false,
+          "error": "HTTP 400"
+        },
+        {
+          "model_id": "mistralai/mistral-medium-3-instruct",
+          "model_name": "Mistral Medium 3 Instruct",
+          "model_type": "multimodal",
+          "context_window": 131072,
+          "success": false,
+          "error": "HTTPSConnectionPool(host='integrate.api.nvidia.com', port=443): Read timed out. "
+        },
+        {
+          "model_id": "mistralai/mistral-small-3_1-24b-instruct-2503",
+          "model_name": "Mistral Small 3.1 24B",
+          "model_type": "multimodal",
+          "context_window": 131072,
+          "success": false,
+          "error": "HTTP 404"
+        },
+        {
+          "model_id": "mistralai/mistral-small-4-119b-2603",
+          "model_name": "Mistral Small 4 119B",
+          "model_type": "multimodal",
+          "context_window": 262144,
+          "success": true,
+          "response": "OK",
+          "latency_ms": 517.3
+        },
+        {
+          "model_id": "moonshotai/kimi-k2.5",
+          "model_name": "Kimi K2.5",
+          "model_type": "multimodal",
+          "context_window": 1048576,
+          "success": false,
+          "error": "HTTPSConnectionPool(host='integrate.api.nvidia.com', port=443): Read timed out. "
+        },
+        {
+          "model_id": "nvidia/llama-3.1-nemotron-nano-vl-8b-v1",
+          "model_name": "Llama Nemotron Nano VL 8B v1",
+          "model_type": "multimodal",
+          "context_window": 131072,
+          "success": true,
+          "response": "OK",
+          "latency_ms": 830.5
+        },
+        {
+          "model_id": "nvidia/nemotron-nano-12b-v2-vl",
+          "model_name": "Nemotron Nano 12B v2 VL",
+          "model_type": "multimodal",
+          "context_window": 131072,
+          "success": true,
+          "response": "OK",
+          "latency_ms": 627.4
+        },
+        {
+          "model_id": "nvidia/nvclip",
+          "model_name": "NV-CLIP",
+          "model_type": "multimodal",
+          "context_window": 8192,
+          "success": false,
+          "error": "HTTP 404"
+        },
+        {
+          "model_id": "qwen/qwen3.5-122b-a10b",
+          "model_name": "Qwen 3.5 122B",
+          "model_type": "multimodal",
+          "context_window": 131072,
+          "success": false,
+          "error": "HTTPSConnectionPool(host='integrate.api.nvidia.com', port=443): Read timed out. "
+        },
+        {
+          "model_id": "qwen/qwen3.5-397b-a17b",
+          "model_name": "Qwen 3.5 397B",
+          "model_type": "multimodal",
+          "context_window": 131072,
+          "success": true,
+          "response": "OK",
+          "latency_ms": 1612.2
+        }
+      ],
+      "success_count": 63,
+      "fail_count": 37,
+      "by_type": {
+        "text": {
+          "total": 82,
+          "success": 52,
+          "fail": 30
+        },
+        "multimodal": {
+          "total": 18,
+          "success": 11,
+          "fail": 7
+        }
+      },
+      "best_by_type": {
+        "text": {
+          "model_id": "qwen/qwen2.5-coder-32b-instruct",
+          "latency_ms": 488.3
+        },
+        "multimodal": {
+          "model_id": "meta/llama-4-maverick-17b-128e-instruct",
+          "latency_ms": 477.8
+        }
+      }
+    }
+  },
+  "summary": {
+    "total_success": 223,
+    "total_fail": 76,
+    "by_type": {
+      "chat": {
+        "success": 97,
+        "fail": 20
+      },
+      "multimodal": {
+        "success": 57,
+        "fail": 25
+      },
+      "code": {
+        "success": 17,
+        "fail": 1
+      },
+      "text": {
+        "success": 52,
+        "fail": 30
+      }
+    },
+    "best_overall": {
+      "model_id": "qwen3-omni-flash",
+      "provider": "unknown",
+      "latency_ms": 415.0
+    }
+  },
+  "generated_at": "2026-04-09 00:32:18",
+  "elapsed_seconds": 285.9,
+  "kernel_version": "4.5.0"
+}

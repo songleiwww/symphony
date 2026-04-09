@@ -1,0 +1,275 @@
+{
+  "site": "github",
+  "url": "https://github.com/songleiwww/symphony/releases/tag/v4.3.0",
+  "capturedAt": "2026-04-08T02:02:05.792Z",
+  "requests": [
+    {
+      "body": {
+        "licenseType": "licensed_limited",
+        "plan": "free",
+        "quotas": {
+          "limits": {
+            "premiumInteractions": 0
+          },
+          "overagesEnabled": false,
+          "remaining": {
+            "chat": 500,
+            "chatPercentage": 100,
+            "completions": 4000,
+            "premiumInteractions": 0,
+            "premiumInteractionsPercentage": 0
+          },
+          "resetDate": "2026-04-23"
+        },
+        "trial": {
+          "eligible": true
+        }
+      },
+      "method": "GET",
+      "status": null,
+      "ts": 1775613669495,
+      "url": "/github-copilot/chat/entitlement"
+    },
+    {
+      "body": {
+        "account_switch_dialog": {
+          "show": false
+        },
+        "agents_menu": {},
+        "create_menu": {
+          "createProjectUrl": "/songleiwww?tab=projects",
+          "org": null,
+          "owner": "songleiwww",
+          "repo": "symphony",
+          "showCodespaces": true,
+          "showCodingAgent": false,
+          "showCreateIssue": true,
+          "showCreateLegacyProject": false,
+          "showCreateOrg": true,
+          "showCreateProject": false,
+          "showCreateRepo": true,
+          "showGist": true,
+          "showImportRepo": true,
+          "showSpark": false
+        },
+        "nav_menu": {
+          "codespaces": {
+            "href": "/codespaces",
+            "show": true
+          },
+          "contributedRepos": {
+            "href": "/repos",
+            "show": true
+          },
+          "copilot": {
+            "href": "/copilot",
+            "show": true
+          },
+          "discussions": {
+            "href": "/discussions",
+            "show": true
+          },
+          "explore": {
+            "href": "/explore",
+            "show": true
+          },
+          "feed": {
+            "href": "/feed",
+            "show": false
+          },
+          "home": {
+            "href": "/dashboard"
+          },
+          "issues": {
+            "href": "/issues"
+          },
+          "marketplace": {
+            "href": "/marketplace",
+            "show": true
+          },
+          "mcp": {
+            "href": "/mcp",
+            "show": true
+          },
+          "projects": {
+            "href": "/projects"
+          },
+          "pulls": {
+            "href": "/pulls"
+          },
+          "richContent": {
+            "contentUrl": "/_side-panels/global.json",
+            "repositoriesSearchUrl": "/_side-panel-items/global/repositories.json",
+            "show": true
+          },
+          "spark": {
+            "href": null,
+            "show": false
+          }
+        },
+        "user_menu": {
+          "addAccountPath": "/login?add_account=1&return_to=https%3A%2F%2Fgithub.com%2Fsongleiwww%2Fsymphony%2Freleases%2Ftag%2Fv4.3.0",
+          "canAddAccount": true,
+          "docsUrl": "https://docs.github.com",
+          "enterpriseSettingsUrl": null,
+          "gistsUrl": "http://gist.github.com/mine",
+          "lazyLoadItemDataFetchUrl": "/_side-panels/user.json",
+          "loginAccountPath": "/login?add_account=1",
+          "owner": {
+            "avatarUrl": "https://avatars.githubusercontent.com/u/199487922?v=4",
+            "login": "songleiwww",
+            "name": null
+          },
+          "projectsPath": "/songleiwww?tab=projects",
+          "showAccountSwitcher": true,
+          "showCopilot": true,
+          "showEnterprise": false,
+          "showEnterpriseSettings": false,
+          "showEnterprises": true,
+          "showFeaturesPreviews": true,
+          "showGists": true,
+          "showOrganizations": true,
+          "showSponsors": true,
+          "showUpgrade": true,
+          "supportUrl": "https://support.github.com",
+          "switchAccountPath": "/switch_account",
+          "yourEnterpriseUrl": null
+        }
+      },
+      "method": "GET",
+      "status": null,
+      "ts": 1775613669504,
+      "url": "/_global-navigation/payloads.json?current_repo_nwo=songleiwww%2Fsymphony&repository=symphony&return_to=https%3A%2F%2Fgithub.com%2Fsongleiwww%2Fsymphony%2Freleases%2Ftag%2Fv4.3.0&user_id=songleiwww"
+    },
+    {
+      "body": {
+        "enableOrganizationNewTasksExperiment": false,
+        "showNewTasksButton": false
+      },
+      "method": "GET",
+      "status": null,
+      "ts": 1775613671175,
+      "url": "/in-product-messaging/organization-new-tasks-indicator.json"
+    },
+    {
+      "body": {
+        "enterpriseTrialUrl": "/organizations/enterprise_plan?ref_cta=Start%2520a%2520trial&ref_loc=user_drawer_side_panel&ref_page=Header+Avatar",
+        "hasUnseenFeatures": true,
+        "showSSO": false,
+        "ssoUrl": null,
+        "stashedAccounts": [],
+        "userPreferences": {
+          "tone": 0
+        },
+        "userStatus": {
+          "expirationIntervals": [
+            {
+              "label": "in 30 minutes",
+              "time": "2026-04-08T10:31:11+08:00"
+            },
+            {
+              "label": "in 1 hour",
+              "time": "2026-04-08T11:01:11+08:00"
+            },
+            {
+              "label": "in 4 hours",
+              "time": "2026-04-08T14:01:11+08:00"
+            },
+            {
+              "label": "after today",
+              "time": "2026-04-08T23:59:59+08:00"
+            },
+            {
+              "label": "after this week",
+              "time": "2026-04-12T23:59:59+08:00"
+            },
+            {
+              "label": "after a month",
+              "time": "2026-05-08T10:01:11+08:00"
+            }
+          ],
+          "expiresAt": null,
+          "expiresIn": null,
+          "organizationOptions": [],
+          "suggestions": [
+            {
+              "emojiAttributes": {
+                "attributes": {
+                  "alias": "palm_tree",
+                  "align": "absmiddle",
+                  "class": "emoji",
+                  "fallback-src": "https://github.githubassets.com/assets/1f334-453759c3779f.png"
+                },
+                "imgPath": "https://github.githubassets.com/assets/1f334-453759c3779f.png",
+                "name": "palm_tree",
+                "raw": "🌴",
+                "tag": "g-emoji"
+              },
+              "message": "On vacation"
+            },
+            {
+              "emojiAttributes": {
+                "attributes": {
+                  "alias": "face_with_thermometer",
+                  "align": "absmiddle",
+                  "class": "emoji",
+                  "fallback-src": "https://github.githubassets.com/assets/1f912-e44df2e127d9.png"
+                },
+                "imgPath": "https://github.githubassets.com/assets/1f912-e44df2e127d9.png",
+                "name": "face_with_thermometer",
+                "raw": "🤒",
+                "tag": "g-emoji"
+              },
+              "message": "Out sick"
+            },
+            {
+              "emojiAttributes": {
+                "attributes": {
+                  "alias": "house",
+                  "align": "absmiddle",
+                  "class": "emoji",
+                  "fallback-src": "https://github.githubassets.com/assets/1f3e0-04e67e699536.png"
+                },
+                "imgPath": "https://github.githubassets.com/assets/1f3e0-04e67e699536.png",
+                "name": "house",
+                "raw": "🏠",
+                "tag": "g-emoji"
+              },
+              "message": "Working from home"
+            },
+            {
+              "emojiAttributes": {
+                "attributes": {
+                  "alias": "dart",
+                  "align": "absmiddle",
+                  "class": "emoji",
+                  "fallback-src": "https://github.githubassets.com/assets/1f3af-c334ccb56185.png"
+                },
+                "imgPath": "https://github.githubassets.com/assets/1f3af-c334ccb56185.png",
+                "name": "dart",
+                "raw": "🎯",
+                "tag": "g-emoji"
+              },
+              "message": "Focusing"
+            }
+          ]
+        }
+      },
+      "method": "GET",
+      "status": null,
+      "ts": 1775613671177,
+      "url": "/_side-panels/user.json"
+    },
+    {
+      "body": {
+        "enableDfdNewTasksExperiment": false,
+        "enableEnterpriseNewTasksExperiment": true,
+        "showNewTasksButton": false
+      },
+      "method": "GET",
+      "status": null,
+      "ts": 1775613671243,
+      "url": "/in-product-messaging/enterprise-new-tasks-indicator.json"
+    }
+  ]
+}

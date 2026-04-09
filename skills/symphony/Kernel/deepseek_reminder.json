@@ -1,0 +1,11 @@
+{
+  "last_check": "2026-03-28T21:43:00",
+  "cookie_expiry_warning": "2026-04-04",
+  "status": "active",
+  "mode": "headless",
+  "reminder_message": "⚠️ DeepSeek Cookie将于 2026-04-04 到期，届时请重新登录提取。届时我会自动提醒您。",
+  "auto_check_enabled": true,
+  "silent_by_default": true,
+  "foreground_on_login": true,
+  "note": "正常运行完全后台静默，仅在Cookie失效时提示用户登录"
+}
