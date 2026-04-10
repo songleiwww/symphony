@@ -1,0 +1,235 @@
+# -*- coding: utf-8 -*-
+"""
+序境内核 - 集成实时进度功能
+将progress模块集成到内核
+"""
+import sys
+import os
+
+# 添加内核路径
+kernel_path = os.path.dirname(os.path.abspath(__file__))
+sys.path.insert(0, kernel_path)
+
+# 导入进度模块
+from progress.realtime_progress import (
+    MultiModelExecutorWithProgress,
+    ProgressReporter,
+    ProgressStage,
+    ResultAggregator
+)
+
+# 导入调度器
+from dispatcher_multiprovider import MultiProviderDispatcher
+
+# 导入会话管理
+from session.task_manager import TaskManager
+from session.session_manager import SessionManager
+
+# 导入自我自适应模块
+from rules.self_adaptive import (
+    SelfAdaptiveRuleManager,
+    RuleComplianceChecker, 
+    check_before,
+    add_rule
+)
+
+# 导入任务控制模块
+from control.task_controller import (
+    TaskController,
+    InterruptibleExecutor,
+    TaskState,
+    get_task_controller
+)
+
+# 导入健康检查模块
+from health.kernel_health import (
+    KernelHealthChecker,
+    KernelDefenseSystem
+)
+
+# 导入多Agent协作模块
+from multi_agent.xujing_multi_agent import (
+    XujingAgent,
+    ControllerAgent,
+    ExecutorAgent,
+    KnowledgeAgent,
+    MetaAgent,
+    EnsembleAgent,
+    MultiAgentSystem,
+    get_multi_agent_system
+)
+
+# 导入检测后组队模块
+from multi_agent.detect_then_team import (
+    ModelHealthDetector,
+    SmartTeamBuilder,
+    DetectThenTeamSystem,
+    get_detect_then_team_system
+)
+
+# 导入接管技能模块
+from skills.takeover_skill import (
+    XujingTakeover,
+    TakeoverSkill,
+    get_takeover_skill,
+    takeover
+)
+
+# 导入统一模块加载器
+from kernel_loader import (
+    ModuleLoader,
+    get_module_loader,
+    lazy_load
+)
+
+# 导入版本管理
+from version import (
+    VERSION,
+    get_version,
+    get_changelog
+)
+
+__all__ = [
+    # 执行器
+    'MultiModelExecutorWithProgress',
+    'ProgressReporter', 
+    'ProgressStage',
+    'ResultAggregator',
+    'MultiProviderDispatcher',
+    'TaskManager',
+    'SessionManager',
+    'EvolutionDispatcher',
+    'AdaptiveDispatcher',
+    
+    # 统一入口
+    'get_kernel_executor',
+    'get_evolution_executor',
+    'create_executor_with_callback',
+    
+    # 自我自适应
+    'SelfAdaptiveRuleManager',
+    'RuleComplianceChecker', 
+    'check_before',
+    'add_rule',
+    'evolve_dispatcher',
+    
+    # 任务控制
+    'TaskController',
+    'InterruptibleExecutor',
+    'TaskState',
+    'get_task_controller',
+    
+    # 健康检查
+    'KernelHealthChecker',
+    'KernelDefenseSystem',
+    
+    # 多Agent协作
+    'XujingAgent',
+    'ControllerAgent',
+    'ExecutorAgent',
+    'KnowledgeAgent',
+    'MetaAgent',
+    'EnsembleAgent',
+    'MultiAgentSystem',
+    'get_multi_agent_system',
+    
+    # 检测后组队
+    'ModelHealthDetector',
+    'SmartTeamBuilder',
+    'DetectThenTeamSystem',
+    'get_detect_then_team_system',
+    
+    # 接管技能
+    'XujingTakeover',
+    'TakeoverSkill',
+    'get_takeover_skill',
+    'takeover',
+    
+    # 统一加载器
+    'ModuleLoader',
+    'get_module_loader',
+    'lazy_load',
+    
+    # 版本管理
+    'VERSION',
+    'get_version',
+    'get_changelog'
+]
+
+# 内核执行器缓存
+_kernel_executor = None
+
+def get_kernel_executor(db_path: str, user_id: str = None, message_callback = None):
+    """
+    获取内核执行器(带进度反馈)
+
+    参数:
+        db_path: 数据库路径
+        user_id: 用户ID
+        message_callback: 消息回调函数(用于发送进度到对话框)
+
+    返回:
+        MultiModelExecutorWithProgress实例
+    """
+    global _kernel_executor
+
+    if _kernel_executor is None:
+        dispatcher = MultiProviderDispatcher(db_path)
+        _kernel_executor = MultiModelExecutorWithProgress(
+            dispatcher,
+            user_id=user_id,
+            message_callback=message_callback
+        )
+
+    return _kernel_executor
+
+
+def create_executor_with_callback(db_path: str, user_id: str, callback_func):
+    """
+    创建带飞书回调的执行器
+
+    示例:
+        def my_callback(report):
+            message(action='send', message=report['message'], ...)
+
+        executor = create_executor_with_callback(db_path, user_id, my_callback)
+        result = executor.execute_with_progress("你好", model_count=3)
+    """
+    dispatcher = MultiProviderDispatcher(db_path)
+    return MultiModelExecutorWithProgress(
+        dispatcher,
+        user_id=user_id,
+        message_callback=callback_func
+    )
+
+
+# 进化调度器
+_evolution_dispatcher = None
+
+def get_evolution_executor(db_path: str):
+    """
+    获取进化调度器(带自适应学习能力)
+
+    特性:
+    1. 模型权重动态调整
+    2. 成功率追踪
+    3. 故障预测
+    4. 用户偏好学习
+    """
+    global _evolution_dispatcher
+
+    if _evolution_dispatcher is None:
+        from dispatcher_evolution import EvolutionDispatcher
+        _evolution_dispatcher = EvolutionDispatcher(db_path)
+
+    return _evolution_dispatcher
+
+
+def evolve_dispatcher(db_path: str):
+    """
+    执行调度器自我进化
+    分析历史数据，调整策略
+    """
+    dispatcher = get_evolution_executor(db_path)
+    dispatcher.evolve()
+    return "进化完成"
