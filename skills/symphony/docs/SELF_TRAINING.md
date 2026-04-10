@@ -18,12 +18,12 @@
 
 ## 1. 系统概述
 
-**序境系统 (Xujing) v4.3.0** 是多脑协作调度引擎：
+**序境系统 (Xujing) v4.5.0** 是多脑协作调度引擎：
 
 | 指标 | 值 |
 |------|-----|
-| 版本 | v4.3.0 |
-| 模型数量 | 938+ |
+| 版本 | v4.5.0 |
+| 模型数量 | 613+ |
 | 核心文件数 | 25+ |
 | 调度算法 | ACO + BCO + 5种基础策略 |
 | Benchmark | ACO 98%, BCO 96%, 77.9×加速 |
@@ -81,7 +81,8 @@ from Kernel import (
 )
 from providers.pool import ProviderPool  # 服务商资源池
 from strategy.dual_engine_scheduler import DualEngineScheduler, DualEngineConfig
-from Kernel.evolution import SelfEvolutionV2, AgentMemoryLayer
+# 注意: SelfEvolutionV2 和 AgentMemoryLayer 当前文件编码损坏
+# from Kernel.evolution import SelfEvolutionV2, AgentMemoryLayer
 
 # ❌ 错误方式
 from symphony_release.Kernel import ...           # 错误路径
@@ -97,8 +98,8 @@ from algorithms.ant_colony import ...              # algorithms/ 已删除
 | `Kernel` | `WisdomEmergenceEngine` | 智慧涌现 |
 | `Kernel` | `EvolutionKernel` | 进化内核 |
 | `Kernel` | `AdaptiveAlgorithmCoordinator` | 自适应协调 |
-| `Kernel.evolution` | `SelfEvolutionV2` | 自进化引擎 |
-| `Kernel.evolution` | `AgentMemoryLayer` | 记忆层 |
+| `Kernel.evolution` | `SelfEvolutionV2` | 自进化引擎 ⚠️ 文件编码损坏 |
+| `Kernel.evolution` | `AgentMemoryLayer` | 记忆层 ⚠️ 文件编码损坏 |
 | `providers.pool` | `ProviderPool` | 938模型统一封装 |
 | `strategy.dual_engine_scheduler` | `DualEngineScheduler` | 蜂蚁双引擎 |
 | `rules.compliance_engine` | `ComplianceEngine` | 合规引擎 |
@@ -208,7 +209,7 @@ strategies = [
 ### 数据库路径
 
 ```
-C:\Users\Administrator\.openclaw\workspace\skills\symphony\data\symphony_working.db
+C:\Users\Administrator\.openclaw\workspace\skills\symphony\data\symphony.db
 ```
 
 ### 表结构
@@ -299,7 +300,7 @@ sqlite3.OperationalError: unable to open database
 
 **修复**:
 ```python
-DB_PATH = r'C:\Users\Administrator\.openclaw\workspace\skills\symphony\data\symphony_working.db'
+DB_PATH = r'C:\Users\Administrator\.openclaw\workspace\skills\symphony\data\symphony.db'
 ```
 
 ---
@@ -373,6 +374,6 @@ ls C:\Users\Administrator\.openclaw\workspace\skills\symphony\data\
 
 **修正原则**：正确性第一，任何路径/导入错误都必须立即修正。
 
-**最后更新**: 2026-03-29
-**版本**: v4.3.0
+**最后更新**: 2026-04-10
+**版本**: v4.5.0
 **维护者**: 少府监 · 陆念昭

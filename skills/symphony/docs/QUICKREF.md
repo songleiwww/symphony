@@ -25,7 +25,7 @@ from strategy.dual_engine_scheduler import DualEngineScheduler, DualEngineConfig
 | 进化内核 | `from Kernel import EvolutionKernel` | 自进化核心 |
 | 模型池 | `from providers.pool import ProviderPool` | 938模型统一封装 |
 | 双引擎 | `from strategy.dual_engine_scheduler import DualEngineScheduler` | ACO+BCO混合 |
-| 记忆层 | `from Kernel.evolution import AgentMemoryLayer` | 三层记忆 |
+| 记忆层 | `from Kernel.evolution import AgentMemoryLayer` | 三层记忆 ⚠️ 文件编码损坏 |
 
 ---
 
@@ -77,7 +77,7 @@ kernel = EvolutionKernel()
 ## 🔑 数据库路径
 
 ```
-C:\Users\Administrator\.openclaw\workspace\skills\symphony\data\symphony_working.db
+C:\Users\Administrator\.openclaw\workspace\skills\symphony\data\symphony.db
 ```
 
 ---
@@ -98,7 +98,7 @@ pool = ProviderPool()
 ```
 symphony/
 ├── Kernel/                    # 核心 (evolution_kernel, scheduler, ...)
-├── providers/pool.py           # 938模型
+├── providers/pool.py           # 613+模型
 ├── strategy/dual_engine_*.py   # 蜂蚁双引擎
 ├── config/                    # 配置 (tokens, db, ...)
 ├── rules/compliance_engine.py # 合规
@@ -150,4 +150,4 @@ python -c "from providers.pool import ProviderPool; p = ProviderPool(); print(p.
 
 ---
 
-**版本**: v4.3.0 | **路径**: `skills/symphony/` | **维护**: 少府监
+**版本**: v4.5.0 | **路径**: `skills/symphony/` | **维护**: 少府监

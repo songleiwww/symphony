@@ -2,23 +2,35 @@ import requests
 import json
 
 class NvidiaAdapter:
+    """NVIDIA API 适配器"""
+    
     BASE_URL = "https://integrate.api.nvidia.com/v1"
     
-    def __init__(self, api_key):
-        self.api_key = api_key
+    ENDPOINT_MAP = {
+        "chat": "/chat/completions",
+    }
+    
+    def __init__(self, api_key: str):
+        self.API_KEY = api_key
+        self.BASE_URL = "https://integrate.api.nvidia.com/v1"
+        
         self.headers = {
-            "Authorization": f"Bearer {self.api_key}",
+            "Authorization": f"Bearer {self.API_KEY}",
             "Content-Type": "application/json"
         }
     
-    def invoke(self, model_id, **kwargs):
+    def invoke(self, model_id, model_type, **kwargs):
         """
-        调用英伟达模型
+        统一调用入口
         :param model_id: 模型ID
-        :param kwargs: 调用参数：messages, stream, max_tokens等
+        :param model_type: 模型类型
+        :param kwargs: 调用参数
         :return: 调用结果
         """
-        url = f"{self.BASE_URL}/chat/completions"
+        if model_type not in self.ENDPOINT_MAP:
+            raise ValueError(f"不支持的模型类型: {model_type}")
+        
+        url = f"{self.BASE_URL}{self.ENDPOINT_MAP[model_type]}"
         stream = kwargs.get("stream", False)
         
         if stream:
@@ -43,3 +55,12 @@ class NvidiaAdapter:
             return resp.iter_lines()
         else:
             return resp.json()
+    
+    def chat_completion(self, messages, **kwargs):
+        """便捷的聊天接口"""
+        return self.invoke(
+            kwargs.get("model", "nvidia/llama-3.1-nemotron-70b-instruct"),
+            "chat",
+            messages=messages,
+            **kwargs
+        )
