@@ -1,0 +1,10 @@
+# 敏感信息 - 不提交到Git
+*_cookies*.json
+*_cookies_raw.json
+tokens_config.py
+*.pem
+*.key
+credentials.json
+secrets.json
+.env
+.env.*
